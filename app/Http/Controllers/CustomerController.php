@@ -165,6 +165,9 @@ class CustomerController extends Controller
 
     public function status($uuid, \App\Models\Order $order)
     {
+        if ($order->table->uuid !== $uuid) {
+            abort(403, 'Unauthorized access to this order.');
+        }
         return view('customer.status', compact('order'));
     }
 

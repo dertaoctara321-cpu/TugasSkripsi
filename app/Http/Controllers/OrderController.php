@@ -32,8 +32,7 @@ class OrderController extends Controller
             
             // Clear the table
             $order->table->update([
-                'is_occupied' => false,
-                'current_order_id' => null
+                'status' => 'available'
             ]);
         }
 
@@ -50,8 +49,7 @@ class OrderController extends Controller
     {
         // Clear the table
         $order->table->update([
-            'is_occupied' => false,
-            'current_order_id' => null
+            'status' => 'available'
         ]);
 
         // Delete order (will cascade delete order items)
