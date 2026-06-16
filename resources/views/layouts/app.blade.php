@@ -13,6 +13,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- PWA  -->
+        <meta name="theme-color" content="#FF8C42"/>
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">
+        <link rel="manifest" href="{{ asset('manifest.json') }}">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -32,5 +37,15 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- PWA Service Worker Registration -->
+        <script src="{{ asset('/sw.js') }}"></script>
+        <script>
+            if (!navigator.serviceWorker.controller) {
+                navigator.serviceWorker.register("/sw.js").then(function(reg) {
+                    console.log("Service worker has been registered for scope: " + reg.scope);
+                });
+            }
+        </script>
     </body>
 </html>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C0392B;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#E74C3C;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0392B;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#E74C3C;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bgGrad)"/>
+  <!-- Decorative circles -->
+  <circle cx="-40" cy="-40" r="200" fill="white" fill-opacity="0.06"/>
+  <circle cx="1480" cy="940" r="220" fill="white" fill-opacity="0.06"/>
+  <!-- Card -->
+  <rect x="510" y="90" width="420" height="580" rx="20" fill="white"/>
+  <!-- Logo circle -->
+  <circle cx="720" cy="178" r="44" fill="url(#btnGrad)"/>
+  <text x="720" y="190" text-anchor="middle" font-size="28" fill="white">🌐</text>
+  <!-- Title -->
+  <text x="720" y="244" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">Little Palembang</text>
+  <text x="720" y="268" text-anchor="middle" font-size="14" fill="#C0392B">Admin Dashboard</text>
+  <!-- Email label -->
+  <text x="546" y="306" font-size="11" font-weight="bold" fill="#777">EMAIL ADDRESS</text>
+  <rect x="546" y="314" width="348" height="44" rx="10" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
+  <text x="562" y="341" font-size="14" fill="#999">admin@littlepalembang.com</text>
+  <!-- Password label -->
+  <text x="546" y="378" font-size="11" font-weight="bold" fill="#777">PASSWORD</text>
+  <rect x="546" y="386" width="348" height="44" rx="10" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
+  <text x="562" y="413" font-size="14" fill="#999">••••••••••</text>
+  <!-- Remember me -->
+  <rect x="546" y="446" width="16" height="16" rx="3" fill="#E74C3C"/>
+  <text x="554" y="458" text-anchor="middle" font-size="11" fill="white">✓</text>
+  <text x="574" y="458" font-size="13" fill="#555">Remember me</text>
+  <!-- Login button -->
+  <rect x="546" y="476" width="348" height="48" rx="10" fill="url(#btnGrad)"/>
+  <text x="720" y="505" text-anchor="middle" font-size="15" font-weight="bold" fill="white" letter-spacing="2">LOGIN</text>
+  <!-- Forgot password -->
+  <text x="720" y="548" text-anchor="middle" font-size="13" fill="#C0392B">Forgot your password?</text>
+</svg>

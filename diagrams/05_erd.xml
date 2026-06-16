@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="title" value="Entity Relationship Diagram (ERD) - QR Web Cafe Ordering System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="200" y="10" width="1000" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== ENTITY: users ===================== -->
+    <mxCell id="tbl_users" value="users" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="40" y="60" width="250" height="260" as="geometry" />
+    </mxCell>
+    <mxCell id="u_id" value="🔑 id (BIGINT, PK, AI)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="35" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_name" value="   name (VARCHAR)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="60" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_email" value="   email (VARCHAR, UNIQUE)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="85" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_email_ver" value="   email_verified_at (TIMESTAMP, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="110" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_password" value="   password (VARCHAR)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="135" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_remember" value="   remember_token (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="160" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_created" value="   created_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="185" width="230" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="u_updated" value="   updated_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_users">
+      <mxGeometry x="10" y="210" width="230" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== ENTITY: tables ===================== -->
+    <mxCell id="tbl_tables" value="tables" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="360" y="60" width="270" height="360" as="geometry" />
+    </mxCell>
+    <mxCell id="t_id" value="🔑 id (BIGINT, PK, AI)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="35" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_num" value="   table_number (VARCHAR)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="60" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_uuid" value="   uuid (UUID, UNIQUE)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="85" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_qr" value="   qr_code_path (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="110" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_status" value="   status (ENUM: available|occupied)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="135" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_lat" value="   location_lat (DECIMAL(10,8), NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="160" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_lng" value="   location_lng (DECIMAL(11,8), NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="185" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_radius" value="   location_radius (INT, default:100)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="210" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_req_loc" value="   require_location (BOOL, default:true)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="235" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_created" value="   created_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="260" width="250" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="t_updated" value="   updated_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_tables">
+      <mxGeometry x="10" y="285" width="250" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== ENTITY: menus ===================== -->
+    <mxCell id="tbl_menus" value="menus" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="40" y="380" width="260" height="340" as="geometry" />
+    </mxCell>
+    <mxCell id="m_id" value="🔑 id (BIGINT, PK, AI)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="35" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_name" value="   name (VARCHAR)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="60" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_desc" value="   description (TEXT, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="85" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_price" value="   price (DECIMAL(10,2))" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="110" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_image" value="   image (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="135" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_cat" value="   category (VARCHAR)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="160" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_subcat" value="   sub_category (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="185" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_avail" value="   is_available (BOOL, default:true)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="210" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_created" value="   created_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="235" width="240" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="m_updated" value="   updated_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_menus">
+      <mxGeometry x="10" y="260" width="240" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== ENTITY: orders ===================== -->
+    <mxCell id="tbl_orders" value="orders" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="700" y="60" width="290" height="360" as="geometry" />
+    </mxCell>
+    <mxCell id="o_id" value="🔑 id (BIGINT, PK, AI)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="35" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_tid" value="🔗 table_id (FK → tables.id)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="60" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_total" value="   total_amount (DECIMAL(10,2))" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="85" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_pm" value="   payment_method (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="110" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_ps" value="   payment_status (VARCHAR: pending|paid|cancelled)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="135" width="270" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="o_os" value="   order_status (VARCHAR: pending|cooking|served\n   |completed|cancelled)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="175" width="270" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="o_cname" value="   customer_name (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="215" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_floor" value="   floor (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="240" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_created" value="   created_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="265" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="o_updated" value="   updated_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_orders">
+      <mxGeometry x="10" y="290" width="270" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== ENTITY: order_items ===================== -->
+    <mxCell id="tbl_order_items" value="order_items" style="swimlane;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="700" y="480" width="290" height="250" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_id" value="🔑 id (BIGINT, PK, AI)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="35" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_oid" value="🔗 order_id (FK → orders.id, CASCADE)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="60" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_mid" value="🔗 menu_id (FK → menus.id, CASCADE)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="85" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_qty" value="   quantity (INT)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="110" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_price" value="   price (DECIMAL(10,2))" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="135" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_created" value="   created_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="160" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="oi_updated" value="   updated_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_order_items">
+      <mxGeometry x="10" y="185" width="270" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== ENTITY: payment_methods ===================== -->
+    <mxCell id="tbl_pm" value="payment_methods" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="60" width="290" height="310" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_id" value="🔑 id (BIGINT, PK, AI)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="35" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_name" value="   name (VARCHAR)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="60" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_type" value="   type (ENUM: bank_transfer|qris|cash)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="85" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_accno" value="   account_number (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="110" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_accname" value="   account_name (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="135" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_qr" value="   qr_code_image (VARCHAR, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="160" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_instr" value="   instructions (TEXT, NULL)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="185" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_active" value="   is_active (BOOL, default:true)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="210" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_created" value="   created_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="235" width="270" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="pm_updated" value="   updated_at (TIMESTAMP)" style="text;html=1;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="tbl_pm">
+      <mxGeometry x="10" y="260" width="270" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ===================== RELATIONS ===================== -->
+
+    <!-- tables 1 < orders (table_id FK) -->
+    <mxCell id="rel_to" value="1" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;fontSize=12;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.25;" edge="1" source="tbl_tables" target="tbl_orders" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_to_lbl" value="memiliki" style="edgeLabel;html=1;align=center;fontSize=11;resizable=0;" vertex="1" connectable="0" parent="rel_to">
+      <mxGeometry relative="0.5" as="geometry" />
+    </mxCell>
+
+    <!-- orders 1 < order_items (order_id FK) -->
+    <mxCell id="rel_ooi" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;fontSize=12;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="tbl_orders" target="tbl_order_items" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_ooi_lbl" value="berisi" style="edgeLabel;html=1;align=center;fontSize=11;resizable=0;" vertex="1" connectable="0" parent="rel_ooi">
+      <mxGeometry relative="0.5" as="geometry" />
+    </mxCell>
+
+    <!-- menus 1 < order_items (menu_id FK) -->
+    <mxCell id="rel_moi" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;fontSize=12;html=1;exitX=1;exitY=0.7;entryX=0;entryY=0.5;" edge="1" source="tbl_menus" target="tbl_order_items" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_moi_lbl" value="dipesan\npada" style="edgeLabel;html=1;align=center;fontSize=11;resizable=0;" vertex="1" connectable="0" parent="rel_moi">
+      <mxGeometry relative="0.5" as="geometry" />
+    </mxCell>
+
+    <!-- NOTE: payment_methods is referenced by string not FK -->
+    <mxCell id="note_pm" value="⚠️ Catatan: payment_method di tabel orders\nmenyimpan string (Cash/Transfer), bukan FK\nke payment_methods. Ini adalah BUG desain\nyang perlu diperbaiki (seharusnya pakai FK)." style="text;html=1;align=left;strokeColor=#d79b00;fillColor=#ffe6cc;fontSize=11;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="400" width="290" height="90" as="geometry" />
+    </mxCell>
+
+    <!-- Legend -->
+    <mxCell id="legend" value="🔑 = Primary Key   |   🔗 = Foreign Key   |   AI = Auto Increment\n1 ——&lt; = One to Many Relationship" style="text;html=1;align=left;strokeColor=#666666;fillColor=#f8f8f8;fontSize=11;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="790" width="600" height="50" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

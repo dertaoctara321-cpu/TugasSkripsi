@@ -27,7 +27,6 @@
                         <th>QR Code</th>
                         <th>URL Testing</th>
                         <th>Status</th>
-                        <th>Validasi Lokasi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,20 +36,26 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $table->table_number }}</td>
                         <td>
-                            @if($table->qr_code_path)
-                                <img src="{{ $table->qr_code_path }}" width="100px">
+                            @php
+                                $orderUrl = $baseUrl . '/order/' . $table->uuid;
+                                $qrImgUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($orderUrl);
+                            @endphp
+                            <div class="text-center" style="display: inline-block;">
+                                <strong>Meja {{ $table->table_number }}</strong>
                                 <br>
-                                <a href="{{ $table->qr_code_path }}" download class="btn btn-sm btn-info mt-1">Download QR</a>
-                            @else
-                                Tidak Ada QR
-                            @endif
+                                <img src="{{ $qrImgUrl }}" width="100px" alt="QR Meja {{ $table->table_number }}">
+                            </div>
+                            <br>
+                            <button type="button" onclick="downloadQR('{{ $qrImgUrl }}', '{{ $table->table_number }}', this)" class="btn btn-sm btn-info mt-1">
+                                <i class="fas fa-download"></i> Download QR
+                            </button>
                         </td>
                         <td>
-                            <a href="{{ route('order.index', $table->uuid) }}" target="_blank" class="btn btn-sm btn-success">
+                            <a href="{{ $orderUrl }}" target="_blank" class="btn btn-sm btn-success">
                                 <i class="fas fa-external-link-alt"></i> Buka Halaman Pemesanan
                             </a>
                             <br>
-                            <small class="text-muted">{{ route('order.index', $table->uuid) }}</small>
+                            <small class="text-muted">{{ $orderUrl }}</small>
                         </td>
                         <td>
                             @if($table->status == 'occupied')
@@ -58,20 +63,6 @@
                             @else
                                 <span class="badge badge-success">Tersedia</span>
                             @endif
-                        </td>
-                        <td>
-                            @if($table->require_location)
-                                <span class="badge badge-success"><i class="fas fa-check"></i> Aktif</span>
-                            @else
-                                <span class="badge badge-danger"><i class="fas fa-times"></i> Nonaktif</span>
-                            @endif
-                            <br>
-                            <form action="{{ route('tables.toggle-location', $table->id) }}" method="POST" style="display:inline; margin-top: 5px;">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-warning mt-1">
-                                    <i class="fas fa-map-marker-alt"></i> Toggle
-                                </button>
-                            </form>
                         </td>
                         <td>
                             @if($table->status == 'occupied')
@@ -109,34 +100,23 @@
                     </h5>
                     
                     <div class="mb-3 text-center">
-                        @if($table->qr_code_path)
-                            <img src="{{ $table->qr_code_path }}" width="150px" class="img-fluid">
+                        @php
+                            $orderUrl = $baseUrl . '/order/' . $table->uuid;
+                            $qrImgUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($orderUrl);
+                        @endphp
+                        <div class="text-center" style="display: inline-block;">
+                            <strong>Meja {{ $table->table_number }}</strong>
                             <br>
-                            <a href="{{ $table->qr_code_path }}" download class="btn btn-sm btn-info mt-2">
-                                <i class="fas fa-download"></i> Download QR
-                            </a>
-                        @else
-                            <p class="text-muted">Tidak Ada QR</p>
-                        @endif
-                    </div>
-
-                    <div class="mb-2">
-                        <strong><i class="fas fa-map-marker-alt"></i> Validasi Lokasi:</strong>
-                        @if($table->require_location)
-                            <span class="badge badge-success"><i class="fas fa-check"></i> Aktif</span>
-                        @else
-                            <span class="badge badge-danger"><i class="fas fa-times"></i> Nonaktif</span>
-                        @endif
-                        <form action="{{ route('tables.toggle-location', $table->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-warning ml-2">
-                                <i class="fas fa-sync"></i> Toggle
-                            </button>
-                        </form>
+                            <img src="{{ $qrImgUrl }}" width="150px" class="img-fluid" alt="QR Meja {{ $table->table_number }}">
+                        </div>
+                        <br>
+                        <button type="button" onclick="downloadQR('{{ $qrImgUrl }}', '{{ $table->table_number }}', this)" class="btn btn-sm btn-info mt-2">
+                            <i class="fas fa-download"></i> Download QR
+                        </button>
                     </div>
 
                     <div class="mb-3">
-                        <a href="{{ route('order.index', $table->uuid) }}" target="_blank" class="btn btn-success btn-block">
+                        <a href="{{ $orderUrl }}" target="_blank" class="btn btn-success btn-block">
                             <i class="fas fa-external-link-alt"></i> Buka Halaman Pemesanan
                         </a>
                     </div>
@@ -164,4 +144,63 @@
         </div>
     </div>
 </div>
+
+@push('js')
+<script>
+function downloadQR(qrUrl, tableNumber, btn) {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+    btn.disabled = true;
+
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.onload = function() {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        
+        const padding = 20;
+        const textHeight = 40;
+        const width = img.width + (padding * 2);
+        const height = img.height + textHeight + (padding * 2);
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw white background
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, width, height);
+
+        // Draw text
+        ctx.fillStyle = "#000000";
+        ctx.font = "bold 24px Arial, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.fillText("Meja " + tableNumber, width / 2, padding);
+
+        // Draw image
+        ctx.drawImage(img, padding, padding + textHeight);
+
+        // Convert and download
+        const dataUrl = canvas.toDataURL("image/png");
+        const a = document.createElement("a");
+        a.href = dataUrl;
+        a.download = "QR_Meja_" + tableNumber + ".png";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    };
+    img.onerror = function() {
+        alert("Gagal memuat QR Code. Silakan coba lagi.");
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    };
+    
+    // Cache buster for CORS
+    img.src = qrUrl + "&_t=" + new Date().getTime(); 
+}
+</script>
+@endpush
 @endsection

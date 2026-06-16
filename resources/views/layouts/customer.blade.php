@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Sate Ordering')</title>
+    <title>@yield('title', 'Little Palembang')</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap 5 -->
@@ -11,14 +11,19 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- PWA  -->
+    <meta name="theme-color" content="#FF8C42"/>
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+
     <style>
         :root {
             --primary-color: #FF8C42;
             --secondary-color: #8B4513;
-            --sate-brown: #8B4513;
-            --sate-orange: #FF8C42;
-            --sate-dark: #3E2723;
-            --sate-light: #FFECB3;
+            --cafe-brown: #8B4513;
+            --cafe-orange: #FF8C42;
+            --cafe-dark: #3E2723;
+            --cafe-light: #FFECB3;
         }
         
         body {
@@ -39,21 +44,21 @@
             z-index: -1;
             opacity: 0.03;
             background-image: 
-                repeating-linear-gradient(45deg, var(--sate-brown) 0px, var(--sate-brown) 2px, transparent 2px, transparent 10px),
-                repeating-linear-gradient(-45deg, var(--sate-orange) 0px, var(--sate-orange) 2px, transparent 2px, transparent 10px);
+                repeating-linear-gradient(45deg, var(--cafe-brown) 0px, var(--cafe-brown) 2px, transparent 2px, transparent 10px),
+                repeating-linear-gradient(-45deg, var(--cafe-orange) 0px, var(--cafe-orange) 2px, transparent 2px, transparent 10px);
         }
 
         /* Floating sate sticks decoration */
-        .sate-decoration {
+        .cafe-decoration {
             position: fixed;
             font-size: 3rem;
             opacity: 0.05;
             z-index: 0;
             pointer-events: none;
-            animation: floatSate 20s ease-in-out infinite;
+            animation: floatCafe 20s ease-in-out infinite;
         }
 
-        @keyframes floatSate {
+        @keyframes floatCafe {
             0%, 100% {
                 transform: translateY(0) rotate(0deg);
             }
@@ -62,25 +67,25 @@
             }
         }
 
-        .sate-decoration:nth-child(1) {
+        .cafe-decoration:nth-child(1) {
             top: 10%;
             left: 10%;
             animation-delay: 0s;
         }
 
-        .sate-decoration:nth-child(2) {
+        .cafe-decoration:nth-child(2) {
             top: 60%;
             right: 15%;
             animation-delay: 3s;
         }
 
-        .sate-decoration:nth-child(3) {
+        .cafe-decoration:nth-child(3) {
             bottom: 20%;
             left: 20%;
             animation-delay: 6s;
         }
 
-        .sate-decoration:nth-child(4) {
+        .cafe-decoration:nth-child(4) {
             top: 30%;
             right: 25%;
             animation-delay: 9s;
@@ -195,7 +200,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--sate-orange), var(--sate-brown));
+            background: linear-gradient(135deg, var(--cafe-orange), var(--cafe-brown));
             border: none;
             border-radius: 10px;
             padding: 10px 20px;
@@ -218,7 +223,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--sate-orange), var(--sate-brown));
+            background: linear-gradient(135deg, var(--cafe-orange), var(--cafe-brown));
             border: none;
             color: white;
             font-size: 1.5rem;
@@ -249,30 +254,30 @@
             padding: 8px 15px;
             transition: all 0.3s ease;
             background: white !important;
-            border: 2px solid var(--sate-orange) !important;
-            color: var(--sate-brown) !important;
+            border: 2px solid var(--cafe-orange) !important;
+            color: var(--cafe-brown) !important;
         }
 
         .cart-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
-            background: linear-gradient(135deg, var(--sate-orange), var(--sate-brown)) !important;
+            background: linear-gradient(135deg, var(--cafe-orange), var(--cafe-brown)) !important;
             color: white !important;
         }
 
         .cart-btn .badge {
             animation: pulse 2s ease-in-out infinite;
-            background: linear-gradient(135deg, var(--sate-orange), var(--sate-brown)) !important;
+            background: linear-gradient(135deg, var(--cafe-orange), var(--cafe-brown)) !important;
         }
 
         body.dark-mode .cart-btn {
             background: #2D2D2D !important;
-            border: 2px solid var(--sate-orange) !important;
-            color: var(--sate-orange) !important;
+            border: 2px solid var(--cafe-orange) !important;
+            color: var(--cafe-orange) !important;
         }
 
         body.dark-mode .cart-btn:hover {
-            background: linear-gradient(135deg, var(--sate-orange), var(--sate-brown)) !important;
+            background: linear-gradient(135deg, var(--cafe-orange), var(--cafe-brown)) !important;
             color: white !important;
         }
 
@@ -285,27 +290,6 @@
             }
         }
 
-        .radius-alert {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .radius-icon {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
 
         @media print {
             body {
@@ -394,32 +378,26 @@
 </head>
 <body class="light-mode">
     <!-- Floating Sate Sticks Decoration -->
-    <i class="fas fa-fire sate-decoration"></i>
-    <i class="fas fa-fire sate-decoration"></i>
-    <i class="fas fa-fire sate-decoration"></i>
-    <i class="fas fa-fire sate-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
 
-    <div id="radius-overlay" class="radius-alert">
-        <i class="fas fa-map-marker-alt radius-icon"></i>
-        <h2>Out of Range</h2>
-        <p>You must be within 30 meters of the restaurant to order.</p>
-        <button class="btn btn-outline-light mt-3" onclick="checkLocation()">Try Again</button>
-    </div>
+
 
     <nav class="navbar navbar-expand-lg fixed-top no-print">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="font-weight: 700; font-size: 1.3rem; display: flex; align-items: center;">
-                <img src="{{ asset('images/logosate.png') }}" alt="Logo" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
-                <span style="background: linear-gradient(135deg, var(--sate-brown), var(--sate-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Warung Sate Madura Bukit Baru</span>
+            <a class="navbar-brand" href="{{ request()->route('uuid') ? route('order.index', request()->route('uuid')) : '#' }}" style="font-weight: 700; font-size: 1.3rem; display: flex; align-items: center;">
+                <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 12px;">
+                <span style="background: linear-gradient(135deg, var(--cafe-brown), var(--cafe-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Little Palembang</span>
             </a>
-            @if(session('cart'))
-            <a href="{{ route('order.checkout', request()->route('uuid')) }}" class="btn btn-sm position-relative cart-btn">
+            @php $cartCount = session('cart') ? collect(session('cart'))->sum('quantity') : 0; @endphp
+            <a href="{{ route('order.checkout', request()->route('uuid')) }}" class="btn btn-sm position-relative cart-btn" id="nav-cart-btn" style="{{ $cartCount > 0 ? 'inline-flex' : 'display: none;' }}">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                    {{ count(session('cart')) }}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-pulse" style="{{ $cartCount > 0 ? 'inline-block' : 'display: none;' }}">
+                    {{ $cartCount }}
                 </span>
             </a>
-            @endif
         </div>
     </nav>
 
@@ -476,147 +454,18 @@
             }
         });
 
-        // Geolocation Configuration
-        @isset($table)
-        const TABLE_LAT = {{ $table->location_lat ?? 'null' }};
-        const TABLE_LNG = {{ $table->location_lng ?? 'null' }};
-        const MAX_RADIUS_METERS = {{ $table->location_radius ?? 10 }};
-        @else
-        const TABLE_LAT = null;
-        const TABLE_LNG = null;
-        const MAX_RADIUS_METERS = 100;
-        const REQUIRE_LOCATION = {{ $table->require_location ?? 'true' }};
-        @endisset
 
-        function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-            var R = 6371; // Radius of the earth in km
-            var dLat = deg2rad(lat2-lat1);
-            var dLon = deg2rad(lon2-lon1); 
-            var a = 
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-                Math.sin(dLon/2) * Math.sin(dLon/2)
-                ; 
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-            var d = R * c;
-            return d * 1000; // Distance in meters
-        }
-
-        function deg2rad(deg) {
-            return deg * (Math.PI/180)
-        }
-
-        function checkLocation() {
-            // Check if coordinates are set
-            if (TABLE_LAT === null || TABLE_LNG === null) {
-                console.log('Table coordinates not set. Skipping geolocation check.');
-                return;
-            }
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                alert("Geolocation is not supported by this browser.");
-                window.location.href = "{{ route('out.of.range') }}";
-            }
-        }
-
-        function showPosition(position) {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-            const accuracy = position.coords.accuracy; // GPS accuracy in meters
-            const dist = getDistanceFromLatLonInKm(lat, lng, TABLE_LAT, TABLE_LNG);
-            
-            console.log("=== GEOLOCATION DEBUG ===");
-            console.log("User location: " + lat + ", " + lng);
-            console.log("GPS Accuracy: ±" + accuracy.toFixed(2) + " meters");
-            console.log("Table location: " + TABLE_LAT + ", " + TABLE_LNG);
-            console.log("Distance: " + dist.toFixed(2) + " meters");
-
-            // Adaptive Radius based on GPS Accuracy
-            let effectiveRadius = MAX_RADIUS_METERS;
-            const MAX_ACCEPTABLE_ACCURACY = 300; // Maximum acceptable GPS accuracy
-            
-            if (accuracy <= 100) {
-                // Good GPS - use strict radius
-                effectiveRadius = 100;
-                console.log("GPS accuracy is good. Using strict radius: 100m");
-            } else if (accuracy <= 300) {
-                // Moderate GPS - use relaxed radius
-                effectiveRadius = 300;
-                console.log("GPS accuracy is moderate. Using relaxed radius: 300m");
-            } else {
-                // Very poor GPS - reject
-                console.log("GPS accuracy too poor (±" + accuracy.toFixed(2) + "m > 300m). Rejecting...");
-                sessionStorage.setItem('distance', dist.toFixed(2));
-                sessionStorage.setItem('maxRadius', MAX_RADIUS_METERS);
-                sessionStorage.setItem('userLat', lat);
-                sessionStorage.setItem('userLng', lng);
-                sessionStorage.setItem('tableLat', TABLE_LAT);
-                sessionStorage.setItem('tableLng', TABLE_LNG);
-                sessionStorage.setItem('gpsAccuracy', accuracy.toFixed(2));
-                sessionStorage.setItem('accuracyError', 'true');
-                window.location.href = "{{ route('out.of.range') }}";
-                return;
-            }
-
-            console.log("Effective radius: " + effectiveRadius + " meters");
-            console.log("Within range? " + (dist <= effectiveRadius ? "YES ✓" : "NO ✗"));
-            console.log("========================");
-
-            // Distance Check with adaptive radius
-            if (dist > effectiveRadius) {
-                console.log("User is outside the allowed radius. Redirecting...");
-                sessionStorage.setItem('distance', dist.toFixed(2));
-                sessionStorage.setItem('maxRadius', effectiveRadius);
-                sessionStorage.setItem('userLat', lat);
-                sessionStorage.setItem('userLng', lng);
-                sessionStorage.setItem('tableLat', TABLE_LAT);
-                sessionStorage.setItem('tableLng', TABLE_LNG);
-                sessionStorage.setItem('gpsAccuracy', accuracy.toFixed(2));
-                sessionStorage.setItem('accuracyError', 'false');
-                window.location.href = "{{ route('out.of.range') }}";
-            } else {
-                console.log("User is within the allowed radius. Access granted!");
-            }
-        }
-
-        function showError(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("Anda harus mengizinkan akses lokasi untuk melakukan pemesanan.");
-                    window.location.href = "{{ route('out.of.range') }}";
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Informasi lokasi tidak tersedia.");
-                    window.location.href = "{{ route('out.of.range') }}";
-                    break;
-                case error.TIMEOUT:
-                    alert("Waktu permintaan lokasi habis.");
-                    window.location.href = "{{ route('out.of.range') }}";
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("Terjadi kesalahan yang tidak diketahui.");
-                    window.location.href = "{{ route('out.of.range') }}";
-                    break;
-            }
-        }
-
-        // Auto-check location on page load (with admin bypass)
-        window.addEventListener('DOMContentLoaded', () => {
-            // Check if accessed from admin panel (bypass validation for testing)
-            const isFromAdmin = document.referrer.includes('/admin/tables');
-            
-            if (isFromAdmin) {
-                console.log('Access from admin panel detected. Bypassing geolocation check.');
-            } else if (!REQUIRE_LOCATION) {
-                console.log('Location validation disabled for this table. Access granted without geolocation check.');
-            } else {
-                console.log('Regular access detected. Checking geolocation...');
-                checkLocation();
-            }
-        });
     </script>
     @stack('js')
+
+    <!-- PWA Service Worker Registration -->
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+    </script>
 </body>
 </html>

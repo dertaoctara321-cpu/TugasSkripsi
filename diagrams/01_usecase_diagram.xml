@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="title" value="Use Case Diagram - QR Web Cafe Ordering System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="300" y="20" width="700" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- System Boundary -->
+    <mxCell id="system" value="QR Cafe Ordering System" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="280" y="80" width="900" height="980" as="geometry" />
+    </mxCell>
+
+    <!-- CUSTOMER USE CASES -->
+    <mxCell id="uc1" value="Scan QR Code Meja" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="60" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc2" value="Validasi Lokasi GPS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="150" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc3" value="Lihat Menu" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="240" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc4" value="Filter Menu&#xa;(Kategori / Sub-Kategori)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="330" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc5" value="Tambah Item ke Keranjang" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="420" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc6" value="Update Quantity / Hapus Item" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="510" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc7" value="Clear Keranjang" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="600" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc8" value="Checkout &amp; Pilih Metode Bayar" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="690" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc9" value="Place Order" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="780" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc10" value="Lihat Status Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="system">
+      <mxGeometry x="320" y="870" width="200" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- ADMIN USE CASES -->
+    <mxCell id="uc11" value="Login Admin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="60" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc12" value="Lihat Dashboard&#xa;(Statistik &amp; Revenue)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="150" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc13" value="Kelola Menu&#xa;(CRUD + Import PDF)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="240" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc14" value="Bulk Upload Gambar Menu" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="330" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc15" value="Kelola Meja &amp; QR Code" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="420" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc16" value="Toggle Validasi Lokasi Meja" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="510" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc17" value="Clear / Kosongkan Meja" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="600" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc18" value="Kelola Metode Pembayaran" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="690" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc19" value="Kelola Pesanan&#xa;(View, Update Status)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="780" width="200" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="uc20" value="Verifikasi Pembayaran" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="system">
+      <mxGeometry x="620" y="870" width="200" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Customer Actor -->
+    <mxCell id="actor_customer" value="Customer" style="shape=mxgraph.flowchart.start_2;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="100" y="440" width="60" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_customer_label" value="&lt;b&gt;Customer&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="85" y="510" width="90" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Admin Actor -->
+    <mxCell id="actor_admin" value="Admin" style="shape=mxgraph.flowchart.start_2;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="1250" y="440" width="60" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_admin_label" value="&lt;b&gt;Admin&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="1235" y="510" width="90" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Customer to UC connections -->
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc7" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc9" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_customer" target="uc10" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- Include/Extend -->
+    <mxCell id="inc1" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc1" target="uc2" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="inc2" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc3" target="uc4" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="inc3" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc9" target="uc8" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- Admin to UC connections -->
+    <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc11" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc12" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc13" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea4" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc15" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea5" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc18" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc19" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ea7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="actor_admin" target="uc20" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <mxCell id="ainc1" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc13" target="uc14" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ainc2" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc15" target="uc16" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ainc3" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc15" target="uc17" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ainc4" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;" edge="1" source="uc19" target="uc20" parent="system"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <mxCell id="leg" value="Legenda:  Kuning = Customer Use Case  |  Hijau = Admin Use Case  |  Garis putus = include/extend" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fillColor=#f8f8f8;strokeColor=#aaaaaa;" vertex="1" parent="1">
+      <mxGeometry x="100" y="1090" width="1100" height="30" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

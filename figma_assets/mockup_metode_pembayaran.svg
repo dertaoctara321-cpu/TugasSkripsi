@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="sbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B0000"/><stop offset="100%" style="stop-color:#5D0000"/>
+    </linearGradient>
+    <linearGradient id="tbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0392B"/><stop offset="100%" style="stop-color:#E74C3C"/>
+    </linearGradient>
+    <linearGradient id="thGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0392B"/><stop offset="100%" style="stop-color:#E74C3C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="#F5F5F5"/>
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="250" height="900" fill="url(#sbGrad)"/>
+  <circle cx="36" cy="36" r="22" fill="white"/>
+  <text x="36" y="42" text-anchor="middle" font-size="13" font-weight="bold" fill="#C0392B">LP</text>
+  <text x="66" y="30" font-size="15" font-weight="bold" fill="white">Little Palembang</text>
+  <text x="66" y="48" font-size="11" fill="rgba(255,255,255,0.6)">Administrator</text>
+  <line x1="0" y1="68" x2="250" y2="68" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="24" y="103" font-size="16" fill="rgba(255,255,255,0.65)">📊</text>
+  <text x="50" y="103" font-size="14" fill="rgba(255,255,255,0.65)">Dashboard</text>
+  <text x="24" y="143" font-size="16" fill="rgba(255,255,255,0.65)">🍽️</text>
+  <text x="50" y="143" font-size="14" fill="rgba(255,255,255,0.65)">Menu</text>
+  <text x="24" y="183" font-size="16" fill="rgba(255,255,255,0.65)">🪑</text>
+  <text x="50" y="183" font-size="14" fill="rgba(255,255,255,0.65)">Meja &amp; QR</text>
+  <rect x="0" y="196" width="4" height="44" fill="white"/>
+  <rect x="0" y="196" width="250" height="44" fill="rgba(255,255,255,0.12)"/>
+  <text x="24" y="223" font-size="16" fill="white">💳</text>
+  <text x="50" y="223" font-size="14" font-weight="600" fill="white">Metode Pembayaran</text>
+  <text x="24" y="263" font-size="16" fill="rgba(255,255,255,0.65)">📋</text>
+  <text x="50" y="263" font-size="14" fill="rgba(255,255,255,0.65)">Pesanan</text>
+  <text x="24" y="303" font-size="16" fill="rgba(255,255,255,0.65)">📈</text>
+  <text x="50" y="303" font-size="14" fill="rgba(255,255,255,0.65)">Laporan</text>
+  <line x1="0" y1="820" x2="250" y2="820" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="12" y="830" width="226" height="30" rx="6" fill="rgba(255,255,255,0.1)"/>
+  <text x="125" y="849" text-anchor="middle" font-size="13" fill="white">🌙 Dark Mode</text>
+  <rect x="12" y="866" width="226" height="28" rx="6" fill="#E74C3C"/>
+  <text x="125" y="884" text-anchor="middle" font-size="13" font-weight="600" fill="white">→ Logout</text>
+  <!-- Topbar (only hamburger + logout, NO page title) -->
+  <rect x="250" y="0" width="1190" height="52" fill="url(#tbGrad)"/>
+  <text x="270" y="32" font-size="22" fill="white">☰</text>
+  <text x="1410" y="33" text-anchor="end" font-size="13" fill="white">→ Logout</text>
+  <!-- Page title in content-header -->
+  <text x="270" y="84" font-size="22" font-weight="bold" fill="#333">Metode Pembayaran</text>
+  <rect x="1260" y="66" width="130" height="34" rx="6" fill="#E74C3C"/>
+  <text x="1325" y="87" text-anchor="middle" font-size="12" fill="white">+ Tambah Metode Baru</text>
+  <!-- Table card -->
+  <rect x="270" y="104" width="1130" height="500" rx="12" fill="white" stroke="#EEEEEE" stroke-width="1"/>
+  <rect x="270" y="104" width="1130" height="48" rx="12" fill="#FAFAFA"/>
+  <rect x="270" y="128" width="1130" height="24" fill="#FAFAFA"/>
+  <text x="298" y="132" font-size="14" font-weight="bold" fill="#333">💳 Daftar Metode Pembayaran</text>
+  <!-- Table header -->
+  <rect x="286" y="164" width="1098" height="36" rx="6" fill="url(#thGrad)"/>
+  <text x="304" y="186" font-size="11" font-weight="600" fill="white">NO</text>
+  <text x="370" y="186" font-size="11" font-weight="600" fill="white">NAMA</text>
+  <text x="530" y="186" font-size="11" font-weight="600" fill="white">TIPE</text>
+  <text x="680" y="186" font-size="11" font-weight="600" fill="white">DETAIL</text>
+  <text x="920" y="186" font-size="11" font-weight="600" fill="white">QR CODE</text>
+  <text x="1080" y="186" font-size="11" font-weight="600" fill="white">STATUS</text>
+  <text x="1240" y="186" font-size="11" font-weight="600" fill="white">AKSI</text>
+  <!-- Row 1: QRIS -->
+  <text x="304" y="230" font-size="13" fill="#333">1</text>
+  <text x="370" y="230" font-size="13" font-weight="600" fill="#333">QRIS BRI</text>
+  <rect x="520" y="218" width="52" height="22" rx="11" fill="#EBF5FB"/>
+  <text x="546" y="233" text-anchor="middle" font-size="11" font-weight="600" fill="#2980B9">QRIS</text>
+  <text x="680" y="230" font-size="12" fill="#555">QRIS BRI</text>
+  <!-- QR image placeholder -->
+  <rect x="902" y="208" width="80" height="80" rx="6" fill="#F5F5F5" stroke="#EEEEEE" stroke-width="1"/>
+  <rect x="910" y="216" width="16" height="16" rx="1" fill="#333"/>
+  <rect x="956" y="216" width="16" height="16" rx="1" fill="#333"/>
+  <rect x="910" y="256" width="16" height="16" rx="1" fill="#333"/>
+  <rect x="956" y="256" width="16" height="16" rx="1" fill="#333"/>
+  <rect x="932" y="232" width="4" height="4" fill="#333"/>
+  <rect x="940" y="240" width="4" height="4" fill="#333"/>
+  <rect x="924" y="248" width="4" height="4" fill="#333"/>
+  <rect x="1068" y="218" width="44" height="22" rx="11" fill="#EAFAF1"/>
+  <text x="1090" y="233" text-anchor="middle" font-size="11" font-weight="600" fill="#27AE60">Aktif</text>
+  <rect x="1220" y="218" width="50" height="26" rx="6" fill="#F39C12"/>
+  <text x="1245" y="235" text-anchor="middle" font-size="11" fill="white">Edit</text>
+  <rect x="1278" y="218" width="50" height="26" rx="6" fill="#E74C3C"/>
+  <text x="1303" y="235" text-anchor="middle" font-size="11" fill="white">Hapus</text>
+  <!-- Row 2: Cash -->
+  <line x1="286" y1="306" x2="1384" y2="306" stroke="#F5F5F5" stroke-width="1"/>
+  <text x="304" y="340" font-size="13" fill="#333">2</text>
+  <text x="370" y="340" font-size="13" font-weight="600" fill="#333">Cash</text>
+  <rect x="520" y="328" width="52" height="22" rx="11" fill="#EAFAF1"/>
+  <text x="546" y="343" text-anchor="middle" font-size="11" font-weight="600" fill="#27AE60">Cash</text>
+  <text x="680" y="340" font-size="12" fill="#555">Bayar di Kasir</text>
+  <text x="920" y="340" font-size="13" fill="#CCCCCC">—</text>
+  <rect x="1068" y="328" width="44" height="22" rx="11" fill="#EAFAF1"/>
+  <text x="1090" y="343" text-anchor="middle" font-size="11" font-weight="600" fill="#27AE60">Aktif</text>
+  <rect x="1220" y="328" width="50" height="26" rx="6" fill="#F39C12"/>
+  <text x="1245" y="345" text-anchor="middle" font-size="11" fill="white">Edit</text>
+  <rect x="1278" y="328" width="50" height="26" rx="6" fill="#E74C3C"/>
+  <text x="1303" y="345" text-anchor="middle" font-size="11" fill="white">Hapus</text>
+  <!-- Row 3: Transfer Bank -->
+  <line x1="286" y1="370" x2="1384" y2="370" stroke="#F5F5F5" stroke-width="1"/>
+  <text x="304" y="404" font-size="13" fill="#333">3</text>
+  <text x="370" y="404" font-size="13" font-weight="600" fill="#333">Transfer Bank BCA</text>
+  <rect x="520" y="392" width="88" height="22" rx="11" fill="#EAF2FF"/>
+  <text x="564" y="407" text-anchor="middle" font-size="11" font-weight="600" fill="#2980B9">Transfer Bank</text>
+  <text x="680" y="397" font-size="12" fill="#555">No. Rek: 1234567890</text>
+  <text x="680" y="413" font-size="12" fill="#555">Atas Nama: Little Palembang</text>
+  <text x="920" y="404" font-size="13" fill="#CCCCCC">—</text>
+  <rect x="1068" y="392" width="68" height="22" rx="11" fill="#F5EEF8"/>
+  <text x="1102" y="407" text-anchor="middle" font-size="11" font-weight="600" fill="#8E44AD">Nonaktif</text>
+  <rect x="1220" y="392" width="50" height="26" rx="6" fill="#F39C12"/>
+  <text x="1245" y="409" text-anchor="middle" font-size="11" fill="white">Edit</text>
+  <rect x="1278" y="392" width="50" height="26" rx="6" fill="#E74C3C"/>
+  <text x="1303" y="409" text-anchor="middle" font-size="11" fill="white">Hapus</text>
+  <!-- Footer -->
+  <rect x="250" y="848" width="1190" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="845" y="862" text-anchor="middle" font-size="11" font-weight="bold" fill="#555">Copyright © 2025 Little Palembang.</text>
+  <text x="845" y="876" text-anchor="middle" font-size="10" fill="#999">All rights reserved. Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.</text>
+</svg>

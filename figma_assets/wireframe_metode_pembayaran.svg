@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <rect width="1440" height="900" fill="#F0F0F0"/>
+  <rect x="0" y="0" width="240" height="900" fill="#444"/>
+  <circle cx="36" cy="36" r="20" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="36" y="41" text-anchor="middle" font-size="11" fill="#888">LP</text>
+  <rect x="64" y="24" width="120" height="9" rx="2" fill="#666"/>
+  <rect x="64" y="38" width="80" height="7" rx="2" fill="#555"/>
+  <rect x="20" y="84" width="16" height="16" rx="2" fill="#555"/>
+  <text x="44" y="97" font-size="10" fill="#888">Dashboard</text>
+  <rect x="20" y="124" width="16" height="16" rx="2" fill="#555"/>
+  <text x="44" y="137" font-size="10" fill="#888">Menu</text>
+  <rect x="20" y="164" width="16" height="16" rx="2" fill="#555"/>
+  <text x="44" y="177" font-size="10" fill="#888">Meja &amp; QR</text>
+  <rect x="0" y="196" width="4" height="40" fill="#AAAAAA"/>
+  <rect x="20" y="204" width="16" height="16" rx="2" fill="#888"/>
+  <text x="44" y="217" font-size="10" fill="#CCC">Metode Pembayaran</text>
+  <rect x="20" y="244" width="16" height="16" rx="2" fill="#555"/>
+  <text x="44" y="257" font-size="10" fill="#888">Pesanan</text>
+  <rect x="20" y="284" width="16" height="16" rx="2" fill="#555"/>
+  <text x="44" y="297" font-size="10" fill="#888">Laporan</text>
+  <rect x="12" y="820" width="216" height="32" rx="4" fill="#555"/>
+  <rect x="12" y="858" width="216" height="32" rx="4" fill="#666"/>
+  <!-- Topbar (no title) -->
+  <rect x="240" y="0" width="1200" height="52" fill="#CCCCCC"/>
+  <rect x="258" y="17" width="18" height="5" rx="1" fill="#999"/>
+  <rect x="258" y="26" width="14" height="5" rx="1" fill="#999"/>
+  <rect x="258" y="35" width="16" height="5" rx="1" fill="#999"/>
+  <rect x="1330" y="18" width="80" height="16" rx="3" fill="#BBBBBB"/>
+  <!-- Page title in content-header -->
+  <text x="270" y="82" font-size="18" font-weight="bold" fill="#555">Metode Pembayaran</text>
+  <rect x="1270" y="64" width="130" height="30" rx="4" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1335" y="83" text-anchor="middle" font-size="10" fill="#888">+ Tambah Metode Baru</text>
+  <!-- Card -->
+  <rect x="260" y="100" width="1136" height="460" rx="6" fill="white" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="100" width="1136" height="44" rx="6" fill="#EEEEEE"/>
+  <rect x="260" y="128" width="1136" height="16" fill="#EEEEEE"/>
+  <text x="278" y="128" font-size="12" font-weight="bold" fill="#666">Daftar Metode Pembayaran</text>
+  <!-- Table header -->
+  <rect x="275" y="156" width="1106" height="32" rx="4" fill="#E5E5E5"/>
+  <text x="290" y="176" font-size="10" font-weight="bold" fill="#888">NO</text>
+  <text x="340" y="176" font-size="10" font-weight="bold" fill="#888">NAMA</text>
+  <text x="480" y="176" font-size="10" font-weight="bold" fill="#888">TIPE</text>
+  <text x="620" y="176" font-size="10" font-weight="bold" fill="#888">DETAIL</text>
+  <text x="880" y="176" font-size="10" font-weight="bold" fill="#888">QR CODE</text>
+  <text x="1020" y="176" font-size="10" font-weight="bold" fill="#888">STATUS</text>
+  <text x="1200" y="176" font-size="10" font-weight="bold" fill="#888">AKSI</text>
+  <!-- Row 1 -->
+  <text x="290" y="214" font-size="12" fill="#555">1</text>
+  <text x="340" y="214" font-size="12" fill="#555">QRIS BRI</text>
+  <rect x="460" y="202" width="42" height="18" rx="9" fill="#EEEEEE"/>
+  <text x="481" y="215" text-anchor="middle" font-size="9" fill="#888">QRIS</text>
+  <text x="620" y="214" font-size="11" fill="#777">QRIS BRI</text>
+  <rect x="860" y="198" width="80" height="80" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <line x1="860" y1="198" x2="940" y2="278" stroke="#CCCCCC" stroke-width="1"/>
+  <line x1="940" y1="198" x2="860" y2="278" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="1000" y="202" width="40" height="18" rx="9" fill="#EEEEEE"/>
+  <text x="1020" y="215" text-anchor="middle" font-size="9" fill="#888">Aktif</text>
+  <rect x="1180" y="202" width="44" height="20" rx="3" fill="#EEEEEE"/>
+  <text x="1202" y="216" text-anchor="middle" font-size="9" fill="#888">Edit</text>
+  <rect x="1234" y="202" width="44" height="20" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1256" y="216" text-anchor="middle" font-size="9" fill="#888">Hapus</text>
+  <!-- Row 2 -->
+  <line x1="275" y1="296" x2="1381" y2="296" stroke="#F0F0F0" stroke-width="1"/>
+  <text x="290" y="322" font-size="12" fill="#555">2</text>
+  <text x="340" y="322" font-size="12" fill="#555">Cash</text>
+  <rect x="460" y="310" width="42" height="18" rx="9" fill="#EEEEEE"/>
+  <text x="481" y="323" text-anchor="middle" font-size="9" fill="#888">Cash</text>
+  <text x="620" y="322" font-size="11" fill="#777">Bayar di Kasir</text>
+  <text x="860" y="322" font-size="12" fill="#CCCCCC">—</text>
+  <rect x="1000" y="310" width="40" height="18" rx="9" fill="#EEEEEE"/>
+  <text x="1020" y="323" text-anchor="middle" font-size="9" fill="#888">Aktif</text>
+  <rect x="1180" y="310" width="44" height="20" rx="3" fill="#EEEEEE"/>
+  <text x="1202" y="324" text-anchor="middle" font-size="9" fill="#888">Edit</text>
+  <rect x="1234" y="310" width="44" height="20" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1256" y="324" text-anchor="middle" font-size="9" fill="#888">Hapus</text>
+  <!-- Footer -->
+  <rect x="240" y="848" width="1200" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <rect x="450" y="858" width="400" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="480" y="872" width="340" height="7" rx="2" fill="#E8E8E8"/>
+</svg>

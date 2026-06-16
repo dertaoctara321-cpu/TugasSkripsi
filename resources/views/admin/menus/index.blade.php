@@ -65,10 +65,36 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title"><i class="fas fa-utensils"></i> Daftar Menu</h3>
-        <div class="card-tools">
+        <div class="card-tools d-flex gap-2">
+            {{-- PDF Import: hidden form + button --}}
+            <form action="{{ route('menus.importPdfProcess') }}" method="POST" enctype="multipart/form-data" id="pdfImportForm">
+                @csrf
+                <input type="file" id="pdfFileInput" name="file" accept=".pdf" style="display:none;"
+                       onchange="this.form.submit()">
+                <button type="button"
+                        onclick="document.getElementById('pdfFileInput').click()"
+                        class="btn btn-success"
+                        id="importPdfBtn">
+                    <i class="fas fa-file-pdf"></i> Import dari PDF
+                </button>
+            </form>
+
             <a href="{{ route('menus.create') }}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Tambah Menu Baru
             </a>
+
+            {{-- Bulk Image Upload: hidden form + button --}}
+            <form action="{{ route('menus.bulkImageUpload') }}" method="POST" enctype="multipart/form-data" id="bulkImageForm">
+                @csrf
+                <input type="file" id="bulkImageInput" name="images[]" multiple accept="image/*" style="display:none;"
+                       onchange="this.form.submit()">
+                <button type="button" 
+                        onclick="document.getElementById('bulkImageInput').click()" 
+                        class="btn btn-warning" 
+                        title="Upload gambar (Nama file wajib ID menu. Misal: 25.jpg untuk menu ID 25)">
+                    <i class="fas fa-images"></i> Bulk Upload Gambar
+                </button>
+            </form>
         </div>
     </div>
     <div class="card-body">
@@ -77,10 +103,42 @@
                 <i class="fas fa-check-circle"></i> {{ $message }}
             </div>
         @endif
+        @if ($message = Session::get('warning'))
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i> {{ $message }}
+            </div>
+        @endif
 
-        <div class="row menu-grid">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <select id="filterCategory" class="form-control" onchange="filterMenus()">
+                    <option value="all">Semua Kategori</option>
+                    <option value="Makanan">Makanan</option>
+                    <option value="Minuman">Minuman</option>
+                    <option value="Camilan">Camilan</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select id="filterSubCategory" class="form-control" onchange="filterMenus()">
+                    <option value="all" data-category="all">Semua Sub Kategori</option>
+                    @php
+                        $subCatMapping = $menus->filter(function($m) { return !empty($m->sub_category); })
+                            ->groupBy('sub_category')
+                            ->map(function($group) { return $group->first()->category; });
+                    @endphp
+                    @foreach($subCatMapping as $sub => $cat)
+                        <option value="{{ $sub }}" data-category="{{ $cat }}">{{ $sub }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-6 text-right">
+                <small class="text-muted d-block mt-2">Gunakan fitur <b>Bulk Upload Gambar</b> di atas. Ubah nama gambar PDF dengan angka ID Menu.</small>
+            </div>
+        </div>
+
+        <div class="row menu-grid" id="menuGrid">
             @forelse ($menus as $menu)
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 menu-item-container" data-category="{{ $menu->category }}" data-subcategory="{{ $menu->sub_category }}">
                 <div class="card menu-card">
                     <div style="position: relative;">
                         @if($menu->image)
@@ -99,8 +157,9 @@
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: 700; margin-bottom: 10px;">{{ $menu->name }}</h5>
                         
-                        <div class="mb-2">
+                        <div class="mb-2 d-flex justify-content-between">
                             <span class="menu-category">{{ $menu->category }}</span>
+                            <span class="badge badge-secondary">ID: {{ $menu->id }}</span>
                         </div>
                         
                         <div class="menu-price mb-3">
@@ -133,3 +192,62 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+function filterMenus() {
+    const cat = document.getElementById('filterCategory').value;
+    const subSelect = document.getElementById('filterSubCategory');
+    let sub = subSelect.value;
+    
+    // Filter subcategory dropdown choices
+    Array.from(subSelect.options).forEach(opt => {
+        if (opt.value === 'all') return;
+        
+        if (cat === 'all' || opt.getAttribute('data-category') === cat) {
+            opt.style.display = '';
+        } else {
+            opt.style.display = 'none';
+            // If the active subcategory is now hidden, reset to 'all'
+            if (sub === opt.value) {
+                subSelect.value = 'all';
+                sub = 'all';
+            }
+        }
+    });
+    
+    // Filter cards
+    document.querySelectorAll('.menu-item-container').forEach(el => {
+        const rowCat = el.getAttribute('data-category');
+        const rowSub = el.getAttribute('data-subcategory');
+        
+        let matchCat = (cat === 'all' || rowCat === cat);
+        let matchSub = (sub === 'all' || rowSub === sub);
+        
+        if (matchCat && matchSub) {
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
+
+// Show loading state when PDF is submitted (OCR can take 1–2 min)
+document.getElementById('pdfFileInput').addEventListener('change', function () {
+    if (!this.files.length) return;
+    const btn = document.getElementById('importPdfBtn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses PDF...';
+    btn.disabled = true;
+});
+
+// Show loading state when Bulk Image is selected
+document.getElementById('bulkImageInput').addEventListener('change', function () {
+    if (!this.files.length) return;
+    const btn = document.querySelector('button[title*="Upload gambar"]');
+    if(btn) {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+        btn.disabled = true;
+    }
+});
+</script>
+@endpush

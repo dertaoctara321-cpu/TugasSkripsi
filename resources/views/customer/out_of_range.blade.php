@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Out of Range - Warung Sate</title>
+    <title>Out of Range - Little Palembang</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -126,7 +126,7 @@
         <i class="fas fa-map-marker-alt icon"></i>
         <h1>Di Luar Jangkauan</h1>
         <p>
-            Anda harus berada dalam radius <strong>100 meter</strong> dari lokasi Warung Sate Madura Bukit Baru untuk dapat melakukan pemesanan.
+            Anda harus berada dalam radius <strong>100 meter</strong> dari lokasi Little Palembang untuk dapat melakukan pemesanan.
         </p>
         <p>
             Silakan datang ke lokasi warung dan scan QR Code yang tersedia di meja.
@@ -141,7 +141,7 @@
             <ul>
                 <li>Pastikan GPS/Lokasi di perangkat Anda aktif</li>
                 <li>Izinkan akses lokasi saat diminta oleh browser</li>
-                <li>Anda harus berada di dalam atau dekat warung</li>
+                <li>Anda harus berada di dalam atau dekat Little Palembang</li>
             </ul>
         </div>
         

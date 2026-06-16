@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Halaman Tidak Ditemukan | Sate Ordering</title>
+    <title>404 - Halaman Tidak Ditemukan | Little Palembang</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -25,7 +25,7 @@
         }
 
         /* Floating Sate Sticks Background */
-        .sate-decoration {
+        .cafe-decoration {
             position: absolute;
             font-size: 3rem;
             color: rgba(255, 255, 255, 0.1);
@@ -33,25 +33,25 @@
             pointer-events: none;
         }
 
-        .sate-decoration:nth-child(1) {
+        .cafe-decoration:nth-child(1) {
             top: 10%;
             left: 10%;
             animation-delay: 0s;
         }
 
-        .sate-decoration:nth-child(2) {
+        .cafe-decoration:nth-child(2) {
             top: 60%;
             left: 80%;
             animation-delay: 1s;
         }
 
-        .sate-decoration:nth-child(3) {
+        .cafe-decoration:nth-child(3) {
             top: 80%;
             left: 20%;
             animation-delay: 2s;
         }
 
-        .sate-decoration:nth-child(4) {
+        .cafe-decoration:nth-child(4) {
             top: 30%;
             right: 15%;
             animation-delay: 3s;
@@ -205,10 +205,10 @@
 </head>
 <body>
     <!-- Floating Decorations -->
-    <i class="fas fa-fire sate-decoration"></i>
-    <i class="fas fa-fire sate-decoration"></i>
-    <i class="fas fa-fire sate-decoration"></i>
-    <i class="fas fa-fire sate-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
+    <i class="fas fa-fire cafe-decoration"></i>
 
     <div class="container">
         <div class="error-icon">

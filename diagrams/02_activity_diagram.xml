@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2200" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- === TITLE === -->
+    <mxCell id="title" value="Activity Diagram - QR Web Cafe Ordering System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="300" y="10" width="1000" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- =============================================
+         SWIMLANE: ALUR PEMESANAN CUSTOMER
+         ============================================= -->
+    <mxCell id="sw1" value="Alur Pemesanan Customer" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="60" width="700" height="2080" as="geometry" />
+    </mxCell>
+
+    <!-- Start -->
+    <mxCell id="c_start" value="" style="ellipse;aspect=fixed;fillColor=#000000;" vertex="1" parent="sw1">
+      <mxGeometry x="310" y="50" width="40" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Scan QR -->
+    <mxCell id="c_scan" value="Scan QR Code Meja" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="220" y="130" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Location Check Decision -->
+    <mxCell id="c_loc_req" value="Meja Require\nLocation?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw1">
+      <mxGeometry x="220" y="220" width="180" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Request GPS -->
+    <mxCell id="c_gps" value="Request Permission GPS\nBrowser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="100" y="340" width="200" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- GPS Decision -->
+    <mxCell id="c_gps_dec" value="Dalam Radius\n&lt;= 100m?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw1">
+      <mxGeometry x="100" y="430" width="180" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Out of Range -->
+    <mxCell id="c_oor" value="Redirect ke Halaman\n'Out of Range'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="sw1">
+      <mxGeometry x="20" y="550" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Menu Page -->
+    <mxCell id="c_menu" value="Tampilkan Halaman Menu\n(Filter Kategori Tersedia)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw1">
+      <mxGeometry x="220" y="430" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Browse Menu -->
+    <mxCell id="c_browse" value="Customer Browse / Filter Menu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="220" y="530" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Add to Cart -->
+    <mxCell id="c_add" value="Tambah Item ke Keranjang\n(+/- Quantity, AJAX)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="220" y="630" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Continue Shopping? -->
+    <mxCell id="c_more" value="Tambah\nItem Lagi?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw1">
+      <mxGeometry x="230" y="720" width="180" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Checkout -->
+    <mxCell id="c_checkout" value="Buka Halaman Checkout\n(Isi Nama, Pilih Bayar, Pilih Lantai)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="180" y="850" width="280" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Cart Empty Decision -->
+    <mxCell id="c_cart_empty" value="Keranjang\nKosong?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw1">
+      <mxGeometry x="230" y="960" width="180" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Table Occupied? -->
+    <mxCell id="c_occupied" value="Meja Sudah\nAda Order\nAktif?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw1">
+      <mxGeometry x="230" y="1090" width="180" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Add to Existing Order -->
+    <mxCell id="c_add_existing" value="Tambahkan Item ke\nPesanan Yang Sudah Ada\n(Update Total)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw1">
+      <mxGeometry x="420" y="1090" width="200" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Create New Order -->
+    <mxCell id="c_new_order" value="Buat Pesanan Baru\n(Order Status: pending\nPayment Status: pending)\nSet Meja = occupied" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw1">
+      <mxGeometry x="120" y="1090" width="200" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Status Page -->
+    <mxCell id="c_status" value="Redirect ke Halaman\nStatus Pesanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="220" y="1220" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Order Status Display -->
+    <mxCell id="c_status_display" value="Tampilkan Status:\npending → cooking → served → completed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw1">
+      <mxGeometry x="175" y="1310" width="300" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Customer End -->
+    <mxCell id="c_end" value="" style="ellipse;aspect=fixed;fillColor=#000000;strokeColor=#ffffff;strokeWidth=4;" vertex="1" parent="sw1">
+      <mxGeometry x="310" y="1420" width="40" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Customer edges -->
+    <mxCell id="ce1" edge="1" source="c_start" target="c_scan" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce2" edge="1" source="c_scan" target="c_loc_req" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce3" value="Ya" edge="1" source="c_loc_req" target="c_gps" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce4" value="Tidak" edge="1" source="c_loc_req" target="c_menu" parent="sw1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="500" y="260" /><mxPoint x="500" y="455" /></Array></mxGeometry></mxCell>
+    <mxCell id="ce5" edge="1" source="c_gps" target="c_gps_dec" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce6" value="Tidak" edge="1" source="c_gps_dec" target="c_oor" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce7" value="Ya" edge="1" source="c_gps_dec" target="c_menu" parent="sw1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="330" y="510" /><mxPoint x="330" y="455" /></Array></mxGeometry></mxCell>
+    <mxCell id="ce8" edge="1" source="c_menu" target="c_browse" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce9" edge="1" source="c_browse" target="c_add" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce10" edge="1" source="c_add" target="c_more" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce11" value="Ya" edge="1" source="c_more" target="c_browse" parent="sw1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="490" y="760" /><mxPoint x="490" y="555" /></Array></mxGeometry></mxCell>
+    <mxCell id="ce12" value="Tidak" edge="1" source="c_more" target="c_checkout" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce13" edge="1" source="c_checkout" target="c_cart_empty" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce14" value="Ya" edge="1" source="c_cart_empty" target="c_browse" parent="sw1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="580" y="1000" /><mxPoint x="580" y="555" /></Array></mxGeometry></mxCell>
+    <mxCell id="ce15" value="Tidak" edge="1" source="c_cart_empty" target="c_occupied" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce16" value="Ya" edge="1" source="c_occupied" target="c_add_existing" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce17" value="Tidak" edge="1" source="c_occupied" target="c_new_order" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce18" edge="1" source="c_add_existing" target="c_status" parent="sw1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="520" y="1160" /><mxPoint x="520" y="1245" /></Array></mxGeometry></mxCell>
+    <mxCell id="ce19" edge="1" source="c_new_order" target="c_status" parent="sw1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="220" y="1175" /><mxPoint x="220" y="1245" /></Array></mxGeometry></mxCell>
+    <mxCell id="ce20" edge="1" source="c_status" target="c_status_display" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ce21" edge="1" source="c_status_display" target="c_end" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- =============================================
+         SWIMLANE: ALUR ADMIN
+         ============================================= -->
+    <mxCell id="sw2" value="Alur Admin (Back-Office)" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="780" y="60" width="760" height="2080" as="geometry" />
+    </mxCell>
+
+    <!-- Admin Start -->
+    <mxCell id="a_start" value="" style="ellipse;aspect=fixed;fillColor=#000000;" vertex="1" parent="sw2">
+      <mxGeometry x="360" y="50" width="40" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Login -->
+    <mxCell id="a_login" value="Buka Halaman Login\n(/login)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="270" y="130" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Auth Decision -->
+    <mxCell id="a_auth" value="Kredensial\nValid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw2">
+      <mxGeometry x="290" y="220" width="180" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Auth Error -->
+    <mxCell id="a_auth_err" value="Tampilkan Pesan Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="sw2">
+      <mxGeometry x="530" y="240" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Dashboard -->
+    <mxCell id="a_dashboard" value="Dashboard Admin\n(Statistik Revenue &amp; Pesanan)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw2">
+      <mxGeometry x="250" y="350" width="260" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Admin Branch Fork -->
+    <mxCell id="a_fork" value="Admin Memilih Menu Navigasi" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw2">
+      <mxGeometry x="270" y="450" width="220" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Branch: Kelola Menu -->
+    <mxCell id="a_menu" value="Kelola Menu\n(CRUD)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="30" y="600" width="160" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="a_pdf" value="Import PDF?\n(Python OCR)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw2">
+      <mxGeometry x="20" y="690" width="170" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="a_ocr" value="Ekstraksi Menu\nPython OCR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="20" y="800" width="170" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="a_review" value="Review &amp; Edit Hasil OCR\nLalu Simpan ke DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="20" y="890" width="170" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Branch: Kelola Meja -->
+    <mxCell id="a_table" value="Kelola Meja &amp; QR\n(Generate QR Code)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="220" y="600" width="180" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="a_toggle" value="Toggle Validasi\nLokasi Meja" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="220" y="690" width="180" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="a_clear" value="Kosongkan Meja\n(Set Status = available)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="220" y="780" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Branch: Kelola Order -->
+    <mxCell id="a_order" value="Lihat Daftar Pesanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="430" y="600" width="180" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="a_order_status" value="Update Status Pesanan\n(pending→cooking→served\n→completed / cancelled)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="430" y="690" width="180" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="a_cancel" value="Order Dibatalkan?\nSet Table = available\nPayment = cancelled" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="sw2">
+      <mxGeometry x="430" y="810" width="180" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Branch: Verifikasi Bayar -->
+    <mxCell id="a_pay" value="Verifikasi\nPembayaran" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="640" y="600" width="160" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="a_paid" value="Set Payment Status = paid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw2">
+      <mxGeometry x="640" y="690" width="160" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Branch: Laporan -->
+    <mxCell id="a_report" value="Lihat Laporan\n(Harian/Mingguan/Bulanan)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw2">
+      <mxGeometry x="330" y="1000" width="200" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Admin End -->
+    <mxCell id="a_end" value="" style="ellipse;aspect=fixed;fillColor=#000000;strokeColor=#ffffff;strokeWidth=4;" vertex="1" parent="sw2">
+      <mxGeometry x="360" y="1100" width="40" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- Admin Edges -->
+    <mxCell id="ae1" edge="1" source="a_start" target="a_login" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae2" edge="1" source="a_login" target="a_auth" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae3" value="Tidak" edge="1" source="a_auth" target="a_auth_err" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae4" value="Ya" edge="1" source="a_auth" target="a_dashboard" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae4b" edge="1" source="a_auth_err" target="a_login" parent="sw2"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="620" y="155" /><mxPoint x="380" y="155" /></Array></mxGeometry></mxCell>
+    <mxCell id="ae5" edge="1" source="a_dashboard" target="a_fork" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae6" edge="1" source="a_fork" target="a_menu" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae7" edge="1" source="a_fork" target="a_table" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae8" edge="1" source="a_fork" target="a_order" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae9" edge="1" source="a_fork" target="a_pay" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae10" edge="1" source="a_menu" target="a_pdf" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae11" value="Ya" edge="1" source="a_pdf" target="a_ocr" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae12" edge="1" source="a_ocr" target="a_review" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae13" edge="1" source="a_table" target="a_toggle" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae14" edge="1" source="a_table" target="a_clear" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae15" edge="1" source="a_order" target="a_order_status" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae16" edge="1" source="a_order_status" target="a_cancel" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae17" edge="1" source="a_pay" target="a_paid" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="ae18" edge="1" source="a_paid" target="a_report" parent="sw2"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="720" y="760" /><mxPoint x="720" y="1030" /><mxPoint x="430" y="1030" /></Array></mxGeometry></mxCell>
+    <mxCell id="ae19" edge="1" source="a_report" target="a_end" parent="sw2"><mxGeometry relative="1" as="geometry" /></mxCell>
+  </root>
+</mxGraphModel>

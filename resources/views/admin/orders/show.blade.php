@@ -142,8 +142,8 @@
             <div class="card-body">
                 <!-- Order Information -->
                 <div class="info-item">
-                    <span class="info-label"><i class="fas fa-table"></i> Meja</span>
-                    <span class="info-value">Meja {{ $order->table->table_number }}</span>
+                    <span class="info-label"><i class="fas fa-table"></i> Meja / Lantai</span>
+                    <span class="info-value">Meja {{ $order->table->table_number }} <span class="badge badge-info">{{ $order->floor ?? '-' }}</span></span>
                 </div>
 
                 <div class="info-item">

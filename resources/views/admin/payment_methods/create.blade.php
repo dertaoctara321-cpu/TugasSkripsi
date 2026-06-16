@@ -44,7 +44,7 @@
 
             <div class="form-group" id="account_name_field">
                 <label>Atas Nama</label>
-                <input type="text" name="account_name" class="form-control" placeholder="PT Warung Sate Madura Bukit Baru">
+                <input type="text" name="account_name" class="form-control" placeholder="PT Little Palembang">
             </div>
 
             <div class="form-group" id="qr_field">

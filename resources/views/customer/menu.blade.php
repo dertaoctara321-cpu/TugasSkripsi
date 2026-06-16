@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 
-@section('title', 'Menu - Sate Ordering')
+@section('title', 'Menu - Little Palembang')
 
 @push('css')
 <style>
@@ -337,6 +337,12 @@
 <div class="text-center mb-4 page-header">
     <h1 class="display-6">Meja {{ $table->table_number }}</h1>
     <p class="text-muted">Pilih menu favorit Anda</p>
+    
+    @if(count($cart) > 0)
+    <button type="button" class="btn btn-outline-danger btn-sm mt-2" onclick="clearEntireCart()">
+        <i class="fas fa-trash-alt"></i> Kosongkan Keranjang
+    </button>
+    @endif
 </div>
 
 @if($activeOrder)
@@ -404,7 +410,7 @@
         
         @if($activeOrder->payment_method == 'Transfer' && $activeOrder->payment_status == 'pending')
         <div class="alert alert-info mb-0">
-            <small><i class="fas fa-info-circle"></i> Silakan transfer ke Bank BCA: 1234567890 (Warung Sate Madura Bukit Baru) atau scan QRIS di kasir.</small>
+            <small><i class="fas fa-info-circle"></i> Silakan transfer ke Bank BCA: 1234567890 (Little Palembang) atau scan QRIS di kasir.</small>
         </div>
         @endif
         
@@ -417,9 +423,33 @@
 </div>
 @endif
 
-<div class="row menu-list">
+<div class="row mb-4">
+    <div class="col-12 text-center mb-2">
+        <div class="btn-group" role="group" id="categoryFilter">
+            <button type="button" class="btn btn-outline-primary active" onclick="filterCustomerMenu('all', this)">Semua</button>
+            <button type="button" class="btn btn-outline-primary" onclick="filterCustomerMenu('Makanan', this)">Makanan</button>
+            <button type="button" class="btn btn-outline-primary" onclick="filterCustomerMenu('Minuman', this)">Minuman</button>
+            <button type="button" class="btn btn-outline-primary" onclick="filterCustomerMenu('Camilan', this)">Camilan</button>
+        </div>
+    </div>
+    <div class="col-12">
+        <select id="subCategoryFilter" class="form-select" onchange="applyFilters()">
+            <option value="all" data-category="all">Semua Sub Kategori</option>
+            @php
+                $subCatMapping = $menus->filter(function($m) { return !empty($m->sub_category); })
+                    ->groupBy('sub_category')
+                    ->map(function($group) { return $group->first()->category; });
+            @endphp
+            @foreach($subCatMapping as $sub => $cat)
+                <option value="{{ $sub }}" data-category="{{ $cat }}">{{ $sub }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
+<div class="row menu-list" id="customerMenuGrid">
     @foreach($menus as $menu)
-    <div class="col-6 col-md-4 col-lg-3 mb-4 menu-card">
+    <div class="col-6 col-md-4 col-lg-3 mb-4 menu-card customer-menu-item" data-category="{{ $menu->category }}" data-subcategory="{{ $menu->sub_category }}">
         <div class="card h-100">
             @if($menu->image)
                 <img src="/images/{{ $menu->image }}" class="card-img-top" alt="{{ $menu->name }}" style="height: 150px; object-fit: cover;">
@@ -432,19 +462,18 @@
                 <h5 class="card-title" style="font-size: 1rem;">{{ $menu->name }}</h5>
                 <p class="card-text text-primary fw-bold">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
                 
-                <form action="{{ route('order.addToCart', request()->route('uuid')) }}" method="POST" id="form-{{ $menu->id }}">
+                <form action="{{ route('order.updateCartItem', request()->route('uuid')) }}" method="POST" id="form-{{ $menu->id }}">
                     @csrf
                     <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                     
                     <div class="quantity-selector">
-                        <button type="button" class="quantity-btn" onclick="decrementQty({{ $menu->id }})">−</button>
-                        <input type="number" name="quantity" id="qty-{{ $menu->id }}" value="1" min="1" max="100" class="quantity-input" onchange="validateQty({{ $menu->id }})">
-                        <button type="button" class="quantity-btn" onclick="incrementQty({{ $menu->id }})">+</button>
+                        <button type="button" class="quantity-btn" onclick="updateAndSyncQty({{ $menu->id }}, -1)">−</button>
+                        <input type="number" name="quantity" id="qty-{{ $menu->id }}" value="{{ isset($cart[$menu->id]) ? $cart[$menu->id]['quantity'] : 0 }}" min="0" max="100" class="quantity-input" onchange="syncQty({{ $menu->id }})">
+                        <button type="button" class="quantity-btn" onclick="updateAndSyncQty({{ $menu->id }}, 1)">+</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger ms-2" onclick="clearItem({{ $menu->id }})" title="Hapus Item">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-sm w-100 btn-add-cart">
-                        <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
-                    </button>
                 </form>
             </div>
         </div>
@@ -454,35 +483,220 @@
 
 @push('js')
 <script>
-function printActiveOrder() {
+let currentCategory = 'all';
+
+function filterCustomerMenu(category, btnElement) {
+    currentCategory = category;
+    
+    // Update active button
+    document.querySelectorAll('#categoryFilter .btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    btnElement.classList.add('active');
+    
+    // Update subcategory dropdown visibility/options based on category
+    const subSelect = document.getElementById('subCategoryFilter');
+    
+    Array.from(subSelect.options).forEach(opt => {
+        if (opt.value === 'all') return;
+        
+        if (category === 'all' || opt.getAttribute('data-category') === category) {
+            opt.style.display = '';
+        } else {
+            opt.style.display = 'none';
+            // If the active subcategory is now hidden, reset to 'all'
+            if (subSelect.value === opt.value) {
+                subSelect.value = 'all';
+            }
+        }
+    });
+    
+    applyFilters();
+}
+
+function applyFilters() {
+    const subCategory = document.getElementById('subCategoryFilter').value;
+    const items = document.querySelectorAll('.customer-menu-item');
+    let visibleCount = 0;
+    
+    items.forEach(item => {
+        const itemCat = item.getAttribute('data-category');
+        const itemSubCat = item.getAttribute('data-subcategory');
+        
+        const catMatch = (currentCategory === 'all' || itemCat === currentCategory);
+        const subCatMatch = (subCategory === 'all' || itemSubCat === subCategory);
+        
+        if (catMatch && subCatMatch) {
+            item.style.display = 'block';
+            visibleCount++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+
+    // Handle empty state if needed
+    let emptyMsg = document.getElementById('emptyFilterMsg');
+    if (visibleCount === 0) {
+        if (!emptyMsg) {
+            emptyMsg = document.createElement('div');
+            emptyMsg.id = 'emptyFilterMsg';
+            emptyMsg.className = 'col-12 text-center py-5';
+            emptyMsg.innerHTML = '<i class="fas fa-search fa-3x text-muted mb-3"></i><p class="text-muted">Tidak ada menu yang sesuai dengan filter.</p>';
+            document.getElementById('customerMenuGrid').appendChild(emptyMsg);
+        }
+        emptyMsg.style.display = 'block';
+    } else if (emptyMsg) {
+        emptyMsg.style.display = 'none';
+    }
+}function printActiveOrder() {
     window.print();
 }
 
-function incrementQty(menuId) {
+function updateAndSyncQty(menuId, change) {
     const input = document.getElementById('qty-' + menuId);
-    let value = parseInt(input.value) || 1;
-    if (value < 100) {
-        input.value = value + 1;
-    }
-}
-
-function decrementQty(menuId) {
-    const input = document.getElementById('qty-' + menuId);
-    let value = parseInt(input.value) || 1;
-    if (value > 1) {
-        input.value = value - 1;
-    }
-}
-
-function validateQty(menuId) {
-    const input = document.getElementById('qty-' + menuId);
-    let value = parseInt(input.value) || 1;
+    let value = parseInt(input.value) || 0;
     
-    if (value < 1) {
-        input.value = 1;
+    let newValue = value + change;
+    if (newValue < 0) newValue = 0;
+    if (newValue > 100) newValue = 100;
+    
+    if (newValue !== value) {
+        input.value = newValue;
+        syncQty(menuId);
+    }
+}
+
+function clearItem(menuId) {
+    const input = document.getElementById('qty-' + menuId);
+    if(parseInt(input.value) !== 0) {
+        input.value = 0;
+        syncQty(menuId);
+    }
+}
+
+function syncQty(menuId) {
+    const form = document.getElementById('form-' + menuId);
+    const formData = new FormData(form);
+    const input = document.getElementById('qty-' + menuId);
+    let value = parseInt(input.value);
+
+    // Validate
+    if (isNaN(value) || value < 0) {
+        value = 0;
+        input.value = 0;
     } else if (value > 100) {
+        value = 100;
         input.value = 100;
     }
+    
+    formData.set('quantity', value);
+    
+    // Disable inputs momentarily
+    const buttons = form.querySelectorAll('button');
+    buttons.forEach(b => b.disabled = true);
+    input.disabled = true;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            updateCartUI(data.cart_count, data.cart_total);
+            showToast(value > 0 ? 'Keranjang Diperbarui' : 'Item Dihapus', value > 0 ? '#FF8C42' : '#F44336');
+        }
+    })
+    .catch(error => console.error("Sync Cart Error:", error))
+    .finally(() => {
+        buttons.forEach(b => b.disabled = false);
+        input.disabled = false;
+    });
+}
+
+function clearEntireCart() {
+    if(!confirm('Yakin ingin mengosongkan keranjang?')) return;
+    
+    const token = document.querySelector('input[name="_token"]').value;
+    
+    fetch("{{ route('order.clearCart', request()->route('uuid')) }}", {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            _token: token
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            // Reset all inputs
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.value = 0;
+            });
+            updateCartUI(0, 0);
+            showToast('Keranjang Dikosongkan', '#F44336');
+        }
+    })
+    .catch(error => console.error('Clear Cart Error:', error));
+}
+
+function updateCartUI(count, total) {
+    const badge = document.querySelector('.cart-pulse');
+    const btn = document.getElementById('nav-cart-btn');
+    if (badge && btn) {
+        if (count > 0) {
+            btn.style.display = 'inline-flex';
+            badge.style.display = 'inline-block';
+            badge.textContent = count;
+        } else {
+            btn.style.display = 'none';
+        }
+    }
+    
+    // Also toggle the "Kosongkan Keranjang" header button if it exists
+    const clearBtn = document.querySelector('.page-header .btn-outline-danger');
+    if (clearBtn) {
+        clearBtn.style.display = count > 0 ? 'inline-block' : 'none';
+    } else if (count > 0) {
+        // If it doesn't exist but we need it, we can create it or just reload (reload is easier but breaks SPA feel).
+        // Let's create it nicely.
+        const header = document.querySelector('.page-header');
+        if(header) {
+            const btnHtml = `<button type="button" class="btn btn-outline-danger btn-sm mt-2" onclick="clearEntireCart()"><i class="fas fa-trash-alt"></i> Kosongkan Keranjang</button>`;
+            header.insertAdjacentHTML('beforeend', btnHtml);
+        }
+    }
+}
+
+function showToast(message, color = '#4CAF50') {
+    const toast = document.createElement('div');
+    toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+    toast.style.position = 'fixed';
+    toast.style.bottom = '20px';
+    toast.style.right = '20px';
+    toast.style.background = color;
+    toast.style.color = '#fff';
+    toast.style.padding = '10px 20px';
+    toast.style.borderRadius = '30px';
+    toast.style.zIndex = '9999';
+    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+    toast.style.transition = 'opacity 0.4s ease';
+    toast.style.fontWeight = 'bold';
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+    }, 1500);
 }
 </script>
 @endpush

@@ -11,8 +11,12 @@ class TableController extends Controller
      */
     public function index()
     {
-        $tables = \App\Models\Table::all();
-        return view('admin.tables.index', compact('tables'));
+        $tables  = \App\Models\Table::all();
+        // Generate QR URL dynamically using the current request host,
+        // so it works for any environment (local IP, production domain, etc.)
+        // without needing to touch .env
+        $baseUrl = request()->getSchemeAndHttpHost();
+        return view('admin.tables.index', compact('tables', 'baseUrl'));
     }
 
     public function create()
@@ -24,29 +28,17 @@ class TableController extends Controller
     {
         $request->validate([
             'table_number' => 'required|unique:tables,table_number',
-            'location_lat' => 'required|numeric|between:-90,90',
-            'location_lng' => 'required|numeric|between:-180,180',
         ]);
 
         $uuid = \Illuminate\Support\Str::uuid();
-        
-        // Generate QR Code URL
-        $url = route('order.index', $uuid);
-        
-        // Use QRServer API for QR Code (Google Charts API is deprecated!)
-        // This is a free, reliable API that's still actively maintained
-        $qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($url);
-        
-        // Store the API URL instead of file path
-        $qrCodePath = $qrCodeUrl;
 
+        // qr_code_path is no longer stored — QR is generated dynamically
+        // in the admin view using the current request host, so it works
+        // on any environment (local dev, staging, production) automatically.
         \App\Models\Table::create([
             'table_number' => $request->table_number,
-            'uuid' => $uuid,
-            'qr_code_path' => $qrCodePath,
-            'location_lat' => $request->location_lat,
-            'location_lng' => $request->location_lng,
-            'location_radius' => 100, // Default 100 meter - Prevents neighbor fake orders while tolerating GPS inaccuracy
+            'uuid'         => $uuid,
+            'qr_code_path' => null,
         ]);
 
         return redirect()->route('tables.index')
@@ -77,15 +69,5 @@ class TableController extends Controller
                         ->with('success', 'Meja berhasil dikosongkan');
     }
 
-    public function toggleLocation(\App\Models\Table $table)
-    {
-        // Toggle require_location boolean
-        $table->require_location = !$table->require_location;
-        $table->save();
-
-        $status = $table->require_location ? 'diaktifkan' : 'dinonaktifkan';
-        
-        return redirect()->route('tables.index')
-                        ->with('success', "Validasi lokasi untuk meja {$table->table_number} berhasil {$status}");
-    }
 }
+

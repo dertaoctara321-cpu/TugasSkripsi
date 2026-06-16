@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 
-@section('title', 'Checkout - Sate Ordering')
+@section('title', 'Checkout - Little Palembang')
 
 @push('css')
 <style>
@@ -194,6 +194,18 @@
                            {{ $activeOrder ? 'readonly' : 'required' }}>
                     @if($activeOrder)
                     <small class="text-muted">Nama dari pesanan aktif</small>
+                    @endif
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Lantai Kafe <span class="text-danger">*</span></label>
+                    <select name="floor" class="form-select" {{ $activeOrder ? 'disabled' : 'required' }}>
+                        <option value="Lantai 1" {{ $activeOrder && $activeOrder->floor == 'Lantai 1' ? 'selected' : '' }}>Lantai 1</option>
+                        <option value="Lantai 2" {{ $activeOrder && $activeOrder->floor == 'Lantai 2' ? 'selected' : '' }}>Lantai 2</option>
+                    </select>
+                    @if($activeOrder)
+                    <input type="hidden" name="floor" value="{{ $activeOrder->floor }}">
+                    <small class="text-muted">Lantai dari pesanan aktif</small>
                     @endif
                 </div>
 

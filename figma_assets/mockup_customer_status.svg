@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="860" viewBox="0 0 430 860" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="btnRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0392B"/><stop offset="100%" style="stop-color:#E74C3C"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27AE60"/><stop offset="100%" style="stop-color:#2ECC71"/>
+    </linearGradient>
+    <linearGradient id="thGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C0392B"/><stop offset="100%" style="stop-color:#E74C3C"/>
+    </linearGradient>
+  </defs>
+  <!-- Phone frame -->
+  <rect x="3" y="3" width="424" height="854" rx="44" fill="#1a1a1a" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="398" height="828" rx="36" fill="#FAFAFA"/>
+  <rect x="16" y="16" width="398" height="36" rx="36" fill="white"/>
+  <rect x="16" y="36" width="398" height="16" fill="white"/>
+  <rect x="152" y="16" width="126" height="26" rx="13" fill="#1a1a1a"/>
+  <!-- Topbar -->
+  <rect x="16" y="52" width="398" height="52" fill="white"/>
+  <text x="215" y="83" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Status Pesanan</text>
+  <!-- Success icon circle -->
+  <circle cx="215" cy="170" r="50" fill="url(#iconGrad)"/>
+  <text x="215" y="188" text-anchor="middle" font-size="42" fill="white">✓</text>
+  <!-- Pesanan Berhasil text -->
+  <text x="215" y="244" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Pesanan Berhasil! 🎉</text>
+  <text x="215" y="264" text-anchor="middle" font-size="12" fill="#999">Pesanan kamu sedang diproses</text>
+  <!-- Order info card -->
+  <rect x="28" y="280" width="374" height="154" rx="10" fill="white" stroke="#EEEEEE" stroke-width="1"/>
+  <!-- Info rows -->
+  <text x="46" y="310" font-size="12" fill="#999">Nomor Pesanan</text>
+  <text x="388" y="310" text-anchor="end" font-size="12" font-weight="bold" fill="#333">#101</text>
+  <line x1="28" y1="320" x2="402" y2="320" stroke="#F5F5F5" stroke-width="1"/>
+  <text x="46" y="346" font-size="12" fill="#999">Nama</text>
+  <text x="388" y="346" text-anchor="end" font-size="12" fill="#333">Budi Santoso</text>
+  <line x1="28" y1="356" x2="402" y2="356" stroke="#F5F5F5" stroke-width="1"/>
+  <text x="46" y="382" font-size="12" fill="#999">Meja</text>
+  <text x="388" y="382" text-anchor="end" font-size="12" fill="#333">Meja 5</text>
+  <line x1="28" y1="392" x2="402" y2="392" stroke="#F5F5F5" stroke-width="1"/>
+  <text x="46" y="418" font-size="12" fill="#999">Status</text>
+  <rect x="300" y="406" width="80" height="22" rx="11" fill="#FEF9E7"/>
+  <text x="340" y="421" text-anchor="middle" font-size="11" font-weight="600" fill="#CA6F1E">Pending</text>
+  <!-- Status tracker -->
+  <rect x="28" y="444" width="374" height="80" rx="10" fill="white" stroke="#EEEEEE" stroke-width="1"/>
+  <!-- Step 1: Active -->
+  <circle cx="72" cy="474" r="14" fill="url(#btnRed)"/>
+  <text x="72" y="479" text-anchor="middle" font-size="11" fill="white">1</text>
+  <text x="72" y="500" text-anchor="middle" font-size="9" fill="#C0392B" font-weight="600">Pending</text>
+  <!-- Line 1-2 -->
+  <line x1="86" y1="474" x2="148" y2="474" stroke="#EEEEEE" stroke-width="2"/>
+  <!-- Step 2 -->
+  <circle cx="162" cy="474" r="14" fill="#EEEEEE" stroke="#DDDDDD" stroke-width="1"/>
+  <text x="162" y="479" text-anchor="middle" font-size="11" fill="#AAA">2</text>
+  <text x="162" y="500" text-anchor="middle" font-size="9" fill="#AAA">Cooking</text>
+  <!-- Line 2-3 -->
+  <line x1="176" y1="474" x2="238" y2="474" stroke="#EEEEEE" stroke-width="2"/>
+  <!-- Step 3 -->
+  <circle cx="252" cy="474" r="14" fill="#EEEEEE" stroke="#DDDDDD" stroke-width="1"/>
+  <text x="252" y="479" text-anchor="middle" font-size="11" fill="#AAA">3</text>
+  <text x="252" y="500" text-anchor="middle" font-size="9" fill="#AAA">Served</text>
+  <!-- Line 3-4 -->
+  <line x1="266" y1="474" x2="328" y2="474" stroke="#EEEEEE" stroke-width="2"/>
+  <!-- Step 4 -->
+  <circle cx="342" cy="474" r="14" fill="#EEEEEE" stroke="#DDDDDD" stroke-width="1"/>
+  <text x="342" y="479" text-anchor="middle" font-size="11" fill="#AAA">4</text>
+  <text x="342" y="500" text-anchor="middle" font-size="9" fill="#AAA">Completed</text>
+  <!-- Order detail table -->
+  <rect x="28" y="534" width="374" height="160" rx="10" fill="white" stroke="#EEEEEE" stroke-width="1"/>
+  <rect x="28" y="534" width="374" height="34" rx="10" fill="url(#thGrad)"/>
+  <rect x="28" y="552" width="374" height="16" fill="url(#thGrad)"/>
+  <text x="46" y="555" font-size="11" font-weight="600" fill="white">ITEM</text>
+  <text x="246" y="555" font-size="11" font-weight="600" fill="white">QTY</text>
+  <text x="298" y="555" font-size="11" font-weight="600" fill="white">HARGA</text>
+  <text x="388" y="555" text-anchor="end" font-size="11" font-weight="600" fill="white">TOTAL</text>
+  <!-- Rows -->
+  <text x="46" y="586" font-size="12" fill="#333">Pempek Kapal Selam</text>
+  <text x="250" y="586" font-size="12" fill="#333">1</text>
+  <text x="298" y="586" font-size="12" fill="#333">Rp 25.000</text>
+  <text x="388" y="586" text-anchor="end" font-size="12" fill="#333">Rp 25.000</text>
+  <line x1="28" y1="598" x2="402" y2="598" stroke="#F5F5F5" stroke-width="1"/>
+  <text x="46" y="622" font-size="12" fill="#333">Mie Celor</text>
+  <text x="250" y="622" font-size="12" fill="#333">1</text>
+  <text x="298" y="622" font-size="12" fill="#333">Rp 20.000</text>
+  <text x="388" y="622" text-anchor="end" font-size="12" fill="#333">Rp 20.000</text>
+  <!-- Total -->
+  <rect x="28" y="702" width="374" height="40" rx="6" fill="#FDEDEC"/>
+  <text x="46" y="726" font-size="13" font-weight="bold" fill="#C0392B">Grand Total</text>
+  <text x="390" y="726" text-anchor="end" font-size="14" font-weight="bold" fill="#C0392B">Rp 45.000</text>
+  <!-- Button -->
+  <rect x="28" y="756" width="374" height="48" rx="10" fill="url(#btnRed)"/>
+  <text x="215" y="784" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Kembali ke Menu</text>
+</svg>

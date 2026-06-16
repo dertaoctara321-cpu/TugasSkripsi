@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <rect width="1440" height="900" fill="#F0F0F0"/>
+  <rect x="0" y="0" width="240" height="900" fill="#444444"/>
+  <rect x="20" y="14" width="30" height="30" rx="15" fill="#666666"/>
+  <rect x="58" y="18" width="120" height="9" rx="2" fill="#666666"/>
+  <rect x="58" y="32" width="80" height="7" rx="2" fill="#555555"/>
+  <rect x="18" y="82" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="95" font-size="11" fill="#888888">Dashboard</text>
+  <rect x="18" y="122" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="135" font-size="11" fill="#888888">Menu</text>
+  <rect x="18" y="162" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="175" font-size="11" fill="#888888">Meja &amp; QR</text>
+  <rect x="18" y="202" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="215" font-size="11" fill="#888888">Metode Pembayaran</text>
+  <rect x="18" y="242" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="255" font-size="11" fill="#888888">Pesanan</text>
+  <rect x="0" y="272" width="4" height="40" fill="#AAAAAA"/>
+  <rect x="0" y="272" width="240" height="40" fill="rgba(255,255,255,0.08)"/>
+  <rect x="18" y="282" width="16" height="16" rx="2" fill="#888888"/>
+  <text x="42" y="295" font-size="11" fill="#CCCCCC">Laporan</text>
+  <rect x="10" y="820" width="220" height="30" rx="4" fill="#555555"/>
+  <text x="120" y="840" text-anchor="middle" font-size="11" fill="#999999">Dark Mode</text>
+  <rect x="10" y="856" width="220" height="28" rx="4" fill="#666666"/>
+  <text x="120" y="874" text-anchor="middle" font-size="11" fill="#999999">Logout</text>
+  <!-- Topbar (no title) -->
+  <rect x="240" y="0" width="1200" height="52" fill="#CCCCCC"/>
+  <rect x="257" y="17" width="18" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="26" width="14" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="35" width="16" height="5" rx="1" fill="#999999"/>
+  <rect x="1330" y="18" width="80" height="16" rx="3" fill="#BBBBBB"/>
+  <!-- content-header: page title -->
+  <text x="260" y="82" font-size="20" font-weight="bold" fill="#555555">Laporan Penjualan</text>
+  <!-- 4 info boxes -->
+  <rect x="260" y="96" width="270" height="72" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="96" width="58" height="72" rx="6" fill="#DDDDDD"/>
+  <text x="289" y="137" text-anchor="middle" font-size="18" fill="#BBBBBB">H</text>
+  <text x="330" y="116" font-size="9" fill="#AAAAAA">Hari Ini</text>
+  <text x="330" y="134" font-size="13" font-weight="bold" fill="#888888">Rp 20.000</text>
+  <rect x="546" y="96" width="270" height="72" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="546" y="96" width="58" height="72" rx="6" fill="#DDDDDD"/>
+  <text x="575" y="137" text-anchor="middle" font-size="18" fill="#BBBBBB">W</text>
+  <text x="616" y="116" font-size="9" fill="#AAAAAA">Minggu Ini</text>
+  <text x="616" y="134" font-size="13" font-weight="bold" fill="#888888">Rp 100.000</text>
+  <rect x="832" y="96" width="270" height="72" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="832" y="96" width="58" height="72" rx="6" fill="#DDDDDD"/>
+  <text x="861" y="137" text-anchor="middle" font-size="18" fill="#BBBBBB">B</text>
+  <text x="902" y="116" font-size="9" fill="#AAAAAA">Bulan Ini</text>
+  <text x="902" y="134" font-size="13" font-weight="bold" fill="#888888">Rp 1.000.000</text>
+  <rect x="1118" y="96" width="270" height="72" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="1118" y="96" width="58" height="72" rx="6" fill="#DDDDDD"/>
+  <text x="1147" y="137" text-anchor="middle" font-size="18" fill="#BBBBBB">T</text>
+  <text x="1188" y="116" font-size="9" fill="#AAAAAA">Tahun Ini</text>
+  <text x="1188" y="134" font-size="13" font-weight="bold" fill="#888888">Rp 10.000.000</text>
+  <!-- Orders paid table -->
+  <rect x="260" y="184" width="1122" height="500" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="184" width="1122" height="44" rx="6" fill="#EEEEEE"/>
+  <rect x="260" y="208" width="1122" height="20" fill="#EEEEEE"/>
+  <rect x="274" y="196" width="16" height="16" rx="2" fill="#DDDDDD"/>
+  <text x="298" y="210" font-size="12" font-weight="bold" fill="#666666">Pesanan Terbayar</text>
+  <rect x="274" y="240" width="1094" height="30" rx="4" fill="#E5E5E5"/>
+  <text x="288" y="259" font-size="9" font-weight="bold" fill="#888888">ID</text>
+  <text x="360" y="259" font-size="9" font-weight="bold" fill="#888888">MEJA</text>
+  <text x="450" y="259" font-size="9" font-weight="bold" fill="#888888">PELANGGAN</text>
+  <text x="660" y="259" font-size="9" font-weight="bold" fill="#888888">TOTAL</text>
+  <text x="850" y="259" font-size="9" font-weight="bold" fill="#888888">METODE PEMBAYARAN</text>
+  <text x="1150" y="259" font-size="9" font-weight="bold" fill="#888888">TANGGAL</text>
+  <!-- Row placeholder -->
+  <rect x="288" y="284" width="40" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="360" y="284" width="20" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="450" y="284" width="120" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="660" y="284" width="80" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="850" y="284" width="80" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="1150" y="284" width="100" height="8" rx="2" fill="#E0E0E0"/>
+  <!-- Footer -->
+  <rect x="240" y="848" width="1200" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="840" y="862" text-anchor="middle" font-size="10" font-weight="bold" fill="#666666">Copyright 2025 Little Palembang. All rights reserved.</text>
+  <text x="840" y="876" text-anchor="middle" font-size="9" fill="#AAAAAA">Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.</text>
+</svg>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Login - Warung Sate</title>
+    <title>Admin Login - Little Palembang</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-fire"></i>
                 </div>
-                <h1 class="login-title">Warung Sate</h1>
+                <h1 class="login-title">Little Palembang</h1>
                 <p class="login-subtitle">Admin Dashboard</p>
             </div>
 

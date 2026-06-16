@@ -18,15 +18,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Admin Routes
-    Route::prefix('admin')->group(function () {
+    Route::prefix('admin')->middleware('nocache')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/reports', [App\Http\Controllers\AdminController::class, 'reports'])->name('admin.reports');
         
+        // PDF Import routes — MUST be before resource to avoid conflict with {menu} param
+        Route::post('menus/import-pdf/process', [App\Http\Controllers\MenuController::class, 'importPdfProcess'])->name('menus.importPdfProcess');
+        Route::get('menus/import-pdf/review', [App\Http\Controllers\MenuController::class, 'importPdfReview'])->name('menus.importPdfReview');
+        Route::post('menus/import-pdf/save', [App\Http\Controllers\MenuController::class, 'importPdfSave'])->name('menus.importPdfSave');
+        
+        // Bulk Image Upload Route
+        Route::post('menus/bulk-upload-images', [App\Http\Controllers\MenuController::class, 'bulkImageUpload'])->name('menus.bulkImageUpload');
+
         Route::resource('menus', App\Http\Controllers\MenuController::class);
         Route::resource('tables', App\Http\Controllers\TableController::class);
         Route::post('tables/{table}/clear', [App\Http\Controllers\TableController::class, 'clearTable'])->name('tables.clear');
-        Route::post('tables/{table}/toggle-location', [App\Http\Controllers\TableController::class, 'toggleLocation'])->name('tables.toggle-location');
-        
         Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class);
         
         Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
@@ -39,11 +45,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Out of Range Route
-Route::get('/out-of-range', function () {
-    return view('customer.out_of_range');
-})->name('out.of.range');
-
 // Customer Routes
 Route::get('/order/{uuid}', [App\Http\Controllers\CustomerController::class, 'index'])->name('order.index');
 Route::post('/order/{uuid}/cart', [App\Http\Controllers\CustomerController::class, 'addToCart'])->name('order.addToCart');
@@ -51,3 +52,7 @@ Route::get('/order/{uuid}/checkout', [App\Http\Controllers\CustomerController::c
 Route::post('/order/{uuid}/place', [App\Http\Controllers\CustomerController::class, 'placeOrder'])->name('order.placeOrder');
 Route::get('/order/{uuid}/status/{order}', [App\Http\Controllers\CustomerController::class, 'status'])->name('order.status');
 Route::get('/order/{uuid}/payment-info', [App\Http\Controllers\CustomerController::class, 'paymentInfo'])->name('order.paymentInfo');
+
+// Live Cart Routes
+Route::post('/order/{uuid}/cart/update', [App\Http\Controllers\CustomerController::class, 'updateCartItem'])->name('order.updateCartItem');
+Route::post('/order/{uuid}/cart/clear', [App\Http\Controllers\CustomerController::class, 'clearCart'])->name('order.clearCart');

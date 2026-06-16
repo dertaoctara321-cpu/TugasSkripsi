@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Dashboard | Sate Ordering</title>
+  <title>Admin Dashboard | Little Palembang</title>
 
   <!-- Google Font: Outfit -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -15,9 +15,15 @@
   <link rel="stylesheet" href="{{ asset('css/admin-style.css') }}">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  
+  <!-- PWA  -->
+  <meta name="theme-color" content="#FF8C42"/>
+  <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">
+  <link rel="manifest" href="{{ asset('manifest.json') }}">
+
   @stack('css')
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -46,7 +52,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link" style="display: flex; align-items: center; padding: 10px 15px;">
-      <img src="{{ asset('images/logosate.png') }}" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px;">
+      <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px;">
       <span class="brand-text" style="font-size: 1.1rem;">Administrator</span>
     </a>
 
@@ -96,7 +102,7 @@
       <!-- /.sidebar-menu -->
 
       <!-- Dark Mode Toggle Button -->
-      <div class="p-3" style="position: absolute; bottom: 70px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1);">
+      <div class="p-3" style="position: absolute; bottom: 70px; left: 0; right: 0; border-top: 1px solid rgba(255,255,255,0.1);">
         <button id="darkModeToggle" class="btn btn-block" style="background: linear-gradient(135deg, #4a4a4a, #2d2d2d); color: white; border-radius: 10px; font-weight: 600; padding: 12px;">
           <i class="fas fa-moon" id="darkModeIcon"></i>
           <span id="darkModeText">Dark Mode</span>
@@ -104,7 +110,7 @@
       </div>
 
       <!-- Logout Button at Bottom -->
-      <div class="p-3" style="position: absolute; bottom: 0; width: 100%;">
+      <div class="p-3" style="position: absolute; bottom: 0; left: 0; right: 0;">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <button type="submit" class="btn btn-block" style="background: linear-gradient(135deg, #F44336, #D32F2F); color: white; border-radius: 10px; font-weight: 600; padding: 12px;">
@@ -138,7 +144,8 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer text-center">
-    <strong>Copyright &copy; 2025 Sate Ordering.</strong> All rights reserved.
+    <strong>Copyright &copy; 2025 Little Palembang.</strong> All rights reserved.
+    <br>Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -244,5 +251,15 @@ darkModeToggle.addEventListener('click', function() {
 </script>
 
 @stack('js')
+
+<!-- PWA Service Worker Registration -->
+<script src="{{ asset('/sw.js') }}"></script>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function(reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
 </body>
 </html>

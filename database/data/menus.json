@@ -1,0 +1,842 @@
+[
+    {
+        "name": "Cake Choco Lava",
+        "price": 26000,
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Classic Donut",
+        "price": 23000,
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Pao Coklat",
+        "price": 10000,
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Roti Goreng Udang Ebi",
+        "price": 15000,
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Spicy Chicken Wings",
+        "price": 28000,
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Tempe Mendoan",
+        "price": 18000,
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Test Menu",
+        "price": 10000,
+        "category": "Makanan",
+        "sub_category": null,
+        "description": null,
+        "is_available": 1
+    },
+    {
+        "name": "Dimsum Ayam",
+        "price": 22000,
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Dimsum Keju",
+        "price": 22000,
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Dimsum Mozarella",
+        "price": 22000,
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Sup Krim Ayam Jagung",
+        "price": 32000,
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Telur Ayam Kampung",
+        "price": 17000,
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Iga Cabe Ijo",
+        "price": 40000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Ikan Nila Goreng Sambal Matah",
+        "price": 35000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Ayam Jodoh",
+        "price": 35000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Ayam Kungpao",
+        "price": 28000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Ayam Little Palembang",
+        "price": 28000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Ayam Telur Asin",
+        "price": 28000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Tongseng Daging Sapi",
+        "price": 38000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Pindang Tulang",
+        "price": 42000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Udang Singgah Asam Manis Pedas",
+        "price": 35000,
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Bakso PAKAM",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Menu Pakam",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Indomie PAKAM",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Menu Pakam",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi PAKAM",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Menu Pakam",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Bubur Ayam",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mie Yamin Bandung",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Uduk Jakarta",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Pisang Goreng",
+        "price": 18000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Sate Marangi",
+        "price": 35000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Steak Bakso Little Palembang",
+        "price": 45000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Steak Chicken Katsu",
+        "price": 35000,
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Goreng Aceh",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Goreng Cabe Ijo",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Goreng Little Palembang",
+        "price": 30000,
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Goreng Nanas",
+        "price": 30000,
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Goreng Pakam",
+        "price": 39000,
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Nasi Goreng Tek-Tek",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Model",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Pempek Kapal Selam",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Pempek Kecil (10 buah)",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Tekwan",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mie Bangladesh",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mie Goreng Cornet",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mie Jodoh",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mie Kangkung",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mie Nyemek Bon Cabe",
+        "price": 25000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Spaghetti Creamy Pasta",
+        "price": 28000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Spaghetti Meatballs",
+        "price": 45000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Spaghetti Sambal Matah",
+        "price": 29000,
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "French Toast Biscoff",
+        "price": 27000,
+        "category": "Makanan",
+        "sub_category": "Toast",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "French Toast Classic",
+        "price": 18000,
+        "category": "Makanan",
+        "sub_category": "Toast",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Bakmi Ayam Teriyaki",
+        "price": 20000,
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Martabak HAR Telor Ayam",
+        "price": 26000,
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Martabak HAR Telor Bebek",
+        "price": 30000,
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Sirloin Steak",
+        "price": 116000,
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Americano",
+        "price": 20000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Avocado Coffee",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Blue Lemonade Coffee",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Cappuccino",
+        "price": 22000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Cappuccino Panas",
+        "price": 22000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Caramel Coffee",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Caramel Latte",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Charcoal Latte",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Chocolate Coffee",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Chocolate Frappe",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Chocolate Panas",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Hazelnut Coffee",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Klepon Coffee",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Kopi Americano Panas",
+        "price": 20000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Kopi Bahagia",
+        "price": 20000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Kopi Susu",
+        "price": 15000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Kopi Susu Gula Aren",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Kopi Tubruk",
+        "price": 15000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Matcha Green Frappe",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Moccachino",
+        "price": 22000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Peppermint Coffee",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Red Velvet Latte",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Vanilla Frappe",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Vanilla Latte",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Air Mineral",
+        "price": 8000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Air Mineral Panas",
+        "price": 18000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Es Jeruk",
+        "price": 8000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Es Teh Manis",
+        "price": 8000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Ice Chocolate",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Ice Coffee Latte",
+        "price": 30000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Ice Earl Grey Milk Tea",
+        "price": 20000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Ice Matcha Latte",
+        "price": 27000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Ice Thai Tea",
+        "price": 22000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Lemon Tea",
+        "price": 10000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mango Tea",
+        "price": 17000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Pineapple Blue Curacao",
+        "price": 28000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Strawberry Tea",
+        "price": 17000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Teh Manis Panas",
+        "price": 8000,
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Black Currant",
+        "price": 15000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Chocolate Milk",
+        "price": 24000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Double Choko Shake",
+        "price": 30000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Klepon Shake",
+        "price": 24000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Lemonade Original",
+        "price": 18000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Lemonade Strawberry",
+        "price": 18000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Lotus Biscoff Shake",
+        "price": 30000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Mixed Berry",
+        "price": 15000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Oreo Shake",
+        "price": 24000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Red Velvet Shake",
+        "price": 30000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "SHAKE Coconut Tropical",
+        "price": 20000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    },
+    {
+        "name": "Strawberry Milk",
+        "price": 24000,
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "",
+        "is_available": 1
+    }
+]

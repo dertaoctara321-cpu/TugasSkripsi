@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" font-family="Arial, sans-serif">
+  <rect width="1440" height="960" fill="#F0F0F0"/>
+  <!-- Sidebar (same pattern) -->
+  <rect x="0" y="0" width="240" height="960" fill="#444444"/>
+  <rect x="14" y="14" width="40" height="40" rx="20" fill="#666666"/>
+  <rect x="62" y="20" width="110" height="9" rx="2" fill="#666666"/>
+  <rect x="62" y="34" width="80" height="7" rx="2" fill="#555555"/>
+  <rect x="0" y="68" width="240" height="1" fill="rgba(255,255,255,0.1)"/>
+  <rect x="18" y="82" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="95" font-size="11" fill="#888888">Dashboard</text>
+  <rect x="18" y="122" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="135" font-size="11" fill="#888888">Menu</text>
+  <rect x="18" y="162" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="175" font-size="11" fill="#888888">Meja &amp; QR</text>
+  <rect x="0" y="192" width="4" height="40" fill="#AAAAAA"/>
+  <rect x="0" y="192" width="240" height="40" fill="rgba(255,255,255,0.08)"/>
+  <rect x="18" y="202" width="16" height="16" rx="2" fill="#888888"/>
+  <text x="42" y="215" font-size="11" fill="#CCCCCC">Metode Pembayaran</text>
+  <rect x="18" y="242" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="255" font-size="11" fill="#888888">Pesanan</text>
+  <rect x="18" y="282" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="295" font-size="11" fill="#888888">Laporan</text>
+  <rect x="10" y="880" width="220" height="30" rx="4" fill="#555555"/>
+  <text x="120" y="899" text-anchor="middle" font-size="11" fill="#999999">Dark Mode</text>
+  <rect x="10" y="916" width="220" height="28" rx="4" fill="#666666"/>
+  <text x="120" y="934" text-anchor="middle" font-size="11" fill="#999999">Logout</text>
+  <!-- Topbar -->
+  <rect x="240" y="0" width="1200" height="52" fill="#CCCCCC"/>
+  <rect x="257" y="17" width="18" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="26" width="14" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="35" width="16" height="5" rx="1" fill="#999999"/>
+  <rect x="1330" y="18" width="80" height="16" rx="3" fill="#BBBBBB"/>
+  <!-- content-header -->
+  <text x="260" y="82" font-size="20" font-weight="bold" fill="#555555">Edit Metode Pembayaran</text>
+  <rect x="260" y="90" width="200" height="8" rx="2" fill="#DDDDDD"/>
+  <!-- Form Card -->
+  <rect x="260" y="108" width="1120" height="700" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="108" width="1120" height="44" rx="6" fill="#EEEEEE"/>
+  <rect x="260" y="130" width="1120" height="22" fill="#EEEEEE"/>
+  <rect x="278" y="120" width="16" height="16" rx="2" fill="#DDDDDD"/>
+  <text x="302" y="133" font-size="12" font-weight="bold" fill="#666666">Edit Metode Pembayaran</text>
+  <!-- Nama Metode (pre-filled) -->
+  <text x="278" y="174" font-size="11" font-weight="bold" fill="#888888">Nama Metode Pembayaran</text>
+  <rect x="278" y="180" width="1062" height="40" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="290" y="196" width="140" height="8" rx="2" fill="#DDDDDD"/>
+  <!-- Tipe (pre-filled) -->
+  <text x="278" y="242" font-size="11" font-weight="bold" fill="#888888">Tipe</text>
+  <rect x="278" y="248" width="1062" height="40" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="290" y="264" width="80" height="8" rx="2" fill="#DDDDDD"/>
+  <text x="1348" y="264" text-anchor="end" font-size="11" fill="#AAAAAA">v</text>
+  <!-- Nomor Rekening (pre-filled) -->
+  <text x="278" y="312" font-size="11" font-weight="bold" fill="#888888">Nomor Rekening</text>
+  <rect x="278" y="318" width="1062" height="40" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="290" y="334" width="130" height="8" rx="2" fill="#DDDDDD"/>
+  <!-- Atas Nama (pre-filled) -->
+  <text x="278" y="382" font-size="11" font-weight="bold" fill="#888888">Atas Nama</text>
+  <rect x="278" y="388" width="1062" height="40" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="290" y="404" width="200" height="8" rx="2" fill="#DDDDDD"/>
+  <!-- QR Code existing + ganti -->
+  <text x="278" y="452" font-size="11" font-weight="bold" fill="#888888">QR Code Saat Ini</text>
+  <rect x="278" y="458" width="120" height="120" rx="6" fill="#EEEEEE" stroke="#DDDDDD" stroke-width="1"/>
+  <!-- simple QR pattern -->
+  <rect x="286" y="466" width="14" height="14" rx="1" fill="#AAAAAA"/>
+  <rect x="302" y="466" width="4" height="4" fill="#AAAAAA"/>
+  <rect x="308" y="466" width="4" height="4" fill="#AAAAAA"/>
+  <rect x="376" y="466" width="14" height="14" rx="1" fill="#AAAAAA"/>
+  <rect x="286" y="562" width="14" height="14" rx="1" fill="#AAAAAA"/>
+  <rect x="376" y="562" width="14" height="14" rx="1" fill="#AAAAAA"/>
+  <text x="278" y="452" font-size="11" font-weight="bold" fill="#888888">QR Code Saat Ini</text>
+  <text x="278" y="592" font-size="11" font-weight="bold" fill="#888888">Ganti QR Code (Opsional)</text>
+  <rect x="278" y="598" width="1062" height="40" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="809" y="623" text-anchor="middle" font-size="10" fill="#AAAAAA">Pilih file QR Code baru... (JPG/PNG, maks 2MB)</text>
+  <!-- Instruksi (pre-filled) -->
+  <text x="278" y="658" font-size="11" font-weight="bold" fill="#888888">Instruksi Tambahan (Opsional)</text>
+  <rect x="278" y="664" width="1062" height="60" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="290" y="678" width="250" height="8" rx="2" fill="#DDDDDD"/>
+  <!-- Status -->
+  <text x="278" y="745" font-size="11" font-weight="bold" fill="#888888">Status</text>
+  <rect x="278" y="751" width="1062" height="40" rx="4" fill="#FAFAFA" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="290" y="767" width="60" height="8" rx="2" fill="#DDDDDD"/>
+  <text x="1348" y="767" text-anchor="end" font-size="11" fill="#AAAAAA">v</text>
+  <!-- Buttons -->
+  <rect x="278" y="812" width="140" height="44" rx="6" fill="#CCCCCC"/>
+  <text x="348" y="838" text-anchor="middle" font-size="12" fill="#666666">Update</text>
+  <rect x="430" y="812" width="140" height="44" rx="6" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="500" y="838" text-anchor="middle" font-size="12" fill="#888888">Kembali</text>
+  <!-- Footer -->
+  <rect x="240" y="908" width="1200" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="840" y="922" text-anchor="middle" font-size="10" font-weight="bold" fill="#666666">Copyright 2025 Little Palembang. All rights reserved.</text>
+  <text x="840" y="936" text-anchor="middle" font-size="9" fill="#AAAAAA">Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.</text>
+</svg>

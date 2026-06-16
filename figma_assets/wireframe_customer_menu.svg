@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="860" viewBox="0 0 430 860" font-family="Arial, sans-serif">
+  <!-- Phone frame -->
+  <rect x="3" y="3" width="424" height="854" rx="44" fill="#333333" stroke="#222222" stroke-width="2"/>
+  <rect x="16" y="16" width="398" height="828" rx="36" fill="#EEEEEE"/>
+  <rect x="152" y="16" width="130" height="26" rx="13" fill="#333333"/>
+  <!-- Status bar -->
+  <rect x="16" y="16" width="398" height="36" rx="36" fill="#DDDDDD"/>
+  <rect x="16" y="36" width="398" height="16" fill="#DDDDDD"/>
+  <text x="34" y="32" font-size="10" fill="#888888">9:41</text>
+  <!-- Navbar -->
+  <rect x="16" y="52" width="398" height="52" fill="#CCCCCC"/>
+  <rect x="28" y="63" width="16" height="4" rx="1" fill="#888888"/>
+  <rect x="28" y="71" width="12" height="4" rx="1" fill="#888888"/>
+  <rect x="28" y="79" width="14" height="4" rx="1" fill="#888888"/>
+  <rect x="152" y="60" width="100" height="10" rx="2" fill="#BBBBBB"/>
+  <rect x="152" y="74" width="80" height="8" rx="2" fill="#CCCCCC"/>
+  <rect x="366" y="60" width="28" height="28" rx="4" fill="#DDDDDD"/>
+  <!-- Table badge -->
+  <rect x="316" y="61" width="44" height="22" rx="11" fill="#CCCCCC"/>
+  <text x="338" y="76" text-anchor="middle" font-size="9" fill="#888888">Meja 5</text>
+  <!-- Category filters -->
+  <rect x="28" y="120" width="58" height="26" rx="13" fill="#CCCCCC"/>
+  <text x="57" y="137" text-anchor="middle" font-size="10" fill="#666666">Semua</text>
+  <rect x="94" y="120" width="64" height="26" rx="13" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="126" y="137" text-anchor="middle" font-size="10" fill="#AAAAAA">Makanan</text>
+  <rect x="166" y="120" width="66" height="26" rx="13" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="199" y="137" text-anchor="middle" font-size="10" fill="#AAAAAA">Minuman</text>
+  <rect x="240" y="120" width="60" height="26" rx="13" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="270" y="137" text-anchor="middle" font-size="10" fill="#AAAAAA">Camilan</text>
+  <!-- Subcategory -->
+  <rect x="28" y="156" width="374" height="34" rx="4" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="40" y="169" width="120" height="8" rx="2" fill="#EEEEEE"/>
+  <text x="392" y="177" text-anchor="end" font-size="11" fill="#AAAAAA">v</text>
+  <!-- Card 1 -->
+  <rect x="28" y="202" width="176" height="196" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="28" y="202" width="176" height="108" rx="6" fill="#EEEEEE"/>
+  <rect x="28" y="262" width="176" height="48" fill="#EEEEEE"/>
+  <text x="116" y="264" text-anchor="middle" font-size="22" fill="#CCCCCC">img</text>
+  <rect x="38" y="318" width="110" height="8" rx="2" fill="#DDDDDD"/>
+  <rect x="38" y="332" width="70" height="8" rx="2" fill="#EEEEEE"/>
+  <!-- Qty row 1 -->
+  <rect x="38" y="352" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="50" y="368" text-anchor="middle" font-size="12" fill="#AAAAAA">-</text>
+  <rect x="68" y="352" width="28" height="24" rx="3" fill="#F8F8F8"/>
+  <text x="82" y="368" text-anchor="middle" font-size="10" fill="#AAAAAA">0</text>
+  <rect x="102" y="352" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="114" y="368" text-anchor="middle" font-size="12" fill="#AAAAAA">+</text>
+  <!-- Card 2 -->
+  <rect x="214" y="202" width="176" height="196" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="214" y="202" width="176" height="108" rx="6" fill="#EEEEEE"/>
+  <rect x="214" y="262" width="176" height="48" fill="#EEEEEE"/>
+  <text x="302" y="264" text-anchor="middle" font-size="22" fill="#CCCCCC">img</text>
+  <rect x="224" y="318" width="110" height="8" rx="2" fill="#DDDDDD"/>
+  <rect x="224" y="332" width="70" height="8" rx="2" fill="#EEEEEE"/>
+  <rect x="224" y="352" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="236" y="368" text-anchor="middle" font-size="12" fill="#AAAAAA">-</text>
+  <rect x="254" y="352" width="28" height="24" rx="3" fill="#F8F8F8"/>
+  <text x="268" y="368" text-anchor="middle" font-size="10" fill="#AAAAAA">0</text>
+  <rect x="288" y="352" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="300" y="368" text-anchor="middle" font-size="12" fill="#AAAAAA">+</text>
+  <!-- Card 3 -->
+  <rect x="28" y="410" width="176" height="196" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="28" y="410" width="176" height="108" rx="6" fill="#EEEEEE"/>
+  <rect x="28" y="470" width="176" height="48" fill="#EEEEEE"/>
+  <text x="116" y="472" text-anchor="middle" font-size="22" fill="#CCCCCC">img</text>
+  <rect x="38" y="526" width="110" height="8" rx="2" fill="#DDDDDD"/>
+  <rect x="38" y="540" width="70" height="8" rx="2" fill="#EEEEEE"/>
+  <rect x="38" y="560" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="50" y="576" text-anchor="middle" font-size="12" fill="#AAAAAA">-</text>
+  <rect x="68" y="560" width="28" height="24" rx="3" fill="#F8F8F8"/>
+  <text x="82" y="576" text-anchor="middle" font-size="10" fill="#AAAAAA">0</text>
+  <rect x="102" y="560" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="114" y="576" text-anchor="middle" font-size="12" fill="#AAAAAA">+</text>
+  <!-- Card 4 -->
+  <rect x="214" y="410" width="176" height="196" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="214" y="410" width="176" height="108" rx="6" fill="#EEEEEE"/>
+  <rect x="214" y="470" width="176" height="48" fill="#EEEEEE"/>
+  <text x="302" y="472" text-anchor="middle" font-size="22" fill="#CCCCCC">img</text>
+  <rect x="224" y="526" width="110" height="8" rx="2" fill="#DDDDDD"/>
+  <rect x="224" y="540" width="70" height="8" rx="2" fill="#EEEEEE"/>
+  <rect x="224" y="560" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="236" y="576" text-anchor="middle" font-size="12" fill="#AAAAAA">-</text>
+  <rect x="254" y="560" width="28" height="24" rx="3" fill="#F8F8F8"/>
+  <text x="268" y="576" text-anchor="middle" font-size="10" fill="#AAAAAA">0</text>
+  <rect x="288" y="560" width="24" height="24" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="300" y="576" text-anchor="middle" font-size="12" fill="#AAAAAA">+</text>
+  <!-- Cart bottom bar -->
+  <rect x="28" y="798" width="374" height="42" rx="21" fill="#444444"/>
+  <rect x="40" y="810" width="24" height="24" rx="12" fill="#888888"/>
+  <text x="52" y="826" text-anchor="middle" font-size="10" fill="#FFFFFF">1</text>
+  <rect x="72" y="814" width="90" height="8" rx="2" fill="#666666"/>
+  <rect x="278" y="814" width="100" height="8" rx="2" fill="#666666"/>
+</svg>

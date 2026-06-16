@@ -1,0 +1,21 @@
+{
+    "name": "Little Palembang",
+    "short_name": "Little Plg",
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "theme_color": "#FF8C42",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/images/logo.jpeg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "/images/logo.jpeg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
+}

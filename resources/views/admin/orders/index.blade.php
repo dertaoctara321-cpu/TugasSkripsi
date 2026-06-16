@@ -73,7 +73,7 @@
                         @foreach ($orders as $order)
                         <tr>
                             <td><strong>#{{ $order->id }}</strong></td>
-                            <td><i class="fas fa-table"></i> Meja {{ $order->table->table_number }}</td>
+                            <td><i class="fas fa-table"></i> Meja {{ $order->table->table_number }} <br><small class="text-muted">{{ $order->floor ?? '-' }}</small></td>
                             <td>{{ $order->customer_name }}</td>
                             <td><strong>Rp {{ number_format($order->total_amount, 0, ',', '.') }}</strong></td>
                             <td>
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="mb-2">
-                        <strong><i class="fas fa-table"></i> Meja:</strong> {{ $order->table->table_number }}
+                        <strong><i class="fas fa-table"></i> Meja:</strong> {{ $order->table->table_number }} ({{ $order->floor ?? '-' }})
                     </div>
                     <div class="mb-2">
                         <strong><i class="fas fa-user"></i> Pelanggan:</strong> {{ $order->customer_name }}

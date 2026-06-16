@@ -29,7 +29,7 @@ class CustomerController extends Controller
     {
         $request->validate([
             'menu_id' => 'required|exists:menus,id',
-            'quantity' => 'required|integer|min:1|max:100',
+            'quantity' => 'required|integer|min:1|max:100', // Frontend should prevent 0
         ]);
 
         $menu = \App\Models\Menu::findOrFail($request->menu_id);
@@ -47,7 +47,66 @@ class CustomerController extends Controller
         }
         
         session()->put('cart', $cart);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            // Include cart count or just success
+            $totalItems = collect($cart)->sum('quantity');
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil ditambahkan ke keranjang!',
+                'cart_count' => $totalItems
+            ]);
+        }
+
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang!');
+    }
+
+    public function updateCartItem(Request $request, $uuid)
+    {
+        $request->validate([
+            'menu_id' => 'required|exists:menus,id',
+            'quantity' => 'required|integer|min:0',
+        ]);
+
+        $menu = \App\Models\Menu::findOrFail($request->menu_id);
+        $cart = session()->get('cart', []);
+
+        if ($request->quantity > 0) {
+            $cart[$request->menu_id] = [
+                "name" => $menu->name,
+                "quantity" => $request->quantity,
+                "price" => $menu->price,
+                "image" => $menu->image
+            ];
+        } else {
+            // Remove item from cart if qty is 0
+            if (isset($cart[$request->menu_id])) {
+                unset($cart[$request->menu_id]);
+            }
+        }
+
+        session()->put('cart', $cart);
+
+        $totalItems = collect($cart)->sum('quantity');
+        $totalPrice = collect($cart)->sum(function ($item) {
+            return $item['price'] * $item['quantity'];
+        });
+
+        return response()->json([
+            'success' => true,
+            'cart_count' => $totalItems,
+            'cart_total' => $totalPrice
+        ]);
+    }
+
+    public function clearCart(Request $request, $uuid)
+    {
+        session()->forget('cart');
+        return response()->json([
+            'success' => true,
+            'cart_count' => 0,
+            'cart_total' => 0
+        ]);
     }
 
     public function checkout($uuid)
@@ -64,6 +123,7 @@ class CustomerController extends Controller
         $request->validate([
             'customer_name' => 'required|string|max:255',
             'payment_method' => 'required|in:Cash,Transfer',
+            'floor' => 'required|string|in:Lantai 1,Lantai 2'
         ]);
 
         $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
@@ -110,8 +170,11 @@ class CustomerController extends Controller
                 }
             }
 
-            // Update total amount
+            // Update total amount and optionally floor
             $existingOrder->total_amount += $newItemsTotal;
+            if ($request->has('floor')) {
+                $existingOrder->floor = $request->floor;
+            }
             
             // Reset payment status to pending if it was already paid
             // Customer needs to pay for the additional items
@@ -132,6 +195,7 @@ class CustomerController extends Controller
                 'total_amount' => $newItemsTotal,
                 'payment_method' => $request->payment_method,
                 'customer_name' => $request->customer_name,
+                'floor' => $request->floor,
                 'order_status' => 'pending',
                 'payment_status' => 'pending'
             ]);

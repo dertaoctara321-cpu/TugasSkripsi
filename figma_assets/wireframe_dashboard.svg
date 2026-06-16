@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <rect width="1440" height="900" fill="#F0F0F0"/>
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="240" height="900" fill="#444444"/>
+  <rect x="20" y="14" width="30" height="30" rx="15" fill="#666666"/>
+  <rect x="58" y="18" width="120" height="9" rx="2" fill="#666666"/>
+  <rect x="58" y="32" width="80" height="7" rx="2" fill="#555555"/>
+  <rect x="0" y="72" width="4" height="40" fill="#AAAAAA"/>
+  <rect x="0" y="72" width="240" height="40" fill="rgba(255,255,255,0.08)"/>
+  <rect x="18" y="82" width="16" height="16" rx="2" fill="#888888"/>
+  <text x="42" y="95" font-size="11" fill="#CCCCCC">Dashboard</text>
+  <rect x="18" y="122" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="135" font-size="11" fill="#888888">Menu</text>
+  <rect x="18" y="162" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="175" font-size="11" fill="#888888">Meja &amp; QR</text>
+  <rect x="18" y="202" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="215" font-size="11" fill="#888888">Metode Pembayaran</text>
+  <rect x="18" y="242" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="255" font-size="11" fill="#888888">Pesanan</text>
+  <rect x="18" y="282" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="295" font-size="11" fill="#888888">Laporan</text>
+  <rect x="10" y="820" width="220" height="30" rx="4" fill="#555555"/>
+  <text x="120" y="840" text-anchor="middle" font-size="11" fill="#999999">Dark Mode</text>
+  <rect x="10" y="856" width="220" height="28" rx="4" fill="#666666"/>
+  <text x="120" y="874" text-anchor="middle" font-size="11" fill="#999999">Logout</text>
+  <!-- Topbar (hamburger + logout ONLY, no title) -->
+  <rect x="240" y="0" width="1200" height="52" fill="#CCCCCC"/>
+  <rect x="257" y="17" width="18" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="26" width="14" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="35" width="16" height="5" rx="1" fill="#999999"/>
+  <rect x="1330" y="18" width="80" height="16" rx="3" fill="#BBBBBB"/>
+  <!-- content-header: page title here, NOT in topbar -->
+  <text x="260" y="82" font-size="20" font-weight="bold" fill="#555555">Dashboard</text>
+  <!-- Stat cards row -->
+  <rect x="260" y="96" width="270" height="76" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="96" width="60" height="76" rx="6" fill="#DDDDDD"/>
+  <text x="290" y="140" text-anchor="middle" font-size="22" fill="#BBBBBB">$</text>
+  <rect x="332" y="110" width="130" height="9" rx="2" fill="#E0E0E0"/>
+  <rect x="332" y="128" width="90" height="12" rx="2" fill="#CCCCCC"/>
+  <text x="332" y="124" font-size="9" fill="#AAAAAA">Penjualan Hari Ini</text>
+  <text x="332" y="142" font-size="14" font-weight="bold" fill="#888888">Rp 20.000</text>
+  <rect x="546" y="96" width="270" height="76" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="546" y="96" width="60" height="76" rx="6" fill="#DDDDDD"/>
+  <text x="576" y="140" text-anchor="middle" font-size="22" fill="#BBBBBB">W</text>
+  <text x="618" y="124" font-size="9" fill="#AAAAAA">Penjualan Minggu Ini</text>
+  <text x="618" y="142" font-size="14" font-weight="bold" fill="#888888">Rp 100.000</text>
+  <rect x="832" y="96" width="270" height="76" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="832" y="96" width="60" height="76" rx="6" fill="#DDDDDD"/>
+  <text x="862" y="140" text-anchor="middle" font-size="22" fill="#BBBBBB">M</text>
+  <text x="904" y="124" font-size="9" fill="#AAAAAA">Penjualan Bulan Ini</text>
+  <text x="904" y="142" font-size="14" font-weight="bold" fill="#888888">Rp 1.000.000</text>
+  <rect x="1118" y="96" width="270" height="76" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="1118" y="96" width="60" height="76" rx="6" fill="#DDDDDD"/>
+  <text x="1148" y="140" text-anchor="middle" font-size="22" fill="#BBBBBB">Y</text>
+  <text x="1190" y="124" font-size="9" fill="#AAAAAA">Penjualan Tahun Ini</text>
+  <text x="1190" y="142" font-size="14" font-weight="bold" fill="#888888">Rp 10.000.000</text>
+  <!-- Chart card -->
+  <rect x="260" y="188" width="826" height="280" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="272" y="200" width="16" height="16" rx="2" fill="#DDDDDD"/>
+  <text x="296" y="213" font-size="12" font-weight="bold" fill="#666666">Tren Penjualan (Line Chart)</text>
+  <!-- Chart area -->
+  <rect x="272" y="222" width="796" height="216" rx="4" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <!-- Y axis labels -->
+  <text x="340" y="234" text-anchor="end" font-size="8" fill="#AAAAAA">Rp 10jt</text>
+  <text x="340" y="263" text-anchor="end" font-size="8" fill="#AAAAAA">Rp 1jt</text>
+  <text x="340" y="292" text-anchor="end" font-size="8" fill="#AAAAAA">Rp 100rb</text>
+  <text x="340" y="321" text-anchor="end" font-size="8" fill="#AAAAAA">Rp 10rb</text>
+  <text x="340" y="350" text-anchor="end" font-size="8" fill="#AAAAAA">Rp 0</text>
+  <!-- Gridlines using rect (0-height lines, not line elements) -->
+  <rect x="344" y="231" width="716" height="1" fill="#EEEEEE"/>
+  <rect x="344" y="260" width="716" height="1" fill="#EEEEEE"/>
+  <rect x="344" y="289" width="716" height="1" fill="#EEEEEE"/>
+  <rect x="344" y="318" width="716" height="1" fill="#EEEEEE"/>
+  <rect x="344" y="347" width="716" height="1" fill="#EEEEEE"/>
+  <!-- Chart points: dots only (no polyline) -->
+  <rect x="384" y="340" width="10" height="10" rx="5" fill="#FFFFFF" stroke="#999999" stroke-width="2"/>
+  <rect x="554" y="318" width="10" height="10" rx="5" fill="#FFFFFF" stroke="#999999" stroke-width="2"/>
+  <rect x="724" y="282" width="10" height="10" rx="5" fill="#FFFFFF" stroke="#999999" stroke-width="2"/>
+  <rect x="994" y="236" width="10" height="10" rx="5" fill="#FFFFFF" stroke="#999999" stroke-width="2"/>
+  <!-- connecting lines as thin rects (diagonal approximation using angled rects not possible cleanly, use stepped rects) -->
+  <!-- Use path instead for the line - but let me use a different approach: just show dots and label -->
+  <text x="389" y="360" text-anchor="middle" font-size="8" fill="#AAAAAA">Hari Ini</text>
+  <text x="559" y="360" text-anchor="middle" font-size="8" fill="#AAAAAA">Minggu</text>
+  <text x="729" y="360" text-anchor="middle" font-size="8" fill="#AAAAAA">Bulan</text>
+  <text x="999" y="360" text-anchor="middle" font-size="8" fill="#AAAAAA">Tahun</text>
+  <text x="565" y="400" text-anchor="middle" font-size="9" fill="#CCCCCC">[ Grafik Garis - Line Chart ]</text>
+  <!-- Quick stats panel -->
+  <rect x="1102" y="188" width="280" height="280" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="1114" y="200" width="16" height="16" rx="2" fill="#DDDDDD"/>
+  <text x="1138" y="213" font-size="12" font-weight="bold" fill="#666666">Statistik Cepat</text>
+  <rect x="1114" y="226" width="240" height="56" rx="4" fill="#F8F8F8"/>
+  <rect x="1126" y="238" width="30" height="30" rx="4" fill="#DDDDDD"/>
+  <text x="1141" y="258" text-anchor="middle" font-size="14" fill="#AAAAAA">C</text>
+  <text x="1168" y="248" font-size="9" fill="#AAAAAA">Total Pesanan</text>
+  <text x="1168" y="264" font-size="14" font-weight="bold" fill="#888888">1</text>
+  <rect x="1114" y="292" width="240" height="56" rx="4" fill="#F8F8F8"/>
+  <rect x="1126" y="304" width="30" height="30" rx="4" fill="#DDDDDD"/>
+  <text x="1168" y="314" font-size="9" fill="#AAAAAA">Pesanan Selesai</text>
+  <text x="1168" y="330" font-size="14" font-weight="bold" fill="#888888">0</text>
+  <rect x="1114" y="358" width="240" height="56" rx="4" fill="#F8F8F8"/>
+  <rect x="1126" y="370" width="30" height="30" rx="4" fill="#DDDDDD"/>
+  <text x="1168" y="380" font-size="9" fill="#AAAAAA">Pesanan Pending</text>
+  <text x="1168" y="396" font-size="14" font-weight="bold" fill="#888888">1</text>
+  <!-- Orders table -->
+  <rect x="260" y="484" width="1122" height="220" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="272" y="496" width="16" height="16" rx="2" fill="#DDDDDD"/>
+  <text x="296" y="509" font-size="12" font-weight="bold" fill="#666666">Pesanan Terbaru</text>
+  <rect x="1260" y="494" width="100" height="20" rx="4" fill="#EEEEEE"/>
+  <text x="1310" y="508" text-anchor="middle" font-size="9" fill="#AAAAAA">Lihat Semua</text>
+  <!-- Table header -->
+  <rect x="272" y="520" width="1096" height="30" rx="4" fill="#E5E5E5"/>
+  <text x="288" y="539" font-size="9" font-weight="bold" fill="#888888">ID</text>
+  <text x="380" y="539" font-size="9" font-weight="bold" fill="#888888">MEJA</text>
+  <text x="480" y="539" font-size="9" font-weight="bold" fill="#888888">PELANGGAN</text>
+  <text x="700" y="539" font-size="9" font-weight="bold" fill="#888888">TOTAL</text>
+  <text x="860" y="539" font-size="9" font-weight="bold" fill="#888888">STATUS PESANAN</text>
+  <text x="1050" y="539" font-size="9" font-weight="bold" fill="#888888">STATUS PEMBAYARAN</text>
+  <text x="1280" y="539" font-size="9" font-weight="bold" fill="#888888">WAKTU</text>
+  <!-- Row placeholder -->
+  <rect x="288" y="564" width="40" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="380" y="564" width="20" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="480" y="564" width="110" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="700" y="564" width="80" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="860" y="560" width="80" height="16" rx="8" fill="#EEEEEE"/>
+  <rect x="1050" y="560" width="80" height="16" rx="8" fill="#EEEEEE"/>
+  <rect x="1280" y="564" width="80" height="8" rx="2" fill="#E0E0E0"/>
+  <!-- Footer -->
+  <rect x="240" y="848" width="1200" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="840" y="862" text-anchor="middle" font-size="10" font-weight="bold" fill="#666666">Copyright 2025 Little Palembang. All rights reserved.</text>
+  <text x="840" y="876" text-anchor="middle" font-size="9" fill="#AAAAAA">Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.</text>
+</svg>

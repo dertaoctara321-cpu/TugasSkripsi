@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <rect width="1440" height="900" fill="#F0F0F0"/>
+  <rect x="0" y="0" width="240" height="900" fill="#444444"/>
+  <rect x="20" y="14" width="30" height="30" rx="15" fill="#666666"/>
+  <rect x="58" y="18" width="120" height="9" rx="2" fill="#666666"/>
+  <rect x="58" y="32" width="80" height="7" rx="2" fill="#555555"/>
+  <rect x="18" y="82" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="95" font-size="11" fill="#888888">Dashboard</text>
+  <rect x="18" y="122" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="135" font-size="11" fill="#888888">Menu</text>
+  <rect x="18" y="162" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="175" font-size="11" fill="#888888">Meja &amp; QR</text>
+  <rect x="18" y="202" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="215" font-size="11" fill="#888888">Metode Pembayaran</text>
+  <rect x="0" y="232" width="4" height="40" fill="#AAAAAA"/>
+  <rect x="0" y="232" width="240" height="40" fill="rgba(255,255,255,0.08)"/>
+  <rect x="18" y="242" width="16" height="16" rx="2" fill="#888888"/>
+  <text x="42" y="255" font-size="11" fill="#CCCCCC">Pesanan</text>
+  <rect x="18" y="282" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="295" font-size="11" fill="#888888">Laporan</text>
+  <rect x="10" y="820" width="220" height="30" rx="4" fill="#555555"/>
+  <text x="120" y="840" text-anchor="middle" font-size="11" fill="#999999">Dark Mode</text>
+  <rect x="10" y="856" width="220" height="28" rx="4" fill="#666666"/>
+  <text x="120" y="874" text-anchor="middle" font-size="11" fill="#999999">Logout</text>
+  <!-- Topbar (no title) -->
+  <rect x="240" y="0" width="1200" height="52" fill="#CCCCCC"/>
+  <rect x="257" y="17" width="18" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="26" width="14" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="35" width="16" height="5" rx="1" fill="#999999"/>
+  <rect x="1330" y="18" width="80" height="16" rx="3" fill="#BBBBBB"/>
+  <!-- content-header: page title -->
+  <text x="260" y="82" font-size="20" font-weight="bold" fill="#555555">Pesanan</text>
+  <!-- Card -->
+  <rect x="260" y="96" width="1122" height="520" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="96" width="1122" height="44" rx="6" fill="#EEEEEE"/>
+  <rect x="260" y="120" width="1122" height="20" fill="#EEEEEE"/>
+  <rect x="274" y="108" width="16" height="16" rx="2" fill="#DDDDDD"/>
+  <text x="298" y="122" font-size="12" font-weight="bold" fill="#666666">Pesanan Masuk</text>
+  <!-- Table header -->
+  <rect x="274" y="152" width="1094" height="30" rx="4" fill="#E5E5E5"/>
+  <text x="288" y="171" font-size="9" font-weight="bold" fill="#888888">ID</text>
+  <text x="360" y="171" font-size="9" font-weight="bold" fill="#888888">MEJA</text>
+  <text x="450" y="171" font-size="9" font-weight="bold" fill="#888888">PELANGGAN</text>
+  <text x="660" y="171" font-size="9" font-weight="bold" fill="#888888">TOTAL</text>
+  <text x="810" y="171" font-size="9" font-weight="bold" fill="#888888">STATUS PESANAN</text>
+  <text x="1000" y="171" font-size="9" font-weight="bold" fill="#888888">STATUS PEMBAYARAN</text>
+  <text x="1230" y="171" font-size="9" font-weight="bold" fill="#888888">AKSI</text>
+  <!-- Row 1 -->
+  <rect x="288" y="194" width="40" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="360" y="194" width="20" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="450" y="194" width="120" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="660" y="194" width="80" height="8" rx="2" fill="#E0E0E0"/>
+  <rect x="810" y="190" width="80" height="16" rx="8" fill="#EEEEEE"/>
+  <rect x="1000" y="190" width="80" height="16" rx="8" fill="#EEEEEE"/>
+  <rect x="1220" y="188" width="48" height="18" rx="4" fill="#EEEEEE"/>
+  <text x="1244" y="201" text-anchor="middle" font-size="9" fill="#AAAAAA">Lihat</text>
+  <rect x="1276" y="188" width="48" height="18" rx="4" fill="#EEEEEE"/>
+  <text x="1300" y="201" text-anchor="middle" font-size="9" fill="#AAAAAA">Hapus</text>
+  <rect x="274" y="218" width="1094" height="1" fill="#F0F0F0"/>
+  <!-- Empty state -->
+  <text x="840" y="380" text-anchor="middle" font-size="13" fill="#CCCCCC">Pesanan lainnya tampil di sini</text>
+  <!-- Footer -->
+  <rect x="240" y="848" width="1200" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="840" y="862" text-anchor="middle" font-size="10" font-weight="bold" fill="#666666">Copyright 2025 Little Palembang. All rights reserved.</text>
+  <text x="840" y="876" text-anchor="middle" font-size="9" fill="#AAAAAA">Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.</text>
+</svg>

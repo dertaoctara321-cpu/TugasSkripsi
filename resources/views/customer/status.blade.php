@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 
-@section('title', 'Status Pesanan - Sate Ordering')
+@section('title', 'Status Pesanan - Little Palembang')
 
 @push('css')
 <style>
@@ -476,7 +476,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5 class="card-title mb-0">
-                        <i class="fas fa-receipt no-print" style="color: var(--sate-orange);"></i> Detail Pesanan
+                        <i class="fas fa-receipt no-print" style="color: var(--cafe-orange);"></i> Detail Pesanan
                     </h5>
                     <button onclick="printReceipt()" class="btn btn-sm btn-primary no-print" style="border-radius: 10px;">
                         <i class="fas fa-print"></i> Cetak Struk
@@ -486,6 +486,7 @@
                 <div class="row mb-3">
                     <div class="col-6">
                         <p class="mb-1"><strong>Meja:</strong> {{ $order->table->table_number }}</p>
+                        <p class="mb-1"><strong>Lantai:</strong> {{ $order->floor ?? '-' }}</p>
                         <p class="mb-1"><strong>Nama:</strong> {{ $order->customer_name ?? 'Tamu' }}</p>
                         <p class="mb-1"><strong>Tanggal:</strong> {{ $order->created_at->format('d/m/Y H:i') }}</p>
                     </div>

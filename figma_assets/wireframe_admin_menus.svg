@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" font-family="Arial, sans-serif">
+  <rect width="1440" height="900" fill="#F0F0F0"/>
+  <rect x="0" y="0" width="240" height="900" fill="#444444"/>
+  <rect x="20" y="14" width="30" height="30" rx="15" fill="#666666"/>
+  <rect x="58" y="18" width="120" height="9" rx="2" fill="#666666"/>
+  <rect x="58" y="32" width="80" height="7" rx="2" fill="#555555"/>
+  <rect x="18" y="82" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="95" font-size="11" fill="#888888">Dashboard</text>
+  <rect x="0" y="112" width="4" height="40" fill="#AAAAAA"/>
+  <rect x="0" y="112" width="240" height="40" fill="rgba(255,255,255,0.08)"/>
+  <rect x="18" y="122" width="16" height="16" rx="2" fill="#888888"/>
+  <text x="42" y="135" font-size="11" fill="#CCCCCC">Menu</text>
+  <rect x="18" y="162" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="175" font-size="11" fill="#888888">Meja &amp; QR</text>
+  <rect x="18" y="202" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="215" font-size="11" fill="#888888">Metode Pembayaran</text>
+  <rect x="18" y="242" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="255" font-size="11" fill="#888888">Pesanan</text>
+  <rect x="18" y="282" width="16" height="16" rx="2" fill="#555555"/>
+  <text x="42" y="295" font-size="11" fill="#888888">Laporan</text>
+  <rect x="10" y="820" width="220" height="30" rx="4" fill="#555555"/>
+  <text x="120" y="840" text-anchor="middle" font-size="11" fill="#999999">Dark Mode</text>
+  <rect x="10" y="856" width="220" height="28" rx="4" fill="#666666"/>
+  <text x="120" y="874" text-anchor="middle" font-size="11" fill="#999999">Logout</text>
+  <!-- Topbar (no title) -->
+  <rect x="240" y="0" width="1200" height="52" fill="#CCCCCC"/>
+  <rect x="257" y="17" width="18" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="26" width="14" height="5" rx="1" fill="#999999"/>
+  <rect x="257" y="35" width="16" height="5" rx="1" fill="#999999"/>
+  <rect x="1330" y="18" width="80" height="16" rx="3" fill="#BBBBBB"/>
+  <!-- content-header: title in content area -->
+  <text x="260" y="82" font-size="20" font-weight="bold" fill="#555555">Menu</text>
+  <!-- Action buttons -->
+  <rect x="1020" y="64" width="110" height="28" rx="4" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1075" y="82" text-anchor="middle" font-size="9" fill="#888888">Import dari PDF</text>
+  <rect x="1140" y="64" width="120" height="28" rx="4" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1200" y="82" text-anchor="middle" font-size="9" fill="#888888">+ Tambah Menu Baru</text>
+  <rect x="1270" y="64" width="120" height="28" rx="4" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1330" y="82" text-anchor="middle" font-size="9" fill="#888888">Bulk Upload Gambar</text>
+  <!-- Filter dropdowns -->
+  <rect x="260" y="100" width="180" height="32" rx="4" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="340" y="121" text-anchor="middle" font-size="11" fill="#AAAAAA">Semua Kategori</text>
+  <text x="432" y="121" text-anchor="end" font-size="10" fill="#AAAAAA">v</text>
+  <rect x="452" y="100" width="180" height="32" rx="4" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="532" y="121" text-anchor="middle" font-size="11" fill="#AAAAAA">Semua Sub Kategori</text>
+  <text x="624" y="121" text-anchor="end" font-size="10" fill="#AAAAAA">v</text>
+  <!-- Menu card 1 -->
+  <rect x="260" y="148" width="360" height="310" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="260" y="148" width="360" height="170" rx="6" fill="#EEEEEE"/>
+  <rect x="260" y="270" width="360" height="48" fill="#EEEEEE"/>
+  <rect x="590" y="154" width="24" height="24" rx="4" fill="#DDDDDD"/>
+  <text x="440" y="245" text-anchor="middle" font-size="28" fill="#CCCCCC">[ img ]</text>
+  <rect x="274" y="328" width="56" height="14" rx="3" fill="#EEEEEE"/>
+  <rect x="338" y="328" width="40" height="14" rx="3" fill="#EEEEEE"/>
+  <rect x="274" y="350" width="140" height="10" rx="2" fill="#DDDDDD"/>
+  <rect x="274" y="368" width="80" height="10" rx="2" fill="#EEEEEE"/>
+  <rect x="274" y="390" width="140" height="28" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="344" y="408" text-anchor="middle" font-size="10" fill="#AAAAAA">Edit</text>
+  <rect x="426" y="390" width="140" height="28" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="496" y="408" text-anchor="middle" font-size="10" fill="#AAAAAA">Hapus</text>
+  <!-- Menu card 2 -->
+  <rect x="636" y="148" width="360" height="310" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="636" y="148" width="360" height="170" rx="6" fill="#EEEEEE"/>
+  <rect x="636" y="270" width="360" height="48" fill="#EEEEEE"/>
+  <rect x="866" y="154" width="24" height="24" rx="4" fill="#DDDDDD"/>
+  <text x="816" y="245" text-anchor="middle" font-size="28" fill="#CCCCCC">[ img ]</text>
+  <rect x="650" y="328" width="56" height="14" rx="3" fill="#EEEEEE"/>
+  <rect x="714" y="328" width="40" height="14" rx="3" fill="#EEEEEE"/>
+  <rect x="650" y="350" width="140" height="10" rx="2" fill="#DDDDDD"/>
+  <rect x="650" y="368" width="80" height="10" rx="2" fill="#EEEEEE"/>
+  <rect x="650" y="390" width="140" height="28" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="720" y="408" text-anchor="middle" font-size="10" fill="#AAAAAA">Edit</text>
+  <rect x="802" y="390" width="140" height="28" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="872" y="408" text-anchor="middle" font-size="10" fill="#AAAAAA">Hapus</text>
+  <!-- Menu card 3 -->
+  <rect x="1012" y="148" width="360" height="310" rx="6" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="1"/>
+  <rect x="1012" y="148" width="360" height="170" rx="6" fill="#EEEEEE"/>
+  <rect x="1012" y="270" width="360" height="48" fill="#EEEEEE"/>
+  <rect x="1242" y="154" width="24" height="24" rx="4" fill="#DDDDDD"/>
+  <text x="1192" y="245" text-anchor="middle" font-size="28" fill="#CCCCCC">[ img ]</text>
+  <rect x="1026" y="328" width="56" height="14" rx="3" fill="#EEEEEE"/>
+  <rect x="1090" y="328" width="40" height="14" rx="3" fill="#EEEEEE"/>
+  <rect x="1026" y="350" width="140" height="10" rx="2" fill="#DDDDDD"/>
+  <rect x="1026" y="368" width="80" height="10" rx="2" fill="#EEEEEE"/>
+  <rect x="1026" y="390" width="140" height="28" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1096" y="408" text-anchor="middle" font-size="10" fill="#AAAAAA">Edit</text>
+  <rect x="1178" y="390" width="140" height="28" rx="4" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="1248" y="408" text-anchor="middle" font-size="10" fill="#AAAAAA">Hapus</text>
+  <!-- Footer -->
+  <rect x="240" y="848" width="1200" height="36" fill="#F8F8F8" stroke="#EEEEEE" stroke-width="1"/>
+  <text x="840" y="862" text-anchor="middle" font-size="10" font-weight="bold" fill="#666666">Copyright 2025 Little Palembang. All rights reserved.</text>
+  <text x="840" y="876" text-anchor="middle" font-size="9" fill="#AAAAAA">Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan.</text>
+</svg>

@@ -112,6 +112,30 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label class="form-label"><i class="fas fa-tag"></i> Sub Kategori <small class="text-muted">(opsional)</small></label>
+                        <input type="text" name="sub_category" class="form-control"
+                               value="{{ $menu->sub_category }}"
+                               placeholder="Cth: Menu Sarapan, Main Course, dll"
+                               list="subcat-list">
+                        <datalist id="subcat-list">
+                            <option value="Menu Pakam">
+                            <option value="Menu Sarapan">
+                            <option value="Main Course">
+                            <option value="Nasi Goreng">
+                            <option value="Pasta & Mie">
+                            <option value="Palembang Nian">
+                            <option value="Snack">
+                            <option value="Western & Fusion">
+                            <option value="Little Coconut">
+                            <option value="Coffee & Minuman">
+                        </datalist>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label class="form-label"><i class="fas fa-check-circle"></i> Ketersediaan</label>
                         <select name="is_available" class="form-control form-select" required>
                             <option value="1" {{ $menu->is_available ? 'selected' : '' }}>Tersedia</option>
