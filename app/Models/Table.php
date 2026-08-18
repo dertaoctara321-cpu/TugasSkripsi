@@ -10,6 +10,6 @@ class Table extends Model
     use HasFactory;
 
     protected $fillable = [
-        'table_number', 'uuid', 'qr_code_path', 'location_lat', 'location_lng', 'location_radius'
+        'table_number', 'uuid', 'qr_code_path', 'status'
     ];
 }

@@ -5,7 +5,8 @@
         "category": "Camilan",
         "sub_category": "Snack",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_choco_lava.jpg"
     },
     {
         "name": "Classic Donut",
@@ -13,7 +14,8 @@
         "category": "Camilan",
         "sub_category": "Snack",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_classic_donut.jpg"
     },
     {
         "name": "Pao Coklat",
@@ -21,7 +23,8 @@
         "category": "Camilan",
         "sub_category": "Snack",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_pao_coklat.jpg"
     },
     {
         "name": "Roti Goreng Udang Ebi",
@@ -29,7 +32,8 @@
         "category": "Camilan",
         "sub_category": "Snack",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_roti_udangebi.jpg"
     },
     {
         "name": "Spicy Chicken Wings",
@@ -37,7 +41,8 @@
         "category": "Camilan",
         "sub_category": "Snack",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_chicken_wings.jpg"
     },
     {
         "name": "Tempe Mendoan",
@@ -45,7 +50,8 @@
         "category": "Camilan",
         "sub_category": "Snack",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_tempe_mendoan.jpg"
     },
     {
         "name": "Test Menu",
@@ -53,7 +59,8 @@
         "category": "Makanan",
         "sub_category": null,
         "description": null,
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_test_menu.jpg"
     },
     {
         "name": "Dimsum Ayam",
@@ -61,7 +68,8 @@
         "category": "Makanan",
         "sub_category": "Appetizer",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_dimsum_ayam.jpg"
     },
     {
         "name": "Dimsum Keju",
@@ -69,7 +77,8 @@
         "category": "Makanan",
         "sub_category": "Appetizer",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_dimsum_keju.jpg"
     },
     {
         "name": "Dimsum Mozarella",
@@ -77,7 +86,8 @@
         "category": "Makanan",
         "sub_category": "Appetizer",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_dimsum_mozarella.jpg"
     },
     {
         "name": "Sup Krim Ayam Jagung",
@@ -85,7 +95,8 @@
         "category": "Makanan",
         "sub_category": "Appetizer",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_sup_krim.jpg"
     },
     {
         "name": "Telur Ayam Kampung",
@@ -93,7 +104,8 @@
         "category": "Makanan",
         "sub_category": "Appetizer",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_telur_kampung.jpg"
     },
     {
         "name": "Iga Cabe Ijo",
@@ -101,7 +113,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_iga_cabeijo.jpg"
     },
     {
         "name": "Ikan Nila Goreng Sambal Matah",
@@ -109,7 +122,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nila_goreng.jpg"
     },
     {
         "name": "Nasi Ayam Jodoh",
@@ -117,7 +131,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ayam_jodoh.jpg"
     },
     {
         "name": "Nasi Ayam Kungpao",
@@ -125,7 +140,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ayam_kungpao.jpg"
     },
     {
         "name": "Nasi Ayam Little Palembang",
@@ -133,7 +149,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ayam_littlepalembang.jpg"
     },
     {
         "name": "Nasi Ayam Telur Asin",
@@ -141,7 +158,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ayam_telurasin.jpg"
     },
     {
         "name": "Nasi Tongseng Daging Sapi",
@@ -149,7 +167,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_tongseng_sapi.jpg"
     },
     {
         "name": "Pindang Tulang",
@@ -157,7 +176,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_pindang_tulang.jpg"
     },
     {
         "name": "Udang Singgah Asam Manis Pedas",
@@ -165,7 +185,8 @@
         "category": "Makanan",
         "sub_category": "Main Course",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_udang_singgah.jpg"
     },
     {
         "name": "Bakso PAKAM",
@@ -173,7 +194,8 @@
         "category": "Makanan",
         "sub_category": "Menu Pakam",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_bakso_pakam.jpg"
     },
     {
         "name": "Indomie PAKAM",
@@ -181,7 +203,8 @@
         "category": "Makanan",
         "sub_category": "Menu Pakam",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_indomie_pakam.jpg"
     },
     {
         "name": "Nasi PAKAM",
@@ -189,7 +212,8 @@
         "category": "Makanan",
         "sub_category": "Menu Pakam",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasi_pakam.jpg"
     },
     {
         "name": "Bubur Ayam",
@@ -197,7 +221,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_bubur_ayam.jpg"
     },
     {
         "name": "Mie Yamin Bandung",
@@ -205,7 +230,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mie_yamin.jpg"
     },
     {
         "name": "Nasi Uduk Jakarta",
@@ -213,7 +239,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasi_uduk.jpg"
     },
     {
         "name": "Pisang Goreng",
@@ -221,7 +248,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_pisang_goreng.jpg"
     },
     {
         "name": "Sate Marangi",
@@ -229,7 +257,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_sate_marangi.jpg"
     },
     {
         "name": "Steak Bakso Little Palembang",
@@ -237,7 +266,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_steak_bakso.jpg"
     },
     {
         "name": "Steak Chicken Katsu",
@@ -245,7 +275,8 @@
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_chicken_katsu.jpg"
     },
     {
         "name": "Nasi Goreng Aceh",
@@ -253,7 +284,8 @@
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasgor_aceh.jpg"
     },
     {
         "name": "Nasi Goreng Cabe Ijo",
@@ -261,7 +293,8 @@
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasgor_cabeijo.jpg"
     },
     {
         "name": "Nasi Goreng Little Palembang",
@@ -269,7 +302,8 @@
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasgor_littlepalembang.jpg"
     },
     {
         "name": "Nasi Goreng Nanas",
@@ -277,7 +311,8 @@
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasgor_nanas.jpg"
     },
     {
         "name": "Nasi Goreng Pakam",
@@ -285,7 +320,8 @@
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasgor_pakam.jpg"
     },
     {
         "name": "Nasi Goreng Tek-Tek",
@@ -293,7 +329,8 @@
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_nasgor_tektek.jpg"
     },
     {
         "name": "Model",
@@ -301,7 +338,8 @@
         "category": "Makanan",
         "sub_category": "Palembang",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_model.jpg"
     },
     {
         "name": "Pempek Kapal Selam",
@@ -309,7 +347,8 @@
         "category": "Makanan",
         "sub_category": "Palembang",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_pempek_kapalselam.jpg"
     },
     {
         "name": "Pempek Kecil (10 buah)",
@@ -317,7 +356,8 @@
         "category": "Makanan",
         "sub_category": "Palembang",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_pempek_kecil.jpg"
     },
     {
         "name": "Tekwan",
@@ -325,7 +365,8 @@
         "category": "Makanan",
         "sub_category": "Palembang",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_tekwan.jpg"
     },
     {
         "name": "Mie Bangladesh",
@@ -333,7 +374,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mie_bangladesh.jpg"
     },
     {
         "name": "Mie Goreng Cornet",
@@ -341,7 +383,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mie_cornet.jpg"
     },
     {
         "name": "Mie Jodoh",
@@ -349,7 +392,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mie_jodoh.jpg"
     },
     {
         "name": "Mie Kangkung",
@@ -357,7 +401,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mie_kangkung.jpg"
     },
     {
         "name": "Mie Nyemek Bon Cabe",
@@ -365,7 +410,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mie_nyemek.jpg"
     },
     {
         "name": "Spaghetti Creamy Pasta",
@@ -373,7 +419,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_spaghetti_creamy.jpg"
     },
     {
         "name": "Spaghetti Meatballs",
@@ -381,7 +428,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_spaghetti_meatballs.jpg"
     },
     {
         "name": "Spaghetti Sambal Matah",
@@ -389,7 +437,8 @@
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_spaghetti_matah.jpg"
     },
     {
         "name": "French Toast Biscoff",
@@ -397,7 +446,8 @@
         "category": "Makanan",
         "sub_category": "Toast",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_toast_biscoff.jpg"
     },
     {
         "name": "French Toast Classic",
@@ -405,7 +455,8 @@
         "category": "Makanan",
         "sub_category": "Toast",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_toast_classic.jpg"
     },
     {
         "name": "Bakmi Ayam Teriyaki",
@@ -413,7 +464,8 @@
         "category": "Makanan",
         "sub_category": "Western & Steak",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_bakmi_teriyaki.jpg"
     },
     {
         "name": "Martabak HAR Telor Ayam",
@@ -421,7 +473,8 @@
         "category": "Makanan",
         "sub_category": "Western & Steak",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_martabak_ayam.jpg"
     },
     {
         "name": "Martabak HAR Telor Bebek",
@@ -429,7 +482,8 @@
         "category": "Makanan",
         "sub_category": "Western & Steak",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_martabak_bebek.jpg"
     },
     {
         "name": "Sirloin Steak",
@@ -437,7 +491,8 @@
         "category": "Makanan",
         "sub_category": "Western & Steak",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_sirloin_steak.jpg"
     },
     {
         "name": "Americano",
@@ -445,7 +500,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_americano.jpg"
     },
     {
         "name": "Avocado Coffee",
@@ -453,7 +509,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_avocado_coffee.jpg"
     },
     {
         "name": "Blue Lemonade Coffee",
@@ -461,7 +518,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_blue_lemonade_coffee.jpg"
     },
     {
         "name": "Cappuccino",
@@ -469,7 +527,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_cappuccino.jpg"
     },
     {
         "name": "Cappuccino Panas",
@@ -477,7 +536,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_cappuccino_hot.jpg"
     },
     {
         "name": "Caramel Coffee",
@@ -485,7 +545,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_caramel_coffee.jpg"
     },
     {
         "name": "Caramel Latte",
@@ -493,7 +554,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_caramel_latte.jpg"
     },
     {
         "name": "Charcoal Latte",
@@ -501,7 +563,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_charcoal_latte.jpg"
     },
     {
         "name": "Chocolate Coffee",
@@ -509,7 +572,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_choco_coffee.jpg"
     },
     {
         "name": "Chocolate Frappe",
@@ -517,7 +581,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_choco_frappe.jpg"
     },
     {
         "name": "Chocolate Panas",
@@ -525,7 +590,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_choco_hot.jpg"
     },
     {
         "name": "Hazelnut Coffee",
@@ -533,7 +599,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_hazelnut_coffee.jpg"
     },
     {
         "name": "Klepon Coffee",
@@ -541,7 +608,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_klepon_coffee.jpg"
     },
     {
         "name": "Kopi Americano Panas",
@@ -549,7 +617,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_americano_hot.jpg"
     },
     {
         "name": "Kopi Bahagia",
@@ -557,7 +626,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_kopi_bahagia.jpg"
     },
     {
         "name": "Kopi Susu",
@@ -565,7 +635,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_kopi_susu.jpg"
     },
     {
         "name": "Kopi Susu Gula Aren",
@@ -573,7 +644,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_kopi_gulaaren.jpg"
     },
     {
         "name": "Kopi Tubruk",
@@ -581,7 +653,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_kopi_tubruk.jpg"
     },
     {
         "name": "Matcha Green Frappe",
@@ -589,7 +662,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_matcha_frappe.jpg"
     },
     {
         "name": "Moccachino",
@@ -597,7 +671,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_moccachino.jpg"
     },
     {
         "name": "Peppermint Coffee",
@@ -605,7 +680,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_peppermint_coffee.jpg"
     },
     {
         "name": "Red Velvet Latte",
@@ -613,7 +689,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_redvelvet_latte.jpg"
     },
     {
         "name": "Vanilla Frappe",
@@ -621,7 +698,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_vanilla_frappe.jpg"
     },
     {
         "name": "Vanilla Latte",
@@ -629,7 +707,8 @@
         "category": "Minuman",
         "sub_category": "Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_vanilla_latte.jpg"
     },
     {
         "name": "Air Mineral",
@@ -637,7 +716,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_air_mineral.jpg"
     },
     {
         "name": "Air Mineral Panas",
@@ -645,7 +725,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_air_mineral_panas.jpg"
     },
     {
         "name": "Es Jeruk",
@@ -653,7 +734,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_es_jeruk.jpg"
     },
     {
         "name": "Es Teh Manis",
@@ -661,7 +743,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_es_teh.jpg"
     },
     {
         "name": "Ice Chocolate",
@@ -669,7 +752,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ice_chocolate.jpg"
     },
     {
         "name": "Ice Coffee Latte",
@@ -677,7 +761,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ice_coffeelatte.jpg"
     },
     {
         "name": "Ice Earl Grey Milk Tea",
@@ -685,7 +770,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_earlgrey_milktea.jpg"
     },
     {
         "name": "Ice Matcha Latte",
@@ -693,7 +779,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ice_matchalatte.jpg"
     },
     {
         "name": "Ice Thai Tea",
@@ -701,7 +788,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_ice_thaitea.jpg"
     },
     {
         "name": "Lemon Tea",
@@ -709,7 +797,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_lemon_tea.jpg"
     },
     {
         "name": "Mango Tea",
@@ -717,7 +806,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mango_tea.jpg"
     },
     {
         "name": "Pineapple Blue Curacao",
@@ -725,7 +815,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_pineapple_curacao.jpg"
     },
     {
         "name": "Strawberry Tea",
@@ -733,7 +824,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_strawberry_tea.jpg"
     },
     {
         "name": "Teh Manis Panas",
@@ -741,7 +833,8 @@
         "category": "Minuman",
         "sub_category": "Ice Non Coffee",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_teh_panas.jpg"
     },
     {
         "name": "Black Currant",
@@ -749,7 +842,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_black_currant.jpg"
     },
     {
         "name": "Chocolate Milk",
@@ -757,7 +851,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_chocolate_milk.jpg"
     },
     {
         "name": "Double Choko Shake",
@@ -765,7 +860,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_shake_choko.jpg"
     },
     {
         "name": "Klepon Shake",
@@ -773,7 +869,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_shake_klepon.jpg"
     },
     {
         "name": "Lemonade Original",
@@ -781,7 +878,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_lemonade_orig.jpg"
     },
     {
         "name": "Lemonade Strawberry",
@@ -789,7 +887,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_lemonade_straw.jpg"
     },
     {
         "name": "Lotus Biscoff Shake",
@@ -797,7 +896,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_shake_biscoff.jpg"
     },
     {
         "name": "Mixed Berry",
@@ -805,7 +905,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_mixed_berry.jpg"
     },
     {
         "name": "Oreo Shake",
@@ -813,7 +914,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_shake_oreo.jpg"
     },
     {
         "name": "Red Velvet Shake",
@@ -821,7 +923,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_shake_redvelvet.jpg"
     },
     {
         "name": "SHAKE Coconut Tropical",
@@ -829,7 +932,8 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_shake_tropical.jpg"
     },
     {
         "name": "Strawberry Milk",
@@ -837,6 +941,7 @@
         "category": "Minuman",
         "sub_category": "Little Coconut",
         "description": "",
-        "is_available": 1
+        "is_available": 1,
+        "image": "item_strawberry_milk.jpg"
     }
 ]

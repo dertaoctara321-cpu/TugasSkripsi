@@ -65,36 +65,10 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title"><i class="fas fa-utensils"></i> Daftar Menu</h3>
-        <div class="card-tools d-flex gap-2">
-            {{-- PDF Import: hidden form + button --}}
-            <form action="{{ route('menus.importPdfProcess') }}" method="POST" enctype="multipart/form-data" id="pdfImportForm">
-                @csrf
-                <input type="file" id="pdfFileInput" name="file" accept=".pdf" style="display:none;"
-                       onchange="this.form.submit()">
-                <button type="button"
-                        onclick="document.getElementById('pdfFileInput').click()"
-                        class="btn btn-success"
-                        id="importPdfBtn">
-                    <i class="fas fa-file-pdf"></i> Import dari PDF
-                </button>
-            </form>
-
+        <div class="card-tools">
             <a href="{{ route('menus.create') }}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Tambah Menu Baru
             </a>
-
-            {{-- Bulk Image Upload: hidden form + button --}}
-            <form action="{{ route('menus.bulkImageUpload') }}" method="POST" enctype="multipart/form-data" id="bulkImageForm">
-                @csrf
-                <input type="file" id="bulkImageInput" name="images[]" multiple accept="image/*" style="display:none;"
-                       onchange="this.form.submit()">
-                <button type="button" 
-                        onclick="document.getElementById('bulkImageInput').click()" 
-                        class="btn btn-warning" 
-                        title="Upload gambar (Nama file wajib ID menu. Misal: 25.jpg untuk menu ID 25)">
-                    <i class="fas fa-images"></i> Bulk Upload Gambar
-                </button>
-            </form>
         </div>
     </div>
     <div class="card-body">
@@ -131,9 +105,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-6 text-right">
-                <small class="text-muted d-block mt-2">Gunakan fitur <b>Bulk Upload Gambar</b> di atas. Ubah nama gambar PDF dengan angka ID Menu.</small>
-            </div>
+
         </div>
 
         <div class="row menu-grid" id="menuGrid">
@@ -232,22 +204,6 @@ function filterMenus() {
     });
 }
 
-// Show loading state when PDF is submitted (OCR can take 1–2 min)
-document.getElementById('pdfFileInput').addEventListener('change', function () {
-    if (!this.files.length) return;
-    const btn = document.getElementById('importPdfBtn');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses PDF...';
-    btn.disabled = true;
-});
 
-// Show loading state when Bulk Image is selected
-document.getElementById('bulkImageInput').addEventListener('change', function () {
-    if (!this.files.length) return;
-    const btn = document.querySelector('button[title*="Upload gambar"]');
-    if(btn) {
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
-        btn.disabled = true;
-    }
-});
 </script>
 @endpush

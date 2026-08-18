@@ -29,11 +29,11 @@ class PaymentMethodController extends Controller
             'instructions' => 'nullable|string',
         ]);
 
-        $data = $request->except('qr_code_image');
+        $data = $request->only(['name', 'type', 'account_number', 'account_name', 'instructions', 'is_active']);
 
         if ($request->hasFile('qr_code_image')) {
             $image = $request->file('qr_code_image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imageName = \Illuminate\Support\Str::random(20) . '.' . $image->extension();
             $image->move(public_path('images/payment'), $imageName);
             $data['qr_code_image'] = 'images/payment/' . $imageName;
         }
@@ -60,7 +60,7 @@ class PaymentMethodController extends Controller
             'instructions' => 'nullable|string',
         ]);
 
-        $data = $request->except('qr_code_image');
+        $data = $request->only(['name', 'type', 'account_number', 'account_name', 'instructions', 'is_active']);
 
         if ($request->hasFile('qr_code_image')) {
             // Delete old image
@@ -69,7 +69,7 @@ class PaymentMethodController extends Controller
             }
 
             $image = $request->file('qr_code_image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imageName = \Illuminate\Support\Str::random(20) . '.' . $image->extension();
             $image->move(public_path('images/payment'), $imageName);
             $data['qr_code_image'] = 'images/payment/' . $imageName;
         }

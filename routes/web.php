@@ -22,14 +22,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/reports', [App\Http\Controllers\AdminController::class, 'reports'])->name('admin.reports');
         
-        // PDF Import routes — MUST be before resource to avoid conflict with {menu} param
-        Route::post('menus/import-pdf/process', [App\Http\Controllers\MenuController::class, 'importPdfProcess'])->name('menus.importPdfProcess');
-        Route::get('menus/import-pdf/review', [App\Http\Controllers\MenuController::class, 'importPdfReview'])->name('menus.importPdfReview');
-        Route::post('menus/import-pdf/save', [App\Http\Controllers\MenuController::class, 'importPdfSave'])->name('menus.importPdfSave');
-        
-        // Bulk Image Upload Route
-        Route::post('menus/bulk-upload-images', [App\Http\Controllers\MenuController::class, 'bulkImageUpload'])->name('menus.bulkImageUpload');
-
         Route::resource('menus', App\Http\Controllers\MenuController::class);
         Route::resource('tables', App\Http\Controllers\TableController::class);
         Route::post('tables/{table}/clear', [App\Http\Controllers\TableController::class, 'clearTable'])->name('tables.clear');

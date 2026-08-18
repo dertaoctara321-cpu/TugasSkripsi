@@ -128,7 +128,7 @@
     <div class="card-body">
         <h4 class="card-title mb-4">🛒 Pesanan Anda</h4>
         
-        @if(session('cart'))
+        @if(!empty($cart))
             @php 
                 $activeOrder = null;
                 if ($table->status == 'occupied') {
@@ -155,7 +155,7 @@
                     </thead>
                     <tbody>
                         @php $total = 0 @endphp
-                        @foreach(session('cart') as $id => $details)
+                        @foreach($cart as $id => $details)
                             @php $total += $details['price'] * $details['quantity'] @endphp
                             <tr>
                                 <td>{{ $details['name'] }}</td>
@@ -210,13 +210,19 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Metode Pembayaran</label>
-                    <select name="payment_method" class="form-select" {{ $activeOrder ? 'disabled' : 'required' }}>
-                        <option value="Cash" {{ $activeOrder && $activeOrder->payment_method == 'Cash' ? 'selected' : '' }}>Cash (Bayar di Kasir)</option>
-                        <option value="Transfer" {{ $activeOrder && $activeOrder->payment_method == 'Transfer' ? 'selected' : '' }}>Transfer Bank / QRIS</option>
+                    <label class="form-label">Metode Pembayaran <span class="text-danger">*</span></label>
+                    <select name="payment_method_id" class="form-select" {{ $activeOrder ? 'disabled' : 'required' }}>
+                        @if($paymentMethods->count() > 0)
+                            @foreach($paymentMethods as $pm)
+                                <option value="{{ $pm->id }}" {{ $activeOrder && strtolower($activeOrder->payment_method) == strtolower($pm->name) ? 'selected' : '' }}>
+                                    {{ $pm->name }} {{ $pm->type ? '('.strtoupper(str_replace('_', ' ', $pm->type)).')' : '' }}
+                                </option>
+                            @endforeach
+                        @else
+                            <option value="">Cash (Bayar di Kasir)</option>
+                        @endif
                     </select>
                     @if($activeOrder)
-                    <input type="hidden" name="payment_method" value="{{ $activeOrder->payment_method }}">
                     <small class="text-muted">Metode pembayaran dari pesanan aktif</small>
                     @endif
                 </div>

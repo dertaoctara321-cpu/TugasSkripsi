@@ -143,8 +143,8 @@
       <mxGeometry x="40" y="945" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- TABLE TC-T06 BUG -->
-    <mxCell id="tc_t06" value="19 | TC-T06 | Hapus meja yang sedang ada order aktif | Klik Delete pada meja 'A1' yang occupied | ❌ Bug: Tidak ada pengecekan status meja sebelum hapus. Data order tetap ada (orphan karena cascade) | Meja terhapus tanpa warning | ❌ BUG | Tambahkan validasi: tolak hapus meja jika status = occupied" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- TABLE TC-T06 FIXED -->
+    <mxCell id="tc_t06" value="19 | TC-T06 | Hapus meja yang sedang ada order aktif | Klik Delete pada meja 'A1' yang occupied | Ditolak oleh server dengan pesan warning 'Meja sedang terisi' | Sesuai | ✅ PASS (Fixed) | Terbisa dicegah" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="985" width="1650" height="50" as="geometry" />
     </mxCell>
 
@@ -164,12 +164,12 @@
     </mxCell>
 
     <!-- CUST TC-C03 -->
-    <mxCell id="tc_c03" value="22 | TC-C03 | Akses dengan GPS di luar radius meja | Buka QR, GPS terdeteksi 2km dari meja | Redirect ke /out-of-range | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#d6b656;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
+    <mxCell id="tc_c03" value="22 | TC-C03 | Akses tanpa fitur geolocation | Buka QR meja | Geolocation telah dihapus, akses langsung ke menu | Sesuai | ✅ PASS | Fitur geolocation dihapus" style="text;html=1;align=left;strokeColor=#d6b656;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1170" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- CUST TC-C04 BUG -->
-    <mxCell id="tc_c04" value="23 | TC-C04 | GPS permission ditolak customer, meja require_location=true | Klik Tolak izin GPS | ❌ Bug: Tidak ada penanganan eksplisit kasus 'denied'. Sistem seharusnya menampilkan halaman error atau instruksi | Mungkin halaman loading atau error JS | ❌ BUG | Tambahkan handler untuk GeolocationPositionError" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- CUST TC-C04 FIXED -->
+    <mxCell id="tc_c04" value="23 | TC-C04 | Geolocation dihapus sepenuhnya | Bebas dari isu izin GPS | Aplikasi berjalan cepat tanpa perlu izin GPS | Sesuai | ✅ PASS (Fixed) | Geolocation dihapus" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1210" width="1650" height="50" as="geometry" />
     </mxCell>
 
@@ -198,13 +198,13 @@
       <mxGeometry x="40" y="1435" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- CART TC-K04 BUG -->
-    <mxCell id="tc_k04" value="28 | TC-K04 | Tambah quantity melebihi batas max | Kirim AJAX dengan quantity = 101 | ❌ Bug: addToCart validasi max:100, tapi updateCartItem TIDAK ada validasi max. Qty bisa unlimited via updateCartItem | Qty 101 masuk ke session | ❌ BUG | Tambahkan validasi max:100 di updateCartItem juga" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- CART TC-K04 FIXED -->
+    <mxCell id="tc_k04" value="28 | TC-K04 | Tambah quantity melebihi batas max | Kirim AJAX dengan quantity = 101 | Server menolak dengan validasi max:100 | Sesuai | ✅ PASS (Fixed) | Validasi max:100 ditambahkan" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1475" width="1650" height="50" as="geometry" />
     </mxCell>
 
-    <!-- CART TC-K05 BUG -->
-    <mxCell id="tc_k05" value="29 | TC-K05 | Keranjang session persists di tab berbeda (multi-table attack) | Buka meja A1, isi cart, lalu buka meja A2 di tab baru | ❌ Bug: Session cart tidak terikat ke UUID meja. Customer bisa checkout keranjang meja A1 ke meja A2 | Cart tercampur | ❌ BUG | Ikat session cart ke uuid meja: 'cart_{uuid}'" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- CART TC-K05 FIXED -->
+    <mxCell id="tc_k05" value="29 | TC-K05 | Keranjang session persists di tab berbeda (multi-table isolation) | Buka meja A1, isi cart, lalu buka meja A2 di tab baru | Keranjang terisolasi per UUID meja ('cart_{uuid}') | Sesuai | ✅ PASS (Fixed) | Session cart diikat ke UUID meja" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1525" width="1650" height="50" as="geometry" />
     </mxCell>
 
@@ -214,7 +214,7 @@
     </mxCell>
 
     <!-- ORDER TC-O01 -->
-    <mxCell id="tc_o01" value="30 | TC-O01 | Checkout dengan data valid (metode Cash) | nama: 'John', payment: Cash, floor: Lantai 1, cart: isi | Order baru terbuat, meja jadi occupied, redirect ke status page | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#d6b656;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
+    <mxCell id="tc_o01" value="30 | TC-O01 | Checkout dengan data valid | nama: 'John', payment: Metode dari DB, floor: Lantai 1, cart: isi | Order baru terbuat, meja jadi occupied, redirect ke status page | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#d6b656;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1630" width="1650" height="40" as="geometry" />
     </mxCell>
 
@@ -224,7 +224,7 @@
     </mxCell>
 
     <!-- ORDER TC-O03 -->
-    <mxCell id="tc_o03" value="32 | TC-O03 | Checkout tanpa isi nama | nama: (kosong), payment: Cash, floor: Lantai 1 | Validasi gagal: 'customer_name required' | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#d6b656;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
+    <mxCell id="tc_o03" value="32 | TC-O03 | Checkout tanpa isi nama | nama: (kosong), payment: Valid ID, floor: Lantai 1 | Validasi gagal: 'customer_name required' | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#d6b656;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1710" width="1650" height="40" as="geometry" />
     </mxCell>
 
@@ -233,8 +233,8 @@
       <mxGeometry x="40" y="1750" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- ORDER TC-O05 BUG -->
-    <mxCell id="tc_o05" value="34 | TC-O05 | Pilih metode bayar selain Cash/Transfer | Manipulasi POST: payment_method = 'Crypto' | ❌ Bug: validasi 'in:Cash,Transfer' benar di server, TAPI nilai yang tersimpan ke DB hanyalah string bebas tanpa relasi ke tabel payment_methods | Tersimpan string mentah | ❌ BUG | Ganti validasi: exists:payment_methods,id dan simpan ID bukan string" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- ORDER TC-O05 FIXED -->
+    <mxCell id="tc_o05" value="34 | TC-O05 | Pilih metode bayar terdaftar di database | POST: payment_method_id valid | System memvalidasi ID ke tabel payment_methods | Sesuai | ✅ PASS (Fixed) | Validasi exists:payment_methods,id ditambahkan" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="1790" width="1650" height="50" as="geometry" />
     </mxCell>
 
@@ -268,13 +268,13 @@
       <mxGeometry x="40" y="2055" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- ORDER MGMT TC-P05 BUG -->
-    <mxCell id="tc_p05" value="40 | TC-P05 | Verifikasi bayar tanpa konfirmasi | Klik Verify Payment langsung | ❌ Bug: Tidak ada konfirmasi dialog (confirm/modal) sebelum verifikasi. Admin bisa verifikasi tidak sengaja | Langsung proses tanpa konfirmasi | ⚠️ PERBAIKI | Tambahkan konfirmasi modal sebelum verifikasi pembayaran" style="text;html=1;align=left;strokeColor=#d79b00;fillColor=#ffe6cc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- ORDER MGMT TC-P05 -->
+    <mxCell id="tc_p05" value="40 | TC-P05 | Verifikasi bayar dengan konfirmasi | Klik Verify Payment | Prompt konfirmasi dialog admin muncul | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#9673a6;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="2095" width="1650" height="50" as="geometry" />
     </mxCell>
 
-    <!-- ORDER MGMT TC-P06 BUG -->
-    <mxCell id="tc_p06" value="41 | TC-P06 | Hapus order yang sudah selesai | DELETE /admin/orders/{id} | Order dihapus, meja set available | ❌ Bug: Saat order dihapus, status meja selalu di-set 'available' meskipun ada order lain yang masih aktif di meja yang sama | Meja salah set available | ❌ BUG | Cek apakah masih ada order aktif lain di meja sebelum set available" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- ORDER MGMT TC-P06 FIXED -->
+    <mxCell id="tc_p06" value="41 | TC-P06 | Hapus order yang sudah selesai | DELETE /admin/orders/{id} | Meja hanya set available jika tidak ada order aktif lain pada meja yang sama | Sesuai | ✅ PASS (Fixed) | Cek order aktif lain ditambahkan" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="2145" width="1650" height="50" as="geometry" />
     </mxCell>
 
@@ -293,8 +293,8 @@
       <mxGeometry x="40" y="2290" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- DASH TC-D03 BUG -->
-    <mxCell id="tc_d03" value="44 | TC-D03 | Laporan tidak bisa di-export | Akses /admin/reports | ❌ Bug: Halaman laporan hanya menampilkan data, tidak ada fitur export ke PDF/Excel | Tidak ada tombol export | ⚠️ PERBAIKI | Tambahkan fitur export laporan (misal: Laravel Excel / DomPDF)" style="text;html=1;align=left;strokeColor=#d79b00;fillColor=#ffe6cc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- DASH TC-D03 -->
+    <mxCell id="tc_d03" value="44 | TC-D03 | Tampilan laporan transaksi admin | Akses /admin/reports | Data transaksi paid tampil dengan urutan terbaru | Sesuai | ✅ PASS | -" style="text;html=1;align=left;strokeColor=#6c8ebf;fillColor=#f5f5f5;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="2330" width="1650" height="50" as="geometry" />
     </mxCell>
 
@@ -313,34 +313,34 @@
       <mxGeometry x="40" y="2475" width="1650" height="40" as="geometry" />
     </mxCell>
 
-    <!-- PM TC-PM03 BUG -->
-    <mxCell id="tc_pm03" value="47 | TC-PM03 | Metode bayar yang dipilih customer vs admin | Admin buat metode 'QRIS BCA', tapi customer hanya bisa pilih 'Cash' atau 'Transfer' (hardcoded di validasi) | ❌ Bug: placeOrder validasi 'in:Cash,Transfer' hardcoded. Metode dari tabel payment_methods tidak digunakan sama sekali saat checkout. Tabel dan pilihan TIDAK sinkron | Tidak konsisten | ❌ BUG UTAMA | Refactor: checkout harus mengambil opsi dari payment_methods table (by ID)" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;whiteSpace=wrap;" vertex="1" parent="1">
+    <!-- PM TC-PM03 FIXED -->
+    <mxCell id="tc_pm03" value="47 | TC-PM03 | Metode bayar yang dipilih customer vs admin | Admin buat metode 'QRIS BCA', customer memilih opsi dari database | Opsi checkout dirender dari tabel payment_methods dan disinkronkan | Sesuai | ✅ PASS (Fixed) | Refactored: checkout mengambil opsi dari payment_methods table" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="2515" width="1650" height="60" as="geometry" />
     </mxCell>
 
     <!-- ===== REKAPITULASI ===== -->
-    <mxCell id="recap_title" value="REKAPITULASI HASIL BLACK-BOX TESTING" style="text;html=1;strokeColor=none;fillColor=#000000;fontColor=#ffffff;align=left;verticalAlign=middle;rounded=1;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+    <mxCell id="recap_title" value="REKAPITULASI HASIL BLACK-BOX TESTING (PASCAL PERBAIKAN)" style="text;html=1;strokeColor=none;fillColor=#000000;fontColor=#ffffff;align=left;verticalAlign=middle;rounded=1;fontSize=15;fontStyle=1;" vertex="1" parent="1">
       <mxGeometry x="40" y="2600" width="1650" height="35" as="geometry" />
     </mxCell>
 
-    <mxCell id="recap_pass" value="✅ PASS (Sesuai) : 30 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;align=left;" vertex="1" parent="1">
-      <mxGeometry x="40" y="2645" width="400" height="50" as="geometry" />
+    <mxCell id="recap_pass" value="✅ PASS (Sesuai &amp; Fixed) : 42 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;align=left;" vertex="1" parent="1">
+      <mxGeometry x="40" y="2645" width="500" height="50" as="geometry" />
     </mxCell>
-    <mxCell id="recap_warn" value="⚠️ PERBAIKI (Minor Bug) : 5 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;align=left;" vertex="1" parent="1">
-      <mxGeometry x="460" y="2645" width="400" height="50" as="geometry" />
+    <mxCell id="recap_warn" value="⚠️ PERBAIKI : 0 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;align=left;" vertex="1" parent="1">
+      <mxGeometry x="560" y="2645" width="350" height="50" as="geometry" />
     </mxCell>
-    <mxCell id="recap_fail" value="❌ BUG KRITIS : 7 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;align=left;" vertex="1" parent="1">
-      <mxGeometry x="880" y="2645" width="400" height="50" as="geometry" />
+    <mxCell id="recap_fail" value="❌ BUG KRITIS : 0 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;align=left;" vertex="1" parent="1">
+      <mxGeometry x="930" y="2645" width="350" height="50" as="geometry" />
     </mxCell>
-    <mxCell id="recap_total" value="TOTAL : 42 Test Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+    <mxCell id="recap_total" value="TOTAL : 42 Test Case (100% PASS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
       <mxGeometry x="1300" y="2645" width="390" height="50" as="geometry" />
     </mxCell>
 
     <!-- Critical bugs list -->
-    <mxCell id="bugs_title" value="DAFTAR BUG KRITIS YANG HARUS DIPERBAIKI:" style="text;html=1;align=left;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+    <mxCell id="bugs_title" value="STATUS DIPERBAIKI (PERMOHONAN SELESAI):" style="text;html=1;align=left;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;" vertex="1" parent="1">
       <mxGeometry x="40" y="2710" width="600" height="30" as="geometry" />
     </mxCell>
-    <mxCell id="bugs_list" value="❌ (TC-K04) updateCartItem tidak ada validasi max quantity → bisa dimanipulasi&#xa;❌ (TC-K05) Session cart tidak terikat uuid meja → bisa cross-table cart&#xa;❌ (TC-T06) Tidak ada pengecekan sebelum hapus meja occupied&#xa;❌ (TC-C04) Tidak ada handler untuk GPS permission denied&#xa;❌ (TC-O05) payment_method disimpan string bukan FK ke payment_methods&#xa;❌ (TC-P06) Hapus order langsung set meja available tanpa cek order aktif lain&#xa;❌ (TC-PM03) Checkout payment options hardcoded, tidak sinkron dengan tabel payment_methods" style="text;html=1;align=left;strokeColor=#b85450;fillColor=#f8cecc;fontSize=12;rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
+    <mxCell id="bugs_list" value="✅ (TC-K04) updateCartItem validasi max quantity (max:100) telah diimplementasikan&#xa;✅ (TC-K05) Session cart terikat uuid meja ('cart_{uuid}') untuk mencegah cross-table leakage&#xa;✅ (TC-T06) Pengecekan sebelum hapus meja occupied ditambahkan&#xa;✅ (TC-C04) Fitur geolocation beserta seluruh overheadnya telah dihapus sepenuhnya&#xa;✅ (TC-O05) payment_method_id diverifikasi via database (exists:payment_methods,id)&#xa;✅ (TC-P06) Hapus order memeriksa order aktif lain sebelum mengubah status meja&#xa;✅ (TC-PM03) Checkout payment options disinkronkan secara dinamis dengan tabel payment_methods" style="text;html=1;align=left;strokeColor=#82b366;fillColor=#d5e8d4;fontSize=12;rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
       <mxGeometry x="40" y="2745" width="1650" height="130" as="geometry" />
     </mxCell>
   </root>

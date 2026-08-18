@@ -47,11 +47,15 @@ class TableController extends Controller
 
     public function destroy(\App\Models\Table $table)
     {
-        // No need to delete QR file since we're using API URL
+        if ($table->status === 'occupied') {
+            return redirect()->route('tables.index')
+                            ->with('error', 'Gagal menghapus: Meja sedang terisi (occupied). Silakan kosongkan meja terlebih dahulu.');
+        }
+
         $table->delete();
 
         return redirect()->route('tables.index')
-                        ->with('success','Table deleted successfully');
+                        ->with('success', 'Table deleted successfully');
     }
 
     public function clearTable(\App\Models\Table $table)

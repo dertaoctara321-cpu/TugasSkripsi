@@ -30,10 +30,14 @@ class OrderController extends Controller
         if ($request->order_status === 'cancelled') {
             $order->update(['payment_status' => 'cancelled']);
             
-            // Clear the table
-            $order->table->update([
-                'status' => 'available'
-            ]);
+            $hasOtherActiveOrders = \App\Models\Order::where('table_id', $order->table_id)
+                ->where('id', '!=', $order->id)
+                ->whereIn('order_status', ['pending', 'cooking', 'served'])
+                ->exists();
+
+            if (!$hasOtherActiveOrders && $order->table) {
+                $order->table->update(['status' => 'available']);
+            }
         }
 
         return redirect()->back()->with('success', 'Status pesanan berhasil diupdate.');
@@ -47,13 +51,22 @@ class OrderController extends Controller
 
     public function destroy(\App\Models\Order $order)
     {
-        // Clear the table
-        $order->table->update([
-            'status' => 'available'
-        ]);
+        $table = $order->table;
+        $orderId = $order->id;
 
         // Delete order (will cascade delete order items)
         $order->delete();
+
+        // Clear table only if no other active orders exist
+        if ($table) {
+            $hasOtherActiveOrders = \App\Models\Order::where('table_id', $table->id)
+                ->whereIn('order_status', ['pending', 'cooking', 'served'])
+                ->exists();
+
+            if (!$hasOtherActiveOrders) {
+                $table->update(['status' => 'available']);
+            }
+        }
 
         return redirect()->route('orders.index')->with('success', 'Pesanan berhasil dihapus.');
     }

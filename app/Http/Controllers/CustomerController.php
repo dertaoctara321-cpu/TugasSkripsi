@@ -11,8 +11,9 @@ class CustomerController extends Controller
         $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
         $menus = \App\Models\Menu::where('is_available', true)->get();
         
-        // Check if cart exists in session
-        $cart = session()->get('cart', []);
+        // Check if cart exists in session for this table UUID
+        $cartKey = "cart_{$uuid}";
+        $cart = session()->get($cartKey, []);
         
         // Get active order for this table (only if table is occupied)
         $activeOrder = null;
@@ -29,13 +30,25 @@ class CustomerController extends Controller
     {
         $request->validate([
             'menu_id' => 'required|exists:menus,id',
-            'quantity' => 'required|integer|min:1|max:100', // Frontend should prevent 0
+            'quantity' => 'required|integer|min:1|max:100',
         ]);
 
         $menu = \App\Models\Menu::findOrFail($request->menu_id);
-        $cart = session()->get('cart', []);
+        $cartKey = "cart_{$uuid}";
+        $cart = session()->get($cartKey, []);
         
-        if(isset($cart[$request->menu_id])) {
+        $currentQty = isset($cart[$request->menu_id]) ? $cart[$request->menu_id]['quantity'] : 0;
+        if ($currentQty + $request->quantity > 100) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Jumlah maksimal untuk item ini adalah 100.'
+                ], 422);
+            }
+            return redirect()->back()->with('error', 'Jumlah maksimal untuk item ini adalah 100.');
+        }
+
+        if (isset($cart[$request->menu_id])) {
             $cart[$request->menu_id]['quantity'] += $request->quantity;
         } else {
             $cart[$request->menu_id] = [
@@ -46,10 +59,9 @@ class CustomerController extends Controller
             ];
         }
         
-        session()->put('cart', $cart);
+        session()->put($cartKey, $cart);
 
         if ($request->ajax() || $request->wantsJson()) {
-            // Include cart count or just success
             $totalItems = collect($cart)->sum('quantity');
             return response()->json([
                 'success' => true,
@@ -65,11 +77,12 @@ class CustomerController extends Controller
     {
         $request->validate([
             'menu_id' => 'required|exists:menus,id',
-            'quantity' => 'required|integer|min:0',
+            'quantity' => 'required|integer|min:0|max:100',
         ]);
 
         $menu = \App\Models\Menu::findOrFail($request->menu_id);
-        $cart = session()->get('cart', []);
+        $cartKey = "cart_{$uuid}";
+        $cart = session()->get($cartKey, []);
 
         if ($request->quantity > 0) {
             $cart[$request->menu_id] = [
@@ -79,13 +92,12 @@ class CustomerController extends Controller
                 "image" => $menu->image
             ];
         } else {
-            // Remove item from cart if qty is 0
             if (isset($cart[$request->menu_id])) {
                 unset($cart[$request->menu_id]);
             }
         }
 
-        session()->put('cart', $cart);
+        session()->put($cartKey, $cart);
 
         $totalItems = collect($cart)->sum('quantity');
         $totalPrice = collect($cart)->sum(function ($item) {
@@ -101,7 +113,8 @@ class CustomerController extends Controller
 
     public function clearCart(Request $request, $uuid)
     {
-        session()->forget('cart');
+        $cartKey = "cart_{$uuid}";
+        session()->forget($cartKey);
         return response()->json([
             'success' => true,
             'cart_count' => 0,
@@ -112,7 +125,8 @@ class CustomerController extends Controller
     public function checkout($uuid)
     {
         $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
-        $cart = session()->get('cart', []);
+        $cartKey = "cart_{$uuid}";
+        $cart = session()->get($cartKey, []);
         $paymentMethods = \App\Models\PaymentMethod::where('is_active', true)->get();
         
         return view('customer.checkout', compact('table', 'cart', 'paymentMethods'));
@@ -120,26 +134,14 @@ class CustomerController extends Controller
 
     public function placeOrder(Request $request, $uuid)
     {
-        $request->validate([
-            'customer_name' => 'required|string|max:255',
-            'payment_method' => 'required|in:Cash,Transfer',
-            'floor' => 'required|string|in:Lantai 1,Lantai 2'
-        ]);
-
         $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
-        $cart = session()->get('cart', []);
+        $cartKey = "cart_{$uuid}";
+        $cart = session()->get($cartKey, []);
         
-        if(empty($cart)) {
+        if (empty($cart)) {
             return redirect()->back()->with('error', 'Keranjang kosong');
         }
 
-        // Calculate new items total
-        $newItemsTotal = 0;
-        foreach($cart as $id => $details) {
-            $newItemsTotal += $details['price'] * $details['quantity'];
-        }
-
-        // Check if there's an existing active order for this table (only if table is occupied)
         $existingOrder = null;
         if ($table->status == 'occupied') {
             $existingOrder = \App\Models\Order::where('table_id', $table->id)
@@ -147,20 +149,39 @@ class CustomerController extends Controller
                 ->first();
         }
 
+        $request->validate([
+            'customer_name' => $existingOrder ? 'nullable|string|max:255' : 'required|string|max:255',
+            'payment_method_id' => $existingOrder ? 'nullable|exists:payment_methods,id' : 'required|exists:payment_methods,id',
+            'floor' => 'required|string|in:Lantai 1,Lantai 2'
+        ]);
+
+        $paymentMethodName = 'Cash';
+        if ($request->filled('payment_method_id')) {
+            $paymentMethod = \App\Models\PaymentMethod::where('id', $request->payment_method_id)
+                ->where('is_active', true)
+                ->firstOrFail();
+            $paymentMethodName = $paymentMethod->name;
+        } elseif ($existingOrder) {
+            $paymentMethodName = $existingOrder->payment_method;
+        }
+
+        // Calculate new items total
+        $newItemsTotal = 0;
+        foreach ($cart as $id => $details) {
+            $newItemsTotal += $details['price'] * $details['quantity'];
+        }
+
         if ($existingOrder) {
             // Add new items to existing order
-            foreach($cart as $id => $details) {
-                // Check if this menu item already exists in the order
+            foreach ($cart as $id => $details) {
                 $existingItem = \App\Models\OrderItem::where('order_id', $existingOrder->id)
                     ->where('menu_id', $id)
                     ->first();
                 
                 if ($existingItem) {
-                    // Update quantity if item already exists
                     $existingItem->quantity += $details['quantity'];
                     $existingItem->save();
                 } else {
-                    // Create new order item
                     \App\Models\OrderItem::create([
                         'order_id' => $existingOrder->id,
                         'menu_id' => $id,
@@ -170,37 +191,33 @@ class CustomerController extends Controller
                 }
             }
 
-            // Update total amount and optionally floor
             $existingOrder->total_amount += $newItemsTotal;
             if ($request->has('floor')) {
                 $existingOrder->floor = $request->floor;
             }
             
-            // Reset payment status to pending if it was already paid
-            // Customer needs to pay for the additional items
             if ($existingOrder->payment_status == 'paid') {
                 $existingOrder->payment_status = 'pending';
             }
             
             $existingOrder->save();
-
-            session()->forget('cart');
+            session()->forget($cartKey);
 
             return redirect()->route('order.status', ['uuid' => $uuid, 'order' => $existingOrder->id])
                 ->with('success', 'Item berhasil ditambahkan ke pesanan yang sudah ada!');
         } else {
-            // Create new order if no active order exists
+            // Create new order
             $order = \App\Models\Order::create([
                 'table_id' => $table->id,
                 'total_amount' => $newItemsTotal,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $paymentMethodName,
                 'customer_name' => $request->customer_name,
                 'floor' => $request->floor,
                 'order_status' => 'pending',
                 'payment_status' => 'pending'
             ]);
 
-            foreach($cart as $id => $details) {
+            foreach ($cart as $id => $details) {
                 \App\Models\OrderItem::create([
                     'order_id' => $order->id,
                     'menu_id' => $id,
@@ -209,19 +226,10 @@ class CustomerController extends Controller
                 ]);
             }
 
-            // Set table status to occupied
             $table->status = 'occupied';
             $table->save();
 
-            // Auto re-enable location validation if it was disabled
-            // This prevents staff from forgetting to re-enable during busy times
-            if (!$table->require_location) {
-                $table->require_location = true;
-                $table->save();
-                \Log::info("Location validation auto re-enabled for table: {$table->table_number} after order placement");
-            }
-
-            session()->forget('cart');
+            session()->forget($cartKey);
 
             return redirect()->route('order.status', ['uuid' => $uuid, 'order' => $order->id]);
         }

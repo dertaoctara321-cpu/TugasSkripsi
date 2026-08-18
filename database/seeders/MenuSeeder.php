@@ -24,7 +24,9 @@ class MenuSeeder extends Seeder
         }
 
         // Truncate then re-seed (idempotent)
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
         Menu::truncate();
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
 
         foreach ($menus as $data) {
             Menu::create([
@@ -34,7 +36,7 @@ class MenuSeeder extends Seeder
                 'sub_category' => $data['sub_category'] ?? null,
                 'description'  => $data['description']  ?? null,
                 'is_available' => $data['is_available']  ?? true,
-                'image'        => null,
+                'image'        => $data['image'] ?? null,
             ]);
         }
 
