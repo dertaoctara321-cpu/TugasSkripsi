@@ -440,6 +440,33 @@
     @endforeach
 </div>
 
+@php
+    $cartCount = collect($cart)->sum('quantity');
+    $cartTotal = collect($cart)->sum(function($item) { return $item['price'] * $item['quantity']; });
+@endphp
+
+<!-- Floating Bottom Checkout Bar (Mobile & Desktop friendly) -->
+<div id="floating-cart-bar" class="fixed-bottom p-3 no-print" style="{{ $cartCount > 0 ? 'display: block;' : 'display: none;' }}; z-index: 999;">
+    <div class="container" style="max-width: 650px;">
+        <div class="card shadow-lg border-0" style="background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #B91C1C 100%); border-radius: 18px; color: white; box-shadow: 0 10px 30px rgba(220, 38, 38, 0.45) !important;">
+            <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <div class="bg-white text-danger rounded-circle d-flex align-items-center justify-content-center me-2 font-weight-bold" style="width: 40px; height: 40px; font-size: 1.1rem; font-weight: 800; color: #DC2626 !important;" id="floating-cart-badge">
+                        {{ $cartCount }}
+                    </div>
+                    <div>
+                        <div style="font-size: 0.78rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;">Total Pesanan</div>
+                        <strong style="font-size: 1.15rem;" id="floating-cart-total">Rp {{ number_format($cartTotal, 0, ',', '.') }}</strong>
+                    </div>
+                </div>
+                <a href="{{ route('order.checkout', request()->route('uuid')) }}" class="btn btn-light font-weight-bold px-3 py-2 rounded-pill" style="color: #DC2626 !important; font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    Checkout <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('js')
 <script>
 let currentCategory = 'all';
@@ -507,7 +534,9 @@ function applyFilters() {
     } else if (emptyMsg) {
         emptyMsg.style.display = 'none';
     }
-}function printActiveOrder() {
+}
+
+function printActiveOrder() {
     window.print();
 }
 
@@ -567,7 +596,7 @@ function syncQty(menuId) {
     .then(data => {
         if (data.success) {
             updateCartUI(data.cart_count, data.cart_total);
-            showToast(value > 0 ? 'Keranjang Diperbarui' : 'Item Dihapus', value > 0 ? '#FF8C42' : '#F44336');
+            showToast(value > 0 ? 'Keranjang Diperbarui' : 'Item Dihapus', value > 0 ? '#DC2626' : '#64748B');
         }
     })
     .catch(error => console.error("Sync Cart Error:", error))
@@ -601,60 +630,70 @@ function clearEntireCart() {
                 input.value = 0;
             });
             updateCartUI(0, 0);
-            showToast('Keranjang Dikosongkan', '#F44336');
+            showToast('Keranjang Dikosongkan', '#DC2626');
         }
     })
     .catch(error => console.error('Clear Cart Error:', error));
 }
 
 function updateCartUI(count, total) {
-    const badge = document.querySelector('.cart-pulse');
-    const btn = document.getElementById('nav-cart-btn');
-    if (badge && btn) {
+    // 1. Update Navbar Cart Count Badge
+    const navCount = document.getElementById('nav-cart-count');
+    if (navCount) {
+        navCount.textContent = count;
+        navCount.style.transform = 'scale(1.35)';
+        setTimeout(() => { navCount.style.transform = 'scale(1)'; }, 200);
+    }
+    
+    // 2. Update Floating Bottom Checkout Bar
+    const floatingBar = document.getElementById('floating-cart-bar');
+    const floatingBadge = document.getElementById('floating-cart-badge');
+    const floatingTotal = document.getElementById('floating-cart-total');
+    
+    if (floatingBar) {
         if (count > 0) {
-            btn.style.display = 'inline-flex';
-            badge.style.display = 'inline-block';
-            badge.textContent = count;
+            floatingBar.style.display = 'block';
+            if (floatingBadge) floatingBadge.textContent = count;
+            if (floatingTotal) floatingTotal.textContent = 'Rp ' + Number(total || 0).toLocaleString('id-ID');
         } else {
-            btn.style.display = 'none';
+            floatingBar.style.display = 'none';
         }
     }
     
-    // Also toggle the "Kosongkan Keranjang" header button if it exists
+    // 3. Toggle "Kosongkan Keranjang" header button
     const clearBtn = document.querySelector('.page-header .btn-outline-danger');
     if (clearBtn) {
         clearBtn.style.display = count > 0 ? 'inline-block' : 'none';
     } else if (count > 0) {
-        // If it doesn't exist but we need it, we can create it or just reload (reload is easier but breaks SPA feel).
-        // Let's create it nicely.
         const header = document.querySelector('.page-header');
-        if(header) {
+        if (header) {
             const btnHtml = `<button type="button" class="btn btn-outline-danger btn-sm mt-2" onclick="clearEntireCart()"><i class="fas fa-trash-alt"></i> Kosongkan Keranjang</button>`;
             header.insertAdjacentHTML('beforeend', btnHtml);
         }
     }
 }
 
-function showToast(message, color = '#4CAF50') {
+function showToast(message, color = '#DC2626') {
     const toast = document.createElement('div');
-    toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+    toast.innerHTML = `<i class="fas fa-info-circle me-1"></i> ${message}`;
     toast.style.position = 'fixed';
-    toast.style.bottom = '20px';
+    toast.style.bottom = '85px';
     toast.style.right = '20px';
     toast.style.background = color;
     toast.style.color = '#fff';
     toast.style.padding = '10px 20px';
     toast.style.borderRadius = '30px';
-    toast.style.zIndex = '9999';
-    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-    toast.style.transition = 'opacity 0.4s ease';
+    toast.style.zIndex = '99999';
+    toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.25)';
+    toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     toast.style.fontWeight = 'bold';
     
     document.body.appendChild(toast);
     
     setTimeout(() => {
         toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 400);
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 350);
     }, 1500);
 }
 </script>

@@ -286,11 +286,13 @@
                 <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; margin-right: 10px; border: 2px solid #DC2626;">
                 <span style="background: linear-gradient(135deg, #DC2626, #991B1B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px;">Little Palembang</span>
             </a>
-            @php $cartCount = session('cart_' . (request()->route('uuid') ?? '')) ? collect(session('cart_' . (request()->route('uuid') ?? '')))->sum('quantity') : 0; @endphp
-            <a href="{{ request()->route('uuid') ? route('order.checkout', request()->route('uuid')) : '#' }}" class="btn btn-sm position-relative cart-btn" id="nav-cart-btn" style="{{ $cartCount > 0 ? 'display: inline-flex;' : 'display: none;' }}">
+            @php 
+                $cartCount = session('cart_' . (request()->route('uuid') ?? '')) ? collect(session('cart_' . (request()->route('uuid') ?? '')))->sum('quantity') : 0; 
+            @endphp
+            <a href="{{ request()->route('uuid') ? route('order.checkout', request()->route('uuid')) : '#' }}" class="btn btn-sm position-relative cart-btn" id="nav-cart-btn" style="display: inline-flex; align-items: center; text-decoration: none;" title="Lihat Keranjang Belanja">
                 <i class="fas fa-shopping-bag mr-1"></i>
                 <span class="ms-1 d-none d-sm-inline">Keranjang</span>
-                <span class="badge rounded-pill ms-2" id="nav-cart-count">
+                <span class="badge rounded-pill ms-2" id="nav-cart-count" style="background: #DC2626; color: white; min-width: 22px; font-weight: 800; transition: transform 0.2s ease;">
                     {{ $cartCount }}
                 </span>
             </a>
