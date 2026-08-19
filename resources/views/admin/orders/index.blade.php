@@ -1,58 +1,36 @@
 @extends('layouts.admin')
 
-@section('title', 'Pesanan')
+@section('title', Auth::user()->isDapur() ? 'Antrean Pesanan Dapur' : (Auth::user()->isKasir() ? 'Kasir & Pembayaran' : 'Pesanan Masuk'))
 
 @section('content')
 <style>
     .orders-table-wrapper {
-        animation: fadeIn 0.6s ease-out;
+        animation: fadeIn 0.4s ease-out;
     }
     
     @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-    
-    .status-badge-pending {
-        background: linear-gradient(135deg, #FFC107, #FFA000);
-        color: white;
-    }
-    
-    .status-badge-cooking {
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
-        color: white;
-    }
-    
-    .status-badge-served {
-        background: linear-gradient(135deg, #2196F3, #1976D2);
-        color: white;
-    }
-    
-    .status-badge-completed {
-        background: linear-gradient(135deg, #4CAF50, #388E3C);
-        color: white;
-    }
-    
-    .status-badge-cancelled {
-        background: linear-gradient(135deg, #9E9E9E, #757575);
-        color: white;
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 </style>
 
-<div class="card orders-table-wrapper">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-receipt"></i> Pesanan Masuk</h3>
+<div class="card orders-table-wrapper card-red">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title text-white mb-0">
+            <i class="fas fa-receipt mr-2"></i> 
+            @if(Auth::user()->isDapur())
+                Daftar Pesanan yang Perlu Diproses Dapur
+            @elseif(Auth::user()->isKasir())
+                Daftar Pesanan & Pembayaran Kasir
+            @else
+                Semua Pesanan Masuk
+            @endif
+        </h3>
+        <span class="badge badge-light ml-auto font-weight-bold" style="color: #DC2626; font-size: 0.85rem;">
+            Total: {{ $orders->count() }} Pesanan
+        </span>
     </div>
     <div class="card-body">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <i class="fas fa-check-circle"></i> {{ $message }}
-            </div>
-        @endif
         
         <!-- Desktop Table View -->
         <div class="d-none d-lg-block">
@@ -60,63 +38,78 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th style="width: 70px;">ID</th>
                             <th>Meja</th>
-                            <th>Pelanggan</th>
-                            <th>Total</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Total Tagihan</th>
                             <th>Status Pesanan</th>
                             <th>Status Pembayaran</th>
-                            <th>Aksi</th>
+                            <th>Waktu Masuk</th>
+                            <th class="text-center" style="width: 160px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $order)
+                        @forelse ($orders as $order)
                         <tr>
-                            <td><strong>#{{ $order->id }}</strong></td>
-                            <td><i class="fas fa-table"></i> Meja {{ $order->table->table_number }} <br><small class="text-muted">{{ $order->floor ?? '-' }}</small></td>
-                            <td>{{ $order->customer_name }}</td>
-                            <td><strong>Rp {{ number_format($order->total_amount, 0, ',', '.') }}</strong></td>
+                            <td><strong class="text-danger">#{{ $order->id }}</strong></td>
+                            <td>
+                                <strong><i class="fas fa-chair text-muted mr-1"></i> Meja {{ $order->table->table_number ?? '-' }}</strong>
+                                @if($order->floor)
+                                    <br><small class="text-muted">{{ $order->floor }}</small>
+                                @endif
+                            </td>
+                            <td>{{ $order->customer_name ?? 'Tamu' }}</td>
+                            <td><strong style="color: #DC2626;">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</strong></td>
                             <td>
                                 @php
                                     $statusClass = 'status-badge-' . $order->order_status;
                                 @endphp
                                 <span class="badge {{ $statusClass }}">
                                     @if($order->order_status == 'pending')
-                                        <i class="fas fa-clock"></i>
+                                        <i class="fas fa-clock mr-1"></i> Menunggu
                                     @elseif($order->order_status == 'cooking')
-                                        <i class="fas fa-fire"></i>
+                                        <i class="fas fa-fire mr-1"></i> Dimasak
                                     @elseif($order->order_status == 'served')
-                                        <i class="fas fa-concierge-bell"></i>
+                                        <i class="fas fa-concierge-bell mr-1"></i> Dihidangkan
                                     @elseif($order->order_status == 'completed')
-                                        <i class="fas fa-check-circle"></i>
+                                        <i class="fas fa-check-circle mr-1"></i> Selesai
                                     @else
-                                        <i class="fas fa-times-circle"></i>
+                                        <i class="fas fa-times-circle mr-1"></i> {{ ucfirst($order->order_status) }}
                                     @endif
-                                    {{ ucfirst($order->order_status) }}
                                 </span>
                             </td>
                             <td>
                                 <span class="badge badge-{{ $order->payment_status == 'paid' ? 'success' : 'danger' }}">
-                                    <i class="fas fa-{{ $order->payment_status == 'paid' ? 'check' : 'times' }}"></i>
-                                    {{ ucfirst($order->payment_status) }}
+                                    <i class="fas fa-{{ $order->payment_status == 'paid' ? 'check' : 'times' }} mr-1"></i>
+                                    {{ $order->payment_status == 'paid' ? 'Lunas' : 'Belum Bayar' }}
                                 </span>
                             </td>
-                            <td>
+                            <td><small class="text-muted">{{ $order->created_at ? $order->created_at->format('d/m H:i') : '-' }}</small></td>
+                            <td class="text-center">
                                 <div class="btn-group" role="group">
-                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info btn-sm">
-                                        <i class="fas fa-eye"></i> Lihat
+                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-eye"></i> Detail
                                     </a>
+                                    @if(Auth::user()->isAdmin())
                                     <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus pesanan ini?')">
-                                            <i class="fas fa-trash"></i> Hapus
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="8" class="text-center py-4 text-muted">
+                                <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
+                                Belum ada pesanan masuk saat ini.
+                            </td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -124,65 +117,60 @@
 
         <!-- Mobile Card View -->
         <div class="d-lg-none">
-            @foreach ($orders as $order)
-            <div class="card mb-3" style="border-left: 4px solid var(--admin-primary);">
+            @forelse ($orders as $order)
+            <div class="card mb-3" style="border-left: 5px solid #DC2626;">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="card-title mb-0">
-                            <i class="fas fa-receipt"></i> Order #{{ $order->id }}
+                        <h5 class="card-title mb-0 font-weight-bold text-danger">
+                            <i class="fas fa-receipt mr-1"></i> Order #{{ $order->id }}
                         </h5>
                         @php
                             $statusClass = 'status-badge-' . $order->order_status;
                         @endphp
                         <span class="badge {{ $statusClass }}">
-                            @if($order->order_status == 'pending')
-                                <i class="fas fa-clock"></i>
-                            @elseif($order->order_status == 'cooking')
-                                <i class="fas fa-fire"></i>
-                            @elseif($order->order_status == 'served')
-                                <i class="fas fa-concierge-bell"></i>
-                            @elseif($order->order_status == 'completed')
-                                <i class="fas fa-check-circle"></i>
-                            @else
-                                <i class="fas fa-times-circle"></i>
-                            @endif
                             {{ ucfirst($order->order_status) }}
                         </span>
                     </div>
 
                     <div class="mb-2">
-                        <strong><i class="fas fa-table"></i> Meja:</strong> {{ $order->table->table_number }} ({{ $order->floor ?? '-' }})
+                        <strong><i class="fas fa-chair text-muted mr-1"></i> Meja:</strong> {{ $order->table->table_number ?? '-' }}
                     </div>
                     <div class="mb-2">
-                        <strong><i class="fas fa-user"></i> Pelanggan:</strong> {{ $order->customer_name }}
+                        <strong><i class="fas fa-user text-muted mr-1"></i> Pelanggan:</strong> {{ $order->customer_name ?? 'Tamu' }}
                     </div>
                     <div class="mb-2">
-                        <strong><i class="fas fa-money-bill-wave"></i> Total:</strong> 
-                        <span class="text-success fw-bold">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</span>
+                        <strong><i class="fas fa-money-bill-wave text-muted mr-1"></i> Total:</strong> 
+                        <span class="font-weight-bold text-danger">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</span>
                     </div>
                     <div class="mb-3">
-                        <strong><i class="fas fa-credit-card"></i> Pembayaran:</strong>
+                        <strong><i class="fas fa-credit-card text-muted mr-1"></i> Pembayaran:</strong>
                         <span class="badge badge-{{ $order->payment_status == 'paid' ? 'success' : 'danger' }}">
-                            <i class="fas fa-{{ $order->payment_status == 'paid' ? 'check' : 'times' }}"></i>
-                            {{ ucfirst($order->payment_status) }}
+                            {{ $order->payment_status == 'paid' ? 'Lunas' : 'Belum Bayar' }}
                         </span>
                     </div>
 
-                    <div class="btn-group btn-block" role="group">
-                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info btn-block">
-                            <i class="fas fa-eye"></i> Lihat Detail
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary btn-block">
+                            <i class="fas fa-eye mr-1"></i> Lihat Detail Pesanan
                         </a>
-                        <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="flex: 1;">
+                        @if(Auth::user()->isAdmin())
+                        <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="margin-left: 8px;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Yakin ingin menghapus pesanan ini?')">
-                                <i class="fas fa-trash"></i> Hapus
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus pesanan ini?')">
+                                <i class="fas fa-trash"></i>
                             </button>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="text-center py-4 text-muted">
+                <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
+                Belum ada pesanan masuk.
+            </div>
+            @endforelse
         </div>
     </div>
 </div>

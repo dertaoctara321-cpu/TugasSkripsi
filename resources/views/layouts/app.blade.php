@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- PWA  -->
-        <meta name="theme-color" content="#FF8C42"/>
+        <meta name="theme-color" content="#DC2626"/>
         <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">
         <link rel="manifest" href="{{ asset('manifest.json') }}">
     </head>

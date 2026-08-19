@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #FF8C42 0%, #8B4513 100%);
+            background: linear-gradient(135deg, #DC2626 0%, #7F1D1D 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;

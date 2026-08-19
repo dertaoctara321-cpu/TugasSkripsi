@@ -3,7 +3,7 @@
     "short_name": "Little Plg",
     "start_url": "/",
     "background_color": "#ffffff",
-    "theme_color": "#FF8C42",
+    "theme_color": "#DC2626",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [

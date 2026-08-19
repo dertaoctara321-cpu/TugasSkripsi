@@ -21,33 +21,58 @@
     }
 
     .page-header h1 {
-        font-weight: 700;
-        background: linear-gradient(135deg, #8B4513, #FF8C42);
+        font-weight: 800;
+        background: linear-gradient(135deg, #DC2626, #991B1B);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        letter-spacing: -0.5px;
+    }
+
+    /* Category filter pills (Merah Putih) */
+    #categoryFilter .btn {
+        border: 2px solid #DC2626;
+        color: #DC2626;
+        border-radius: 9999px !important;
+        font-weight: 700;
+        padding: 6px 18px;
+        margin: 2px 4px;
+        transition: all 0.25s ease;
+        background: #ffffff;
+    }
+
+    #categoryFilter .btn:hover,
+    #categoryFilter .btn.active {
+        background: linear-gradient(135deg, #EF4444, #DC2626) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+        border-color: #DC2626 !important;
+    }
+
+    body.dark-mode #categoryFilter .btn {
+        background: #1E293B;
     }
 
     /* Menu cards with staggered animation */
     .menu-card {
         opacity: 0;
-        animation: fadeInUp 0.6s ease-out forwards;
+        animation: fadeInUp 0.5s ease-out forwards;
         transition: all 0.3s ease;
     }
 
-    .menu-card:nth-child(1) { animation-delay: 0.1s; }
-    .menu-card:nth-child(2) { animation-delay: 0.2s; }
-    .menu-card:nth-child(3) { animation-delay: 0.3s; }
-    .menu-card:nth-child(4) { animation-delay: 0.4s; }
-    .menu-card:nth-child(5) { animation-delay: 0.5s; }
-    .menu-card:nth-child(6) { animation-delay: 0.6s; }
-    .menu-card:nth-child(7) { animation-delay: 0.7s; }
-    .menu-card:nth-child(8) { animation-delay: 0.8s; }
+    .menu-card:nth-child(1) { animation-delay: 0.05s; }
+    .menu-card:nth-child(2) { animation-delay: 0.1s; }
+    .menu-card:nth-child(3) { animation-delay: 0.15s; }
+    .menu-card:nth-child(4) { animation-delay: 0.2s; }
+    .menu-card:nth-child(5) { animation-delay: 0.25s; }
+    .menu-card:nth-child(6) { animation-delay: 0.3s; }
+    .menu-card:nth-child(7) { animation-delay: 0.35s; }
+    .menu-card:nth-child(8) { animation-delay: 0.4s; }
 
     @keyframes fadeInUp {
         from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
@@ -56,8 +81,8 @@
     }
 
     .menu-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 12px 30px rgba(139, 69, 19, 0.3) !important;
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15) !important;
     }
 
     .menu-card .card-img-top {
@@ -66,28 +91,20 @@
     }
 
     .menu-card:hover .card-img-top {
-        transform: scale(1.1);
+        transform: scale(1.06);
     }
 
     .menu-card .card {
         overflow: hidden;
-        border: none;
-        border-radius: 15px;
+        border-radius: 16px;
+        border: 1px solid #E2E8F0;
     }
 
-    /* Price animation */
+    /* Price text */
     .card-text.text-primary {
-        font-weight: 700;
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: priceGlow 2s ease-in-out infinite;
-    }
-
-    @keyframes priceGlow {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.8; }
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: #DC2626 !important;
     }
 
     /* Quantity selector with animations */
@@ -102,117 +119,59 @@
     .quantity-btn {
         width: 32px;
         height: 32px;
-        border: 1.5px solid #ddd;
+        border: 1.5px solid #E2E8F0;
         background: white;
         border-radius: 8px;
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
-        overflow: hidden;
+        color: #0F172A;
     }
 
-    .quantity-btn::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 140, 66, 0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.4s, height 0.4s;
-    }
-
-    .quantity-btn:active::before {
-        width: 100px;
-        height: 100px;
+    .quantity-btn:hover {
+        background: linear-gradient(135deg, #EF4444, #DC2626);
+        color: white;
+        border-color: #DC2626;
+        transform: scale(1.08);
     }
     
     body.dark-mode .quantity-btn {
-        background: #2D2D2D;
-        border-color: #444;
-        color: #F7F7F7;
-    }
-    
-    .quantity-btn:hover {
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
-        color: white;
-        border-color: #FF8C42;
-        transform: scale(1.1);
+        background: #0F172A;
+        border-color: #334155;
+        color: #F8FAFC;
     }
     
     .quantity-input {
-        width: 60px;
+        width: 55px;
         text-align: center;
-        border: 1.5px solid #ddd;
+        border: 1.5px solid #E2E8F0;
         border-radius: 8px;
-        padding: 6px;
-        font-weight: 600;
-        transition: all 0.3s ease;
+        padding: 5px;
+        font-weight: 700;
+        transition: all 0.25s ease;
     }
 
     .quantity-input:focus {
-        border-color: #FF8C42;
-        box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+        border-color: #DC2626;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
         outline: none;
     }
     
     body.dark-mode .quantity-input {
-        background: #1A1A1A;
-        border-color: #444;
-        color: #F7F7F7;
-    }
-
-    /* Add to cart button animation */
-    .btn-add-cart {
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
-        border: none;
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-add-cart::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-
-    .btn-add-cart:hover::after {
-        width: 300px;
-        height: 300px;
-    }
-
-    .btn-add-cart:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-    }
-
-    .btn-add-cart:active {
-        transform: translateY(0) scale(0.95);
+        background: #0F172A;
+        border-color: #334155;
+        color: #F8FAFC;
     }
 
     /* Active order card animation */
     #active-order {
-        animation: slideInLeft 0.6s ease-out;
-        border: 2px solid #FF8C42 !important;
-        border-radius: 15px;
+        animation: slideInLeft 0.5s ease-out;
+        border: 2px solid #DC2626 !important;
+        border-radius: 16px;
         overflow: hidden;
     }
 

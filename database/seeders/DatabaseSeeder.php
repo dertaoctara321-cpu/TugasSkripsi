@@ -15,21 +15,43 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        // 1. Admin Users (Safe idempotent)
-        User::firstOrCreate(
+        // 1. Role Users (Admin, Kasir, Dapur, Owner)
+        User::updateOrCreate(
             ['email' => 'admin@gmail.com'],
             [
                 'name' => 'Administrator',
                 'password' => bcrypt('password'),
+                'role' => 'admin',
                 'email_verified_at' => now(),
             ]
         );
 
-        User::firstOrCreate(
-            ['email' => 'test@example.com'],
+        User::updateOrCreate(
+            ['email' => 'kasir@gmail.com'],
             [
-                'name' => 'Test User',
+                'name' => 'Staf Kasir',
                 'password' => bcrypt('password'),
+                'role' => 'kasir',
+                'email_verified_at' => now(),
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'dapur@gmail.com'],
+            [
+                'name' => 'Staf Dapur',
+                'password' => bcrypt('password'),
+                'role' => 'dapur',
+                'email_verified_at' => now(),
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'owner@gmail.com'],
+            [
+                'name' => 'Pemilik Usaha (Owner)',
+                'password' => bcrypt('password'),
+                'role' => 'owner',
                 'email_verified_at' => now(),
             ]
         );

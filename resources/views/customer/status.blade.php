@@ -66,8 +66,8 @@
     }
 
     .status-title {
-        font-weight: 700;
-        background: linear-gradient(135deg, #8B4513, #FF8C42);
+        font-weight: 800;
+        background: linear-gradient(135deg, #DC2626, #991B1B);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -126,25 +126,25 @@
     }
 
     .timeline-icon.active {
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
+        background: linear-gradient(135deg, #EF4444, #DC2626);
         color: white;
-        box-shadow: 0 4px 15px rgba(255, 140, 66, 0.4);
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
         animation: pulse 2s ease-in-out infinite;
     }
 
     @keyframes pulse {
         0%, 100% {
             transform: scale(1);
-            box-shadow: 0 4px 15px rgba(255, 140, 66, 0.4);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
         }
         50% {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.6);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
         }
     }
 
     .timeline-icon.completed {
-        background: linear-gradient(135deg, #4CAF50, #45a049);
+        background: linear-gradient(135deg, #10B981, #059669);
         color: white;
     }
 
@@ -177,9 +177,9 @@
     /* Receipt card */
     .receipt-card {
         animation: fadeInUp 0.6s ease-out;
-        border-radius: 15px;
-        border: 2px solid #FF8C42;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 16px;
+        border: 2px solid #DC2626;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     }
 
     @keyframes fadeInUp {
@@ -194,8 +194,8 @@
     }
 
     .receipt-card .card-title {
-        font-weight: 700;
-        background: linear-gradient(135deg, #8B4513, #FF8C42);
+        font-weight: 800;
+        background: linear-gradient(135deg, #DC2626, #991B1B);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -203,11 +203,8 @@
 
     .total-amount {
         font-size: 1.3rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-weight: 800;
+        color: #DC2626 !important;
     }
 
     /* Fix dark mode table visibility - FORCE DARK BACKGROUND */
@@ -295,7 +292,7 @@
 
     /* Refresh button - only rotate icon */
     .btn-refresh {
-        background: linear-gradient(135deg, #FF8C42, #8B4513);
+        background: linear-gradient(135deg, #EF4444, #DC2626);
         border: none;
         color: white;
         border-radius: 10px;
@@ -304,7 +301,7 @@
 
     .btn-refresh:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         color: white;
     }
 
@@ -418,7 +415,7 @@
         @endif
     </div>
     <h2 class="status-title">Status Pesanan Anda</h2>
-    <p class="lead" style="font-weight: 600; color: {{ $order->order_status == 'completed' ? '#4CAF50' : '#FF8C42' }};">
+    <p class="lead" style="font-weight: 600; color: {{ $order->order_status == 'completed' ? '#10B981' : '#DC2626' }};">
         Status: {{ ucfirst($order->order_status) }}
     </p>
 </div>
@@ -476,7 +473,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5 class="card-title mb-0">
-                        <i class="fas fa-receipt no-print" style="color: var(--cafe-orange);"></i> Detail Pesanan
+                        <i class="fas fa-receipt no-print" style="color: #DC2626;"></i> Detail Pesanan
                     </h5>
                     <button onclick="printReceipt()" class="btn btn-sm btn-primary no-print" style="border-radius: 10px;">
                         <i class="fas fa-print"></i> Cetak Struk
@@ -492,7 +489,7 @@
                     </div>
                     <div class="col-6">
                         <p class="mb-1"><strong>Status Pesanan:</strong> 
-                            <span class="badge" style="background: linear-gradient(135deg, {{ $order->order_status == 'completed' ? '#4CAF50, #45a049' : '#FF8C42, #8B4513' }});">
+                            <span class="badge" style="background: linear-gradient(135deg, {{ $order->order_status == 'completed' ? '#10B981, #059669' : '#EF4444, #DC2626' }});">
                                 {{ ucfirst($order->order_status) }}
                             </span>
                         </p>
@@ -540,7 +537,7 @@
                 <hr>
 
                 @if($order->payment_method == 'Transfer' && $order->payment_status == 'pending')
-                    <div class="alert alert-info" style="border-radius: 10px; border-left: 4px solid #FF8C42;">
+                    <div class="alert alert-info" style="border-radius: 10px; border-left: 4px solid #DC2626; background: #FFF1F2; color: #991B1B;">
                         <h6><i class="fas fa-info-circle"></i> Silakan Transfer ke:</h6>
                         <a href="{{ route('order.paymentInfo', $order->table->uuid) }}" class="btn btn-primary btn-sm" style="border-radius: 10px;">
                             <i class="fas fa-credit-card"></i> Lihat Info Pembayaran Lengkap

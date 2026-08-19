@@ -9,6 +9,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    $user = auth()->user();
+    if ($user && ($user->isDapur() || $user->isKasir())) {
+        return redirect()->route('orders.index');
+    }
     return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -17,21 +21,45 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Admin Routes
+    // Admin & Staff Routes
     Route::prefix('admin')->middleware('nocache')->group(function () {
-        Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/reports', [App\Http\Controllers\AdminController::class, 'reports'])->name('admin.reports');
         
-        Route::resource('menus', App\Http\Controllers\MenuController::class);
-        Route::resource('tables', App\Http\Controllers\TableController::class);
-        Route::post('tables/{table}/clear', [App\Http\Controllers\TableController::class, 'clearTable'])->name('tables.clear');
-        Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class);
-        
-        Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
-        Route::get('orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
-        Route::put('orders/{order}/status', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('orders.updateStatus');
-        Route::put('orders/{order}/payment', [App\Http\Controllers\OrderController::class, 'verifyPayment'])->name('orders.verifyPayment');
-        Route::delete('orders/{order}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');
+        // 1. Dashboard & Reports (Admin & Owner)
+        Route::middleware('role:admin,owner')->group(function () {
+            Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+            Route::get('/reports', [App\Http\Controllers\AdminController::class, 'reports'])->name('admin.reports');
+        });
+
+        // 2. Orders View (Admin, Dapur, Kasir, Owner)
+        Route::middleware('role:admin,dapur,kasir,owner')->group(function () {
+            Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+            Route::get('orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
+        });
+
+        // 3. Update Order Status (Admin & Dapur)
+        Route::middleware('role:admin,dapur')->group(function () {
+            Route::put('orders/{order}/status', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+        });
+
+        // 4. Payment Verification, Table Monitoring & Clear Table (Admin & Kasir)
+        Route::middleware('role:admin,kasir')->group(function () {
+            Route::put('orders/{order}/payment', [App\Http\Controllers\OrderController::class, 'verifyPayment'])->name('orders.verifyPayment');
+            Route::get('tables', [App\Http\Controllers\TableController::class, 'index'])->name('tables.index');
+            Route::post('tables/{table}/clear', [App\Http\Controllers\TableController::class, 'clearTable'])->name('tables.clear');
+        });
+
+        // 5. Delete Order (Admin only)
+        Route::middleware('role:admin')->group(function () {
+            Route::delete('orders/{order}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('orders.destroy');
+        });
+
+        // 6. Master Data & Staff Management (Admin only)
+        Route::middleware('role:admin')->group(function () {
+            Route::resource('menus', App\Http\Controllers\MenuController::class);
+            Route::resource('tables', App\Http\Controllers\TableController::class)->except(['index']);
+            Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class);
+            Route::resource('users', App\Http\Controllers\UserController::class)->except(['create', 'show', 'edit']);
+        });
     });
 });
 

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Login - Little Palembang</title>
+    <title>Login Staff & Admin - Little Palembang</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -32,16 +32,37 @@
             <!-- Logo section -->
             <div class="login-logo">
                 <div class="logo-icon">
-                    <i class="fas fa-fire"></i>
+                    <i class="fas fa-utensils"></i>
                 </div>
                 <h1 class="login-title">Little Palembang</h1>
-                <p class="login-subtitle">Admin Dashboard</p>
+                <p class="login-subtitle">Portal Manajemen & Staf Kafe</p>
+            </div>
+
+            <!-- Role Quick Fill Section (Convenience for testing) -->
+            <div class="role-quick-login">
+                <div class="role-quick-title">
+                    <i class="fas fa-bolt"></i> Pilih Akun Cepat (Demo):
+                </div>
+                <div class="role-chips">
+                    <button type="button" class="role-chip" onclick="fillCredentials('admin@gmail.com', 'password')">
+                        👑 Admin
+                    </button>
+                    <button type="button" class="role-chip" onclick="fillCredentials('kasir@gmail.com', 'password')">
+                        💰 Kasir
+                    </button>
+                    <button type="button" class="role-chip" onclick="fillCredentials('dapur@gmail.com', 'password')">
+                        🍳 Dapur
+                    </button>
+                    <button type="button" class="role-chip" onclick="fillCredentials('owner@gmail.com', 'password')">
+                        📊 Owner
+                    </button>
+                </div>
             </div>
 
             <!-- Session Status -->
             @if (session('status'))
                 <div class="success-message">
-                    {{ session('status') }}
+                    <i class="fas fa-check-circle"></i> {{ session('status') }}
                 </div>
             @endif
 
@@ -49,7 +70,7 @@
             @if ($errors->any())
                 <div class="error-message">
                     @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
+                        <div><i class="fas fa-exclamation-circle"></i> {{ $error }}</div>
                     @endforeach
                 </div>
             @endif
@@ -60,71 +81,55 @@
 
                 <!-- Email field -->
                 <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Alamat Email</label>
                     <input 
                         type="email" 
                         id="email" 
                         name="email" 
                         value="{{ old('email') }}"
-                        placeholder=" "
+                        placeholder="contoh: admin@gmail.com"
                         required 
                         autofocus
                         autocomplete="username"
                     >
-                    <label for="email">Email Address</label>
                 </div>
 
                 <!-- Password field -->
                 <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Kata Sandi</label>
                     <input 
                         type="password" 
                         id="password" 
                         name="password"
-                        placeholder=" "
+                        placeholder="Masukkan password Anda"
                         required
                         autocomplete="current-password"
                     >
-                    <label for="password">Password</label>
                 </div>
 
                 <!-- Remember me -->
                 <div class="remember-me">
                     <input type="checkbox" id="remember_me" name="remember">
-                    <label for="remember_me">Remember me</label>
+                    <label for="remember_me" style="margin-bottom: 0; cursor: pointer;">Ingat Saya</label>
                 </div>
 
                 <!-- Submit button -->
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <span>Login</span>
+                    <span><i class="fas fa-sign-in-alt"></i> Masuk ke Sistem</span>
                 </button>
-
-                <!-- Forgot password -->
-                @if (Route::has('password.request'))
-                    <div class="forgot-password">
-                        <a href="{{ route('password.request') }}">Forgot your password?</a>
-                    </div>
-                @endif
             </form>
         </div>
     </div>
 
     <script>
-        // Add loading state on form submit
+        function fillCredentials(email, password) {
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+        }
+
         document.getElementById('loginForm').addEventListener('submit', function() {
             const btn = document.getElementById('submitBtn');
-            btn.classList.add('loading');
-            btn.querySelector('span').textContent = 'Logging in...';
-        });
-
-        // Simple form validation animation
-        const inputs = document.querySelectorAll('input[type="email"], input[type="password"]');
-        inputs.forEach(input => {
-            input.addEventListener('invalid', function(e) {
-                e.preventDefault();
-                this.parentElement.style.animation = 'shake 0.5s ease';
-                setTimeout(() => {
-                    this.parentElement.style.animation = '';
-                }, 500);
-            });
+            btn.querySelector('span').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
         });
     </script>
 </body>

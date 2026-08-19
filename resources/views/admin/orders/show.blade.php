@@ -3,21 +3,14 @@
 @section('title', 'Detail Pesanan #' . $order->id)
 
 @section('content')
-<!-- SweetAlert2 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
 <style>
     .order-details-wrapper {
-        animation: fadeIn 0.6s ease-out;
+        animation: fadeIn 0.4s ease-out;
     }
 
     @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .info-card {
@@ -26,55 +19,23 @@
     }
 
     .status-select {
-        font-size: 1.3rem;
-        padding: 18px;
+        font-size: 1.1rem;
+        padding: 12px 14px;
         font-weight: 700;
-        border-radius: 12px;
-        border: 3px solid var(--admin-primary);
+        border-radius: 10px;
+        border: 2px solid #DC2626;
         background-color: white;
-        color: #333;
-        height: auto;
-        min-height: 60px;
-        line-height: 1.5;
+        color: #0F172A;
     }
 
     .status-select:focus {
-        border-color: var(--admin-secondary);
-        box-shadow: 0 0 0 4px rgba(255, 140, 66, 0.3);
-    }
-
-    .status-select option {
-        font-size: 1.2rem;
-        padding: 15px 10px;
-        font-weight: 600;
-        background-color: white;
-        color: #333;
-        line-height: 2;
-        min-height: 50px;
-    }
-
-    .status-select option:hover,
-    .status-select option:checked {
-        background-color: var(--admin-primary);
-        color: white;
-    }
-
-    .update-status-btn {
-        padding: 18px 20px;
-        font-size: 1.2rem;
-        font-weight: 700;
-    }
-
-    .verify-payment-btn {
-        padding: 20px;
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-top: 15px;
+        border-color: #991B1B;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
     }
 
     .info-item {
-        padding: 12px 0;
-        border-bottom: 1px solid #e0e0e0;
+        padding: 10px 0;
+        border-bottom: 1px solid #E2E8F0;
     }
 
     .info-item:last-child {
@@ -83,306 +44,192 @@
 
     .info-label {
         font-weight: 600;
-        color: var(--admin-secondary);
+        color: #64748B;
         display: block;
-        margin-bottom: 5px;
+        font-size: 0.85rem;
+        margin-bottom: 2px;
     }
 
     .info-value {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #0F172A;
+    }
+
+    body.dark-mode .info-value {
+        color: #F8FAFC;
     }
 </style>
 
 <div class="row order-details-wrapper">
     <!-- Order Items - Left Side -->
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-utensils"></i> Item Pesanan</h3>
+    <div class="col-lg-8 mb-4">
+        <div class="card card-red">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title text-white mb-0">
+                    <i class="fas fa-utensils mr-2"></i> Daftar Menu Pesanan #{{ $order->id }}
+                </h3>
+                <span class="badge badge-light" style="color: #DC2626; font-size: 0.85rem;">
+                    {{ $order->items->count() }} Item
+                </span>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Menu</th>
-                                <th>Jumlah</th>
-                                <th>Harga</th>
-                                <th>Subtotal</th>
+                                <th class="text-center" style="width: 80px;">Qty</th>
+                                <th class="text-right">Harga Satuan</th>
+                                <th class="text-right">Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($order->items as $item)
+                            @foreach($order->items as $item)
                             <tr>
-                                <td><strong>{{ $item->menu->name }}</strong></td>
-                                <td>{{ $item->quantity }}x</td>
-                                <td>Rp {{ number_format($item->price, 0, ',', '.') }}</td>
-                                <td><strong>Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</strong></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        @if($item->menu && $item->menu->image)
+                                            <img src="{{ asset('storage/' . $item->menu->image) }}" alt="{{ $item->menu->name }}" class="rounded mr-3" style="width: 50px; height: 50px; object-fit: cover; border: 1px solid #E2E8F0;">
+                                        @endif
+                                        <div>
+                                            <strong class="d-block" style="font-size: 1.05rem;">{{ $item->menu->name ?? 'Menu tidak ditemukan' }}</strong>
+                                            @if($item->notes)
+                                                <small class="text-danger font-italic"><i class="fas fa-sticky-note mr-1"></i> Catatan: {{ $item->notes }}</small>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center font-weight-bold" style="font-size: 1.1rem;">{{ $item->quantity }}x</td>
+                                <td class="text-right">Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                                <td class="text-right font-weight-bold" style="color: #DC2626;">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                            <tr style="background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(139, 69, 19, 0.1));">
-                                <th colspan="3" class="text-right" style="font-size: 1.2rem;">TOTAL:</th>
-                                <th style="font-size: 1.3rem; color: var(--admin-primary);">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</th>
+                            <tr style="background: #FFF1F2; font-size: 1.15rem;">
+                                <td colspan="3" class="text-right font-weight-bold" style="color: #991B1B;">Total Keseluruhan :</td>
+                                <td class="text-right font-weight-bold" style="color: #DC2626;">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</td>
                             </tr>
                         </tfoot>
                     </table>
+                </div>
+
+                <div class="mt-3 text-right">
+                    <button onclick="window.print()" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-print mr-1"></i> Cetak Struk / Nota
+                    </button>
+                    <a href="{{ route('orders.index') }}" class="btn btn-outline-danger btn-sm ml-2">
+                        <i class="fas fa-arrow-left mr-1"></i> Kembali ke Daftar
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Order Info - Right Side (Full Height) -->
-    <div class="col-md-4">
+    <!-- Order Info & Role Actions - Right Side -->
+    <div class="col-lg-4">
         <div class="card info-card">
-            <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-info-circle"></i> Informasi Pesanan</h3>
+            <div class="card-header bg-danger text-white">
+                <h3 class="card-title mb-0"><i class="fas fa-info-circle mr-2"></i> Informasi & Status</h3>
             </div>
             <div class="card-body">
-                <!-- Order Information -->
                 <div class="info-item">
-                    <span class="info-label"><i class="fas fa-table"></i> Meja / Lantai</span>
-                    <span class="info-value">Meja {{ $order->table->table_number }} <span class="badge badge-info">{{ $order->floor ?? '-' }}</span></span>
+                    <span class="info-label"><i class="fas fa-chair mr-1"></i> Lokasi Meja</span>
+                    <span class="info-value">Meja {{ $order->table->table_number ?? '-' }} {{ $order->floor ? "({$order->floor})" : '' }}</span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><i class="fas fa-user"></i> Pelanggan</span>
-                    <span class="info-value">{{ $order->customer_name ?? 'Tamu' }}</span>
+                    <span class="info-label"><i class="fas fa-user mr-1"></i> Nama Pelanggan</span>
+                    <span class="info-value">{{ $order->customer_name ?? 'Pelanggan / Tamu' }}</span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><i class="fas fa-credit-card"></i> Metode Pembayaran</span>
-                    <span class="info-value">{{ $order->payment_method }}</span>
+                    <span class="info-label"><i class="fas fa-credit-card mr-1"></i> Metode Pembayaran</span>
+                    <span class="info-value">{{ $order->payment_method ?? 'Cash' }}</span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><i class="fas fa-clock"></i> Waktu Pemesanan</span>
-                    <span class="info-value">{{ $order->created_at->format('d/m/Y H:i') }}</span>
+                    <span class="info-label"><i class="fas fa-clock mr-1"></i> Waktu Pemesanan</span>
+                    <span class="info-value">{{ $order->created_at ? $order->created_at->format('d M Y, H:i') : '-' }}</span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><i class="fas fa-fire"></i> Status Pesanan</span>
-                    @php
-                        $statusMap = [
-                            'pending' => 'Menunggu',
-                            'cooking' => 'Sedang Dimasak',
-                            'served' => 'Dihidangkan',
-                            'completed' => 'Selesai',
-                            'cancelled' => 'Dibatalkan'
-                        ];
-                        $statusClass = 'status-badge-' . $order->order_status;
-                    @endphp
-                    <span class="badge {{ $statusClass }}" style="font-size: 0.95rem; padding: 8px 15px;">
-                        {{ $statusMap[$order->order_status] ?? ucfirst($order->order_status) }}
+                    <span class="info-label"><i class="fas fa-shield-alt mr-1"></i> Status Pembayaran</span>
+                    <span class="badge badge-{{ $order->payment_status == 'paid' ? 'success' : 'danger' }} p-2 mt-1" style="font-size: 0.9rem;">
+                        <i class="fas fa-{{ $order->payment_status == 'paid' ? 'check-circle' : 'exclamation-circle' }} mr-1"></i>
+                        {{ $order->payment_status == 'paid' ? 'LUNAS (TERVERIFIKASI)' : 'BELUM DIVERIFIKASI' }}
                     </span>
                 </div>
 
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-money-bill-wave"></i> Status Pembayaran</span>
-                    @php
-                        $paymentMap = [
-                            'pending' => 'Belum Dibayar',
-                            'paid' => 'Sudah Dibayar',
-                            'cancelled' => 'Dibatalkan'
-                        ];
-                    @endphp
-                    <span class="badge badge-{{ $order->payment_status == 'paid' ? 'success' : ($order->payment_status == 'cancelled' ? 'secondary' : 'danger') }}" style="font-size: 0.95rem; padding: 8px 15px;">
-                        {{ $paymentMap[$order->payment_status] ?? ucfirst($order->payment_status) }}
-                    </span>
-                </div>
+                <hr class="my-3">
 
-                <hr style="margin: 20px 0; border-top: 2px solid #e0e0e0;">
-
-                <!-- Update Order Status -->
-                @if(in_array($order->order_status, ['completed', 'cancelled']))
-                    <div class="alert alert-info text-center" style="border-radius: 10px; font-weight: 600;">
-                        <i class="fas fa-lock"></i> Status pesanan tidak dapat diubah lagi
-                    </div>
-                @else
-                <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST" class="mb-3" id="statusForm">
-                    @csrf
-                    @method('PUT')
-                    <label class="info-label"><i class="fas fa-edit"></i> Ubah Status Pesanan</label>
-                    <div class="input-group">
-                        <select name="order_status" class="form-control status-select" id="orderStatusSelect">
-                            <option value="pending" {{ $order->order_status == 'pending' ? 'selected' : '' }}>Menunggu</option>
-                            <option value="cooking" {{ $order->order_status == 'cooking' ? 'selected' : '' }}>Sedang Dimasak</option>
-                            <option value="served" {{ $order->order_status == 'served' ? 'selected' : '' }}>Dihidangkan</option>
-                            <option value="completed" {{ $order->order_status == 'completed' ? 'selected' : '' }}>Selesai</option>
-                            <option value="cancelled" {{ $order->order_status == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block update-status-btn mt-2">
-                        <i class="fas fa-check"></i> Update Status
-                    </button>
-                </form>
-                @endif
-
-                <!-- Verify Payment Button -->
-                @if($order->payment_status == 'pending' && $order->order_status != 'cancelled')
-                <form action="{{ route('orders.verifyPayment', $order->id) }}" method="POST" id="verifyPaymentForm">
-                    @csrf
-                    @method('PUT')
-                    <button type="submit" class="btn btn-success btn-block verify-payment-btn">
-                        <i class="fas fa-check-circle"></i> Verifikasi Pembayaran
-                    </button>
-                </form>
-                @elseif($order->payment_status == 'paid')
-                <div class="alert alert-success text-center" style="border-radius: 10px; font-weight: 600;">
-                    <i class="fas fa-check-circle"></i> Pembayaran Sudah Terverifikasi
-                </div>
-                @elseif($order->payment_status == 'cancelled')
-                <div class="alert alert-secondary text-center" style="border-radius: 10px; font-weight: 600;">
-                    <i class="fas fa-ban"></i> Pembayaran Dibatalkan
+                <!-- 1. Dapur / Admin: Ubah Status Masak & Sajian -->
+                @if(Auth::user()->isAdmin() || Auth::user()->isDapur())
+                <div class="mb-3">
+                    <label class="info-label font-weight-bold text-danger"><i class="fas fa-fire mr-1"></i> Update Status Pengerjaan (Dapur)</label>
+                    <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group mb-2">
+                            <select name="order_status" class="form-control status-select" required>
+                                <option value="pending" {{ $order->order_status == 'pending' ? 'selected' : '' }}>⏳ Menunggu (Pending)</option>
+                                <option value="cooking" {{ $order->order_status == 'cooking' ? 'selected' : '' }}>🍳 Sedang Dimasak (Cooking)</option>
+                                <option value="served" {{ $order->order_status == 'served' ? 'selected' : '' }}>🛎️ Dihidangkan (Served)</option>
+                                <option value="completed" {{ $order->order_status == 'completed' ? 'selected' : '' }}>✅ Selesai (Completed)</option>
+                                <option value="cancelled" {{ $order->order_status == 'cancelled' ? 'selected' : '' }}>❌ Batalkan Pesanan</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block font-weight-bold">
+                            <i class="fas fa-sync-alt mr-1"></i> Simpan Status Pesanan
+                        </button>
+                    </form>
                 </div>
                 @endif
 
-                <!-- Delete Order Button -->
-                <hr style="margin: 20px 0; border-top: 2px solid #e0e0e0;">
-                <form action="{{ route('orders.destroy', $order->id) }}" method="POST" id="deleteOrderForm">
+                <!-- 2. Kasir / Admin: Verifikasi Pembayaran -->
+                @if(Auth::user()->isAdmin() || Auth::user()->isKasir())
+                <div class="mb-3">
+                    <label class="info-label font-weight-bold text-success"><i class="fas fa-cash-register mr-1"></i> Tindakan Kasir (POS)</label>
+                    @if($order->payment_status != 'paid')
+                    <form action="{{ route('orders.verifyPayment', $order->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn btn-success btn-block font-weight-bold" onclick="return confirm('Pastikan pembayaran dari pelanggan telah diterima. Verifikasi sekarang?')">
+                            <i class="fas fa-check-circle mr-1"></i> Verifikasi Pembayaran Lunas
+                        </button>
+                    </form>
+                    @else
+                    <div class="alert alert-success text-center py-2 mb-2 font-weight-bold">
+                        <i class="fas fa-check-circle mr-1"></i> Pembayaran Sudah Lunas
+                    </div>
+                    @endif
+
+                    @if($order->table && $order->table->status == 'occupied')
+                    <form action="{{ route('tables.clear', $order->table->id) }}" method="POST" class="mt-2">
+                        @csrf
+                        <button type="submit" class="btn btn-warning btn-block font-weight-bold text-dark" onclick="return confirm('Kosongkan meja {{ $order->table->table_number }} untuk pelanggan baru?')">
+                            <i class="fas fa-door-open mr-1"></i> Kosongkan Meja {{ $order->table->table_number }}
+                        </button>
+                    </form>
+                    @endif
+                </div>
+                @endif
+
+                <!-- 3. Admin Only: Hapus Pesanan -->
+                @if(Auth::user()->isAdmin())
+                <hr class="my-3">
+                <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-block" style="padding: 15px; font-size: 1.1rem; font-weight: 700;">
-                        <i class="fas fa-trash"></i> Hapus Pesanan
+                    <button type="submit" class="btn btn-outline-danger btn-block font-weight-bold" onclick="return confirm('Yakin ingin menghapus permanen pesanan ini?')">
+                        <i class="fas fa-trash mr-1"></i> Hapus Pesanan (Admin)
                     </button>
                 </form>
+                @endif
+
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-@push('js')
-<!-- SweetAlert2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-// Custom SweetAlert2 theme
-const swalTheme = {
-    confirmButtonColor: '#FF8C42',
-    cancelButtonColor: '#9E9E9E',
-    background: '#fff',
-    color: '#333',
-    iconColor: '#FF8C42'
-};
-
-// Auto-cancel payment when order is cancelled
-const orderStatusSelect = document.getElementById('orderStatusSelect');
-if (orderStatusSelect) {
-    orderStatusSelect.addEventListener('change', function(e) {
-        if (this.value === 'cancelled') {
-            e.preventDefault();
-            const currentValue = this.value;
-            const previousValue = '{{ $order->order_status }}';
-            
-            Swal.fire({
-                title: 'Batalkan Pesanan?',
-                html: '<div style="text-align: left; padding: 10px;"><strong>Membatalkan pesanan akan:</strong><ul style="margin-top: 10px;"><li>Mengubah status pembayaran menjadi "Dibatalkan"</li><li>Mengosongkan meja</li></ul></div>',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: '<i class="fas fa-check"></i> Ya, Batalkan',
-                cancelButtonText: '<i class="fas fa-times"></i> Tidak',
-                ...swalTheme,
-                customClass: {
-                    confirmButton: 'btn btn-danger btn-lg',
-                    cancelButton: 'btn btn-secondary btn-lg'
-                }
-            }).then((result) => {
-                if (!result.isConfirmed) {
-                    // Reset to previous value
-                    this.value = previousValue;
-                }
-            });
-        }
-    });
-}
-
-// Verify payment confirmation
-const verifyForm = document.getElementById('verifyPaymentForm');
-if (verifyForm) {
-    verifyForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        Swal.fire({
-            title: 'Verifikasi Pembayaran?',
-            text: 'Konfirmasi bahwa pembayaran sudah diterima?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: '<i class="fas fa-check-circle"></i> Ya, Verifikasi',
-            cancelButtonText: '<i class="fas fa-times"></i> Batal',
-            ...swalTheme,
-            customClass: {
-                confirmButton: 'btn btn-success btn-lg',
-                cancelButton: 'btn btn-secondary btn-lg'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
-        });
-    });
-}
-
-// Update status confirmation
-const statusForm = document.getElementById('statusForm');
-if (statusForm) {
-    statusForm.addEventListener('submit', function(e) {
-        const selectedStatus = document.getElementById('orderStatusSelect').value;
-        const statusMap = {
-            'pending': 'Menunggu',
-            'cooking': 'Sedang Dimasak',
-            'served': 'Dihidangkan',
-            'completed': 'Selesai',
-            'cancelled': 'Dibatalkan'
-        };
-        
-        e.preventDefault();
-        
-        Swal.fire({
-            title: 'Update Status Pesanan?',
-            html: `Ubah status menjadi <strong>"${statusMap[selectedStatus]}"</strong>?`,
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: '<i class="fas fa-check"></i> Ya, Update',
-            cancelButtonText: '<i class="fas fa-times"></i> Batal',
-            ...swalTheme,
-            customClass: {
-                confirmButton: 'btn btn-primary btn-lg',
-                cancelButton: 'btn btn-secondary btn-lg'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
-        });
-    });
-}
-
-// Delete order confirmation
-const deleteForm = document.getElementById('deleteOrderForm');
-if (deleteForm) {
-    deleteForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        Swal.fire({
-            title: 'Hapus Pesanan?',
-            html: '<strong>Pesanan akan dihapus permanen!</strong><br>Tindakan ini tidak dapat dibatalkan.',
-            icon: 'error',
-            showCancelButton: true,
-            confirmButtonText: '<i class="fas fa-trash"></i> Ya, Hapus',
-            cancelButtonText: '<i class="fas fa-times"></i> Batal',
-            ...swalTheme,
-            confirmButtonColor: '#F44336',
-            customClass: {
-                confirmButton: 'btn btn-danger btn-lg',
-                cancelButton: 'btn btn-secondary btn-lg'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
-        });
-    });
-}
-</script>
-@endpush
