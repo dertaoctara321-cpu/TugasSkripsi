@@ -134,12 +134,22 @@
                             <span class="badge badge-secondary">ID: {{ $menu->id }}</span>
                         </div>
                         
-                        <div class="menu-price mb-3">
+                        <div class="menu-price mb-2">
                             Rp {{ number_format($menu->price, 0, ',', '.') }}
                         </div>
+
+                        <!-- Quick Toggle Availability Form -->
+                        <form action="{{ route('menus.toggleAvailability', $menu->id) }}" method="POST" class="mb-2">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-sm btn-outline-{{ $menu->is_available ? 'warning' : 'success' }} btn-block font-weight-bold">
+                                <i class="fas fa-toggle-{{ $menu->is_available ? 'on' : 'off' }} mr-1"></i>
+                                {{ $menu->is_available ? 'Tandai Habis' : 'Tandai Tersedia' }}
+                            </button>
+                        </form>
                         
                         <div class="d-flex gap-2">
-                            <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-info btn-sm flex-fill">
+                            <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-info btn-sm flex-fill" style="margin-right: 4px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
                             <form action="{{ route('menus.destroy', $menu->id) }}" method="POST" style="flex: 1;">

@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\PaymentMethod;
+use App\Models\Rating;
+use App\Models\Table;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index($uuid)
     {
-        $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
-        $menus = \App\Models\Menu::where('is_available', true)->get();
+        $table = Table::where('uuid', $uuid)->firstOrFail();
+        // Fetch all menus, available ones first, then alphabetical
+        $menus = Menu::orderBy('is_available', 'desc')
+            ->orderBy('category')
+            ->orderBy('name')
+            ->get();
         
         // Check if cart exists in session for this table UUID
         $cartKey = "cart_{$uuid}";
@@ -18,12 +28,51 @@ class CustomerController extends Controller
         // Get active order for this table (only if table is occupied)
         $activeOrder = null;
         if ($table->status == 'occupied') {
-            $activeOrder = \App\Models\Order::where('table_id', $table->id)
+            $activeOrder = Order::where('table_id', $table->id)
+                ->with(['items.menu'])
                 ->latest()
                 ->first();
         }
+
+        // Compute table ranking for favorite badge
+        $allTables = Table::with('ratings')->get()->map(function ($t) {
+            $avg = $t->ratings->avg('table_rating') ?? 5.0;
+            $favs = $t->ratings->where('is_favorite_table', true)->count();
+            $count = $t->ratings->count();
+            $score = ($avg * 2) + ($favs * 3) + $count;
+            return [
+                'id' => $t->id,
+                'avg_rating' => round($avg, 1),
+                'fav_count' => $favs,
+                'rating_count' => $count,
+                'score' => $score,
+            ];
+        })->sortByDesc('score')->values();
+
+        $tableRank = 1;
+        $tableStats = [
+            'avg_rating' => 5.0,
+            'fav_count' => 0,
+            'rating_count' => 0,
+            'is_top' => false,
+            'rank' => 1,
+        ];
+
+        foreach ($allTables as $index => $item) {
+            if ($item['id'] === $table->id) {
+                $tableRank = $index + 1;
+                $tableStats = [
+                    'avg_rating' => $item['avg_rating'],
+                    'fav_count' => $item['fav_count'],
+                    'rating_count' => $item['rating_count'],
+                    'is_top' => ($index === 0 && $item['rating_count'] > 0),
+                    'rank' => $tableRank,
+                ];
+                break;
+            }
+        }
         
-        return view('customer.menu', compact('table', 'menus', 'cart', 'activeOrder'));
+        return view('customer.menu', compact('table', 'menus', 'cart', 'activeOrder', 'tableStats'));
     }
 
     public function addToCart(Request $request, $uuid)
@@ -33,7 +82,18 @@ class CustomerController extends Controller
             'quantity' => 'required|integer|min:1|max:100',
         ]);
 
-        $menu = \App\Models\Menu::findOrFail($request->menu_id);
+        $menu = Menu::findOrFail($request->menu_id);
+
+        if (!$menu->is_available) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Maaf, menu "' . $menu->name . '" saat ini sedang tidak tersedia / stok habis.'
+                ], 422);
+            }
+            return redirect()->back()->with('error', 'Maaf, menu "' . $menu->name . '" sedang tidak tersedia.');
+        }
+
         $cartKey = "cart_{$uuid}";
         $cart = session()->get($cartKey, []);
         
@@ -80,11 +140,18 @@ class CustomerController extends Controller
             'quantity' => 'required|integer|min:0|max:100',
         ]);
 
-        $menu = \App\Models\Menu::findOrFail($request->menu_id);
+        $menu = Menu::findOrFail($request->menu_id);
         $cartKey = "cart_{$uuid}";
         $cart = session()->get($cartKey, []);
 
         if ($request->quantity > 0) {
+            if (!$menu->is_available) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Maaf, menu "' . $menu->name . '" sedang tidak tersedia.'
+                ], 422);
+            }
+
             $cart[$request->menu_id] = [
                 "name" => $menu->name,
                 "quantity" => $request->quantity,
@@ -124,17 +191,17 @@ class CustomerController extends Controller
 
     public function checkout($uuid)
     {
-        $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
+        $table = Table::where('uuid', $uuid)->firstOrFail();
         $cartKey = "cart_{$uuid}";
         $cart = session()->get($cartKey, []);
-        $paymentMethods = \App\Models\PaymentMethod::where('is_active', true)->get();
+        $paymentMethods = PaymentMethod::where('is_active', true)->get();
         
         return view('customer.checkout', compact('table', 'cart', 'paymentMethods'));
     }
 
     public function placeOrder(Request $request, $uuid)
     {
-        $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
+        $table = Table::where('uuid', $uuid)->firstOrFail();
         $cartKey = "cart_{$uuid}";
         $cart = session()->get($cartKey, []);
         
@@ -144,7 +211,7 @@ class CustomerController extends Controller
 
         $existingOrder = null;
         if ($table->status == 'occupied') {
-            $existingOrder = \App\Models\Order::where('table_id', $table->id)
+            $existingOrder = Order::where('table_id', $table->id)
                 ->latest()
                 ->first();
         }
@@ -157,7 +224,7 @@ class CustomerController extends Controller
 
         $paymentMethodName = 'Cash';
         if ($request->filled('payment_method_id')) {
-            $paymentMethod = \App\Models\PaymentMethod::where('id', $request->payment_method_id)
+            $paymentMethod = PaymentMethod::where('id', $request->payment_method_id)
                 ->where('is_active', true)
                 ->firstOrFail();
             $paymentMethodName = $paymentMethod->name;
@@ -174,7 +241,7 @@ class CustomerController extends Controller
         if ($existingOrder) {
             // Add new items to existing order
             foreach ($cart as $id => $details) {
-                $existingItem = \App\Models\OrderItem::where('order_id', $existingOrder->id)
+                $existingItem = OrderItem::where('order_id', $existingOrder->id)
                     ->where('menu_id', $id)
                     ->first();
                 
@@ -182,7 +249,7 @@ class CustomerController extends Controller
                     $existingItem->quantity += $details['quantity'];
                     $existingItem->save();
                 } else {
-                    \App\Models\OrderItem::create([
+                    OrderItem::create([
                         'order_id' => $existingOrder->id,
                         'menu_id' => $id,
                         'quantity' => $details['quantity'],
@@ -207,7 +274,7 @@ class CustomerController extends Controller
                 ->with('success', 'Item berhasil ditambahkan ke pesanan yang sudah ada!');
         } else {
             // Create new order
-            $order = \App\Models\Order::create([
+            $order = Order::create([
                 'table_id' => $table->id,
                 'total_amount' => $newItemsTotal,
                 'payment_method' => $paymentMethodName,
@@ -218,7 +285,7 @@ class CustomerController extends Controller
             ]);
 
             foreach ($cart as $id => $details) {
-                \App\Models\OrderItem::create([
+                OrderItem::create([
                     'order_id' => $order->id,
                     'menu_id' => $id,
                     'quantity' => $details['quantity'],
@@ -235,18 +302,83 @@ class CustomerController extends Controller
         }
     }
 
-    public function status($uuid, \App\Models\Order $order)
+    public function status($uuid, Order $order)
     {
         if ($order->table->uuid !== $uuid) {
             abort(403, 'Unauthorized access to this order.');
         }
+
+        $order->load(['items.menu', 'table', 'rating']);
         return view('customer.status', compact('order'));
+    }
+
+    /**
+     * AJAX Polling endpoint to check live order status & waiter name
+     */
+    public function checkStatus($uuid, Order $order)
+    {
+        if ($order->table->uuid !== $uuid) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        return response()->json([
+            'order_id' => $order->id,
+            'order_status' => $order->order_status,
+            'payment_status' => $order->payment_status,
+            'waiter_name' => $order->waiter_name,
+            'updated_at' => $order->updated_at ? $order->updated_at->toISOString() : now()->toISOString(),
+        ]);
+    }
+
+    /**
+     * Submit rating for order, table, and waiter
+     */
+    public function rateOrder(Request $request, $uuid, Order $order)
+    {
+        if ($order->table->uuid !== $uuid) {
+            abort(403, 'Unauthorized access.');
+        }
+
+        $request->validate([
+            'food_rating' => 'required|integer|min:1|max:5',
+            'table_rating' => 'required|integer|min:1|max:5',
+            'waiter_rating' => 'nullable|integer|min:1|max:5',
+            'is_favorite_table' => 'nullable',
+            'review' => 'nullable|string|max:1000',
+            'waiter_review' => 'nullable|string|max:1000',
+        ]);
+
+        $isFavorite = $request->has('is_favorite_table') && ($request->is_favorite_table == '1' || $request->is_favorite_table == 'on' || $request->is_favorite_table === true);
+
+        Rating::updateOrCreate(
+            ['order_id' => $order->id],
+            [
+                'table_id' => $order->table_id,
+                'customer_name' => $order->customer_name ?? 'Pelanggan',
+                'waiter_name' => $order->waiter_name,
+                'food_rating' => (int) $request->food_rating,
+                'table_rating' => (int) $request->table_rating,
+                'waiter_rating' => $request->filled('waiter_rating') ? (int) $request->waiter_rating : 5,
+                'is_favorite_table' => $isFavorite,
+                'review' => $request->review,
+                'waiter_review' => $request->waiter_review,
+            ]
+        );
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Terima kasih atas ulasan dan rating yang Anda berikan!'
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Terima kasih atas ulasan dan rating yang Anda berikan!');
     }
 
     public function paymentInfo($uuid)
     {
-        $table = \App\Models\Table::where('uuid', $uuid)->firstOrFail();
-        $paymentMethods = \App\Models\PaymentMethod::where('is_active', true)->get();
+        $table = Table::where('uuid', $uuid)->firstOrFail();
+        $paymentMethods = PaymentMethod::where('is_active', true)->get();
         
         return view('customer.payment_info', compact('table', 'paymentMethods'));
     }

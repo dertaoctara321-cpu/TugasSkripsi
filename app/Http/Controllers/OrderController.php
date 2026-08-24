@@ -8,13 +8,13 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = \App\Models\Order::with('table')->orderBy('created_at', 'desc')->get();
+        $orders = \App\Models\Order::with(['table', 'rating'])->orderBy('created_at', 'desc')->get();
         return view('admin.orders.index', compact('orders'));
     }
 
     public function show(\App\Models\Order $order)
     {
-        $order->load('items.menu', 'table');
+        $order->load(['items.menu', 'table', 'rating']);
         return view('admin.orders.show', compact('order'));
     }
 
@@ -22,9 +22,15 @@ class OrderController extends Controller
     {
         $request->validate([
             'order_status' => 'required|in:pending,cooking,served,completed,cancelled',
+            'waiter_name'  => 'nullable|string|max:255',
         ]);
 
-        $order->update(['order_status' => $request->order_status]);
+        $updateData = ['order_status' => $request->order_status];
+        if ($request->filled('waiter_name')) {
+            $updateData['waiter_name'] = $request->waiter_name;
+        }
+
+        $order->update($updateData);
 
         // Auto-cancel payment and clear table when order is cancelled
         if ($request->order_status === 'cancelled') {

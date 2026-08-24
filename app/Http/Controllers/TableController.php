@@ -11,12 +11,27 @@ class TableController extends Controller
      */
     public function index()
     {
-        $tables  = \App\Models\Table::all();
+        $tables = \App\Models\Table::with('ratings')->get();
         // Generate QR URL dynamically using the current request host,
         // so it works for any environment (local IP, production domain, etc.)
         // without needing to touch .env
         $baseUrl = request()->getSchemeAndHttpHost();
-        return view('admin.tables.index', compact('tables', 'baseUrl'));
+
+        // Calculate rankings
+        $sorted = $tables->map(function ($t) {
+            $avg = $t->ratings->avg('table_rating') ?? 5.0;
+            $favs = $t->ratings->where('is_favorite_table', true)->count();
+            $count = $t->ratings->count();
+            $score = ($avg * 2) + ($favs * 3) + $count;
+            return ['id' => $t->id, 'score' => $score];
+        })->sortByDesc('score')->values();
+
+        $tableRankMap = [];
+        foreach ($sorted as $idx => $item) {
+            $tableRankMap[$item['id']] = $idx + 1;
+        }
+
+        return view('admin.tables.index', compact('tables', 'baseUrl', 'tableRankMap'));
     }
 
     public function create()

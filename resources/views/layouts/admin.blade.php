@@ -16,6 +16,14 @@
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   
+  <style>
+    /* Gold Star Global Styles */
+    .star-gold, .text-gold, .text-warning, .fa-star, .fa-star.text-warning {
+      color: #FFB800 !important;
+      text-shadow: 0 0 2px rgba(255, 184, 0, 0.4);
+    }
+  </style>
+
   <!-- PWA  -->
   <meta name="theme-color" content="#DC2626"/>
   <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">

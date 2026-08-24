@@ -85,6 +85,16 @@ class MenuController extends Controller
                         ->with('success', 'Menu berhasil diupdate.');
     }
 
+    public function toggleAvailability(Menu $menu)
+    {
+        $menu->update([
+            'is_available' => !$menu->is_available
+        ]);
+
+        $statusText = $menu->is_available ? 'Tersedia' : 'Stok Habis / Tidak Tersedia';
+        return redirect()->back()->with('success', "Status menu '{$menu->name}' diubah menjadi {$statusText}.");
+    }
+
     public function destroy(\App\Models\Menu $menu)
     {
         $menu->delete();

@@ -7,7 +7,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title text-white mb-0">
             <i class="fas fa-chair mr-2"></i> 
-            {{ Auth::user()->isKasir() ? 'Status Ketersediaan Meja' : 'Daftar Meja & QR Code Pemesanan' }}
+            {{ Auth::user()->isKasir() ? 'Status Ketersediaan Meja' : 'Daftar Meja, Rating & QR Code Pemesanan' }}
         </h3>
         @if(Auth::user()->isAdmin())
         <div class="card-tools ml-auto">
@@ -23,6 +23,11 @@
                 <i class="fas fa-check-circle mr-1"></i> {{ $message }}
             </div>
         @endif
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle mr-1"></i> {{ $message }}
+            </div>
+        @endif
         
         <!-- Desktop Table View -->
         <div class="d-none d-lg-block">
@@ -30,29 +35,61 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style="width: 60px;">No</th>
+                            <th style="width: 50px;">No</th>
                             <th>Nomor Meja</th>
+                            <th>Kepopuleran & Rating</th>
                             <th>QR Code</th>
                             <th>Link Pemesanan Pelanggan</th>
                             <th>Status Meja</th>
-                            <th class="text-center" style="width: 180px;">Aksi</th>
+                            <th class="text-center" style="width: 170px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($tables as $table)
+                        @php
+                            $rank = $tableRankMap[$table->id] ?? $loop->iteration;
+                            $avgRating = $table->average_rating;
+                            $favCount = $table->favorites_count;
+                            $totalRatings = $table->total_ratings_count;
+                        @endphp
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><strong style="font-size: 1.1rem;"><i class="fas fa-chair text-danger mr-1"></i> Meja {{ $table->table_number }}</strong></td>
+                            <td>
+                                <strong style="font-size: 1.15rem;"><i class="fas fa-chair text-danger mr-1"></i> Meja {{ $table->table_number }}</strong>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold" style="font-size: 1.05rem;"><span class="star-gold">★</span> {{ $avgRating }}/5.0</span>
+                                    <small class="text-muted">({{ $totalRatings }} ulasan)</small>
+                                </div>
+                                <div class="mt-1">
+                                    @if($rank === 1 && $totalRatings > 0)
+                                        <span class="badge badge-warning text-dark font-weight-bold"><i class="fas fa-trophy mr-1 text-danger"></i> 🥇 Meja Terfavorit #1</span>
+                                    @elseif($rank === 2 && $totalRatings > 0)
+                                        <span class="badge badge-secondary font-weight-bold">🥈 Meja Favorit #2</span>
+                                    @elseif($rank === 3 && $totalRatings > 0)
+                                        <span class="badge badge-secondary font-weight-bold">🥉 Meja Favorit #3</span>
+                                    @else
+                                        <span class="badge badge-light border">Peringkat #{{ $rank }}</span>
+                                    @endif
+
+                                    @if($favCount > 0)
+                                        <span class="badge badge-danger ml-1" title="Jumlah orang yang memfavoritkan meja ini">
+                                            ❤️ {{ $favCount }} Favorit
+                                        </span>
+                                    @endif
+                                </div>
+                            </td>
                             <td class="text-center">
                                 @php
                                     $orderUrl = $baseUrl . '/order/' . $table->uuid;
                                     $qrImgUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($orderUrl);
                                 @endphp
                                 <div class="text-center p-2 rounded" style="display: inline-block; background: #FFF1F2; border: 1px solid #FECDD3;">
-                                    <img src="{{ $qrImgUrl }}" width="90px" alt="QR Meja {{ $table->table_number }}" class="rounded">
+                                    <img src="{{ $qrImgUrl }}" width="85px" alt="QR Meja {{ $table->table_number }}" class="rounded">
                                 </div>
                                 <br>
-                                <button type="button" onclick="downloadQR('{{ $qrImgUrl }}', '{{ $table->table_number }}', this)" class="btn btn-sm btn-outline-danger mt-1">
+                                <button type="button" onclick="downloadQR('{{ $qrImgUrl }}', '{{ $table->table_number }}', this)" class="btn btn-xs btn-outline-danger mt-1">
                                     <i class="fas fa-download"></i> Unduh QR
                                 </button>
                             </td>
@@ -61,7 +98,7 @@
                                     <i class="fas fa-external-link-alt"></i> Buka Menu Pelanggan
                                 </a>
                                 <br>
-                                <small class="text-muted">{{ $orderUrl }}</small>
+                                <small class="text-muted" style="word-break: break-all;">{{ $orderUrl }}</small>
                             </td>
                             <td>
                                 @if($table->status == 'occupied')
@@ -95,7 +132,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center py-4 text-muted">Belum ada meja yang terdaftar.</td>
+                            <td colspan="7" class="text-center py-4 text-muted">Belum ada meja yang terdaftar.</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -106,6 +143,12 @@
         <!-- Mobile Card View -->
         <div class="d-lg-none">
             @forelse ($tables as $table)
+            @php
+                $rank = $tableRankMap[$table->id] ?? $loop->iteration;
+                $avgRating = $table->average_rating;
+                $favCount = $table->favorites_count;
+                $totalRatings = $table->total_ratings_count;
+            @endphp
             <div class="card mb-3" style="border-left: 5px solid #DC2626;">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -118,6 +161,17 @@
                             <span class="badge badge-success">Tersedia</span>
                         @endif
                     </div>
+
+                    <div class="mb-2">
+                        <span class="font-weight-bold"><span class="star-gold">★</span> {{ $avgRating }}/5.0</span>
+                        <small class="text-muted">({{ $totalRatings }} ulasan)</small>
+                        @if($rank === 1 && $totalRatings > 0)
+                            <span class="badge badge-warning text-dark font-weight-bold ml-1">🥇 Terfavorit #1</span>
+                        @endif
+                        @if($favCount > 0)
+                            <span class="badge badge-danger ml-1">❤️ {{ $favCount }}</span>
+                        @endif
+                    </div>
                     
                     <div class="mb-3 text-center">
                         @php
@@ -125,7 +179,7 @@
                             $qrImgUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($orderUrl);
                         @endphp
                         <div class="text-center p-2 rounded mb-2" style="display: inline-block; background: #FFF1F2; border: 1px solid #FECDD3;">
-                            <img src="{{ $qrImgUrl }}" width="130px" class="img-fluid rounded" alt="QR Meja {{ $table->table_number }}">
+                            <img src="{{ $qrImgUrl }}" width="120px" class="img-fluid rounded" alt="QR Meja {{ $table->table_number }}">
                         </div>
                         <br>
                         <button type="button" onclick="downloadQR('{{ $qrImgUrl }}', '{{ $table->table_number }}', this)" class="btn btn-sm btn-outline-danger">
@@ -139,17 +193,18 @@
                         </a>
                     </div>
 
-                    <div class="btn-group btn-block" role="group">
+                    <div class="d-flex gap-2">
                         @if($table->status == 'occupied')
-                            <form action="{{ route('tables.clear', $table->id) }}" method="POST" style="flex: 1;">
-                                @csrf
-                                <button type="submit" class="btn btn-warning btn-block font-weight-bold" onclick="return confirm('Kosongkan meja {{ $table->table_number }}?')">
-                                    <i class="fas fa-broom mr-1"></i> Kosongkan
-                                </button>
-                            </form>
+                        <form action="{{ route('tables.clear', $table->id) }}" method="POST" style="flex:1;">
+                            @csrf
+                            <button type="submit" class="btn btn-warning btn-block font-weight-bold" onclick="return confirm('Kosongkan meja {{ $table->table_number }}?')">
+                                <i class="fas fa-broom mr-1"></i> Kosongkan
+                            </button>
+                        </form>
                         @endif
+
                         @if(Auth::user()->isAdmin())
-                        <form action="{{ route('tables.destroy', $table->id) }}" method="POST" style="flex: 1; margin-left: 4px;">
+                        <form action="{{ route('tables.destroy', $table->id) }}" method="POST" style="flex:1;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Yakin ingin menghapus meja ini?')">
@@ -161,68 +216,48 @@
                 </div>
             </div>
             @empty
-            <div class="text-center py-4 text-muted">Belum ada meja.</div>
+            <div class="text-center py-4 text-muted">
+                Belum ada meja yang terdaftar.
+            </div>
             @endforelse
         </div>
     </div>
 </div>
+@endsection
 
 @push('js')
 <script>
-function downloadQR(qrUrl, tableNumber, btn) {
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+function downloadQR(qrUrl, tableNum, btn) {
+    var originalHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunduh...';
     btn.disabled = true;
 
-    const img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.onload = function() {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        
-        const padding = 20;
-        const textHeight = 40;
-        const width = img.width + (padding * 2);
-        const height = img.height + textHeight + (padding * 2);
-
-        canvas.width = width;
-        canvas.height = height;
-
-        // Draw white background
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, width, height);
-
-        // Draw text
-        ctx.fillStyle = "#000000";
-        ctx.font = "bold 24px Arial, sans-serif";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "top";
-        ctx.fillText("Meja " + tableNumber, width / 2, padding);
-
-        // Draw image
-        ctx.drawImage(img, padding, padding + textHeight);
-
-        // Convert and download
-        const dataUrl = canvas.toDataURL("image/png");
-        const a = document.createElement("a");
-        a.href = dataUrl;
-        a.download = "QR_Meja_" + tableNumber + ".png";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-    };
-    img.onerror = function() {
-        alert("Gagal memuat QR Code. Silakan coba lagi.");
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-    };
-    
-    // Cache buster for CORS
-    img.src = qrUrl + "&_t=" + new Date().getTime(); 
+    fetch(qrUrl)
+        .then(function(res) {
+            if (!res.ok) throw new Error('Network error');
+            return res.blob();
+        })
+        .then(function(blob) {
+            var blobUrl = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = 'QR_Meja_' + tableNum + '_LittlePalembang.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 1000);
+            btn.innerHTML = '<i class="fas fa-check"></i> Berhasil!';
+            setTimeout(function() {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            }, 2000);
+        })
+        .catch(function(err) {
+            console.error('Download QR failed:', err);
+            btn.innerHTML = originalHtml;
+            btn.disabled = false;
+            window.open(qrUrl, '_blank');
+        });
 }
 </script>
 @endpush
-@endsection

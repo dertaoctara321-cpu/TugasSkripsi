@@ -7,10 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
+    public const WAITERS = [
+        'RADHO (PART TIME)',
+        'YUDHA KURNIAWAN',
+        'SYAUKI',
+        'M.RIDHO',
+        'M. FAHRI SARMAN',
+        'SITI AISYAH',
+        'DEWI',
+        'FAREL',
+        'FUAD',
+        'DERTA'
+    ];
 
     protected $fillable = [
-        'table_id', 'total_amount', 'payment_method', 'payment_status', 'order_status', 'customer_name', 'floor'
+        'table_id', 'total_amount', 'payment_method', 'payment_status', 'order_status', 'customer_name', 'waiter_name', 'floor'
     ];
 
     public function items()
@@ -21,5 +32,10 @@ class Order extends Model
     public function table()
     {
         return $this->belongsTo(Table::class);
+    }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class);
     }
 }

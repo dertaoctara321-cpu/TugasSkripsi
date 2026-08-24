@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+<mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1500" math="0" shadow="0">
   <root>
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
 
     <!-- Diagram Title -->
-    <mxCell id="title" value="Class Diagram - QR Web Cafe Ordering System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1E293B;" vertex="1" parent="1">
-      <mxGeometry x="400" y="20" width="1000" height="40" as="geometry" />
+    <mxCell id="title" value="Class Diagram - Sistem Pemesanan QR Web Cafe (Little Palembang)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1E293B;" vertex="1" parent="1">
+      <mxGeometry x="400" y="20" width="1300" height="40" as="geometry" />
     </mxCell>
 
     <!-- ================================================================= -->
@@ -14,173 +14,193 @@
     <!-- ================================================================= -->
 
     <!-- Model: User -->
-    <mxCell id="model_User" value="User&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="60" y="90" width="220" height="210" as="geometry" />
+    <mxCell id="model_User" value="User&#10;&lt;&lt;Model / Authenticatable&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontSize=13;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="40" y="80" width="240" height="310" as="geometry" />
     </mxCell>
-    <mxCell id="u_attr" value="+ id: bigint&#10;+ name: string&#10;+ email: string&#10;+ password: string&#10;+ email_verified_at: datetime&#10;+ remember_token: string&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_User">
-      <mxGeometry y="32" width="220" height="138" as="geometry" />
+    <mxCell id="u_attr" value="+ id: bigint&#10;+ name: string&#10;+ email: string&#10;+ role: string&#10;+ password: string&#10;+ email_verified_at: datetime&#10;+ remember_token: string&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_User">
+      <mxGeometry y="32" width="240" height="150" as="geometry" />
     </mxCell>
-    <mxCell id="u_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingBottom=-1;rotatable=0;points=[];portConstraint=eastwest;strokeColor=#6C8EBF;" vertex="1" parent="model_User">
-      <mxGeometry y="170" width="220" height="8" as="geometry" />
+    <mxCell id="u_sep" value="" style="line;strokeWidth=1;fillColor=none;strokeColor=#3B82F6;" vertex="1" parent="model_User">
+      <mxGeometry y="182" width="240" height="8" as="geometry" />
     </mxCell>
-    <mxCell id="u_meth" value="+ casts(): array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_User">
-      <mxGeometry y="178" width="220" height="32" as="geometry" />
+    <mxCell id="u_meth" value="+ isAdmin(): bool&#10;+ isDapur(): bool&#10;+ isKasir(): bool&#10;+ isOwner(): bool&#10;+ hasRole(roles): bool&#10;+ getRoleLabelAttribute(): string&#10;+ getRoleBadgeClassAttribute(): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_User">
+      <mxGeometry y="190" width="240" height="120" as="geometry" />
     </mxCell>
 
     <!-- Model: Table -->
-    <mxCell id="model_Table" value="Table&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="340" y="90" width="230" height="190" as="geometry" />
+    <mxCell id="model_Table" value="Table&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontSize=13;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="320" y="80" width="220" height="210" as="geometry" />
     </mxCell>
-    <mxCell id="t_attr" value="+ id: bigint&#10;+ table_number: string&#10;+ uuid: string&#10;+ qr_code_path: string&#10;+ status: string&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_Table">
-      <mxGeometry y="32" width="230" height="120" as="geometry" />
+    <mxCell id="t_attr" value="+ id: bigint&#10;+ table_number: string&#10;+ uuid: string&#10;+ qr_code_path: string&#10;+ status: string&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_Table">
+      <mxGeometry y="32" width="220" height="120" as="geometry" />
     </mxCell>
-    <mxCell id="t_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingBottom=-1;rotatable=0;points=[];portConstraint=eastwest;strokeColor=#82B366;" vertex="1" parent="model_Table">
-      <mxGeometry y="152" width="230" height="8" as="geometry" />
+    <mxCell id="t_sep" value="" style="line;strokeWidth=1;fillColor=none;strokeColor=#22C55E;" vertex="1" parent="model_Table">
+      <mxGeometry y="152" width="220" height="8" as="geometry" />
     </mxCell>
-    <mxCell id="t_meth" value="+ orders(): HasMany" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_Table">
-      <mxGeometry y="160" width="230" height="30" as="geometry" />
+    <mxCell id="t_meth" value="+ orders(): HasMany" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_Table">
+      <mxGeometry y="160" width="220" height="50" as="geometry" />
     </mxCell>
 
     <!-- Model: Order -->
-    <mxCell id="model_Order" value="Order&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="640" y="90" width="250" height="260" as="geometry" />
+    <mxCell id="model_Order" value="Order&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#EA580C;fontSize=13;fontColor=#9A3412;" vertex="1" parent="1">
+      <mxGeometry x="580" y="80" width="240" height="280" as="geometry" />
     </mxCell>
-    <mxCell id="o_attr" value="+ id: bigint&#10;+ table_id: bigint&#10;+ customer_name: string&#10;+ floor: int&#10;+ total_amount: decimal&#10;+ payment_method: string&#10;+ payment_status: string&#10;+ order_status: string&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_Order">
-      <mxGeometry y="32" width="250" height="170" as="geometry" />
+    <mxCell id="o_attr" value="+ id: bigint&#10;+ table_id: bigint&#10;+ customer_name: string&#10;+ floor: string&#10;+ total_amount: decimal&#10;+ payment_method: string&#10;+ payment_status: string&#10;+ order_status: string&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_Order">
+      <mxGeometry y="32" width="240" height="180" as="geometry" />
     </mxCell>
-    <mxCell id="o_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingBottom=-1;rotatable=0;points=[];portConstraint=eastwest;strokeColor=#D79B00;" vertex="1" parent="model_Order">
-      <mxGeometry y="202" width="250" height="8" as="geometry" />
+    <mxCell id="o_sep" value="" style="line;strokeWidth=1;fillColor=none;strokeColor=#EA580C;" vertex="1" parent="model_Order">
+      <mxGeometry y="212" width="240" height="8" as="geometry" />
     </mxCell>
-    <mxCell id="o_meth" value="+ items(): HasMany&#10;+ table(): BelongsTo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_Order">
-      <mxGeometry y="210" width="250" height="50" as="geometry" />
+    <mxCell id="o_meth" value="+ items(): HasMany&#10;+ table(): BelongsTo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_Order">
+      <mxGeometry y="220" width="240" height="60" as="geometry" />
     </mxCell>
 
     <!-- Model: OrderItem -->
-    <mxCell id="model_OrderItem" value="OrderItem&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="960" y="90" width="220" height="210" as="geometry" />
+    <mxCell id="model_OrderItem" value="OrderItem&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#EF4444;fontSize=13;fontColor=#991B1B;" vertex="1" parent="1">
+      <mxGeometry x="860" y="80" width="220" height="230" as="geometry" />
     </mxCell>
-    <mxCell id="oi_attr" value="+ id: bigint&#10;+ order_id: bigint&#10;+ menu_id: bigint&#10;+ quantity: int&#10;+ price: decimal&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_OrderItem">
-      <mxGeometry y="32" width="220" height="125" as="geometry" />
+    <mxCell id="oi_attr" value="+ id: bigint&#10;+ order_id: bigint&#10;+ menu_id: bigint&#10;+ quantity: int&#10;+ price: decimal&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_OrderItem">
+      <mxGeometry y="32" width="220" height="130" as="geometry" />
     </mxCell>
-    <mxCell id="oi_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingBottom=-1;rotatable=0;points=[];portConstraint=eastwest;strokeColor=#D79B00;" vertex="1" parent="model_OrderItem">
-      <mxGeometry y="157" width="220" height="8" as="geometry" />
+    <mxCell id="oi_sep" value="" style="line;strokeWidth=1;fillColor=none;strokeColor=#EF4444;" vertex="1" parent="model_OrderItem">
+      <mxGeometry y="162" width="220" height="8" as="geometry" />
     </mxCell>
-    <mxCell id="oi_meth" value="+ menu(): BelongsTo&#10;+ order(): BelongsTo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_OrderItem">
-      <mxGeometry y="165" width="220" height="45" as="geometry" />
+    <mxCell id="oi_meth" value="+ menu(): BelongsTo&#10;+ order(): BelongsTo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_OrderItem">
+      <mxGeometry y="170" width="220" height="60" as="geometry" />
     </mxCell>
 
     <!-- Model: Menu -->
-    <mxCell id="model_Menu" value="Menu&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="1240" y="90" width="230" height="240" as="geometry" />
+    <mxCell id="model_Menu" value="Menu&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#CA8A04;fontSize=13;fontColor=#854D0E;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="80" width="230" height="250" as="geometry" />
     </mxCell>
-    <mxCell id="m_attr" value="+ id: bigint&#10;+ name: string&#10;+ description: text&#10;+ price: decimal&#10;+ image: string&#10;+ category: string&#10;+ sub_category: string&#10;+ is_available: boolean&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_Menu">
-      <mxGeometry y="32" width="230" height="158" as="geometry" />
+    <mxCell id="m_attr" value="+ id: bigint&#10;+ name: string&#10;+ description: text&#10;+ price: decimal&#10;+ image: string&#10;+ category: string&#10;+ sub_category: string&#10;+ is_available: boolean&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_Menu">
+      <mxGeometry y="32" width="230" height="170" as="geometry" />
     </mxCell>
-    <mxCell id="m_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingBottom=-1;rotatable=0;points=[];portConstraint=eastwest;strokeColor=#9673A6;" vertex="1" parent="model_Menu">
-      <mxGeometry y="190" width="230" height="8" as="geometry" />
+    <mxCell id="m_sep" value="" style="line;strokeWidth=1;fillColor=none;strokeColor=#CA8A04;" vertex="1" parent="model_Menu">
+      <mxGeometry y="202" width="230" height="8" as="geometry" />
     </mxCell>
-    <mxCell id="m_meth" value="+ orderItems(): HasMany" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_Menu">
-      <mxGeometry y="198" width="230" height="42" as="geometry" />
+    <mxCell id="m_meth" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_Menu">
+      <mxGeometry y="210" width="230" height="40" as="geometry" />
     </mxCell>
 
     <!-- Model: PaymentMethod -->
-    <mxCell id="model_PaymentMethod" value="PaymentMethod&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="1510" y="90" width="230" height="220" as="geometry" />
+    <mxCell id="model_PaymentMethod" value="PaymentMethod&#10;&lt;&lt;Model&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;fontSize=13;fontColor=#6B21A8;" vertex="1" parent="1">
+      <mxGeometry x="1390" y="80" width="240" height="250" as="geometry" />
     </mxCell>
-    <mxCell id="pm_attr" value="+ id: bigint&#10;+ name: string&#10;+ type: string&#10;+ account_number: string&#10;+ account_name: string&#10;+ qr_code_image: string&#10;+ instructions: text&#10;+ is_active: boolean&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_PaymentMethod">
-      <mxGeometry y="32" width="230" height="158" as="geometry" />
+    <mxCell id="pm_attr" value="+ id: bigint&#10;+ name: string&#10;+ type: string&#10;+ account_number: string&#10;+ account_name: string&#10;+ qr_code_image: string&#10;+ instructions: text&#10;+ is_active: boolean&#10;+ created_at: timestamp&#10;+ updated_at: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="model_PaymentMethod">
+      <mxGeometry y="32" width="240" height="170" as="geometry" />
     </mxCell>
-    <mxCell id="pm_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingBottom=-1;rotatable=0;points=[];portConstraint=eastwest;strokeColor=#D6B656;" vertex="1" parent="model_PaymentMethod">
-      <mxGeometry y="190" width="230" height="8" as="geometry" />
+    <mxCell id="pm_sep" value="" style="line;strokeWidth=1;fillColor=none;strokeColor=#9333EA;" vertex="1" parent="model_PaymentMethod">
+      <mxGeometry y="202" width="240" height="8" as="geometry" />
     </mxCell>
-    <mxCell id="pm_meth" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="model_PaymentMethod">
-      <mxGeometry y="198" width="230" height="22" as="geometry" />
+    <mxCell id="pm_meth" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="model_PaymentMethod">
+      <mxGeometry y="210" width="240" height="40" as="geometry" />
     </mxCell>
+
 
     <!-- ================================================================= -->
     <!-- CONTROLLERS LAYER                                                 -->
     <!-- ================================================================= -->
 
     <!-- Controller: CustomerController -->
-    <mxCell id="ctrl_Customer" value="CustomerController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="60" y="440" width="340" height="230" as="geometry" />
+    <mxCell id="ctrl_Customer" value="CustomerController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#CA8A04;fontSize=13;fontColor=#854D0E;" vertex="1" parent="1">
+      <mxGeometry x="40" y="440" width="340" height="230" as="geometry" />
     </mxCell>
-    <mxCell id="cc_meth" value="+ index(uuid: string): View&#10;+ addToCart(req: Request, uuid: string): JsonResponse&#10;+ updateCartItem(req: Request, uuid: string): JsonResponse&#10;+ clearCart(uuid: string): JsonResponse&#10;+ checkout(uuid: string): View&#10;+ placeOrder(req: Request, uuid: string): RedirectResponse&#10;+ status(uuid: string, order: Order): View&#10;+ paymentInfo(uuid: string): JsonResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="ctrl_Customer">
+    <mxCell id="cc_meth" value="+ index(uuid: string): View&#10;+ addToCart(req: Request, uuid: string): JsonResponse&#10;+ updateCartItem(req: Request, uuid: string): JsonResponse&#10;+ clearCart(req: Request, uuid: string): JsonResponse&#10;+ checkout(uuid: string): View&#10;+ placeOrder(req: Request, uuid: string): RedirectResponse&#10;+ status(uuid: string, order: Order): View&#10;+ paymentInfo(uuid: string): View" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_Customer">
       <mxGeometry y="32" width="340" height="198" as="geometry" />
     </mxCell>
 
     <!-- Controller: OrderController -->
-    <mxCell id="ctrl_Order" value="OrderController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="450" y="440" width="330" height="160" as="geometry" />
+    <mxCell id="ctrl_Order" value="OrderController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#EA580C;fontSize=13;fontColor=#9A3412;" vertex="1" parent="1">
+      <mxGeometry x="420" y="440" width="330" height="170" as="geometry" />
     </mxCell>
-    <mxCell id="oc_meth" value="+ index(req: Request): View&#10;+ show(order: Order): View&#10;+ updateStatus(req: Request, order: Order): RedirectResponse&#10;+ verifyPayment(req: Request, order: Order): RedirectResponse&#10;+ destroy(order: Order): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="ctrl_Order">
-      <mxGeometry y="32" width="330" height="128" as="geometry" />
+    <mxCell id="oc_meth" value="+ index(): View&#10;+ show(order: Order): View&#10;+ updateStatus(req: Request, order: Order): RedirectResponse&#10;+ verifyPayment(order: Order): RedirectResponse&#10;+ destroy(order: Order): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_Order">
+      <mxGeometry y="32" width="330" height="138" as="geometry" />
     </mxCell>
 
     <!-- Controller: TableController -->
-    <mxCell id="ctrl_Table" value="TableController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="830" y="440" width="300" height="210" as="geometry" />
+    <mxCell id="ctrl_Table" value="TableController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontSize=13;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="790" y="440" width="280" height="170" as="geometry" />
     </mxCell>
-    <mxCell id="tc_meth" value="+ index(): View&#10;+ create(): View&#10;+ store(req: Request): RedirectResponse&#10;+ show(table: Table): View&#10;+ edit(table: Table): View&#10;+ update(req: Request, table: Table): RedirectResponse&#10;+ destroy(table: Table): RedirectResponse&#10;+ clearTable(table: Table): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="ctrl_Table">
-      <mxGeometry y="32" width="300" height="178" as="geometry" />
+    <mxCell id="tc_meth" value="+ index(): View&#10;+ create(): View&#10;+ store(req: Request): RedirectResponse&#10;+ destroy(table: Table): RedirectResponse&#10;+ clearTable(table: Table): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_Table">
+      <mxGeometry y="32" width="280" height="138" as="geometry" />
     </mxCell>
 
     <!-- Controller: MenuController -->
-    <mxCell id="ctrl_Menu" value="MenuController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="1170" y="440" width="300" height="190" as="geometry" />
+    <mxCell id="ctrl_Menu" value="MenuController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#CA8A04;fontSize=13;fontColor=#854D0E;" vertex="1" parent="1">
+      <mxGeometry x="1110" y="440" width="280" height="210" as="geometry" />
     </mxCell>
-    <mxCell id="mc_meth" value="+ index(): View&#10;+ create(): View&#10;+ store(req: Request): RedirectResponse&#10;+ show(menu: Menu): View&#10;+ edit(menu: Menu): View&#10;+ update(req: Request, menu: Menu): RedirectResponse&#10;+ destroy(menu: Menu): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="ctrl_Menu">
-      <mxGeometry y="32" width="300" height="158" as="geometry" />
+    <mxCell id="mc_meth" value="+ index(): View&#10;+ create(): View&#10;+ store(req: Request): RedirectResponse&#10;+ show(menu: Menu): View&#10;+ edit(menu: Menu): View&#10;+ update(req: Request, menu: Menu): RedirectResponse&#10;+ destroy(menu: Menu): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_Menu">
+      <mxGeometry y="32" width="280" height="178" as="geometry" />
+    </mxCell>
+
+    <!-- Controller: UserController -->
+    <mxCell id="ctrl_User" value="UserController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontSize=13;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="1430" y="440" width="300" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_meth" value="+ index(req: Request): View&#10;+ store(req: Request): RedirectResponse&#10;+ update(req: Request, user: User): RedirectResponse&#10;+ destroy(user: User): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_User">
+      <mxGeometry y="32" width="300" height="138" as="geometry" />
     </mxCell>
 
     <!-- Controller: PaymentMethodController -->
-    <mxCell id="ctrl_Payment" value="PaymentMethodController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="1500" y="440" width="260" height="190" as="geometry" />
+    <mxCell id="ctrl_Payment" value="PaymentMethodController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;fontSize=13;fontColor=#6B21A8;" vertex="1" parent="1">
+      <mxGeometry x="1770" y="440" width="280" height="210" as="geometry" />
     </mxCell>
-    <mxCell id="pmc_meth" value="+ index(): View&#10;+ create(): View&#10;+ store(req: Request): RedirectResponse&#10;+ show(pm: PaymentMethod): View&#10;+ edit(pm: PaymentMethod): View&#10;+ update(req: Request, pm: PaymentMethod): RedirectResponse&#10;+ destroy(pm: PaymentMethod): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="ctrl_Payment">
-      <mxGeometry y="32" width="260" height="158" as="geometry" />
+    <mxCell id="pmc_meth" value="+ index(): View&#10;+ create(): View&#10;+ store(req: Request): RedirectResponse&#10;+ edit(pm: PaymentMethod): View&#10;+ update(req: Request, pm: PaymentMethod): RedirectResponse&#10;+ destroy(pm: PaymentMethod): RedirectResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_Payment">
+      <mxGeometry y="32" width="280" height="178" as="geometry" />
     </mxCell>
+
+    <!-- Controller: AdminController -->
+    <mxCell id="ctrl_Admin" value="AdminController&#10;&lt;&lt;Controller&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="790" y="650" width="280" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="ac_meth" value="+ index(): View (Dashboard Summary)&#10;+ reports(): View (Sales Reports)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;overflow=hidden;rotatable=0;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ctrl_Admin">
+      <mxGeometry y="32" width="280" height="98" as="geometry" />
+    </mxCell>
+
 
     <!-- ================================================================= -->
     <!-- RELATIONSHIP CONNECTIONS (EDGES & MULTIPLICITY)                  -->
     <!-- ================================================================= -->
 
-    <!-- Table 1 -- 0..* Order -->
-    <mxCell id="rel_table_order" value="hasMany&#10;1               0..*" style="endArrow=diamond;endFill=0;html=1;rounded=0;strokeWidth=2;strokeColor=#82B366;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="model_Table" target="model_Order">
+    <!-- Table 1 <───◆ 0..* Order -->
+    <mxCell id="rel_table_order" value="1               0..*" style="endArrow=diamond;endFill=1;html=1;strokeWidth=2;strokeColor=#22C55E;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="model_Table" target="model_Order">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
 
-    <!-- Order 1 -- 1..* OrderItem -->
-    <mxCell id="rel_order_items" value="hasMany&#10;1               1..*" style="endArrow=diamond;endFill=0;html=1;rounded=0;strokeWidth=2;strokeColor=#D79B00;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="model_Order" target="model_OrderItem">
+    <!-- Order 1 <───◆ 1..* OrderItem -->
+    <mxCell id="rel_order_items" value="1               1..*" style="endArrow=diamond;endFill=1;html=1;strokeWidth=2;strokeColor=#EA580C;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="model_Order" target="model_OrderItem">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
 
-    <!-- Menu 1 -- 0..* OrderItem -->
-    <mxCell id="rel_menu_items" value="hasMany&#10;1               0..*" style="endArrow=diamond;endFill=0;html=1;rounded=0;strokeWidth=2;strokeColor=#9673A6;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="model_Menu" target="model_OrderItem">
+    <!-- Menu 1 <───◆ 0..* OrderItem -->
+    <mxCell id="rel_menu_items" value="0..*            1" style="endArrow=diamond;endFill=1;html=1;strokeWidth=2;strokeColor=#CA8A04;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="model_OrderItem" target="model_Menu">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
 
-    <!-- Controllers dependency arrows (dashed) -->
-    <mxCell id="dep_customer_models" value="uses" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#B85450;fontSize=11;" edge="1" parent="1" source="ctrl_Customer" target="model_Table">
+    <!-- Controller Dependencies (Dashed Open Arrows) -->
+    <mxCell id="dep_cust_table" value="uses" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#CA8A04;fontSize=10;" edge="1" parent="1" source="ctrl_Customer" target="model_Table">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="dep_customer_order" value="creates" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#B85450;fontSize=11;" edge="1" parent="1" source="ctrl_Customer" target="model_Order">
+    <mxCell id="dep_cust_order" value="creates" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#CA8A04;fontSize=10;" edge="1" parent="1" source="ctrl_Customer" target="model_Order">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
-
-    <mxCell id="dep_order_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#D79B00;fontSize=11;" edge="1" parent="1" source="ctrl_Order" target="model_Order">
+    <mxCell id="dep_order_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#EA580C;fontSize=10;" edge="1" parent="1" source="ctrl_Order" target="model_Order">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
-
-    <mxCell id="dep_table_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#82B366;fontSize=11;" edge="1" parent="1" source="ctrl_Table" target="model_Table">
+    <mxCell id="dep_table_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#22C55E;fontSize=10;" edge="1" parent="1" source="ctrl_Table" target="model_Table">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
-
-    <mxCell id="dep_menu_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#9673A6;fontSize=11;" edge="1" parent="1" source="ctrl_Menu" target="model_Menu">
+    <mxCell id="dep_menu_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#CA8A04;fontSize=10;" edge="1" parent="1" source="ctrl_Menu" target="model_Menu">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
-
-    <mxCell id="dep_pm_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#D6B656;fontSize=11;" edge="1" parent="1" source="ctrl_Payment" target="model_PaymentMethod">
+    <mxCell id="dep_user_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#3B82F6;fontSize=10;" edge="1" parent="1" source="ctrl_User" target="model_User">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="dep_pm_ctrl" value="manages" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#9333EA;fontSize=10;" edge="1" parent="1" source="ctrl_Payment" target="model_PaymentMethod">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="dep_admin_ctrl" value="uses" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#475569;fontSize=10;" edge="1" parent="1" source="ctrl_Admin" target="model_Order">
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
 

@@ -1,559 +1,482 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="3400" math="0" shadow="0">
+<mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="3800" math="0" shadow="0">
   <root>
     <mxCell id="0"/>
     <mxCell id="1" parent="0"/>
 
-    <mxCell id="title" value="Sequence Diagram - QR Web Cafe Ordering System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="200" y="10" width="1200" height="40" as="geometry"/>
+    <!-- Title -->
+    <mxCell id="title" value="Sequence Diagram - Sistem Pemesanan QR Web Cafe (Little Palembang)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1E293B;" vertex="1" parent="1">
+      <mxGeometry x="200" y="10" width="1400" height="40" as="geometry"/>
     </mxCell>
-    <mxCell id="sd1_title" value="[SD-01] Customer Melakukan Pemesanan (Happy Path)" style="text;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="30" y="55" width="600" height="30" as="geometry"/>
+
+    <!-- =========================================================================
+         [SD-01] CUSTOMER ORDER FLOW (HAPPY PATH & MULTI-ORDER)
+         ========================================================================= -->
+    <mxCell id="sd1_title" value="[SD-01] Pelanggan Melakukan Pemesanan Mandiri via QR Meja (Self-Order Flow)" style="text;html=1;fillColor=#FEF9C3;strokeColor=#CA8A04;fontColor=#854D0E;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="55" width="720" height="32" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H1" value="Customer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="50" y="95" width="100" height="40" as="geometry"/>
+
+    <!-- SD-01 Headers & Lifelines -->
+    <mxCell id="SD1_H1" value="Pelanggan&#xa;(Customer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF08A;strokeColor=#CA8A04;fontStyle=1;fontSize=11;fontColor=#854D0E;" vertex="1" parent="1">
+      <mxGeometry x="40" y="100" width="110" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="95" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#CA8A04;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="90" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H2" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="230" y="95" width="100" height="40" as="geometry"/>
+
+    <mxCell id="SD1_H2" value="Web Browser&#xa;(Client UI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="220" y="100" width="110" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="275" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="270" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H3" value="CustomerController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="430" y="95" width="100" height="40" as="geometry"/>
+
+    <mxCell id="SD1_H3" value="CustomerController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="410" y="100" width="130" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="475" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="470" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H4" value="Table Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="630" y="95" width="100" height="40" as="geometry"/>
+
+    <mxCell id="SD1_H4" value="Table &amp; Menu&#xa;Models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="620" y="100" width="120" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="675" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="675" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H5" value="Menu Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="830" y="95" width="100" height="40" as="geometry"/>
+
+    <mxCell id="SD1_H5" value="Session Cart&#xa;(cart_{uuid})" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FED7AA;strokeColor=#EA580C;fontStyle=1;fontSize=11;fontColor=#9A3412;" vertex="1" parent="1">
+      <mxGeometry x="815" y="100" width="120" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="875" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#EA580C;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="870" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H6" value="Order Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="1030" y="95" width="100" height="40" as="geometry"/>
+
+    <mxCell id="SD1_H6" value="Order &amp; Item&#xa;Models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="1010" y="100" width="120" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L6" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="1075" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L6" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="1065" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H7" value="Session (Cart)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="1230" y="95" width="100" height="40" as="geometry"/>
+
+    <mxCell id="SD1_H7" value="Database&#xa;(MySQL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontStyle=1;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="1205" y="100" width="110" height="45" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_L7" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="1275" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="SD1_L7" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#475569;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="1255" y="145" width="10" height="830" as="geometry"/>
     </mxCell>
-    <mxCell id="SD1_H8" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="1430" y="95" width="100" height="40" as="geometry"/>
+
+    <!-- SD-01 Messages -->
+    <mxCell id="sd1_m1" value="1. Scan QR Meja ➔ Buka /order/{uuid}" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="165" as="sourcePoint"/><mxPoint x="275" y="165" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="SD1_L8" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="1475" y="135" width="10" height="1000" as="geometry"/>
+    <mxCell id="sd1_m2" value="2. HTTP GET /order/{uuid}" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="185" as="sourcePoint"/><mxPoint x="475" y="185" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="e1" value="1. Scan QR Code -&gt; buka /order/{uuid}" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+    <mxCell id="sd1_m3" value="3. Table::where('uuid', $uuid)-&gt;firstOrFail()" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="205" as="sourcePoint"/><mxPoint x="680" y="205" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m4" value="4. Menu::where('is_available', true)-&gt;get()" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="225" as="sourcePoint"/><mxPoint x="680" y="225" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m5" value="5. SELECT * FROM menus, tables" style="endArrow=open;html=1;fontSize=10;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="680" y="245" as="sourcePoint"/><mxPoint x="1260" y="245" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m6" value="6. return $table &amp; $menus" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="1260" y="265" as="sourcePoint"/><mxPoint x="475" y="265" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m7" value="7. Render view('customer.menu')" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="285" as="sourcePoint"/><mxPoint x="275" y="285" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m8" value="8. Tampilkan katalog menu &amp; filter kategori" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="305" as="sourcePoint"/><mxPoint x="95" y="305" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <!-- Add to Cart AJAX -->
+    <mxCell id="sd1_m9" value="9. Klik (+) / (-) Item Menu ➔ POST /order/{uuid}/cart (AJAX)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="340" as="sourcePoint"/><mxPoint x="475" y="340" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m10" value="10. session()-&gt;put('cart_{uuid}', $cart)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="360" as="sourcePoint"/><mxPoint x="875" y="360" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m11" value="11. return JSON {success: true, cart_count, cart_total}" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="380" as="sourcePoint"/><mxPoint x="275" y="380" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m12" value="12. Update badge floating cart realtime" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="400" as="sourcePoint"/><mxPoint x="95" y="400" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <!-- Checkout -->
+    <mxCell id="sd1_m13" value="13. Buka Halaman Checkout ➔ GET /order/{uuid}/checkout" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="435" as="sourcePoint"/><mxPoint x="475" y="435" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m14" value="14. PaymentMethod::where('is_active', true)-&gt;get()" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="455" as="sourcePoint"/><mxPoint x="680" y="455" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m15" value="15. Render view('customer.checkout')" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="475" as="sourcePoint"/><mxPoint x="275" y="475" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m16" value="16. Form checkout (Nama, Lantai 1/2, Metode Bayar)" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="495" as="sourcePoint"/><mxPoint x="95" y="495" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <!-- Place Order -->
+    <mxCell id="sd1_m17" value="17. Submit Form ➔ POST /order/{uuid}/place" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="535" as="sourcePoint"/><mxPoint x="475" y="535" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m18" value="18. Validasi input: customer_name, floor, payment_method_id" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
       <mxGeometry relative="1" as="geometry">
-        <mxPoint x="100" y="160" as="sourcePoint"/>
-        <mxPoint x="280" y="160" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
+        <mxPoint x="475" y="555" as="sourcePoint"/>
+        <mxPoint x="475" y="575" as="targetPoint"/>
+        <Array as="points"><mxPoint x="510" y="555"/><mxPoint x="510" y="575"/></Array>
       </mxGeometry>
     </mxCell>
-    <mxCell id="e2" value="2. HTTP GET /order/{uuid}" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+    <mxCell id="sd1_m19" value="19. Cek apakah meja status = 'occupied' (order aktif)?" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="595" as="sourcePoint"/><mxPoint x="680" y="595" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <!-- Alt block for new vs existing order -->
+    <mxCell id="sd1_alt1" value="[Alt 1: Meja Available ➔ Buat Order Baru]" style="text;html=1;strokeColor=#16A34A;fillColor=#DCFCE7;align=left;fontSize=10;rounded=1;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="400" y="625" width="230" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="sd1_m20" value="20a. Order::create([table_id, name, floor, total, pending])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="650" as="sourcePoint"/><mxPoint x="1070" y="650" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m21" value="21a. OrderItem::create([order_id, menu_id, qty, price])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="670" as="sourcePoint"/><mxPoint x="1070" y="670" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m22" value="22a. $table-&gt;update(['status' =&gt; 'occupied'])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="690" as="sourcePoint"/><mxPoint x="680" y="690" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m23" value="23a. INSERT INTO orders, order_items; UPDATE tables" style="endArrow=open;html=1;fontSize=10;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="1070" y="710" as="sourcePoint"/><mxPoint x="1260" y="710" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <mxCell id="sd1_alt2" value="[Alt 2: Meja Occupied ➔ Tambah Menu ke Order Berjalan]" style="text;html=1;strokeColor=#EA580C;fillColor=#FFEDD5;align=left;fontSize=10;rounded=1;fontColor=#9A3412;" vertex="1" parent="1">
+      <mxGeometry x="400" y="740" width="280" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="sd1_m24" value="20b. Tambahkan OrderItem ke $existingOrder-&gt;id" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="765" as="sourcePoint"/><mxPoint x="1070" y="765" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m25" value="21b. $existingOrder-&gt;total_amount += $newTotal; payment_status = pending" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="785" as="sourcePoint"/><mxPoint x="1070" y="785" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <!-- Clear Session & Finish -->
+    <mxCell id="sd1_m26" value="24. session()-&gt;forget('cart_{uuid}')" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="820" as="sourcePoint"/><mxPoint x="875" y="820" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m27" value="25. Redirect ke route('order.status', [$uuid, $order])" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="475" y="845" as="sourcePoint"/><mxPoint x="275" y="845" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd1_m28" value="26. Tampilkan halaman live tracking status &amp; tombol cetak struk" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="870" as="sourcePoint"/><mxPoint x="95" y="870" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+
+    <!-- =========================================================================
+         [SD-02] DAPUR UPDATE STATUS MEMASAK (KITCHEN QUEUE FLOW)
+         ========================================================================= -->
+    <mxCell id="sd2_title" value="[SD-02] Dapur / Admin Memperbarui Status Pesanan (Kitchen Processing Flow)" style="text;html=1;fillColor=#FED7AA;strokeColor=#EA580C;fontColor=#9A3412;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="1030" width="720" height="32" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD2_H1" value="Dapur / Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FED7AA;strokeColor=#EA580C;fontStyle=1;fontSize=11;fontColor=#9A3412;" vertex="1" parent="1">
+      <mxGeometry x="40" y="1080" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD2_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#EA580C;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="90" y="1125" width="10" height="430" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD2_H2" value="Web Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="220" y="1080" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD2_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="270" y="1125" width="10" height="430" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD2_H3" value="OrderController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="420" y="1080" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD2_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="475" y="1125" width="10" height="430" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD2_H4" value="Order Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="620" y="1080" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD2_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="670" y="1125" width="10" height="430" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD2_H5" value="Table Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="820" y="1080" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD2_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="870" y="1125" width="10" height="430" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD2_H6" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontStyle=1;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="1020" y="1080" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD2_L6" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#475569;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="1070" y="1125" width="10" height="430" as="geometry"/>
+    </mxCell>
+
+    <!-- SD-02 Messages -->
+    <mxCell id="sd2_m1" value="1. Klik 'Mulai Masak' / 'Siap Saji' (order_status: cooking / served)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="1150" as="sourcePoint"/><mxPoint x="275" y="1150" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd2_m2" value="2. PUT /admin/orders/{order}/status" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="1175" as="sourcePoint"/><mxPoint x="480" y="1175" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd2_m3" value="3. Validasi status in: pending, cooking, served, completed, cancelled" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
       <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="180" as="sourcePoint"/>
-        <mxPoint x="480" y="180" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
+        <mxPoint x="480" y="1200" as="sourcePoint"/>
+        <mxPoint x="480" y="1220" as="targetPoint"/>
+        <Array as="points"><mxPoint x="515" y="1200"/><mxPoint x="515" y="1220"/></Array>
       </mxGeometry>
     </mxCell>
-    <mxCell id="e3" value="3. Table::where(&#039;uuid&#039;)-&gt;firstOrFail()" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+    <mxCell id="sd2_m4" value="4. $order-&gt;update(['order_status' =&gt; $status])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="1245" as="sourcePoint"/><mxPoint x="675" y="1245" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd2_m5" value="5. UPDATE orders SET order_status = ?" style="endArrow=open;html=1;fontSize=10;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="675" y="1265" as="sourcePoint"/><mxPoint x="1075" y="1265" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <mxCell id="sd2_alt1" value="[Alt: order_status = 'cancelled']" style="text;html=1;strokeColor=#EF4444;fillColor=#FEE2E2;align=left;fontSize=10;rounded=1;fontColor=#991B1B;" vertex="1" parent="1">
+      <mxGeometry x="400" y="1300" width="200" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="sd2_m6" value="6a. $order-&gt;update(['payment_status' =&gt; 'cancelled'])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="1325" as="sourcePoint"/><mxPoint x="675" y="1325" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd2_m7" value="6b. Jika tidak ada order aktif lain ➔ $order-&gt;table-&gt;update(['status' =&gt; 'available'])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="1350" as="sourcePoint"/><mxPoint x="875" y="1350" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+    <mxCell id="sd2_m8" value="7. redirect()-&gt;back()-&gt;with('success', 'Status pesanan berhasil diupdate.')" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="1395" as="sourcePoint"/><mxPoint x="275" y="1395" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd2_m9" value="8. Render ulang daftar antrean dengan status teranyar" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="1420" as="sourcePoint"/><mxPoint x="95" y="1420" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+
+    <!-- =========================================================================
+         [SD-03] KASIR VERIFIKASI PEMBAYARAN (CASHIER PAYMENT VERIFICATION)
+         ========================================================================= -->
+    <mxCell id="sd3_title" value="[SD-03] Kasir / Admin Memverifikasi Pembayaran (Payment Verification Flow)" style="text;html=1;fillColor=#BBF7D0;strokeColor=#16A34A;fontColor=#166534;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="1590" width="720" height="32" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD3_H1" value="Kasir / Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#16A34A;fontStyle=1;fontSize=11;fontColor=#166534;" vertex="1" parent="1">
+      <mxGeometry x="40" y="1640" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD3_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#16A34A;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="90" y="1685" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD3_H2" value="Web Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="220" y="1640" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD3_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="270" y="1685" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD3_H3" value="OrderController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="420" y="1640" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD3_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="475" y="1685" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD3_H4" value="Order Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="620" y="1640" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD3_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="670" y="1685" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD3_H5" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontStyle=1;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="820" y="1640" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD3_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#475569;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="870" y="1685" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <!-- SD-03 Messages -->
+    <mxCell id="sd3_m1" value="1. Kasir klik 'Verifikasi Lunas'" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="1710" as="sourcePoint"/><mxPoint x="275" y="1710" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd3_m2" value="2. PUT /admin/orders/{order}/payment" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="1735" as="sourcePoint"/><mxPoint x="480" y="1735" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd3_m3" value="3. $order-&gt;update(['payment_status' =&gt; 'paid'])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="1760" as="sourcePoint"/><mxPoint x="675" y="1760" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd3_m4" value="4. UPDATE orders SET payment_status = 'paid'" style="endArrow=open;html=1;fontSize=10;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="675" y="1785" as="sourcePoint"/><mxPoint x="875" y="1785" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd3_m5" value="5. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="875" y="1810" as="sourcePoint"/><mxPoint x="480" y="1810" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd3_m6" value="6. redirect()-&gt;back()-&gt;with('success', 'Pembayaran berhasil diverifikasi.')" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="1835" as="sourcePoint"/><mxPoint x="275" y="1835" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd3_m7" value="7. Update badge status bayar menjadi hijau (Paid)" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="1860" as="sourcePoint"/><mxPoint x="95" y="1860" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+
+    <!-- =========================================================================
+         [SD-04] KASIR KOSONGKAN MEJA (CLEAR TABLE FLOW)
+         ========================================================================= -->
+    <mxCell id="sd4_title" value="[SD-04] Kasir / Admin Mengosongkan Meja (Clear Table Flow)" style="text;html=1;fillColor=#BBF7D0;strokeColor=#16A34A;fontColor=#166534;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="1960" width="720" height="32" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD4_H1" value="Kasir / Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBF7D0;strokeColor=#16A34A;fontStyle=1;fontSize=11;fontColor=#166534;" vertex="1" parent="1">
+      <mxGeometry x="40" y="2010" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD4_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#16A34A;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="90" y="2055" width="10" height="380" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD4_H2" value="Web Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="220" y="2010" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD4_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="270" y="2055" width="10" height="380" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD4_H3" value="TableController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="420" y="2010" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD4_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="475" y="2055" width="10" height="380" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD4_H4" value="Order Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="620" y="2010" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD4_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="670" y="2055" width="10" height="380" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD4_H5" value="Table Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="820" y="2010" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD4_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="870" y="2055" width="10" height="380" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD4_H6" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontStyle=1;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="1020" y="2010" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD4_L6" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#475569;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="1070" y="2055" width="10" height="380" as="geometry"/>
+    </mxCell>
+
+    <!-- SD-04 Messages -->
+    <mxCell id="sd4_m1" value="1. Kasir klik tombol 'Kosongkan Meja' (Clear Table)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="2080" as="sourcePoint"/><mxPoint x="275" y="2080" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd4_m2" value="2. POST /admin/tables/{table}/clear" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="2105" as="sourcePoint"/><mxPoint x="480" y="2105" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd4_m3" value="3. Order::where('table_id', $table-&gt;id)-&gt;whereIn('order_status', ['pending','cooking','served'])-&gt;update(['order_status' =&gt; 'completed'])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="2135" as="sourcePoint"/><mxPoint x="675" y="2135" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd4_m4" value="4. $table-&gt;update(['status' =&gt; 'available'])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="2165" as="sourcePoint"/><mxPoint x="875" y="2165" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd4_m5" value="5. UPDATE tables SET status = 'available'" style="endArrow=open;html=1;fontSize=10;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="875" y="2195" as="sourcePoint"/><mxPoint x="1075" y="2195" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd4_m6" value="6. redirect()-&gt;route('tables.index')-&gt;with('success', 'Meja berhasil dikosongkan')" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="2225" as="sourcePoint"/><mxPoint x="275" y="2225" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd4_m7" value="7. Meja berubah hijau (Available) dan siap untuk tamu berikutnya" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="2250" as="sourcePoint"/><mxPoint x="95" y="2250" as="targetPoint"/></mxGeometry>
+    </mxCell>
+
+
+    <!-- =========================================================================
+         [SD-05] ADMIN MANAJEMEN USER & ROLE (USER MANAGEMENT FLOW)
+         ========================================================================= -->
+    <mxCell id="sd5_title" value="[SD-05] Admin Mengelola Akun &amp; Role Pengguna (User Management Flow)" style="text;html=1;fillColor=#FECDD3;strokeColor=#E11D48;fontColor=#9F1239;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="2350" width="720" height="32" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD5_H1" value="Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FECDD3;strokeColor=#E11D48;fontStyle=1;fontSize=11;fontColor=#9F1239;" vertex="1" parent="1">
+      <mxGeometry x="40" y="2400" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD5_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#E11D48;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="90" y="2445" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD5_H2" value="Web Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="220" y="2400" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD5_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="270" y="2445" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD5_H3" value="UserController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontStyle=1;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+      <mxGeometry x="420" y="2400" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD5_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#3B82F6;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="475" y="2445" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD5_H4" value="User Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontStyle=1;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+      <mxGeometry x="620" y="2400" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD5_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#22C55E;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="670" y="2445" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="SD5_H5" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontStyle=1;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="820" y="2400" width="110" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="SD5_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#475569;direction=south;" vertex="1" parent="1">
+      <mxGeometry x="870" y="2445" width="10" height="360" as="geometry"/>
+    </mxCell>
+
+    <!-- SD-05 Messages -->
+    <mxCell id="sd5_m1" value="1. Isi Form: Nama, Email, Role (admin/kasir/dapur/owner), Password" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="95" y="2470" as="sourcePoint"/><mxPoint x="275" y="2470" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd5_m2" value="2. POST /admin/users" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="2495" as="sourcePoint"/><mxPoint x="480" y="2495" as="targetPoint"/></mxGeometry>
+    </mxCell>
+    <mxCell id="sd5_m3" value="3. Validasi input: unique email, role in:admin,kasir,dapur,owner, min:6" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
       <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="200" as="sourcePoint"/>
-        <mxPoint x="680" y="200" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
+        <mxPoint x="480" y="2520" as="sourcePoint"/>
+        <mxPoint x="480" y="2540" as="targetPoint"/>
+        <Array as="points"><mxPoint x="515" y="2520"/><mxPoint x="515" y="2540"/></Array>
       </mxGeometry>
     </mxCell>
-    <mxCell id="e4" value="4. SELECT * FROM tables WHERE uuid=?" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="220" as="sourcePoint"/>
-        <mxPoint x="1480" y="220" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
+    <mxCell id="sd5_m4" value="4. User::create(['role' =&gt; $role, 'password' =&gt; Hash::make($pwd)])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="2565" as="sourcePoint"/><mxPoint x="675" y="2565" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="e5" value="5. return table row" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1480" y="240" as="sourcePoint"/>
-        <mxPoint x="680" y="240" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
+    <mxCell id="sd5_m5" value="5. INSERT INTO users (name, email, role, password, ...)" style="endArrow=open;html=1;fontSize=10;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="675" y="2590" as="sourcePoint"/><mxPoint x="875" y="2590" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="e6" value="6. return $table object" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="260" as="sourcePoint"/>
-        <mxPoint x="480" y="260" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
+    <mxCell id="sd5_m6" value="6. return new user ID" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#EF4444;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="875" y="2615" as="sourcePoint"/><mxPoint x="480" y="2615" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="a1" value="[Alt: require_location = true]" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;fontSize=10;rounded=1;" vertex="1" parent="1"><mxGeometry x="50" y="300" width="200" height="22" as="geometry"/></mxCell>
-    <mxCell id="e7" value="7. return view + GPS check JS" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="325" as="sourcePoint"/>
-        <mxPoint x="280" y="325" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
+    <mxCell id="sd5_m7" value="7. redirect()-&gt;route('users.index')-&gt;with('success', 'Akun berhasil ditambahkan.')" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="480" y="2640" as="sourcePoint"/><mxPoint x="275" y="2640" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="e8" value="8. request GPS permission" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="345" as="sourcePoint"/>
-        <mxPoint x="100" y="345" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
+    <mxCell id="sd5_m8" value="8. Render tabel pengguna dengan badge role berwarna sesuai" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry"><mxPoint x="275" y="2665" as="sourcePoint"/><mxPoint x="95" y="2665" as="targetPoint"/></mxGeometry>
     </mxCell>
-    <mxCell id="e9" value="9. GPS coords granted" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="100" y="365" as="sourcePoint"/>
-        <mxPoint x="280" y="365" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
+
+    <!-- Legend -->
+    <mxCell id="legend" value="&lt;b&gt;LEGENDA SEQUENCE DIAGRAM:&lt;/b&gt;&#10;→ Garis Panah Solid = Method Call / Request HTTP&#10;⇢ Garis Panah Putus = Return Value / View Response&#10;🔴 Garis Merah = Interaksi Langsung ke Database (SQL Insert/Update/Select)&#10;🟡 Kuning: Customer | 🟠 Oranye: Dapur | 🟢 Hijau: Kasir | 🔴 Merah: Admin" style="text;html=1;align=left;strokeColor=#64748B;fillColor=#F8FAFC;fontSize=11;rounded=1;whiteSpace=wrap;fontColor=#334155;" vertex="1" parent="1">
+      <mxGeometry x="1450" y="100" width="380" height="150" as="geometry"/>
     </mxCell>
-    <mxCell id="e10" value="10. POST /order/{uuid}/verify-location" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="385" as="sourcePoint"/>
-        <mxPoint x="480" y="385" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e11" value="11. Menu::where(&#039;is_available&#039;, true)-&gt;get()" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="415" as="sourcePoint"/>
-        <mxPoint x="880" y="415" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e12" value="12. SELECT * FROM menus" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="880" y="435" as="sourcePoint"/>
-        <mxPoint x="1480" y="435" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e13" value="13. return menus[]" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1480" y="455" as="sourcePoint"/>
-        <mxPoint x="880" y="455" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e14" value="14. return Collection $menus" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="880" y="475" as="sourcePoint"/>
-        <mxPoint x="480" y="475" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e15" value="15. return view(&#039;customer.menu&#039;)" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="495" as="sourcePoint"/>
-        <mxPoint x="280" y="495" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e16" value="16. Tampilkan halaman menu" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="515" as="sourcePoint"/>
-        <mxPoint x="100" y="515" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e17" value="17. POST /order/{uuid}/cart (AJAX)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="100" y="545" as="sourcePoint"/>
-        <mxPoint x="480" y="545" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e18" value="18. session()-&gt;get(&#039;cart&#039;, [])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="565" as="sourcePoint"/>
-        <mxPoint x="1280" y="565" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e19" value="19. return $cart array" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1280" y="585" as="sourcePoint"/>
-        <mxPoint x="480" y="585" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e20" value="20. session()-&gt;put(&#039;cart&#039;, $updatedCart)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="605" as="sourcePoint"/>
-        <mxPoint x="1280" y="605" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e21" value="21. return JSON {success}" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="625" as="sourcePoint"/>
-        <mxPoint x="280" y="625" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e22" value="22. Update badge cart" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="645" as="sourcePoint"/>
-        <mxPoint x="100" y="645" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e23" value="23. POST /order/{uuid}/place" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="100" y="675" as="sourcePoint"/>
-        <mxPoint x="480" y="675" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e24" value="24. Order::create()" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="695" as="sourcePoint"/>
-        <mxPoint x="1080" y="695" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e25" value="25. INSERT INTO orders" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1080" y="715" as="sourcePoint"/>
-        <mxPoint x="1480" y="715" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e26" value="26. return new_order_id" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1480" y="735" as="sourcePoint"/>
-        <mxPoint x="1080" y="735" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e27" value="27. INSERT INTO order_items" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1080" y="755" as="sourcePoint"/>
-        <mxPoint x="1480" y="755" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e28" value="28. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1480" y="775" as="sourcePoint"/>
-        <mxPoint x="1080" y="775" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e29" value="29. $table-&gt;update" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="795" as="sourcePoint"/>
-        <mxPoint x="680" y="795" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e30" value="30. UPDATE tables SET status=&#039;occupied&#039;" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="815" as="sourcePoint"/>
-        <mxPoint x="1480" y="815" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e31" value="31. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1480" y="835" as="sourcePoint"/>
-        <mxPoint x="680" y="835" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e32" value="32. session()-&gt;forget(&#039;cart&#039;)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="855" as="sourcePoint"/>
-        <mxPoint x="1280" y="855" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e33" value="33. redirect -&gt; /status" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="875" as="sourcePoint"/>
-        <mxPoint x="280" y="875" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e34" value="34. Tampilkan halaman status" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="895" as="sourcePoint"/>
-        <mxPoint x="100" y="895" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="sd2_title" value="[SD-02] Admin Update Status Pesanan (termasuk Cancel)" style="text;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="30" y="935" width="600" height="30" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_H1" value="Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="50" y="975" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="95" y="1015" width="10" height="550" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_H2" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="230" y="975" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="275" y="1015" width="10" height="550" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_H3" value="OrderController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="430" y="975" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="475" y="1015" width="10" height="550" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_H4" value="Order Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="630" y="975" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="675" y="1015" width="10" height="550" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_H5" value="Table Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="830" y="975" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="875" y="1015" width="10" height="550" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_H6" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="1030" y="975" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD2_L6" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="1075" y="1015" width="10" height="550" as="geometry"/>
-    </mxCell>
-    <mxCell id="e35" value="1. Klik tombol Update Status" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="100" y="1035" as="sourcePoint"/>
-        <mxPoint x="280" y="1035" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e36" value="2. PUT /admin/orders/{id}/status" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="1055" as="sourcePoint"/>
-        <mxPoint x="480" y="1055" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e37" value="3. $order-&gt;update([status])" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1075" as="sourcePoint"/>
-        <mxPoint x="680" y="1075" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e38" value="4. UPDATE orders SET order_status=?" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1095" as="sourcePoint"/>
-        <mxPoint x="1080" y="1095" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e39" value="5. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1080" y="1115" as="sourcePoint"/>
-        <mxPoint x="680" y="1115" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e40" value="6. return true" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1135" as="sourcePoint"/>
-        <mxPoint x="480" y="1135" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="a2" value="[Alt: order_status = 'cancelled']" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=left;fontSize=10;rounded=1;" vertex="1" parent="1"><mxGeometry x="50" y="1175" width="200" height="22" as="geometry"/></mxCell>
-    <mxCell id="e41" value="7. $order-&gt;update" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1205" as="sourcePoint"/>
-        <mxPoint x="680" y="1205" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e42" value="8. UPDATE orders SET payment_status=..." style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1225" as="sourcePoint"/>
-        <mxPoint x="1080" y="1225" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e43" value="9. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1080" y="1245" as="sourcePoint"/>
-        <mxPoint x="680" y="1245" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e44" value="10. $order-&gt;table-&gt;update" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1265" as="sourcePoint"/>
-        <mxPoint x="880" y="1265" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e45" value="11. UPDATE tables SET status=&#039;available&#039;" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="880" y="1285" as="sourcePoint"/>
-        <mxPoint x="1080" y="1285" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e46" value="12. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="1080" y="1305" as="sourcePoint"/>
-        <mxPoint x="880" y="1305" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e47" value="13. redirect()-&gt;back()" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1325" as="sourcePoint"/>
-        <mxPoint x="280" y="1325" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e48" value="14. Render halaman" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="1345" as="sourcePoint"/>
-        <mxPoint x="100" y="1345" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="sd3_title" value="[SD-03] Admin Verifikasi Pembayaran" style="text;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="30" y="1405" width="600" height="30" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_H1" value="Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="50" y="1445" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_L1" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="95" y="1485" width="10" height="380" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_H2" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="230" y="1445" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_L2" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="275" y="1485" width="10" height="380" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_H3" value="OrderController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="430" y="1445" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_L3" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="475" y="1485" width="10" height="380" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_H4" value="Order Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="630" y="1445" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_L4" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="675" y="1485" width="10" height="380" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_H5" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="830" y="1445" width="100" height="40" as="geometry"/>
-    </mxCell>
-    <mxCell id="SD3_L5" value="" style="line;strokeWidth=1;dashed=1;html=1;strokeColor=#6c8ebf;direction=south;" vertex="1" parent="1">
-      <mxGeometry x="875" y="1485" width="10" height="380" as="geometry"/>
-    </mxCell>
-    <mxCell id="e49" value="1. Klik tombol Verifikasi" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="100" y="1505" as="sourcePoint"/>
-        <mxPoint x="280" y="1505" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e50" value="2. PUT /admin/orders/{id}/payment" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="1525" as="sourcePoint"/>
-        <mxPoint x="480" y="1525" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e51" value="3. Order::findOrFail($id)" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1545" as="sourcePoint"/>
-        <mxPoint x="680" y="1545" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e52" value="4. SELECT * FROM orders WHERE id=?" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1565" as="sourcePoint"/>
-        <mxPoint x="880" y="1565" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e53" value="5. return order row" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="880" y="1585" as="sourcePoint"/>
-        <mxPoint x="680" y="1585" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e54" value="6. return $order object" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1605" as="sourcePoint"/>
-        <mxPoint x="480" y="1605" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e55" value="7. $order-&gt;update" style="endArrow=open;html=1;fontSize=10;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1625" as="sourcePoint"/>
-        <mxPoint x="680" y="1625" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e56" value="8. UPDATE orders SET payment_status=&#039;paid&#039;" style="endArrow=open;html=1;fontSize=10;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1645" as="sourcePoint"/>
-        <mxPoint x="880" y="1645" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e57" value="9. return OK" style="endArrow=open;html=1;fontSize=10;dashed=1;strokeColor=#b85450;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="880" y="1665" as="sourcePoint"/>
-        <mxPoint x="680" y="1665" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e58" value="10. return true" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="680" y="1685" as="sourcePoint"/>
-        <mxPoint x="480" y="1685" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e59" value="11. redirect()-&gt;back()" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="480" y="1705" as="sourcePoint"/>
-        <mxPoint x="280" y="1705" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="e60" value="12. Render halaman" style="endArrow=open;html=1;fontSize=10;dashed=1;" edge="1" parent="1">
-      <mxGeometry relative="1" as="geometry">
-        <mxPoint x="280" y="1725" as="sourcePoint"/>
-        <mxPoint x="100" y="1725" as="targetPoint"/>
-        <mxPoint x="0" y="-10" as="offset"/>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="legend" value="LEGENDA:&#10;→ Panah solid = Request / Call&#10;⇢ Panah putus = Return / Response&#10;Merah (→) = Interaksi ke Database&#10;" style="text;html=1;align=left;strokeColor=#666666;fillColor=#f8f8f8;fontSize=11;rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
-      <mxGeometry x="1550" y="95" width="280" height="130" as="geometry"/>
-    </mxCell>
+
   </root>
 </mxGraphModel>

@@ -1,222 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="2200" math="0" shadow="0">
+<mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="2400" math="0" shadow="0">
   <root>
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
 
     <!-- Title -->
-    <mxCell id="title" value="Workflow / Flowchart - QR Web Cafe Ordering System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="200" y="10" width="1000" height="40" as="geometry" />
+    <mxCell id="title" value="Workflow / Flowchart Sistem Pemesanan QR Web Cafe (Little Palembang)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1E293B;" vertex="1" parent="1">
+      <mxGeometry x="300" y="15" width="1400" height="40" as="geometry" />
     </mxCell>
 
-    <!-- ========== FLOWCHART 1: Alur Pemesanan Customer ========== -->
-    <mxCell id="fc1_title" value="FLOWCHART 1: Alur Lengkap Pemesanan Customer" style="text;html=1;strokeColor=none;fillColor=#fff2cc;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="40" y="60" width="450" height="30" as="geometry" />
+    <!-- =========================================================================
+         FLOWCHART 1: ALUR PEMESANAN PELANGGAN (CUSTOMER SELF-ORDER)
+         ========================================================================= -->
+    <mxCell id="fc1_title" value="FLOWCHART 1: Alur Pemesanan Mandiri Pelanggan (Self-Order Tanpa Login)" style="text;html=1;strokeColor=none;fillColor=#FEF9C3;fontColor=#854D0E;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="65" width="550" height="32" as="geometry" />
     </mxCell>
 
     <!-- Start -->
-    <mxCell id="fc1_s" value="MULAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;fontColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;" vertex="1" parent="1">
-      <mxGeometry x="200" y="110" width="100" height="50" as="geometry" />
+    <mxCell id="fc1_s" value="MULAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#FFFFFF;strokeColor=#0F172A;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="240" y="115" width="110" height="50" as="geometry" />
     </mxCell>
 
     <!-- Step 1: Scan QR -->
-    <mxCell id="fc1_1" value="Customer Scan QR Code\ndi Meja" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="165" y="200" width="170" height="60" as="geometry" />
-    </mxCell>
-
-    <!-- D1: require_location? -->
-    <mxCell id="fc1_d1" value="Meja Membutuhkan\nValidasi Lokasi?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="300" width="190" height="80" as="geometry" />
-    </mxCell>
-
-    <!-- Step A: GPS -->
-    <mxCell id="fc1_gps" value="Browser Minta\nIzin GPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="40" y="300" width="100" height="60" as="geometry" />
-    </mxCell>
-
-    <!-- D2: dalam radius? -->
-    <mxCell id="fc1_d2" value="Koordinat Dalam\nRadius Meja\n(≤ 100m)?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="20" y="400" width="145" height="90" as="geometry" />
-    </mxCell>
-
-    <!-- Out of range -->
-    <mxCell id="fc1_oor" value="Tampilkan Halaman\n'Out of Range'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="20" y="540" width="145" height="50" as="geometry" />
+    <mxCell id="fc1_1" value="Pelanggan Scan QR Code Meja&#xa;(/order/{uuid})" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="195" y="200" width="200" height="60" as="geometry" />
     </mxCell>
 
     <!-- Step 2: Menu Page -->
-    <mxCell id="fc1_2" value="Tampilkan Halaman Menu\n(Kategori, Sub-Kategori,\nFilter Tersedia)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="420" width="190" height="60" as="geometry" />
+    <mxCell id="fc1_2" value="Sistem Tampilkan Katalog Menu&#xa;(Filter Kategori &amp; Sub-Kategori)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="195" y="300" width="200" height="60" as="geometry" />
     </mxCell>
 
     <!-- Step 3: Pilih Item -->
-    <mxCell id="fc1_3" value="Customer Pilih Item Menu\n&amp; Set Quantity (+/-)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="530" width="190" height="60" as="geometry" />
+    <mxCell id="fc1_3" value="Pilih Item Menu &amp; Set Kuantitas&#xa;(Live AJAX + / - Qty, Max: 100)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="195" y="400" width="200" height="60" as="geometry" />
     </mxCell>
 
-    <!-- D3: pesan lagi? -->
-    <mxCell id="fc1_d3" value="Tambah\nItem Lagi?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="165" y="630" width="170" height="70" as="geometry" />
+    <!-- D1: Tambah lagi? -->
+    <mxCell id="fc1_d1" value="Tambah&#xa;Item Lain?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#F97316;fontColor=#7C2D12;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="210" y="495" width="170" height="75" as="geometry" />
     </mxCell>
 
     <!-- Step 4: Checkout -->
-    <mxCell id="fc1_4" value="Buka Halaman Checkout\n(Isi Nama, Pilih Metode\nBayar, Pilih Lantai)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="750" width="190" height="70" as="geometry" />
+    <mxCell id="fc1_4" value="Buka Halaman Checkout&#xa;(Isi Nama, Pilih Lantai 1/2,&#xa;Pilih Metode Bayar)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="195" y="605" width="200" height="65" as="geometry" />
     </mxCell>
 
-    <!-- D4: keranjang kosong? -->
-    <mxCell id="fc1_d4" value="Keranjang\nKosong?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="165" y="870" width="170" height="70" as="geometry" />
+    <!-- D2: keranjang kosong? -->
+    <mxCell id="fc1_d2" value="Keranjang&#xa;Kosong?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#F97316;fontColor=#7C2D12;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="210" y="705" width="170" height="75" as="geometry" />
     </mxCell>
 
-    <!-- D5: meja occupied? -->
-    <mxCell id="fc1_d5" value="Meja Sudah Ada\nOrder Aktif?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="165" y="990" width="170" height="70" as="geometry" />
+    <!-- D3: meja occupied? -->
+    <mxCell id="fc1_d3" value="Meja Sudah Ada&#xa;Pesanan Aktif&#xa;(Occupied)?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#F97316;fontColor=#7C2D12;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="200" y="820" width="190" height="85" as="geometry" />
     </mxCell>
 
     <!-- Step 5A: New Order -->
-    <mxCell id="fc1_5a" value="Buat Order BARU\n(status:pending)\nSet Meja = occupied\nAuto re-enable GPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="40" y="995" width="110" height="80" as="geometry" />
+    <mxCell id="fc1_5a" value="Buat Pesanan BARU di DB&#xa;(status: pending, bayar: pending)&#xa;Set Meja = occupied" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="40" y="940" width="200" height="65" as="geometry" />
     </mxCell>
 
     <!-- Step 5B: Add to existing -->
-    <mxCell id="fc1_5b" value="Tambahkan ke Order\nYang Ada\n(Update Total)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="350" y="995" width="120" height="80" as="geometry" />
+    <mxCell id="fc1_5b" value="Gabungkan Item ke Pesanan Aktif&#xa;Update Total Tagihan &amp;&#xa;Reset Status Bayar ke Pending" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="350" y="940" width="210" height="65" as="geometry" />
     </mxCell>
 
     <!-- Step 6: Clear Cart -->
-    <mxCell id="fc1_6" value="Kosongkan Keranjang\nSession" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="1130" width="190" height="50" as="geometry" />
+    <mxCell id="fc1_6" value="Kosongkan Session Cart Meja&#xa;(session()-&gt;forget('cart_{uuid}'))" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="195" y="1045" width="200" height="50" as="geometry" />
     </mxCell>
 
     <!-- Step 7: Status Page -->
-    <mxCell id="fc1_7" value="Redirect → Halaman\nStatus Pesanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="1230" width="190" height="50" as="geometry" />
+    <mxCell id="fc1_7" value="Redirect ➔ Halaman Status&#xa;(/order/{uuid}/status/{order})" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="195" y="1135" width="200" height="50" as="geometry" />
     </mxCell>
 
-    <!-- Step 8: Tunggu status -->
-    <mxCell id="fc1_8" value="Customer Lihat Status\n(pending→cooking→served\n→completed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="155" y="1330" width="190" height="70" as="geometry" />
+    <!-- Step 8: Live tracking -->
+    <mxCell id="fc1_8" value="Pelanggan Pantau Status Live:&#xa;Diterima ➔ Dimasak ➔ Disajikan ➔ Selesai&#xa;Serta Opsi Cetak Struk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="180" y="1225" width="230" height="65" as="geometry" />
     </mxCell>
 
     <!-- End -->
-    <mxCell id="fc1_e" value="SELESAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;fontColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;strokeWidth=4;" vertex="1" parent="1">
-      <mxGeometry x="200" y="1450" width="100" height="50" as="geometry" />
+    <mxCell id="fc1_e" value="SELESAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#FFFFFF;strokeColor=#0F172A;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="240" y="1330" width="110" height="50" as="geometry" />
     </mxCell>
 
     <!-- FC1 Edges -->
     <mxCell id="fc1_e1" edge="1" source="fc1_s" target="fc1_1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e2" edge="1" source="fc1_1" target="fc1_d1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e3" value="Ya" edge="1" source="fc1_d1" target="fc1_gps" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e4" value="Tidak" edge="1" source="fc1_d1" target="fc1_2" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="340" /><mxPoint x="420" y="450" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc1_e5" edge="1" source="fc1_gps" target="fc1_d2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e6" value="Tidak" edge="1" source="fc1_d2" target="fc1_oor" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e7" value="Ya" edge="1" source="fc1_d2" target="fc1_2" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="250" y="490" /><mxPoint x="250" y="450" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc1_e8" edge="1" source="fc1_2" target="fc1_3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e9" edge="1" source="fc1_3" target="fc1_d3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e10" value="Ya" edge="1" source="fc1_d3" target="fc1_3" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="430" y="665" /><mxPoint x="430" y="560" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc1_e11" value="Tidak" edge="1" source="fc1_d3" target="fc1_4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e12" edge="1" source="fc1_4" target="fc1_d4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e13" value="Ya" edge="1" source="fc1_d4" target="fc1_3" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="905" /><mxPoint x="460" y="560" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc1_e14" value="Tidak" edge="1" source="fc1_d4" target="fc1_d5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e15" value="Tidak\n(Baru)" edge="1" source="fc1_d5" target="fc1_5a" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e16" value="Ya\n(Existing)" edge="1" source="fc1_d5" target="fc1_5b" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e17" edge="1" source="fc1_5a" target="fc1_6" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="95" y="1155" /><mxPoint x="250" y="1155" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc1_e18" edge="1" source="fc1_5b" target="fc1_6" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="410" y="1155" /><mxPoint x="250" y="1155" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc1_e19" edge="1" source="fc1_6" target="fc1_7" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e20" edge="1" source="fc1_7" target="fc1_8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc1_e21" edge="1" source="fc1_8" target="fc1_e" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <!-- ========== FLOWCHART 2: Alur Admin Kelola Order ========== -->
-    <mxCell id="fc2_title" value="FLOWCHART 2: Alur Admin Kelola Pesanan" style="text;html=1;strokeColor=none;fillColor=#d5e8d4;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="620" y="60" width="400" height="30" as="geometry" />
+    <mxCell id="fc1_e2" edge="1" source="fc1_1" target="fc1_2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e3" edge="1" source="fc1_2" target="fc1_3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e4" edge="1" source="fc1_3" target="fc1_d1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e5" value="Ya" edge="1" source="fc1_d1" target="fc1_3" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="430" y="532" /><mxPoint x="430" y="430" /></Array></mxGeometry>
     </mxCell>
-
-    <!-- Start FC2 -->
-    <mxCell id="fc2_s" value="MULAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;fontColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;" vertex="1" parent="1">
-      <mxGeometry x="770" y="110" width="100" height="50" as="geometry" />
+    <mxCell id="fc1_e6" value="Tidak" edge="1" source="fc1_d1" target="fc1_4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e7" edge="1" source="fc1_4" target="fc1_d2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e8" value="Ya" edge="1" source="fc1_d2" target="fc1_3" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="742" /><mxPoint x="460" y="430" /></Array></mxGeometry>
     </mxCell>
-
-    <mxCell id="fc2_1" value="Admin Lihat\nDaftar Pesanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="745" y="200" width="150" height="60" as="geometry" />
+    <mxCell id="fc1_e9" value="Tidak" edge="1" source="fc1_d2" target="fc1_d3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e10" value="Tidak (Baru)" edge="1" source="fc1_d3" target="fc1_5a" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="140" y="862" /></Array></mxGeometry>
     </mxCell>
+    <mxCell id="fc1_e11" value="Ya (Existing)" edge="1" source="fc1_d3" target="fc1_5b" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="455" y="862" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc1_e12" edge="1" source="fc1_5a" target="fc1_6" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="140" y="1025" /><mxPoint x="295" y="1025" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc1_e13" edge="1" source="fc1_5b" target="fc1_6" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="455" y="1025" /><mxPoint x="295" y="1025" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc1_e14" edge="1" source="fc1_6" target="fc1_7" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e15" edge="1" source="fc1_7" target="fc1_8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc1_e16" edge="1" source="fc1_8" target="fc1_e" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
 
-    <mxCell id="fc2_d1" value="Aksi yang\nDipilih?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="750" y="310" width="140" height="80" as="geometry" />
+
+    <!-- =========================================================================
+         FLOWCHART 2: ALUR OPERASIONAL DAPUR & KASIR
+         ========================================================================= -->
+    <mxCell id="fc2_title" value="FLOWCHART 2: Alur Operasional Dapur &amp; Kasir" style="text;html=1;strokeColor=none;fillColor=#FED7AA;fontColor=#9A3412;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="640" y="65" width="500" height="32" as="geometry" />
     </mxCell>
 
-    <!-- Branch A: Update Status -->
-    <mxCell id="fc2_a1" value="Pilih Status Baru\n(cooking/served/\ncompleted/cancelled)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="620" y="440" width="145" height="70" as="geometry" />
-    </mxCell>
-    <mxCell id="fc2_da1" value="Status =\n'cancelled'?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="620" y="560" width="145" height="70" as="geometry" />
-    </mxCell>
-    <mxCell id="fc2_a2" value="Set Payment =\ncancelled\n+ Meja = available" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="600" y="685" width="145" height="70" as="geometry" />
-    </mxCell>
-    <mxCell id="fc2_a3" value="Update Order\nStatus Normal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="770" y="685" width="120" height="60" as="geometry" />
+    <mxCell id="fc2_s" value="MULAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#FFFFFF;strokeColor=#0F172A;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="830" y="115" width="110" height="50" as="geometry" />
     </mxCell>
 
-    <!-- Branch B: Verifikasi Bayar -->
-    <mxCell id="fc2_b1" value="Konfirmasi\nVerifikasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="820" y="440" width="120" height="60" as="geometry" />
-    </mxCell>
-    <mxCell id="fc2_b2" value="Set Payment\nStatus = paid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="820" y="550" width="120" height="60" as="geometry" />
+    <mxCell id="fc2_login" value="Staff Login dengan Kredensial&#xa;(Dapur atau Kasir)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="785" y="200" width="200" height="55" as="geometry" />
     </mxCell>
 
-    <!-- Branch C: Hapus Order -->
-    <mxCell id="fc2_c1" value="Konfirmasi\nHapus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="990" y="440" width="120" height="60" as="geometry" />
-    </mxCell>
-    <mxCell id="fc2_c2" value="Hapus Order\nSet Meja =\navailable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="990" y="550" width="120" height="70" as="geometry" />
+    <mxCell id="fc2_role" value="Role Staff?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#F97316;fontColor=#7C2D12;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="805" y="290" width="160" height="75" as="geometry" />
     </mxCell>
 
-    <!-- Merge back -->
-    <mxCell id="fc2_merge" value="Tampilkan Flash\nMessage Sukses" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="745" y="820" width="150" height="50" as="geometry" />
+    <!-- Branch Dapur -->
+    <mxCell id="fc2_d1" value="Dapur Buka Antrean Pesanan&#xa;(/admin/orders)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#EA580C;fontColor=#9A3412;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="630" y="400" width="200" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc2_d2" value="Klik 'Mulai Masak'&#xa;(Update order_status: cooking)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#EA580C;fontColor=#9A3412;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="630" y="490" width="200" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc2_d3" value="Makanan Selesai Disiapkan&#xa;Klik 'Siap Saji' (Status: served)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="630" y="580" width="200" height="55" as="geometry" />
     </mxCell>
 
-    <mxCell id="fc2_d2" value="Kelola\nhal lain?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="750" y="920" width="140" height="70" as="geometry" />
+    <!-- Branch Kasir -->
+    <mxCell id="fc2_k1" value="Kasir Buka Daftar Pesanan &amp;&#xa;Status Meja (/orders &amp; /tables)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#16A34A;fontColor=#166534;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="930" y="400" width="210" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc2_k2" value="Pelanggan Melakukan Pembayaran&#xa;(Cash / QRIS / Transfer Bank)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#16A34A;fontColor=#166534;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="930" y="490" width="210" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc2_k3" value="Kasir Klik 'Verifikasi Lunas'&#xa;(payment_status ➔ paid)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="930" y="580" width="210" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc2_k4" value="Pelanggan Selesai Bersantap&#xa;Kasir Klik 'Kosongkan Meja'&#xa;(Status Meja ➔ Available)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="930" y="670" width="210" height="65" as="geometry" />
     </mxCell>
 
-    <!-- End FC2 -->
-    <mxCell id="fc2_e" value="SELESAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;fontColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;strokeWidth=4;" vertex="1" parent="1">
-      <mxGeometry x="770" y="1050" width="100" height="50" as="geometry" />
+    <mxCell id="fc2_merge" value="Aktivitas Pelayanan Selesai" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontColor=#0F172A;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="785" y="785" width="200" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="fc2_e" value="SELESAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#FFFFFF;strokeColor=#0F172A;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="830" y="875" width="110" height="50" as="geometry" />
     </mxCell>
 
     <!-- FC2 Edges -->
-    <mxCell id="fc2_e1" edge="1" source="fc2_s" target="fc2_1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e2" edge="1" source="fc2_1" target="fc2_d1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e3" value="Update\nStatus" edge="1" source="fc2_d1" target="fc2_a1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e4" value="Verifikasi\nBayar" edge="1" source="fc2_d1" target="fc2_b1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e5" value="Hapus\nOrder" edge="1" source="fc2_d1" target="fc2_c1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e6" edge="1" source="fc2_a1" target="fc2_da1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e7" value="Ya" edge="1" source="fc2_da1" target="fc2_a2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e8" value="Tidak" edge="1" source="fc2_da1" target="fc2_a3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e9" edge="1" source="fc2_a2" target="fc2_merge" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="673" y="845" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc2_e10" edge="1" source="fc2_a3" target="fc2_merge" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="830" y="845" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc2_e11" edge="1" source="fc2_b1" target="fc2_b2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e12" edge="1" source="fc2_b2" target="fc2_merge" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="880" y="845" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc2_e13" edge="1" source="fc2_c1" target="fc2_c2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e14" edge="1" source="fc2_c2" target="fc2_merge" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1050" y="845" /><mxPoint x="895" y="845" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc2_e15" edge="1" source="fc2_merge" target="fc2_d2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="fc2_e16" value="Ya" edge="1" source="fc2_d2" target="fc2_1" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1100" y="955" /><mxPoint x="1100" y="230" /><mxPoint x="820" y="230" /></Array></mxGeometry></mxCell>
-    <mxCell id="fc2_e17" value="Tidak" edge="1" source="fc2_d2" target="fc2_e" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e1" edge="1" source="fc2_s" target="fc2_login" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e2" edge="1" source="fc2_login" target="fc2_role" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e3" value="Dapur" edge="1" source="fc2_role" target="fc2_d1" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="730" y="327" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc2_e4" value="Kasir" edge="1" source="fc2_role" target="fc2_k1" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1035" y="327" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc2_e5" edge="1" source="fc2_d1" target="fc2_d2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e6" edge="1" source="fc2_d2" target="fc2_d3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e7" edge="1" source="fc2_d3" target="fc2_merge" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="730" y="750" /><mxPoint x="885" y="750" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc2_e8" edge="1" source="fc2_k1" target="fc2_k2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e9" edge="1" source="fc2_k2" target="fc2_k3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e10" edge="1" source="fc2_k3" target="fc2_k4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc2_e11" edge="1" source="fc2_k4" target="fc2_merge" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1035" y="750" /><mxPoint x="885" y="750" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc2_e12" edge="1" source="fc2_merge" target="fc2_e" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
 
-    <!-- Branch labels -->
-    <mxCell id="fc2_lab_a" value="Update Status" style="text;html=1;fontSize=10;fontStyle=2;" vertex="1" parent="1">
-      <mxGeometry x="665" y="400" width="80" height="20" as="geometry" />
+
+    <!-- =========================================================================
+         FLOWCHART 3: ALUR OWNER & ADMIN (FINANCE & SYSTEM ADMINISTRATION)
+         ========================================================================= -->
+    <mxCell id="fc3_title" value="FLOWCHART 3: Alur Owner (Finansial) &amp; Admin (Manajemen Sistem)" style="text;html=1;strokeColor=none;fillColor=#BAE6FD;fontColor=#075985;align=left;verticalAlign=middle;rounded=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1220" y="65" width="550" height="32" as="geometry" />
     </mxCell>
-    <mxCell id="fc2_lab_b" value="Verif. Bayar" style="text;html=1;fontSize=10;fontStyle=2;" vertex="1" parent="1">
-      <mxGeometry x="830" y="400" width="80" height="20" as="geometry" />
+
+    <mxCell id="fc3_s" value="MULAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#FFFFFF;strokeColor=#0F172A;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1440" y="115" width="110" height="50" as="geometry" />
     </mxCell>
-    <mxCell id="fc2_lab_c" value="Hapus" style="text;html=1;fontSize=10;fontStyle=2;" vertex="1" parent="1">
-      <mxGeometry x="1010" y="400" width="60" height="20" as="geometry" />
+
+    <mxCell id="fc3_login" value="Login Back-Office&#xa;(Owner / Admin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1395" y="200" width="200" height="55" as="geometry" />
     </mxCell>
+
+    <mxCell id="fc3_role" value="Role Pengguna?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#F97316;fontColor=#7C2D12;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1415" y="290" width="160" height="75" as="geometry" />
+    </mxCell>
+
+    <!-- Branch Owner -->
+    <mxCell id="fc3_o1" value="Buka Dashboard Finansial&#xa;(/admin/dashboard)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0284C7;fontColor=#075985;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1230" y="400" width="210" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc3_o2" value="Pantau Omzet Harian/Bulanan&#xa;&amp; Grafik Tren Penjualan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0284C7;fontColor=#075985;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1230" y="490" width="210" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="fc3_o3" value="Buka Menu Laporan (/reports)&#xa;&amp; Klik 'Cetak Laporan Rekap'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1230" y="580" width="210" height="55" as="geometry" />
+    </mxCell>
+
+    <!-- Branch Admin -->
+    <mxCell id="fc3_a1" value="Kelola Master Menu&#xa;(CRUD Menu, Foto, Kategori)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;fontColor=#9F1239;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1530" y="400" width="220" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="fc3_a2" value="Kelola Master Meja&#xa;&amp; Generate Dynamic QR Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;fontColor=#9F1239;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1530" y="465" width="220" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="fc3_a3" value="Kelola Metode Pembayaran&#xa;(Bank Transfer, QRIS, Cash)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;fontColor=#9F1239;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1530" y="530" width="220" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="fc3_a4" value="Kelola Pengguna &amp; Role Staff&#xa;(Admin, Kasir, Dapur, Owner)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;fontColor=#9F1239;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1530" y="595" width="220" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="fc3_a5" value="Monitoring / Hapus Data Pesanan&#xa;&amp; Akses Penuh Laporan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;fontColor=#9F1239;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1530" y="660" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="fc3_merge" value="Aktivitas Administrasi Selesai" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;fontColor=#0F172A;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1395" y="785" width="200" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="fc3_e" value="SELESAI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#FFFFFF;strokeColor=#0F172A;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1440" y="875" width="110" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- FC3 Edges -->
+    <mxCell id="fc3_e1" edge="1" source="fc3_s" target="fc3_login" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e2" edge="1" source="fc3_login" target="fc3_role" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e3" value="Owner" edge="1" source="fc3_role" target="fc3_o1" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1335" y="327" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc3_e4" value="Admin" edge="1" source="fc3_role" target="fc3_a1" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1640" y="327" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc3_e5" edge="1" source="fc3_o1" target="fc3_o2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e6" edge="1" source="fc3_o2" target="fc3_o3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e7" edge="1" source="fc3_o3" target="fc3_merge" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1335" y="750" /><mxPoint x="1495" y="750" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc3_e8" edge="1" source="fc3_a1" target="fc3_a2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e9" edge="1" source="fc3_a2" target="fc3_a3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e10" edge="1" source="fc3_a3" target="fc3_a4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e11" edge="1" source="fc3_a4" target="fc3_a5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="fc3_e12" edge="1" source="fc3_a5" target="fc3_merge" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1640" y="750" /><mxPoint x="1495" y="750" /></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="fc3_e13" edge="1" source="fc3_merge" target="fc3_e" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
   </root>
 </mxGraphModel>

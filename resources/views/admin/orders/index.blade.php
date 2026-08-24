@@ -40,12 +40,14 @@
                         <tr>
                             <th style="width: 70px;">ID</th>
                             <th>Meja</th>
-                            <th>Nama Pelanggan</th>
+                            <th>Pelanggan</th>
+                            <th>Waiters</th>
                             <th>Total Tagihan</th>
                             <th>Status Pesanan</th>
-                            <th>Status Pembayaran</th>
-                            <th>Waktu Masuk</th>
-                            <th class="text-center" style="width: 160px;">Aksi</th>
+                            <th>Status Bayar</th>
+                            <th>Rating</th>
+                            <th>Waktu</th>
+                            <th class="text-center" style="width: 140px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,6 +61,13 @@
                                 @endif
                             </td>
                             <td>{{ $order->customer_name ?? 'Tamu' }}</td>
+                            <td>
+                                @if($order->waiter_name)
+                                    <span class="badge badge-info p-1 font-weight-normal"><i class="fas fa-user-tie mr-1"></i> {{ $order->waiter_name }}</span>
+                                @else
+                                    <span class="text-muted small">-</span>
+                                @endif
+                            </td>
                             <td><strong style="color: #DC2626;">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</strong></td>
                             <td>
                                 @php
@@ -70,7 +79,7 @@
                                     @elseif($order->order_status == 'cooking')
                                         <i class="fas fa-fire mr-1"></i> Dimasak
                                     @elseif($order->order_status == 'served')
-                                        <i class="fas fa-concierge-bell mr-1"></i> Dihidangkan
+                                        <i class="fas fa-concierge-bell mr-1"></i> Diantar
                                     @elseif($order->order_status == 'completed')
                                         <i class="fas fa-check-circle mr-1"></i> Selesai
                                     @else
@@ -83,6 +92,15 @@
                                     <i class="fas fa-{{ $order->payment_status == 'paid' ? 'check' : 'times' }} mr-1"></i>
                                     {{ $order->payment_status == 'paid' ? 'Lunas' : 'Belum Bayar' }}
                                 </span>
+                            </td>
+                            <td>
+                                @if($order->rating)
+                                    <span class="badge badge-light border font-weight-bold" title="Ulasan: {{ $order->rating->review }}">
+                                        <span class="star-gold">★</span> {{ $order->rating->food_rating }}/5
+                                    </span>
+                                @else
+                                    <span class="text-muted small">-</span>
+                                @endif
                             </td>
                             <td><small class="text-muted">{{ $order->created_at ? $order->created_at->format('d/m H:i') : '-' }}</small></td>
                             <td class="text-center">
@@ -104,7 +122,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8" class="text-center py-4 text-muted">
+                            <td colspan="10" class="text-center py-4 text-muted">
                                 <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
                                 Belum ada pesanan masuk saat ini.
                             </td>
@@ -132,21 +150,29 @@
                         </span>
                     </div>
 
-                    <div class="mb-2">
-                        <strong><i class="fas fa-chair text-muted mr-1"></i> Meja:</strong> {{ $order->table->table_number ?? '-' }}
+                    <div class="mb-1">
+                        <strong><i class="fas fa-chair text-muted mr-1"></i> Meja:</strong> Meja {{ $order->table->table_number ?? '-' }}
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-1">
                         <strong><i class="fas fa-user text-muted mr-1"></i> Pelanggan:</strong> {{ $order->customer_name ?? 'Tamu' }}
                     </div>
-                    <div class="mb-2">
+                    @if($order->waiter_name)
+                    <div class="mb-1">
+                        <strong><i class="fas fa-user-tie text-muted mr-1"></i> Waitress:</strong> <span class="badge badge-info">{{ $order->waiter_name }}</span>
+                    </div>
+                    @endif
+                    <div class="mb-1">
                         <strong><i class="fas fa-money-bill-wave text-muted mr-1"></i> Total:</strong> 
                         <span class="font-weight-bold text-danger">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</span>
                     </div>
                     <div class="mb-3">
-                        <strong><i class="fas fa-credit-card text-muted mr-1"></i> Pembayaran:</strong>
+                        <strong><i class="fas fa-credit-card text-muted mr-1"></i> Bayar:</strong>
                         <span class="badge badge-{{ $order->payment_status == 'paid' ? 'success' : 'danger' }}">
                             {{ $order->payment_status == 'paid' ? 'Lunas' : 'Belum Bayar' }}
                         </span>
+                        @if($order->rating)
+                            <span class="badge badge-light border font-weight-bold ml-1"><span class="star-gold">★</span> {{ $order->rating->food_rating }}/5</span>
+                        @endif
                     </div>
 
                     <div class="d-flex gap-2">

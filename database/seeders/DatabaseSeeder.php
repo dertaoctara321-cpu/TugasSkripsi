@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'kasir@gmail.com'],
             [
-                'name' => 'Staf Kasir',
+                'name' => 'Annisa Putri (Kasir)',
                 'password' => bcrypt('password'),
                 'role' => 'kasir',
                 'email_verified_at' => now(),
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'dapur@gmail.com'],
             [
-                'name' => 'Staf Dapur',
+                'name' => 'Dian Cahyono (Cook/Dapur)',
                 'password' => bcrypt('password'),
                 'role' => 'dapur',
                 'email_verified_at' => now(),

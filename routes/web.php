@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
 
         // 6. Master Data & Staff Management (Admin only)
         Route::middleware('role:admin')->group(function () {
+            Route::patch('menus/{menu}/toggle-availability', [App\Http\Controllers\MenuController::class, 'toggleAvailability'])->name('menus.toggleAvailability');
             Route::resource('menus', App\Http\Controllers\MenuController::class);
             Route::resource('tables', App\Http\Controllers\TableController::class)->except(['index']);
             Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class);
@@ -71,8 +72,11 @@ Route::post('/order/{uuid}/cart', [App\Http\Controllers\CustomerController::clas
 Route::get('/order/{uuid}/checkout', [App\Http\Controllers\CustomerController::class, 'checkout'])->name('order.checkout');
 Route::post('/order/{uuid}/place', [App\Http\Controllers\CustomerController::class, 'placeOrder'])->name('order.placeOrder');
 Route::get('/order/{uuid}/status/{order}', [App\Http\Controllers\CustomerController::class, 'status'])->name('order.status');
+Route::get('/order/{uuid}/status/{order}/check', [App\Http\Controllers\CustomerController::class, 'checkStatus'])->name('order.checkStatus');
+Route::post('/order/{uuid}/rate/{order}', [App\Http\Controllers\CustomerController::class, 'rateOrder'])->name('order.rate');
 Route::get('/order/{uuid}/payment-info', [App\Http\Controllers\CustomerController::class, 'paymentInfo'])->name('order.paymentInfo');
 
 // Live Cart Routes
 Route::post('/order/{uuid}/cart/update', [App\Http\Controllers\CustomerController::class, 'updateCartItem'])->name('order.updateCartItem');
 Route::post('/order/{uuid}/cart/clear', [App\Http\Controllers\CustomerController::class, 'clearCart'])->name('order.clearCart');
+

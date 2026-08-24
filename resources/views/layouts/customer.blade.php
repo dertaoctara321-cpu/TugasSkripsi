@@ -29,6 +29,12 @@
             --pure-white: #FFFFFF;
             --soft-white: #F8FAFC;
         }
+
+        /* Gold Star Global Styles */
+        .star-gold, .text-gold, .fa-star, .text-warning.fa-star, .fa-star.text-warning {
+            color: #FFB800 !important;
+            text-shadow: 0 0 2px rgba(255, 184, 0, 0.4);
+        }
         
         body {
             font-family: 'Outfit', sans-serif;

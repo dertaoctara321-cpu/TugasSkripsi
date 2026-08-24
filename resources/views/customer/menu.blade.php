@@ -288,14 +288,84 @@
         .page-header h1 {
             font-size: 1.8rem;
         }
+    /* Menu availability styles */
+    .menu-card-unavailable {
+        opacity: 0.68;
+        filter: grayscale(35%);
+        transition: all 0.3s ease;
+    }
+    .menu-card-unavailable:hover {
+        opacity: 0.85;
+        filter: grayscale(15%);
+    }
+    .badge-out-of-stock {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: linear-gradient(135deg, #DC2626, #991B1B);
+        color: white;
+        font-weight: 700;
+        font-size: 0.72rem;
+        padding: 5px 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        z-index: 2;
+    }
+    .star-gold, .text-gold {
+        color: #FFB800 !important;
+        text-shadow: 0 0 2px rgba(255, 184, 0, 0.4);
+    }
+    .badge-table-rating {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background: #FFF1F2;
+        border: 1.5px solid #FECDD3;
+        color: #991B1B;
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-top: 6px;
+    }
+    body.dark-mode .badge-table-rating {
+        background: #33141E;
+        border-color: #881337;
+        color: #FECDD3;
     }
 </style>
 @endpush
 
 @section('content')
 <div class="text-center mb-4 page-header">
-    <h1 class="display-6">Meja {{ $table->table_number }}</h1>
-    <p class="text-muted">Pilih menu favorit Anda</p>
+    <h1 class="display-6 mb-1">Meja {{ $table->table_number }}</h1>
+    
+    <div>
+        @if(isset($tableStats) && $tableStats['is_top'])
+            <div class="badge-table-rating">
+                <span>🏆</span>
+                <span>Meja Terfavorit #1</span>
+                <span class="star-gold" style="font-size: 1.1rem;">★</span>
+                <span>{{ $tableStats['avg_rating'] }}/5.0</span>
+                <span class="text-muted" style="font-size: 0.75rem;">({{ $tableStats['rating_count'] }} ulasan)</span>
+            </div>
+        @elseif(isset($tableStats) && $tableStats['rating_count'] > 0)
+            <div class="badge-table-rating">
+                <span class="star-gold" style="font-size: 1.1rem;">★</span>
+                <span>{{ $tableStats['avg_rating'] }}/5.0</span>
+                <span>• Meja Favorit #{{ $tableStats['rank'] }}</span>
+                <span class="text-muted" style="font-size: 0.75rem;">({{ $tableStats['rating_count'] }} ulasan)</span>
+            </div>
+        @else
+            <div class="badge-table-rating">
+                <span class="star-gold" style="font-size: 1.1rem;">★</span>
+                <span>5.0/5.0</span>
+                <span>• Meja Nyaman & Bersih</span>
+            </div>
+        @endif
+    </div>
+
+    <p class="text-muted mt-2 mb-0">Pilih hidangan favorit khas Little Palembang</p>
     
     @if(count($cart) > 0)
     <button type="button" class="btn btn-outline-danger btn-sm mt-2" onclick="clearEntireCart()">
@@ -408,8 +478,14 @@
 
 <div class="row menu-list" id="customerMenuGrid">
     @foreach($menus as $menu)
-    <div class="col-6 col-md-4 col-lg-3 mb-4 menu-card customer-menu-item" data-category="{{ $menu->category }}" data-subcategory="{{ $menu->sub_category }}">
-        <div class="card h-100">
+    <div class="col-6 col-md-4 col-lg-3 mb-4 menu-card customer-menu-item {{ !$menu->is_available ? 'menu-card-unavailable' : '' }}" data-category="{{ $menu->category }}" data-subcategory="{{ $menu->sub_category }}">
+        <div class="card h-100 position-relative">
+            @if(!$menu->is_available)
+                <div class="badge-out-of-stock">
+                    <i class="fas fa-ban me-1"></i> Stok Habis
+                </div>
+            @endif
+
             @if($menu->image)
                 <img src="/images/{{ $menu->image }}" class="card-img-top" alt="{{ $menu->name }}" style="height: 150px; object-fit: cover;">
             @else
@@ -417,10 +493,13 @@
                     <i class="fas fa-utensils fa-2x"></i>
                 </div>
             @endif
-            <div class="card-body p-3">
-                <h5 class="card-title" style="font-size: 1rem;">{{ $menu->name }}</h5>
-                <p class="card-text text-primary fw-bold">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
+            <div class="card-body p-3 d-flex flex-column justify-content-between">
+                <div>
+                    <h5 class="card-title" style="font-size: 1rem;">{{ $menu->name }}</h5>
+                    <p class="card-text text-primary fw-bold mb-2">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
+                </div>
                 
+                @if($menu->is_available)
                 <form action="{{ route('order.updateCartItem', request()->route('uuid')) }}" method="POST" id="form-{{ $menu->id }}">
                     @csrf
                     <input type="hidden" name="menu_id" value="{{ $menu->id }}">
@@ -434,6 +513,13 @@
                         </button>
                     </div>
                 </form>
+                @else
+                <div class="mt-2 text-center">
+                    <span class="badge bg-secondary w-100 py-2" style="font-size: 0.82rem; border-radius: 8px; cursor: not-allowed;">
+                        <i class="fas fa-ban me-1"></i> Tidak Tersedia
+                    </span>
+                </div>
+                @endif
             </div>
         </div>
     </div>
