@@ -500,7 +500,7 @@
                 </div>
                 
                 @if($menu->is_available)
-                <form action="{{ route('order.updateCartItem', request()->route('uuid')) }}" method="POST" id="form-{{ $menu->id }}">
+                <form action="{{ route('order.updateCartItem', $table->uuid) }}" method="POST" id="form-{{ $menu->id }}">
                     @csrf
                     <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                     
@@ -545,7 +545,7 @@
                         <strong style="font-size: 1.15rem;" id="floating-cart-total">Rp {{ number_format($cartTotal, 0, ',', '.') }}</strong>
                     </div>
                 </div>
-                <a href="{{ route('order.checkout', request()->route('uuid')) }}" class="btn btn-light font-weight-bold px-3 py-2 rounded-pill" style="color: #DC2626 !important; font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <a href="{{ route('order.checkout', $table->uuid) }}" class="btn btn-light font-weight-bold px-3 py-2 rounded-pill" style="color: #DC2626 !important; font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                     Checkout <i class="fas fa-arrow-right ms-1"></i>
                 </a>
             </div>
@@ -697,7 +697,7 @@ function clearEntireCart() {
     
     const token = document.querySelector('input[name="_token"]').value;
     
-    fetch("{{ route('order.clearCart', request()->route('uuid')) }}", {
+    fetch("{{ route('order.clearCart', $table->uuid) }}", {
         method: 'POST',
         headers: {
             'X-Requested-With': 'XMLHttpRequest',

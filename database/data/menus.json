@@ -1,947 +1,1208 @@
 [
     {
-        "name": "Cake Choco Lava",
-        "price": 26000,
-        "category": "Camilan",
-        "sub_category": "Snack",
-        "description": "",
-        "is_available": 1,
-        "image": "item_choco_lava.jpg"
-    },
-    {
-        "name": "Classic Donut",
-        "price": 23000,
-        "category": "Camilan",
-        "sub_category": "Snack",
-        "description": "",
-        "is_available": 1,
-        "image": "item_classic_donut.jpg"
-    },
-    {
-        "name": "Pao Coklat",
-        "price": 10000,
-        "category": "Camilan",
-        "sub_category": "Snack",
-        "description": "",
-        "is_available": 1,
-        "image": "item_pao_coklat.jpg"
-    },
-    {
-        "name": "Roti Goreng Udang Ebi",
-        "price": 15000,
-        "category": "Camilan",
-        "sub_category": "Snack",
-        "description": "",
-        "is_available": 1,
-        "image": "item_roti_udangebi.jpg"
-    },
-    {
-        "name": "Spicy Chicken Wings",
-        "price": 28000,
-        "category": "Camilan",
-        "sub_category": "Snack",
-        "description": "",
-        "is_available": 1,
-        "image": "item_chicken_wings.jpg"
-    },
-    {
-        "name": "Tempe Mendoan",
-        "price": 18000,
-        "category": "Camilan",
-        "sub_category": "Snack",
-        "description": "",
-        "is_available": 1,
-        "image": "item_tempe_mendoan.jpg"
-    },
-    {
-        "name": "Test Menu",
-        "price": 10000,
-        "category": "Makanan",
-        "sub_category": null,
-        "description": null,
-        "is_available": 1,
-        "image": "item_test_menu.jpg"
-    },
-    {
-        "name": "Dimsum Ayam",
-        "price": 22000,
-        "category": "Makanan",
-        "sub_category": "Appetizer",
-        "description": "",
-        "is_available": 1,
-        "image": "item_dimsum_ayam.jpg"
-    },
-    {
-        "name": "Dimsum Keju",
-        "price": 22000,
-        "category": "Makanan",
-        "sub_category": "Appetizer",
-        "description": "",
-        "is_available": 1,
-        "image": "item_dimsum_keju.jpg"
-    },
-    {
-        "name": "Dimsum Mozarella",
-        "price": 22000,
-        "category": "Makanan",
-        "sub_category": "Appetizer",
-        "description": "",
-        "is_available": 1,
-        "image": "item_dimsum_mozarella.jpg"
-    },
-    {
-        "name": "Sup Krim Ayam Jagung",
-        "price": 32000,
-        "category": "Makanan",
-        "sub_category": "Appetizer",
-        "description": "",
-        "is_available": 1,
-        "image": "item_sup_krim.jpg"
-    },
-    {
-        "name": "Telur Ayam Kampung",
-        "price": 17000,
-        "category": "Makanan",
-        "sub_category": "Appetizer",
-        "description": "",
-        "is_available": 1,
-        "image": "item_telur_kampung.jpg"
-    },
-    {
-        "name": "Iga Cabe Ijo",
-        "price": 40000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_iga_cabeijo.jpg"
-    },
-    {
-        "name": "Ikan Nila Goreng Sambal Matah",
-        "price": 35000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_nila_goreng.jpg"
-    },
-    {
-        "name": "Nasi Ayam Jodoh",
-        "price": 35000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_ayam_jodoh.jpg"
-    },
-    {
-        "name": "Nasi Ayam Kungpao",
-        "price": 28000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_ayam_kungpao.jpg"
-    },
-    {
-        "name": "Nasi Ayam Little Palembang",
-        "price": 28000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_ayam_littlepalembang.jpg"
-    },
-    {
-        "name": "Nasi Ayam Telur Asin",
-        "price": 28000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_ayam_telurasin.jpg"
-    },
-    {
-        "name": "Nasi Tongseng Daging Sapi",
-        "price": 38000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_tongseng_sapi.jpg"
-    },
-    {
-        "name": "Pindang Tulang",
-        "price": 42000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_pindang_tulang.jpg"
-    },
-    {
-        "name": "Udang Singgah Asam Manis Pedas",
-        "price": 35000,
-        "category": "Makanan",
-        "sub_category": "Main Course",
-        "description": "",
-        "is_available": 1,
-        "image": "item_udang_singgah.jpg"
-    },
-    {
-        "name": "Bakso PAKAM",
-        "price": 25000,
-        "category": "Makanan",
-        "sub_category": "Menu Pakam",
-        "description": "",
-        "is_available": 1,
-        "image": "item_bakso_pakam.jpg"
-    },
-    {
         "name": "Indomie PAKAM",
-        "price": 20000,
+        "price": "20000.00",
         "category": "Makanan",
-        "sub_category": "Menu Pakam",
-        "description": "",
+        "sub_category": "Menu PAKAM",
+        "description": "Indomie kuah\/goreng spesial racikan bumbu khas Pakam dengan topping telur dan bumbu gurih mantap.",
         "is_available": 1,
-        "image": "item_indomie_pakam.jpg"
+        "image": "Indomie Pakam.jpeg"
     },
     {
         "name": "Nasi PAKAM",
-        "price": 25000,
+        "price": "25000.00",
         "category": "Makanan",
-        "sub_category": "Menu Pakam",
-        "description": "",
+        "sub_category": "Menu PAKAM",
+        "description": "Nasi gurih harum spesial Pakam disajikan dengan lauk istimewa dan sambal sedap.",
         "is_available": 1,
-        "image": "item_nasi_pakam.jpg"
+        "image": "Nasi Pakam.jpeg"
     },
     {
-        "name": "Bubur Ayam",
-        "price": 20000,
+        "name": "Bakso PAKAM",
+        "price": "25000.00",
         "category": "Makanan",
-        "sub_category": "Menu Sarapan",
-        "description": "",
+        "sub_category": "Menu PAKAM",
+        "description": "Bakso sapi kenyal gurih dengan kuah kaldu sapi kaya rempah khas resep Pakam.",
         "is_available": 1,
-        "image": "item_bubur_ayam.jpg"
+        "image": "Bakso Pakam.jpeg"
     },
     {
         "name": "Mie Yamin Bandung",
-        "price": 20000,
+        "price": "20000.00",
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
-        "description": "",
+        "description": "Mie yamin manis gurih kenyal khas Bandung disajikan dengan topping ayam cincang dan kuah kaldu.",
         "is_available": 1,
-        "image": "item_mie_yamin.jpg"
+        "image": "Mie Bandung Yamin.jpeg"
+    },
+    {
+        "name": "Bubur Ayam Kuah Kuning",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "Bubur ayam lembut hangat dengan siraman kuah kuning gurih, suwiran ayam, cakwe, dan kerupuk.",
+        "is_available": 1,
+        "image": "Bubur Ayam Kuah Kuning.jpeg"
+    },
+    {
+        "name": "Sate Maranggi",
+        "price": "35000.00",
+        "category": "Makanan",
+        "sub_category": "Menu Sarapan",
+        "description": "Sate daging sapi empuk bakar dengan bumbu rempah maranggi meresap manis gurih disajikan dengan sambal tomat.",
+        "is_available": 1,
+        "image": "Sate Maranggi.jpeg"
     },
     {
         "name": "Nasi Uduk Jakarta",
-        "price": 20000,
+        "price": "20000.00",
         "category": "Makanan",
         "sub_category": "Menu Sarapan",
-        "description": "",
+        "description": "Nasi uduk harum santan beraroma pandan dan serai, komplit dengan lauk gurih dan sambal khas.",
         "is_available": 1,
-        "image": "item_nasi_uduk.jpg"
+        "image": "Nasi Uduk Jakarta.jpeg"
     },
     {
-        "name": "Pisang Goreng",
-        "price": 18000,
+        "name": "Ikan Nila Goreng Sambal Matah",
+        "price": "35000.00",
         "category": "Makanan",
-        "sub_category": "Menu Sarapan",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Ikan nila goreng renyah garing disiram sambal matah segar pedas beraroma serai dan jeruk limau.",
         "is_available": 1,
-        "image": "item_pisang_goreng.jpg"
+        "image": "Ikan Nila Goreng Sambal Matah.jpeg"
     },
     {
-        "name": "Sate Marangi",
-        "price": 35000,
+        "name": "Nasi Ayam Jodoh",
+        "price": "35000.00",
         "category": "Makanan",
-        "sub_category": "Menu Sarapan",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Nasi ayam spesial racikan bumbu rahasia jodoh khas Little Palembang yang menggoda selera.",
         "is_available": 1,
-        "image": "item_sate_marangi.jpg"
+        "image": "Nasi Ayam Jodoh.jpeg"
     },
     {
-        "name": "Steak Bakso Little Palembang",
-        "price": 45000,
+        "name": "Nasi Ayam Kungpao",
+        "price": "28000.00",
         "category": "Makanan",
-        "sub_category": "Menu Sarapan",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Potongan ayam empuk ditumis dengan saus kungpao oriental manis pedas dan taburan kacang garing.",
         "is_available": 1,
-        "image": "item_steak_bakso.jpg"
+        "image": "Nasi Ayam Kungpao.jpeg"
     },
     {
-        "name": "Steak Chicken Katsu",
-        "price": 35000,
+        "name": "Nasi Ayam Little Palembang",
+        "price": "28000.00",
         "category": "Makanan",
-        "sub_category": "Menu Sarapan",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Menu signature ayam berbumbu khas Little Palembang disajikan dengan nasi hangat dan lalapan.",
         "is_available": 1,
-        "image": "item_chicken_katsu.jpg"
+        "image": "Nasi Ayam Little Palembang.jpeg"
     },
     {
-        "name": "Nasi Goreng Aceh",
-        "price": 25000,
+        "name": "Nasi Ayam Telur Asin",
+        "price": "28000.00",
         "category": "Makanan",
-        "sub_category": "Nasi Goreng",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Ayam goreng renyah berbalut lumuran saus telur asin (salted egg) gurih creamy wangi daun kari.",
         "is_available": 1,
-        "image": "item_nasgor_aceh.jpg"
+        "image": "Nasi Ayam Telur Asin.jpeg"
     },
     {
-        "name": "Nasi Goreng Cabe Ijo",
-        "price": 25000,
+        "name": "Nasi Ayam Pedas Manis",
+        "price": "28000.00",
         "category": "Makanan",
-        "sub_category": "Nasi Goreng",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Ayam goreng crispy dibalut saus pedas manis karamel yang lezat menggigit.",
         "is_available": 1,
-        "image": "item_nasgor_cabeijo.jpg"
+        "image": "Nasi Ayam Pedas Manis.jpeg"
     },
     {
-        "name": "Nasi Goreng Little Palembang",
-        "price": 30000,
+        "name": "Udang Singgang Asam Manis Pedas",
+        "price": "35000.00",
         "category": "Makanan",
-        "sub_category": "Nasi Goreng",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Udang singgang segar dimasak dalam bumbu kuah asam manis pedas khas pesisir yang harum nikmat.",
         "is_available": 1,
-        "image": "item_nasgor_littlepalembang.jpg"
+        "image": "Udang Singgang.jpeg"
     },
     {
-        "name": "Nasi Goreng Nanas",
-        "price": 30000,
+        "name": "Nasi Tongseng Daging Sapi",
+        "price": "38000.00",
         "category": "Makanan",
-        "sub_category": "Nasi Goreng",
-        "description": "",
+        "sub_category": "Main Course",
+        "description": "Tongseng daging sapi empuk dengan kuah santan bumbu rempah gurih, kol renyah, dan tomat segar.",
         "is_available": 1,
-        "image": "item_nasgor_nanas.jpg"
+        "image": "Nasi Tongseng Daging Sapi.jpeg"
+    },
+    {
+        "name": "Iga Cabe Ijo",
+        "price": "40000.00",
+        "category": "Makanan",
+        "sub_category": "Main Course",
+        "description": "Iga sapi empuk bertabur sambal cabe ijo ulek pedas segar nan gurih.",
+        "is_available": 1,
+        "image": "Iga Cabe Ijo.jpeg"
     },
     {
         "name": "Nasi Goreng Pakam",
-        "price": 39000,
+        "price": "39000.00",
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
-        "description": "",
+        "description": "Nasi goreng signature Pakam dengan aroma smokey wok dan topping komplit daging serta telur.",
         "is_available": 1,
-        "image": "item_nasgor_pakam.jpg"
+        "image": "Nasi Goreng Pakam.jpeg"
+    },
+    {
+        "name": "Nasi Goreng Nanas",
+        "price": "30000.00",
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "Nasi goreng eksotis rasa gurih manis segar dengan potongan buah nanas tropis.",
+        "is_available": 1,
+        "image": "Nasi Goreng Nanas.jpeg"
+    },
+    {
+        "name": "Nasi Goreng Cabe Ijo",
+        "price": "25000.00",
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "Nasi goreng dengan bumbu cabai hijau segar pedas mantap dan gurih sedap.",
+        "is_available": 1,
+        "image": "Nasi Goreng Cabe Ijo.jpeg"
+    },
+    {
+        "name": "Nasi Goreng Little Palembang",
+        "price": "30000.00",
+        "category": "Makanan",
+        "sub_category": "Nasi Goreng",
+        "description": "Nasi goreng racikan khas Little Palembang yang kaya rempah dan lauk gurih.",
+        "is_available": 1,
+        "image": "Nasi Goreng Little Palembang.jpeg"
     },
     {
         "name": "Nasi Goreng Tek-Tek",
-        "price": 25000,
+        "price": "23000.00",
         "category": "Makanan",
         "sub_category": "Nasi Goreng",
-        "description": "",
+        "description": "Nasi goreng tradisional khas gerobak malam dengan rasa gurih manis otentik.",
         "is_available": 1,
-        "image": "item_nasgor_tektek.jpg"
+        "image": "Nasi Goreng Tek-Tek.jpeg"
     },
     {
-        "name": "Model",
-        "price": 20000,
+        "name": "Nasi Goreng Aceh",
+        "price": "25000.00",
         "category": "Makanan",
-        "sub_category": "Palembang",
-        "description": "",
+        "sub_category": "Nasi Goreng",
+        "description": "Nasi goreng khas Serambi Mekkah beraroma rempah kari kuat nan menggoda selera.",
         "is_available": 1,
-        "image": "item_model.jpg"
-    },
-    {
-        "name": "Pempek Kapal Selam",
-        "price": 20000,
-        "category": "Makanan",
-        "sub_category": "Palembang",
-        "description": "",
-        "is_available": 1,
-        "image": "item_pempek_kapalselam.jpg"
-    },
-    {
-        "name": "Pempek Kecil (10 buah)",
-        "price": 20000,
-        "category": "Makanan",
-        "sub_category": "Palembang",
-        "description": "",
-        "is_available": 1,
-        "image": "item_pempek_kecil.jpg"
-    },
-    {
-        "name": "Tekwan",
-        "price": 20000,
-        "category": "Makanan",
-        "sub_category": "Palembang",
-        "description": "",
-        "is_available": 1,
-        "image": "item_tekwan.jpg"
-    },
-    {
-        "name": "Mie Bangladesh",
-        "price": 25000,
-        "category": "Makanan",
-        "sub_category": "Pasta & Spaghetti",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mie_bangladesh.jpg"
-    },
-    {
-        "name": "Mie Goreng Cornet",
-        "price": 20000,
-        "category": "Makanan",
-        "sub_category": "Pasta & Spaghetti",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mie_cornet.jpg"
-    },
-    {
-        "name": "Mie Jodoh",
-        "price": 25000,
-        "category": "Makanan",
-        "sub_category": "Pasta & Spaghetti",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mie_jodoh.jpg"
-    },
-    {
-        "name": "Mie Kangkung",
-        "price": 25000,
-        "category": "Makanan",
-        "sub_category": "Pasta & Spaghetti",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mie_kangkung.jpg"
-    },
-    {
-        "name": "Mie Nyemek Bon Cabe",
-        "price": 25000,
-        "category": "Makanan",
-        "sub_category": "Pasta & Spaghetti",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mie_nyemek.jpg"
-    },
-    {
-        "name": "Spaghetti Creamy Pasta",
-        "price": 28000,
-        "category": "Makanan",
-        "sub_category": "Pasta & Spaghetti",
-        "description": "",
-        "is_available": 1,
-        "image": "item_spaghetti_creamy.jpg"
+        "image": "Nasi Goreng Aceh.jpeg"
     },
     {
         "name": "Spaghetti Meatballs",
-        "price": 45000,
+        "price": "45000.00",
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
-        "description": "",
+        "description": "Spaghetti al dente dengan saus bolognese daging cincang kental dan bakso daging sapi lembut.",
         "is_available": 1,
-        "image": "item_spaghetti_meatballs.jpg"
+        "image": "Spaghetti Meatballs.jpeg"
+    },
+    {
+        "name": "Spaghetti Creamy Pasta",
+        "price": "45000.00",
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Spaghetti bersaus keju dan cream lembut gurih bertabur keju parmesan.",
+        "is_available": 1,
+        "image": "Spaghetti Creamy Pasta.jpeg"
     },
     {
         "name": "Spaghetti Sambal Matah",
-        "price": 29000,
+        "price": "29000.00",
         "category": "Makanan",
         "sub_category": "Pasta & Spaghetti",
-        "description": "",
+        "description": "Spaghetti fusion nusantara dengan taburan sambal matah bali pedas wangi segar.",
         "is_available": 1,
-        "image": "item_spaghetti_matah.jpg"
+        "image": "Spaghetti Sambal Matah.jpeg"
     },
     {
-        "name": "French Toast Biscoff",
-        "price": 27000,
+        "name": "Indomie Carbonara",
+        "price": "28000.00",
         "category": "Makanan",
-        "sub_category": "Toast",
-        "description": "",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Kreasi indomie creamy bersaus carbonara keju gurih nikmat.",
         "is_available": 1,
-        "image": "item_toast_biscoff.jpg"
+        "image": "Indomie Carbonara.jpeg"
     },
     {
-        "name": "French Toast Classic",
-        "price": 18000,
+        "name": "Mie Nyemek Bon Cabe",
+        "price": "25000.00",
         "category": "Makanan",
-        "sub_category": "Toast",
-        "description": "",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Mie nyemek berkuah sedikit kental bertabur bumbu pedas bon cabe yang bikin nagih.",
         "is_available": 1,
-        "image": "item_toast_classic.jpg"
+        "image": "Mie Nyemek Bon Cabe.jpeg"
+    },
+    {
+        "name": "Mie Bangladesh",
+        "price": "25000.00",
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Mie kuah becek bumbu rempah pekat khas Aceh\/Bangladesh dengan telur ceplok setengah matang.",
+        "is_available": 1,
+        "image": "Mie Bangladesh.jpeg"
+    },
+    {
+        "name": "Mie Kangkung",
+        "price": "25000.00",
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Mie kenyal disajikan dengan kuah manis gurih kecap dan sayuran kangkung segar renyah.",
+        "is_available": 1,
+        "image": "Mie Kangkung.jpeg"
+    },
+    {
+        "name": "Mie Goreng Cornet",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Mie goreng gurih diselimuti kornet sapi melimpah.",
+        "is_available": 1,
+        "image": "Mie Goreng Kornet.jpeg"
+    },
+    {
+        "name": "Mie Jodoh",
+        "price": "25000.00",
+        "category": "Makanan",
+        "sub_category": "Pasta & Spaghetti",
+        "description": "Mie spesial resep jodoh rahasia Little Palembang.",
+        "is_available": 1,
+        "image": "Mie Jodoh.jpeg"
+    },
+    {
+        "name": "Bakmi Ayam Rica-Rica",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Bakmi",
+        "description": "Bakmi kenyal disiram tumisan ayam rica-rica pedas gurih khas manado.",
+        "is_available": 1,
+        "image": "Bakmi Ayam RIca-Rica.jpeg"
+    },
+    {
+        "name": "Bakmi Ayam Chili Oil",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Bakmi",
+        "description": "Bakmi berpadu minyak cabai wangi (chili oil) pedas aromatik dan daging ayam gurih.",
+        "is_available": 1,
+        "image": "Bakmi Ayam Chili Oil.jpeg"
     },
     {
         "name": "Bakmi Ayam Teriyaki",
-        "price": 20000,
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Bakmi",
+        "description": "Bakmi oriental dengan topping potongan daging ayam bumbu teriyaki manis gurih.",
+        "is_available": 1,
+        "image": "Bakmi Ayam Teriyaki.jpeg"
+    },
+    {
+        "name": "Steak Bakso Little Palembang",
+        "price": "45000.00",
         "category": "Makanan",
         "sub_category": "Western & Steak",
-        "description": "",
+        "description": "Steak bakso jumbo unik disajikan dengan saus steak gurih dan sayuran pendamping.",
         "is_available": 1,
-        "image": "item_bakmi_teriyaki.jpg"
+        "image": "Steak Bakso Little Palembang.jpeg"
+    },
+    {
+        "name": "Steak Chicken Katsu",
+        "price": "35000.00",
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "Daging ayam fillet berbalut tepung roti krispi tebal dengan siraman saus steak khas dan kentang.",
+        "is_available": 1,
+        "image": "Steak Chicken Katsu.jpeg"
+    },
+    {
+        "name": "Steak Meltique Tenderloin",
+        "price": "116000.00",
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "Daging tenderloin meltique premium empuk juicy dipanggang sempurna dengan saus pilihan.",
+        "is_available": 1,
+        "image": "Steak Meltique Tenderloin.jpeg"
+    },
+    {
+        "name": "Steak Meltique Sirloin",
+        "price": "116000.00",
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "Sirloin meltique lembut bertekstur juicy dengan cita rasa daging gurih aromatik.",
+        "is_available": 1,
+        "image": "Steak Meltique Sirloin.jpeg"
+    },
+    {
+        "name": "Pizza Sambal Matah",
+        "price": "39000.00",
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "Pizza crispy dengan topping keju mozzarella dan lumuran sambal matah khas bali.",
+        "is_available": 1,
+        "image": "Pizza Sambal Matah.jpeg"
+    },
+    {
+        "name": "Pizza Mentai",
+        "price": "39000.00",
+        "category": "Makanan",
+        "sub_category": "Western & Steak",
+        "description": "Pizza renyah dengan lelehan saus mentai gurih lembut khas jepang yang dipanggang harum.",
+        "is_available": 1,
+        "image": "Pizza Mentai.jpeg"
     },
     {
         "name": "Martabak HAR Telor Ayam",
-        "price": 26000,
+        "price": "26000.00",
         "category": "Makanan",
         "sub_category": "Western & Steak",
-        "description": "",
+        "description": "Martabak telor ayam khas HAR Palembang disajikan dengan kuah kari kentang kental nikmat.",
         "is_available": 1,
-        "image": "item_martabak_ayam.jpg"
+        "image": "Martabak Har Telur Ayam.jpeg"
     },
     {
         "name": "Martabak HAR Telor Bebek",
-        "price": 30000,
+        "price": "30000.00",
         "category": "Makanan",
         "sub_category": "Western & Steak",
-        "description": "",
+        "description": "Martabak telor bebek renyah gurih disajikan dengan kuah kari kentang khas Palembang.",
         "is_available": 1,
-        "image": "item_martabak_bebek.jpg"
+        "image": "Martabak Har Telur Bebek.jpeg"
     },
     {
-        "name": "Sirloin Steak",
-        "price": 116000,
+        "name": "French Toast Classic",
+        "price": "18000.00",
         "category": "Makanan",
-        "sub_category": "Western & Steak",
-        "description": "",
+        "sub_category": "Toast",
+        "description": "Roti panggang celup telur mentega lembut harum dengan siraman sirup manis.",
         "is_available": 1,
-        "image": "item_sirloin_steak.jpg"
+        "image": "French Toast Classic.jpeg"
     },
     {
-        "name": "Americano",
-        "price": 20000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "French Toast Biscoff",
+        "price": "27000.00",
+        "category": "Makanan",
+        "sub_category": "Toast",
+        "description": "French toast tebal berselimut selai karamel lotus biscoff dan remahan biskuit renyah.",
         "is_available": 1,
-        "image": "item_americano.jpg"
+        "image": "French Toast Biscof.jpeg"
     },
     {
-        "name": "Avocado Coffee",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "French Toast Hongkong",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Toast",
+        "description": "Roti bakar ala Hongkong yang lembut keemasan dengan potongan butter leleh dan selai.",
         "is_available": 1,
-        "image": "item_avocado_coffee.jpg"
+        "image": "French Toast Hongkong.jpeg"
     },
     {
-        "name": "Blue Lemonade Coffee",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Sup Krim Ayam Jagung",
+        "price": "32000.00",
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "Sup krim kental hangat bernutrisi dengan butiran jagung manis dan suwiran daging ayam gurih.",
         "is_available": 1,
-        "image": "item_blue_lemonade_coffee.jpg"
+        "image": "Sup Krim Ayam Jagung.jpeg"
     },
     {
-        "name": "Cappuccino",
-        "price": 22000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Dimsum Ayam",
+        "price": "22000.00",
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "Dimsum olahan ayam lembut gurih disajikan hangat dengan saus asam manis pedas.",
         "is_available": 1,
-        "image": "item_cappuccino.jpg"
+        "image": "Dimsum Ayam.jpeg"
     },
     {
-        "name": "Cappuccino Panas",
-        "price": 22000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Telur Ayam Kampung (Isi 2)",
+        "price": "17000.00",
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "2 butir telur ayam kampung setengah matang segar berprotein tinggi dengan kecap dan lada.",
         "is_available": 1,
-        "image": "item_cappuccino_hot.jpg"
+        "image": "Telur Ayam Kampung.jpeg"
     },
     {
-        "name": "Caramel Coffee",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Udang Keju",
+        "price": "25000.00",
+        "category": "Makanan",
+        "sub_category": "Appetizer",
+        "description": "Olahan daging udang goreng tepung renyah berisikan keju leleh lumer.",
         "is_available": 1,
-        "image": "item_caramel_coffee.jpg"
+        "image": "Udang Keju.jpeg"
     },
     {
-        "name": "Caramel Latte",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Pempek Kecil (10 buah)",
+        "price": "50000.00",
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "Porsi puas 10 buah pempek campur (adaan, kulit, telur, lenjer) asli ikan tenggiri disajikan dengan cuko kental pedas mantap.",
         "is_available": 1,
-        "image": "item_caramel_latte.jpg"
+        "image": "Pempek Kecil Isi 10.jpeg"
     },
     {
-        "name": "Charcoal Latte",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Pempek Kapal Selam",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "Pempek ukuran besar berisi 1 butir telur utuh gurih, disajikan dengan mie, timun, dan cuko hitam sedap.",
         "is_available": 1,
-        "image": "item_charcoal_latte.jpg"
+        "image": "Pempek Kapal Selam.jpeg"
     },
     {
-        "name": "Chocolate Coffee",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Model",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "Model ikan berisi tahu lembut dalam kuah kaldu udang hangat beraroma seledri dan bawang goreng.",
         "is_available": 1,
-        "image": "item_choco_coffee.jpg"
+        "image": "Model.jpeg"
     },
     {
-        "name": "Chocolate Frappe",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Tekwan",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "Pentol tekwan ikan kenyal disajikan dalam kuah udang gurih hangat bersama soun, jamur kuping, dan bengkuang.",
         "is_available": 1,
-        "image": "item_choco_frappe.jpg"
+        "image": "Tekwan.jpeg"
     },
     {
-        "name": "Chocolate Panas",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Lenggang",
+        "price": "20000.00",
+        "category": "Makanan",
+        "sub_category": "Palembang",
+        "description": "Pempek yang dipanggang bersama kocokan telur dadar harum, disajikan dengan siraman cuko asli Palembang.",
         "is_available": 1,
-        "image": "item_choco_hot.jpg"
+        "image": "Lenggang.jpeg"
     },
     {
-        "name": "Hazelnut Coffee",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Pao Coklat (Isi 10)",
+        "price": "23000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Mini bakpao kukus hangat isi 10 buah dengan pasta coklat manis lumer.",
         "is_available": 1,
-        "image": "item_hazelnut_coffee.jpg"
+        "image": "Pao Coklat Isi 10.jpeg"
     },
     {
-        "name": "Klepon Coffee",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Classic Donut",
+        "price": "23000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Donat klasik empuk lembut bertabur gula salju manis.",
         "is_available": 1,
-        "image": "item_klepon_coffee.jpg"
+        "image": "Classic Donut.jpeg"
     },
     {
-        "name": "Kopi Americano Panas",
-        "price": 20000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Cake Choco Lava",
+        "price": "26000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Kue coklat panggang hangat dengan lelehan coklat lava pekat saat dipotong.",
         "is_available": 1,
-        "image": "item_americano_hot.jpg"
+        "image": "Cake Choco Lava.jpeg"
     },
     {
-        "name": "Kopi Bahagia",
-        "price": 20000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Spicy Chicken Wings",
+        "price": "28000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Sayap ayam goreng renyah dibalut bumbu cabai pedas gurih meresap.",
         "is_available": 1,
-        "image": "item_kopi_bahagia.jpg"
+        "image": "Chicken Wings Spicy.jpeg"
     },
     {
-        "name": "Kopi Susu",
-        "price": 15000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Chicken Wings Lemonpepper",
+        "price": "28000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Sayap ayam krispi bertabur bumbu lemon pepper asam pedas gurih aromatik.",
         "is_available": 1,
-        "image": "item_kopi_susu.jpg"
+        "image": "Chicken Wings lemonpapper.jpeg"
     },
     {
-        "name": "Kopi Susu Gula Aren",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Jamur Enoki Crispy",
+        "price": "22000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Jamur enoki digoreng tepung sangat renyah dan gurih renyah.",
         "is_available": 1,
-        "image": "item_kopi_gulaaren.jpg"
+        "image": "Jamur Enoki.jpeg"
     },
     {
-        "name": "Kopi Tubruk",
-        "price": 15000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Pangsit Goreng",
+        "price": "18000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Kulit pangsit isi goreng garing keemasan dengan saus cocolan nikmat.",
         "is_available": 1,
-        "image": "item_kopi_tubruk.jpg"
+        "image": "Pangsit Goreng.jpeg"
     },
     {
-        "name": "Matcha Green Frappe",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Tahu Lada Garam",
+        "price": "25000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Tahu crispy ditumis dengan potongan cabai rawit, bawang putih, dan taburan lada garam sedap.",
         "is_available": 1,
-        "image": "item_matcha_frappe.jpg"
+        "image": "Tahu Lada Garam.jpeg"
     },
     {
-        "name": "Moccachino",
-        "price": 22000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Tahu Asam Manis",
+        "price": "25000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Tahu goreng renyah disiram saus asam manis lezat.",
         "is_available": 1,
-        "image": "item_moccachino.jpg"
+        "image": "Tahu Asam Manis.jpeg"
     },
     {
-        "name": "Peppermint Coffee",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Roti Goreng",
+        "price": "28000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Roti goreng garing di luar, empuk di dalam dengan rasa gurih manis.",
         "is_available": 1,
-        "image": "item_peppermint_coffee.jpg"
+        "image": "Roti Goreng.jpeg"
     },
     {
-        "name": "Red Velvet Latte",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Bakwan Pontianak Udang Ebi",
+        "price": "15000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Bakwan sayur tebal garing khas Pontianak dengan topping udang ebi gurih dan sambal cocol.",
         "is_available": 1,
-        "image": "item_redvelvet_latte.jpg"
+        "image": "Bakwan Pontianak Ebi.jpeg"
     },
     {
-        "name": "Vanilla Frappe",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Tempe Mendoan",
+        "price": "18000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Tempe tepung setengah matang gurih lembut disajikan hangat dengan sambal kecap cabai rawit.",
         "is_available": 1,
-        "image": "item_vanilla_frappe.jpg"
+        "image": "Tempe Mendoan.jpeg"
     },
     {
-        "name": "Vanilla Latte",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Coffee",
-        "description": "",
+        "name": "Pisang Goreng",
+        "price": "18000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Pisang kepok manis digoreng tepung garing renyah keemasan.",
         "is_available": 1,
-        "image": "item_vanilla_latte.jpg"
+        "image": "Pisang Goreng.jpeg"
     },
     {
-        "name": "Air Mineral",
-        "price": 8000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "French Fries",
+        "price": "25000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Kentang goreng stik renyah gurih asin dengan saus sambal.",
         "is_available": 1,
-        "image": "item_air_mineral.jpg"
+        "image": "French Fries.jpeg"
     },
     {
-        "name": "Air Mineral Panas",
-        "price": 18000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "French Fries Salted Egg",
+        "price": "40000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Kentang goreng renyah berlumur saus kuning telur asin gurih yang creamy.",
         "is_available": 1,
-        "image": "item_air_mineral_panas.jpg"
+        "image": "French Fries Salted Egg.jpeg"
     },
     {
-        "name": "Es Jeruk",
-        "price": 8000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "Prata Coklat",
+        "price": "25000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Roti prata renyah berlapis disiram topping coklat manis nikmat.",
         "is_available": 1,
-        "image": "item_es_jeruk.jpg"
+        "image": "Prata Coklat.jpeg"
     },
     {
-        "name": "Es Teh Manis",
-        "price": 8000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "Prata Keju",
+        "price": "25000.00",
+        "category": "Camilan",
+        "sub_category": "Snack",
+        "description": "Roti prata garing berlapis bertabur keju parut gurih melimpah.",
         "is_available": 1,
-        "image": "item_es_teh.jpg"
+        "image": "Prata Keju.jpeg"
     },
     {
-        "name": "Ice Chocolate",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "Vanilla Sundae",
+        "price": "18000.00",
+        "category": "Camilan",
+        "sub_category": "Dessert",
+        "description": "Es krim sundae vanilla lembut dengan cita rasa manis segar.",
         "is_available": 1,
-        "image": "item_ice_chocolate.jpg"
+        "image": "Vanila Sundae.jpeg"
     },
     {
-        "name": "Ice Coffee Latte",
-        "price": 30000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "Chocolate Sundae",
+        "price": "18000.00",
+        "category": "Camilan",
+        "sub_category": "Dessert",
+        "description": "Es krim rasa coklat lembut disiram saus coklat pekat lezat.",
         "is_available": 1,
-        "image": "item_ice_coffeelatte.jpg"
+        "image": "Chocolatte Sundae.jpeg"
     },
     {
-        "name": "Ice Earl Grey Milk Tea",
-        "price": 20000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
+        "name": "Mix Sundae",
+        "price": "20000.00",
+        "category": "Camilan",
+        "sub_category": "Dessert",
+        "description": "Paduan es krim sundae vanilla dan coklat dengan saus topping manis nikmat.",
         "is_available": 1,
-        "image": "item_earlgrey_milktea.jpg"
+        "image": "Mix Sundae.jpeg"
     },
     {
-        "name": "Ice Matcha Latte",
-        "price": 27000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_ice_matchalatte.jpg"
-    },
-    {
-        "name": "Ice Thai Tea",
-        "price": 22000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_ice_thaitea.jpg"
-    },
-    {
-        "name": "Lemon Tea",
-        "price": 10000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_lemon_tea.jpg"
-    },
-    {
-        "name": "Mango Tea",
-        "price": 17000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mango_tea.jpg"
-    },
-    {
-        "name": "Pineapple Blue Curacao",
-        "price": 28000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_pineapple_curacao.jpg"
-    },
-    {
-        "name": "Strawberry Tea",
-        "price": 17000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_strawberry_tea.jpg"
-    },
-    {
-        "name": "Teh Manis Panas",
-        "price": 8000,
-        "category": "Minuman",
-        "sub_category": "Ice Non Coffee",
-        "description": "",
-        "is_available": 1,
-        "image": "item_teh_panas.jpg"
-    },
-    {
-        "name": "Black Currant",
-        "price": 15000,
+        "name": "Coconut Shake",
+        "price": "20000.00",
         "category": "Minuman",
         "sub_category": "Little Coconut",
-        "description": "",
+        "description": "Minuman olahan kelapa muda segar asli yang diblend creamy menyegarkan dahaga.",
         "is_available": 1,
-        "image": "item_black_currant.jpg"
+        "image": "Coconut Shake.jpeg"
     },
     {
-        "name": "Chocolate Milk",
-        "price": 24000,
+        "name": "Tropical Shake",
+        "price": "25000.00",
         "category": "Minuman",
         "sub_category": "Little Coconut",
-        "description": "",
+        "description": "Shake kelapa segar berpadu aneka buah tropis manis nan segar.",
         "is_available": 1,
-        "image": "item_chocolate_milk.jpg"
-    },
-    {
-        "name": "Double Choko Shake",
-        "price": 30000,
-        "category": "Minuman",
-        "sub_category": "Little Coconut",
-        "description": "",
-        "is_available": 1,
-        "image": "item_shake_choko.jpg"
-    },
-    {
-        "name": "Klepon Shake",
-        "price": 24000,
-        "category": "Minuman",
-        "sub_category": "Little Coconut",
-        "description": "",
-        "is_available": 1,
-        "image": "item_shake_klepon.jpg"
-    },
-    {
-        "name": "Lemonade Original",
-        "price": 18000,
-        "category": "Minuman",
-        "sub_category": "Little Coconut",
-        "description": "",
-        "is_available": 1,
-        "image": "item_lemonade_orig.jpg"
-    },
-    {
-        "name": "Lemonade Strawberry",
-        "price": 18000,
-        "category": "Minuman",
-        "sub_category": "Little Coconut",
-        "description": "",
-        "is_available": 1,
-        "image": "item_lemonade_straw.jpg"
-    },
-    {
-        "name": "Lotus Biscoff Shake",
-        "price": 30000,
-        "category": "Minuman",
-        "sub_category": "Little Coconut",
-        "description": "",
-        "is_available": 1,
-        "image": "item_shake_biscoff.jpg"
-    },
-    {
-        "name": "Mixed Berry",
-        "price": 15000,
-        "category": "Minuman",
-        "sub_category": "Little Coconut",
-        "description": "",
-        "is_available": 1,
-        "image": "item_mixed_berry.jpg"
+        "image": "Tropical Shake.jpeg"
     },
     {
         "name": "Oreo Shake",
-        "price": 24000,
+        "price": "24000.00",
         "category": "Minuman",
         "sub_category": "Little Coconut",
-        "description": "",
+        "description": "Shake susu kelapa creamy berpadu remahan biskuit oreo hitam renyah manis.",
         "is_available": 1,
-        "image": "item_shake_oreo.jpg"
+        "image": "Oreo Shake.jpeg"
     },
     {
-        "name": "Red Velvet Shake",
-        "price": 30000,
+        "name": "Klepon Brown Sugar Shake",
+        "price": "30000.00",
         "category": "Minuman",
         "sub_category": "Little Coconut",
-        "description": "",
+        "description": "Shake unik rasa klepon pandan kelapa gurih berpadu sirup gula aren asli.",
         "is_available": 1,
-        "image": "item_shake_redvelvet.jpg"
+        "image": "Klepon Brown Sugar Shake.jpeg"
     },
     {
-        "name": "SHAKE Coconut Tropical",
-        "price": 20000,
+        "name": "Lotus Biscoff Shake",
+        "price": "30000.00",
         "category": "Minuman",
         "sub_category": "Little Coconut",
-        "description": "",
+        "description": "Shake creamy manis gurih dengan selai biskuit lotus biscoff karamel lezat.",
         "is_available": 1,
-        "image": "item_shake_tropical.jpg"
+        "image": "Lotus Biscoff Shake.jpeg"
+    },
+    {
+        "name": "Double Choco Shake",
+        "price": "30000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Shake coklat ganda pekat berpadu susu kelapa lembut manis.",
+        "is_available": 1,
+        "image": "Double Choco Shake.jpeg"
+    },
+    {
+        "name": "Mango Milk",
+        "price": "24000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Susu segar berpadu manis dan segarnya puree buah mangga harum.",
+        "is_available": 1,
+        "image": "Mango Milk.jpeg"
+    },
+    {
+        "name": "Peach Current Tea",
+        "price": "15000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Teh dingin dengan aroma buah peach manis berpadu asam manis blackcurrant.",
+        "is_available": 1,
+        "image": "Peach Current Tea.jpeg"
     },
     {
         "name": "Strawberry Milk",
-        "price": 24000,
+        "price": "24000.00",
         "category": "Minuman",
         "sub_category": "Little Coconut",
-        "description": "",
+        "description": "Susu segar manis asam lembut dipadu selai buah strawberry asli.",
         "is_available": 1,
-        "image": "item_strawberry_milk.jpg"
+        "image": "Strawberry Milk.jpeg"
+    },
+    {
+        "name": "Guava Honey Lemonade",
+        "price": "18000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Jus jambu biji merah dipadu madu alami dan perasan lemon segar.",
+        "is_available": 1,
+        "image": "Guava Honey Lemonade.jpeg"
+    },
+    {
+        "name": "Lychee Berry Tea",
+        "price": "15000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Teh dingin beraroma leci wangi dan campuran buah berry segar.",
+        "is_available": 1,
+        "image": "Lychee Berry Tea.jpeg"
+    },
+    {
+        "name": "Mango Honey Lemonade",
+        "price": "18000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Perpaduan sari buah mangga harum manis, madu, dan segarnya lemon.",
+        "is_available": 1,
+        "image": "Mango Honey Lemonade.jpeg"
+    },
+    {
+        "name": "Klepon",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Minuman dingin citarasa kue klepon pandan kelapa tradisional.",
+        "is_available": 1,
+        "image": "Klepon.jpeg"
+    },
+    {
+        "name": "Chocolate Milk",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Susu coklat segar manis lembut nikmat.",
+        "is_available": 1,
+        "image": "Chocolate.jpeg"
+    },
+    {
+        "name": "Black Vanilla",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Minuman vanilla dingin unik berpadu sentuhan black charcoal.",
+        "is_available": 1,
+        "image": "Black Vanila.jpeg"
+    },
+    {
+        "name": "Avocado Juice",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Jus buah alpukat mentega segar kental dan creamy.",
+        "is_available": 1,
+        "image": "Avocado.jpeg"
+    },
+    {
+        "name": "Butterfly Blue Tea",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Teh bunga telang biru alami menyegarkan berkhasiat antioksidan.",
+        "is_available": 1,
+        "image": "Butterfly Blue Tea.jpeg"
+    },
+    {
+        "name": "Jasmine Green Tea",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Little Coconut",
+        "description": "Teh hijau melati dingin beraroma wangi menenangkan.",
+        "is_available": 1,
+        "image": "Jasmine Greentea.jpeg"
+    },
+    {
+        "name": "Latte Hot Coffee",
+        "price": "22000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi espresso hangat berpadu steamed milk lembut creamy.",
+        "is_available": 1,
+        "image": "Latte Hot Coffe.jpeg"
+    },
+    {
+        "name": "Kopi Susu Kampung",
+        "price": "18000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi susu khas kampung dengan rasa mantap nostalgia nikmat.",
+        "is_available": 1,
+        "image": "Kopi Susu Kampung.jpeg"
+    },
+    {
+        "name": "Americano Hot",
+        "price": "20000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi espresso panas murni diseduh air panas dengan crema tebal aromatik.",
+        "is_available": 0,
+        "image": "Americano Hot.jpeg"
+    },
+    {
+        "name": "Cappuccino",
+        "price": "22000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Espresso berpadu susu dan lapisan foam susu tebal lembut.",
+        "is_available": 1,
+        "image": "Cappucino.jpeg"
+    },
+    {
+        "name": "Moccachino",
+        "price": "22000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kombinasi espresso, coklat pekat, dan susu lembut hangat\/dingin.",
+        "is_available": 1,
+        "image": "Moccachino.jpeg"
+    },
+    {
+        "name": "Caramel Coffee Latte",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Coffee latte dengan sirup karamel manis wangi gurih.",
+        "is_available": 1,
+        "image": "Caramel Coffe Latte.jpeg"
+    },
+    {
+        "name": "Vanilla Coffee Latte",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Coffee latte lembut beraroma manis vanilla lembut.",
+        "is_available": 1,
+        "image": "Vanila Coffe Latte.jpeg"
+    },
+    {
+        "name": "Red Velvet Latte",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Latte red velvet manis legit berwarna merah cantik.",
+        "is_available": 1,
+        "image": "Red Velvet Latte.jpeg"
+    },
+    {
+        "name": "Charcoal Latte",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Latte arang aktif unik creamy menyehatkan tubuh.",
+        "is_available": 1,
+        "image": "Charcoal Latte.jpeg"
+    },
+    {
+        "name": "Kopi Hitam Semendo",
+        "price": "15000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi robusta asli dataran tinggi Semendo Sumsel dengan body tebal dan aroma pekat.",
+        "is_available": 1,
+        "image": "Kopi HItam Samendo.jpeg"
+    },
+    {
+        "name": "Kopi Hitam Pagaralam",
+        "price": "15000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi robusta asli Gunung Dempo Pagaralam yang harum dan berkarakter kuat.",
+        "is_available": 1,
+        "image": "Kopi HItam Pagar Alam.jpeg"
+    },
+    {
+        "name": "Kopi Susu Bahagia",
+        "price": "20000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi susu gula aren signature pembawa senyum dan bahagia.",
+        "is_available": 1,
+        "image": "Kopi Susu Bahagia.jpeg"
+    },
+    {
+        "name": "Coconut Coffee",
+        "price": "20000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Perpaduan segar espresso dan air kelapa muda manis gurih alami.",
+        "is_available": 1,
+        "image": "Coconut Coffe.jpeg"
+    },
+    {
+        "name": "Avocado Coffee",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Jus alpukat lembut kental disiram shot espresso pekat pahit manis seimbang.",
+        "is_available": 1,
+        "image": "Avocado Coffe.jpeg"
+    },
+    {
+        "name": "Chocolate Coffee",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Paduan kopi espresso dan coklat pekat nikmat memanjakan lidah.",
+        "is_available": 1,
+        "image": "Chocolatte Coffe.jpeg"
+    },
+    {
+        "name": "Chocolate Panas",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Coklat hangat pekat creamy dengan rasa manis gurih pas.",
+        "is_available": 1,
+        "image": "Chocolatte.jpeg"
+    },
+    {
+        "name": "Irish Coffee",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi espresso dengan sirup aroma khas irish cream yang wangi lembut.",
+        "is_available": 1,
+        "image": "Irish Coffe.jpeg"
+    },
+    {
+        "name": "Brown Sugar Coffee",
+        "price": "25000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi susu berpadu manis harum gula aren murni.",
+        "is_available": 1,
+        "image": "Brown Sugar Coffe.jpeg"
+    },
+    {
+        "name": "Matcha Latte Ice Coffee",
+        "price": "35000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Layering indah matcha jepang, susu segar, dan espresso dingin.",
+        "is_available": 1,
+        "image": "Matcha Latte Ice Coffe.jpeg"
+    },
+    {
+        "name": "Ice Caramel Coffee",
+        "price": "29000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Es kopi susu dingin dengan saus karamel lezat menggoda.",
+        "is_available": 1,
+        "image": "Ice Caramel Coffe.jpeg"
+    },
+    {
+        "name": "Americano Ice",
+        "price": "20000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Es kopi hitam segar tanpa gula dengan citarasa kopi murni dingin.",
+        "is_available": 1,
+        "image": "Americano Ice.jpeg"
+    },
+    {
+        "name": "Coffee Jodoh",
+        "price": "25000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi racikan rahasia jodoh istimewa dari Little Palembang.",
+        "is_available": 1,
+        "image": "Coffe Jodoh.jpeg"
+    },
+    {
+        "name": "Coffee Latte",
+        "price": "22000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Es kopi latte susu dingin lembut segar.",
+        "is_available": 1,
+        "image": "Coffe Latte.jpeg"
+    },
+    {
+        "name": "Pakam Ice Coffee",
+        "price": "25000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Es kopi signature racikan barista Pakam.",
+        "is_available": 1,
+        "image": "Pakam Ice Coffe.jpeg"
+    },
+    {
+        "name": "Pandan Kopi Pakam",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi susu dingin dengan aroma wangi daun pandan alami.",
+        "is_available": 1,
+        "image": "Pandan Kopi Pakam.jpeg"
+    },
+    {
+        "name": "Cincau Kopi Pakam",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi susu manis dingin dengan potongan cincau hitam kenyal segar.",
+        "is_available": 1,
+        "image": "Cincau Kopi Pakam.jpeg"
+    },
+    {
+        "name": "Hazelnut Kopi Pakam",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Kopi susu dingin dengan aroma khas kacang hazelnut wangi.",
+        "is_available": 1,
+        "image": "Huzzlenut Kopi Pakam.jpeg"
+    },
+    {
+        "name": "Peppermint Kopi Pakam",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Coffee",
+        "description": "Sensasi kopi susu dingin dengan kesegaran semriwing mint peppermint.",
+        "is_available": 1,
+        "image": "Peppermint Kopi Pakam.jpeg"
+    },
+    {
+        "name": "Charcoal Latte Ice",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Es latte arang bambu hitam yang creamy, unik, dan segar menyehatkan.",
+        "is_available": 1,
+        "image": "Charcoal Latte Ice.jpeg"
+    },
+    {
+        "name": "Ice Earl Grey Milk Tea",
+        "price": "20000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Teh susu dingin beraroma bergamot earl grey wangi aromatik.",
+        "is_available": 1,
+        "image": "Ice Gearl Grey Milk Tea.jpeg"
+    },
+    {
+        "name": "Strawberry Mango",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Paduan buah strawberry dan mangga segar dingin kaya vitamin.",
+        "is_available": 1,
+        "image": "Strawberry Mango.jpeg"
+    },
+    {
+        "name": "Pineapple Blue Curacao",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Minuman nanas segar dengan warna biru eksotis sirup blue curacao.",
+        "is_available": 1,
+        "image": "Pineapple Blue Guraca.jpeg"
+    },
+    {
+        "name": "Ice Matcha Latte",
+        "price": "30000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Es matcha jepang murni dengan susu segar creamy nikmat tanpa kopi.",
+        "is_available": 1,
+        "image": "Ice Matcha Latte.jpeg"
+    },
+    {
+        "name": "Ice Moccachino",
+        "price": "22000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Minuman dingin coklat moccachino manis segar.",
+        "is_available": 1,
+        "image": "Ice Moccachino.jpeg"
+    },
+    {
+        "name": "Ice Red Velvet Latte",
+        "price": "27000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Es red velvet latte manis legit nan cantik.",
+        "is_available": 1,
+        "image": "Ice Red Velvet Latte.jpeg"
+    },
+    {
+        "name": "Ice Vanilla Coffee Latte",
+        "price": "28000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Es vanilla latte lembut dingin menyegarkan hari.",
+        "is_available": 1,
+        "image": "Ice Vanila Coffe Latte.jpeg"
+    },
+    {
+        "name": "Mango Tea",
+        "price": "17000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Es teh beraroma buah mangga manis segar.",
+        "is_available": 1,
+        "image": "Mango Tea.jpeg"
+    },
+    {
+        "name": "Strawberry Tea",
+        "price": "17000.00",
+        "category": "Minuman",
+        "sub_category": "Ice Non Coffee",
+        "description": "Es teh buah strawberry asam manis segar.",
+        "is_available": 1,
+        "image": "Strawberry Tea.jpeg"
+    },
+    {
+        "name": "Little Punch",
+        "price": "32000.00",
+        "category": "Minuman",
+        "sub_category": "Mixology",
+        "description": "Mocktail mixology racikan buah tropis segar signature Little Palembang.",
+        "is_available": 1,
+        "image": "Little Punch.jpeg"
+    },
+    {
+        "name": "Little Violet",
+        "price": "32000.00",
+        "category": "Minuman",
+        "sub_category": "Mixology",
+        "description": "Mocktail ungu eksotis dengan sensasi rasa manis asam segar menyengat.",
+        "is_available": 1,
+        "image": "Little Violet.jpeg"
+    },
+    {
+        "name": "Little Black Grey",
+        "price": "32000.00",
+        "category": "Minuman",
+        "sub_category": "Mixology",
+        "description": "Mocktail elegan berkarakter dengan rasa rempah buah segar unik.",
+        "is_available": 1,
+        "image": "Little Black Grey.jpeg"
+    },
+    {
+        "name": "Little Spring",
+        "price": "32000.00",
+        "category": "Minuman",
+        "sub_category": "Mixology",
+        "description": "Mocktail kesegaran musim semi dengan rasa segar membangkitkan mood.",
+        "is_available": 1,
+        "image": "Little Spring.jpeg"
     }
 ]
