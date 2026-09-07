@@ -184,6 +184,11 @@
                                         @endif
                                         <div>
                                             <strong class="d-block" style="font-size: 1.05rem;">{{ $item->menu->name ?? 'Menu tidak ditemukan' }}</strong>
+                                            @if(!empty($item->notes))
+                                                <span class="badge badge-warning text-dark mt-1 font-weight-normal" style="font-size: 0.85rem; border: 1px solid #F59E0B;">
+                                                    <i class="fas fa-pen-nib mr-1"></i> Catatan: {{ $item->notes }}
+                                                </span>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
@@ -204,7 +209,7 @@
 
                 <div class="mt-3 text-right">
                     <button type="button" onclick="printThermalReceipt()" class="btn btn-danger btn-sm font-weight-bold">
-                        <i class="fas fa-print mr-1"></i> Cetak Struk POS (Thermal Indomaret/Alfa)
+                        <i class="fas fa-print mr-1"></i> Cetak Struk POS
                     </button>
                     <a href="{{ route('orders.index') }}" class="btn btn-outline-secondary btn-sm ml-2">
                         <i class="fas fa-arrow-left mr-1"></i> Kembali ke Daftar
@@ -309,8 +314,13 @@
                 <div class="thermal-divider"></div>
 
                 @foreach($order->items as $item)
-                <div style="margin-bottom: 4px;">
+                <div style="margin-bottom: 5px;">
                     <div style="font-weight: bold;">{{ strtoupper($item->menu->name ?? 'Menu') }}</div>
+                    @if(!empty($item->notes))
+                        <div style="font-size: 10px; color: #444; font-style: italic; padding-left: 6px;">
+                            * Catatan: {{ $item->notes }}
+                        </div>
+                    @endif
                     <div class="thermal-row" style="padding-left: 8px;">
                         <span>{{ $item->quantity }} x {{ number_format($item->price, 0, ',', '.') }}</span>
                         <span>{{ number_format($item->price * $item->quantity, 0, ',', '.') }}</span>
@@ -500,6 +510,36 @@ function printThermalReceipt() {
         return;
     }
 
+    const receiptHtml = receiptEl.innerHTML;
+    
+    // 1. Try opening dedicated print window
+    const printWin = window.open('', '_blank', 'width=450,height=700,top=50,left=50');
+    if (printWin) {
+        printWin.document.open();
+        printWin.document.write('<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">' +
+            '<title>Struk Belanja - Little Palembang</title>' +
+            '<style>' +
+            '@page { size: 80mm auto; margin: 0mm; }' +
+            '* { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }' +
+            'html, body { background: #ffffff !important; color: #000000 !important; font-family: \'Courier New\', Courier, monospace !important; font-size: 12px !important; line-height: 1.3 !important; width: 100% !important; max-width: 76mm !important; margin: 0 auto !important; padding: 6px 8px !important; }' +
+            '.thermal-header { text-align: center; margin-bottom: 6px; }' +
+            '.thermal-title { font-size: 14px; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 2px; }' +
+            '.thermal-divider { border-top: 1px dashed #000000; margin: 5px 0; }' +
+            '.thermal-double-divider { border-top: 2px double #000000; margin: 5px 0; }' +
+            '.thermal-row { display: flex; justify-content: space-between; margin-bottom: 2px; font-size: 11px; }' +
+            '.thermal-barcode { text-align: center; margin-top: 8px; letter-spacing: 3px; font-size: 13px; font-weight: bold; }' +
+            '</style>' +
+            '</head><body>' +
+            '<div>' + receiptHtml + '</div>' +
+            '<script>' +
+            'window.onload = function() { window.focus(); window.print(); setTimeout(function() { window.close(); }, 500); };' +
+            '<\/script>' +
+            '</body></html>');
+        printWin.document.close();
+        return;
+    }
+
+    // 2. Fallback using iframe if popup is blocked
     let iframe = document.getElementById('receiptPrintIframe');
     if (!iframe) {
         iframe = document.createElement('iframe');
@@ -507,83 +547,31 @@ function printThermalReceipt() {
         iframe.style.position = 'fixed';
         iframe.style.right = '0';
         iframe.style.bottom = '0';
-        iframe.style.width = '0';
-        iframe.style.height = '0';
+        iframe.style.width = '1px';
+        iframe.style.height = '1px';
         iframe.style.border = '0';
-        iframe.style.visibility = 'hidden';
+        iframe.style.opacity = '0.01';
         document.body.appendChild(iframe);
     }
 
-    const receiptHtml = receiptEl.innerHTML;
     const doc = iframe.contentWindow.document;
     doc.open();
-    doc.write(`
-        <!DOCTYPE html>
-        <html lang="id">
-        <head>
-            <meta charset="utf-8">
-            <title>Struk Belanja - Little Palembang</title>
-            <style>
-                @page {
-                    size: 80mm auto;
-                    margin: 0mm;
-                }
-                * {
-                    box-sizing: border-box;
-                    margin: 0;
-                    padding: 0;
-                    -webkit-print-color-adjust: exact !important;
-                    print-color-adjust: exact !important;
-                }
-                html, body {
-                    background: #ffffff !important;
-                    color: #000000 !important;
-                    font-family: 'Courier New', Courier, monospace !important;
-                    font-size: 11.5px !important;
-                    line-height: 1.28 !important;
-                    width: 100% !important;
-                    max-width: 76mm !important;
-                    margin: 0 auto !important;
-                    padding: 4px 6px !important;
-                }
-                .thermal-header {
-                    text-align: center;
-                    margin-bottom: 6px;
-                }
-                .thermal-title {
-                    font-size: 14px;
-                    font-weight: 900;
-                    letter-spacing: 0.5px;
-                    margin-bottom: 2px;
-                }
-                .thermal-divider {
-                    border-top: 1px dashed #000000;
-                    margin: 5px 0;
-                }
-                .thermal-double-divider {
-                    border-top: 2px double #000000;
-                    margin: 5px 0;
-                }
-                .thermal-row {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 2px;
-                    font-size: 11px;
-                }
-                .thermal-barcode {
-                    text-align: center;
-                    margin-top: 8px;
-                    letter-spacing: 3px;
-                    font-size: 13px;
-                    font-weight: bold;
-                }
-            </style>
-        </head>
-        <body>
-            <div>\${receiptHtml}</div>
-        </body>
-        </html>
-    `);
+    doc.write('<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">' +
+        '<title>Struk Belanja - Little Palembang</title>' +
+        '<style>' +
+        '@page { size: 80mm auto; margin: 0mm; }' +
+        '* { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }' +
+        'html, body { background: #ffffff !important; color: #000000 !important; font-family: \'Courier New\', Courier, monospace !important; font-size: 12px !important; line-height: 1.3 !important; width: 100% !important; max-width: 76mm !important; margin: 0 auto !important; padding: 6px 8px !important; }' +
+        '.thermal-header { text-align: center; margin-bottom: 6px; }' +
+        '.thermal-title { font-size: 14px; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 2px; }' +
+        '.thermal-divider { border-top: 1px dashed #000000; margin: 5px 0; }' +
+        '.thermal-double-divider { border-top: 2px double #000000; margin: 5px 0; }' +
+        '.thermal-row { display: flex; justify-content: space-between; margin-bottom: 2px; font-size: 11px; }' +
+        '.thermal-barcode { text-align: center; margin-top: 8px; letter-spacing: 3px; font-size: 13px; font-weight: bold; }' +
+        '</style>' +
+        '</head><body>' +
+        '<div>' + receiptHtml + '</div>' +
+        '</body></html>');
     doc.close();
 
     setTimeout(() => {

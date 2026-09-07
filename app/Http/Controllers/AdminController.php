@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\Rating;
 use App\Models\Table;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -29,13 +31,13 @@ class AdminController extends Controller
 
         // Rating & Review Statistics
         $totalRatings = Rating::count();
-        $avgFoodRating = round(Rating::avg('food_rating') ?? 5.0, 1);
-        $avgTableRating = round(Rating::avg('table_rating') ?? 5.0, 1);
-        $avgWaiterRating = round(Rating::avg('waiter_rating') ?? 5.0, 1);
+        $avgFoodRating = $totalRatings > 0 ? round(Rating::avg('food_rating') ?? 0.0, 1) : 0.0;
+        $avgTableRating = $totalRatings > 0 ? round(Rating::avg('table_rating') ?? 0.0, 1) : 0.0;
+        $avgWaiterRating = $totalRatings > 0 ? round(Rating::avg('waiter_rating') ?? 0.0, 1) : 0.0;
 
         // Top 3 Favorite Tables
         $topTables = Table::with('ratings')->get()->map(function ($t) {
-            $avg = $t->ratings->avg('table_rating') ?? 5.0;
+            $avg = $t->ratings->count() > 0 ? ($t->ratings->avg('table_rating') ?? 0.0) : 0.0;
             $favs = $t->ratings->where('is_favorite_table', true)->count();
             $count = $t->ratings->count();
             $score = ($avg * 2) + ($favs * 3) + $count;
@@ -87,15 +89,55 @@ class AdminController extends Controller
         $year = Order::whereYear('created_at', now()->year)->where('payment_status', 'paid')->sum('total_amount');
         $paidOrders = Order::with(['table', 'rating'])->where('payment_status', 'paid')->orderBy('created_at', 'desc')->get();
 
-        // All customer reviews for reports
+        // 1. All customer reviews for evaluation reports
         $allReviews = Rating::with(['order', 'table'])->orderBy('created_at', 'desc')->get();
-        $avgFoodRating = round(Rating::avg('food_rating') ?? 5.0, 1);
-        $avgTableRating = round(Rating::avg('table_rating') ?? 5.0, 1);
-        $avgWaiterRating = round(Rating::avg('waiter_rating') ?? 5.0, 1);
+        $totalRev = $allReviews->count();
+        $avgFoodRating = $totalRev > 0 ? round(Rating::avg('food_rating') ?? 0.0, 1) : 0.0;
+        $avgTableRating = $totalRev > 0 ? round(Rating::avg('table_rating') ?? 0.0, 1) : 0.0;
+        $avgWaiterRating = $totalRev > 0 ? round(Rating::avg('waiter_rating') ?? 0.0, 1) : 0.0;
+
+        // 2. Stock Report (Sisa Stok, Jumlah Terjual, Status Ketersediaan)
+        $stockReports = Menu::leftJoin('order_items', 'menus.id', '=', 'order_items.menu_id')
+            ->select(
+                'menus.id',
+                'menus.name',
+                'menus.category',
+                'menus.sub_category',
+                'menus.price',
+                'menus.stock',
+                'menus.is_available',
+                DB::raw('COALESCE(SUM(order_items.quantity), 0) as total_sold')
+            )
+            ->groupBy('menus.id', 'menus.name', 'menus.category', 'menus.sub_category', 'menus.price', 'menus.stock', 'menus.is_available')
+            ->orderBy('menus.category')
+            ->orderBy('menus.name')
+            ->get()
+            ->map(function ($menu) {
+                if (!$menu->is_available || $menu->stock <= 0) {
+                    $menu->stock_status = 'Habis';
+                    $menu->badge_class = 'danger';
+                } elseif ($menu->stock <= 5) {
+                    $menu->stock_status = 'Menipis';
+                    $menu->badge_class = 'warning';
+                } else {
+                    $menu->stock_status = 'Aman';
+                    $menu->badge_class = 'success';
+                }
+                return $menu;
+            });
+
+        $stockStats = [
+            'total_menus' => $stockReports->count(),
+            'safe_stock'  => $stockReports->where('stock_status', 'Aman')->count(),
+            'low_stock'   => $stockReports->where('stock_status', 'Menipis')->count(),
+            'out_stock'   => $stockReports->where('stock_status', 'Habis')->count(),
+            'total_sold'  => $stockReports->sum('total_sold'),
+        ];
 
         return view('admin.reports', compact(
             'today', 'week', 'month', 'year', 'paidOrders',
-            'allReviews', 'avgFoodRating', 'avgTableRating', 'avgWaiterRating'
+            'allReviews', 'avgFoodRating', 'avgTableRating', 'avgWaiterRating',
+            'stockReports', 'stockStats'
         ));
     }
 }

@@ -28,11 +28,15 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
+            'stock' => 'nullable|integer|min:0',
             'category' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $input = $request->only(['name', 'price', 'description', 'category', 'sub_category']);
+        $input = $request->only(['name', 'price', 'stock', 'description', 'category', 'sub_category']);
+        if (!isset($input['stock'])) {
+            $input['stock'] = 20;
+        }
 
         if ($image = $request->file('image')) {
             $destinationPath = public_path('images');
@@ -62,12 +66,17 @@ class MenuController extends Controller
         $request->validate([
             'name'         => 'required|string|max:255',
             'price'        => 'required|numeric|min:0',
+            'stock'        => 'required|integer|min:0',
             'category'     => 'required|string|max:255',
             'is_available' => 'required|in:0,1',
             'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $input = $request->only(['name', 'price', 'description', 'category', 'sub_category', 'is_available']);
+        $input = $request->only(['name', 'price', 'stock', 'description', 'category', 'sub_category', 'is_available']);
+
+        if ((int)$input['stock'] <= 0) {
+            $input['is_available'] = 0;
+        }
 
         if ($image = $request->file('image')) {
             if ($menu->image && file_exists(public_path('images/' . $menu->image))) {

@@ -38,27 +38,6 @@
                 <p class="login-subtitle">Portal Manajemen & Staf Kafe</p>
             </div>
 
-            <!-- Role Quick Fill Section (Convenience for testing) -->
-            <div class="role-quick-login">
-                <div class="role-quick-title">
-                    <i class="fas fa-bolt"></i> Pilih Akun Cepat (Demo):
-                </div>
-                <div class="role-chips">
-                    <button type="button" class="role-chip" onclick="fillCredentials('admin@gmail.com', 'password')">
-                        👑 Admin
-                    </button>
-                    <button type="button" class="role-chip" onclick="fillCredentials('kasir@gmail.com', 'password')">
-                        💰 Kasir
-                    </button>
-                    <button type="button" class="role-chip" onclick="fillCredentials('dapur@gmail.com', 'password')">
-                        🍳 Dapur
-                    </button>
-                    <button type="button" class="role-chip" onclick="fillCredentials('owner@gmail.com', 'password')">
-                        📊 Owner
-                    </button>
-                </div>
-            </div>
-
             <!-- Session Status -->
             @if (session('status'))
                 <div class="success-message">
@@ -122,11 +101,6 @@
     </div>
 
     <script>
-        function fillCredentials(email, password) {
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = password;
-        }
-
         document.getElementById('loginForm').addEventListener('submit', function() {
             const btn = document.getElementById('submitBtn');
             btn.querySelector('span').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';

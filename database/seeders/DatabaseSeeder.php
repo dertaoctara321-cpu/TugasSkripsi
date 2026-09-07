@@ -86,8 +86,8 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 3. Default Tables (1 - 10)
-        for ($i = 1; $i <= 10; $i++) {
+        // 3. Default Tables (1 - 33)
+        for ($i = 1; $i <= 33; $i++) {
             Table::firstOrCreate(
                 ['table_number' => (string)$i],
                 [

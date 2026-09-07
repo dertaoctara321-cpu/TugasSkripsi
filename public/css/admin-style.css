@@ -555,3 +555,60 @@ body.dark-mode .alert-danger {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================================
+   PAGINATION STYLING (RED MERAH PUTIH THEME)
+   ============================================ */
+.pagination {
+    margin-bottom: 0;
+    gap: 4px;
+}
+
+.pagination .page-item .page-link {
+    color: #0F172A;
+    background-color: #ffffff;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px !important;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #FFF1F2;
+    border-color: #DC2626;
+    color: #DC2626;
+    transform: translateY(-1px);
+}
+
+.pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #EF4444, #DC2626) !important;
+    border-color: #DC2626 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.35);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #94A3B8;
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+body.dark-mode .pagination .page-item .page-link {
+    background-color: #1E293B;
+    border-color: #334155;
+    color: #F8FAFC;
+}
+
+body.dark-mode .pagination .page-item .page-link:hover {
+    background-color: #33141E;
+    border-color: #881337;
+    color: #FECDD3;
+}
+
+body.dark-mode .pagination .page-item.disabled .page-link {
+    background-color: #0F172A;
+    border-color: #334155;
+    color: #64748B;
+}

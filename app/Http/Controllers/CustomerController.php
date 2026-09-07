@@ -36,7 +36,7 @@ class CustomerController extends Controller
 
         // Compute table ranking for favorite badge
         $allTables = Table::with('ratings')->get()->map(function ($t) {
-            $avg = $t->ratings->avg('table_rating') ?? 5.0;
+            $avg = $t->ratings->count() > 0 ? ($t->ratings->avg('table_rating') ?? 0.0) : 0.0;
             $favs = $t->ratings->where('is_favorite_table', true)->count();
             $count = $t->ratings->count();
             $score = ($avg * 2) + ($favs * 3) + $count;
@@ -51,7 +51,7 @@ class CustomerController extends Controller
 
         $tableRank = 1;
         $tableStats = [
-            'avg_rating' => 5.0,
+            'avg_rating' => 0.0,
             'fav_count' => 0,
             'rating_count' => 0,
             'is_top' => false,
@@ -80,11 +80,12 @@ class CustomerController extends Controller
         $request->validate([
             'menu_id' => 'required|exists:menus,id',
             'quantity' => 'required|integer|min:1|max:100',
+            'notes' => 'nullable|string|max:500',
         ]);
 
         $menu = Menu::findOrFail($request->menu_id);
 
-        if (!$menu->is_available) {
+        if (!$menu->is_available || $menu->stock <= 0) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response()->json([
                     'success' => false,
@@ -98,6 +99,17 @@ class CustomerController extends Controller
         $cart = session()->get($cartKey, []);
         
         $currentQty = isset($cart[$request->menu_id]) ? $cart[$request->menu_id]['quantity'] : 0;
+        if ($currentQty + $request->quantity > $menu->stock) {
+            $msg = 'Maaf, pesanan melebihi stok yang tersedia (sisa ' . $menu->stock . ' porsi).';
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $msg
+                ], 422);
+            }
+            return redirect()->back()->with('error', $msg);
+        }
+
         if ($currentQty + $request->quantity > 100) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response()->json([
@@ -110,12 +122,16 @@ class CustomerController extends Controller
 
         if (isset($cart[$request->menu_id])) {
             $cart[$request->menu_id]['quantity'] += $request->quantity;
+            if ($request->filled('notes')) {
+                $cart[$request->menu_id]['notes'] = $request->notes;
+            }
         } else {
             $cart[$request->menu_id] = [
                 "name" => $menu->name,
                 "quantity" => $request->quantity,
                 "price" => $menu->price,
-                "image" => $menu->image
+                "image" => $menu->image,
+                "notes" => $request->notes ?? null
             ];
         }
         
@@ -123,10 +139,14 @@ class CustomerController extends Controller
 
         if ($request->ajax() || $request->wantsJson()) {
             $totalItems = collect($cart)->sum('quantity');
+            $totalPrice = collect($cart)->sum(function ($item) {
+                return $item['price'] * $item['quantity'];
+            });
             return response()->json([
                 'success' => true,
                 'message' => 'Produk berhasil ditambahkan ke keranjang!',
-                'cart_count' => $totalItems
+                'cart_count' => $totalItems,
+                'cart_total' => $totalPrice
             ]);
         }
 
@@ -138,6 +158,7 @@ class CustomerController extends Controller
         $request->validate([
             'menu_id' => 'required|exists:menus,id',
             'quantity' => 'required|integer|min:0|max:100',
+            'notes' => 'nullable|string|max:500',
         ]);
 
         $menu = Menu::findOrFail($request->menu_id);
@@ -145,18 +166,27 @@ class CustomerController extends Controller
         $cart = session()->get($cartKey, []);
 
         if ($request->quantity > 0) {
-            if (!$menu->is_available) {
+            if (!$menu->is_available || $menu->stock <= 0) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Maaf, menu "' . $menu->name . '" sedang tidak tersedia.'
+                    'message' => 'Maaf, menu "' . $menu->name . '" sedang tidak tersedia / stok habis.'
                 ], 422);
             }
 
+            if ($request->quantity > $menu->stock) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Maaf, pesanan melebihi stok yang tersedia (sisa ' . $menu->stock . ' porsi).'
+                ], 422);
+            }
+
+            $existingNotes = isset($cart[$request->menu_id]['notes']) ? $cart[$request->menu_id]['notes'] : null;
             $cart[$request->menu_id] = [
                 "name" => $menu->name,
                 "quantity" => $request->quantity,
                 "price" => $menu->price,
-                "image" => $menu->image
+                "image" => $menu->image,
+                "notes" => $request->has('notes') ? $request->notes : $existingNotes
             ];
         } else {
             if (isset($cart[$request->menu_id])) {
@@ -219,8 +249,11 @@ class CustomerController extends Controller
         $request->validate([
             'customer_name' => $existingOrder ? 'nullable|string|max:255' : 'required|string|max:255',
             'payment_method_id' => $existingOrder ? 'nullable|exists:payment_methods,id' : 'required|exists:payment_methods,id',
-            'floor' => 'required|string|in:Lantai 1,Lantai 2'
+            'floor' => 'nullable|string'
         ]);
+
+        // Automatically assign floor based on table number (1-18: Lantai 1, 19-33: Lantai 2)
+        $autoFloor = $table->floor;
 
         $paymentMethodName = 'Cash';
         if ($request->filled('payment_method_id')) {
@@ -241,27 +274,41 @@ class CustomerController extends Controller
         if ($existingOrder) {
             // Add new items to existing order
             foreach ($cart as $id => $details) {
+                $menu = Menu::find($id);
+                $qty = (int)$details['quantity'];
+                $notes = $details['notes'] ?? null;
+
                 $existingItem = OrderItem::where('order_id', $existingOrder->id)
                     ->where('menu_id', $id)
+                    ->where('notes', $notes)
                     ->first();
                 
                 if ($existingItem) {
-                    $existingItem->quantity += $details['quantity'];
+                    $existingItem->quantity += $qty;
                     $existingItem->save();
                 } else {
                     OrderItem::create([
                         'order_id' => $existingOrder->id,
                         'menu_id' => $id,
-                        'quantity' => $details['quantity'],
-                        'price' => $details['price']
+                        'quantity' => $qty,
+                        'price' => $details['price'],
+                        'notes' => $notes
                     ]);
+                }
+
+                // Decrement stock
+                if ($menu) {
+                    $newStock = max(0, $menu->stock - $qty);
+                    $menu->stock = $newStock;
+                    if ($newStock <= 0) {
+                        $menu->is_available = false;
+                    }
+                    $menu->save();
                 }
             }
 
             $existingOrder->total_amount += $newItemsTotal;
-            if ($request->has('floor')) {
-                $existingOrder->floor = $request->floor;
-            }
+            $existingOrder->floor = $autoFloor;
             
             if ($existingOrder->payment_status == 'paid') {
                 $existingOrder->payment_status = 'pending';
@@ -279,18 +326,33 @@ class CustomerController extends Controller
                 'total_amount' => $newItemsTotal,
                 'payment_method' => $paymentMethodName,
                 'customer_name' => $request->customer_name,
-                'floor' => $request->floor,
+                'floor' => $autoFloor,
                 'order_status' => 'pending',
                 'payment_status' => 'pending'
             ]);
 
             foreach ($cart as $id => $details) {
+                $menu = Menu::find($id);
+                $qty = (int)$details['quantity'];
+                $notes = $details['notes'] ?? null;
+
                 OrderItem::create([
                     'order_id' => $order->id,
                     'menu_id' => $id,
-                    'quantity' => $details['quantity'],
-                    'price' => $details['price']
+                    'quantity' => $qty,
+                    'price' => $details['price'],
+                    'notes' => $notes
                 ]);
+
+                // Decrement stock
+                if ($menu) {
+                    $newStock = max(0, $menu->stock - $qty);
+                    $menu->stock = $newStock;
+                    if ($newStock <= 0) {
+                        $menu->is_available = false;
+                    }
+                    $menu->save();
+                }
             }
 
             $table->status = 'occupied';
@@ -310,6 +372,33 @@ class CustomerController extends Controller
 
         $order->load(['items.menu', 'table', 'rating']);
         return view('customer.status', compact('order'));
+    }
+
+    /**
+     * Customer confirms that order has been received (served -> completed)
+     */
+    public function confirmReceived(Request $request, $uuid, Order $order)
+    {
+        if ($order->table->uuid !== $uuid) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+            }
+            abort(403, 'Unauthorized');
+        }
+
+        $order->update([
+            'order_status' => 'completed'
+        ]);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Terima kasih! Pesanan Anda telah dikonfirmasi selesai diterima. Selamat menikmati hidangan!',
+                'order_status' => 'completed'
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Pesanan telah dikonfirmasi selesai diterima!');
     }
 
     /**
@@ -358,7 +447,7 @@ class CustomerController extends Controller
                 'waiter_name' => $order->waiter_name,
                 'food_rating' => (int) $request->food_rating,
                 'table_rating' => (int) $request->table_rating,
-                'waiter_rating' => $request->filled('waiter_rating') ? (int) $request->waiter_rating : 5,
+                'waiter_rating' => $request->filled('waiter_rating') ? (int) $request->waiter_rating : null,
                 'is_favorite_table' => $isFavorite,
                 'review' => $request->review,
                 'waiter_review' => $request->waiter_review,

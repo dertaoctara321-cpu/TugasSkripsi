@@ -326,11 +326,36 @@
         <div class="me-3 text-center" style="min-width: 50px;">
             <i class="fas fa-concierge-bell fa-2x text-danger animate-wobble"></i>
         </div>
-        <div>
+        <div class="flex-grow-1">
             <h5 class="mb-1 fw-bold text-danger">🛎️ Pesanan Anda Sedang Diantar!</h5>
-            <p class="mb-0 text-dark" style="font-size: 0.92rem;">
+            <p class="mb-2 text-dark" style="font-size: 0.92rem;">
                 Pesanan sedang diantarkan oleh Waiter: <strong class="text-danger fw-bold" id="bannerWaiterName">{{ $order->waiter_name ?? 'Staf Pelayan' }}</strong> ke <strong class="text-dark">Meja {{ $order->table->table_number }}</strong> ({{ $order->floor ?? 'Lantai 1' }}). Silakan bersiap menikmati hidangan!
             </p>
+            <button type="button" class="btn btn-success fw-bold btn-sm px-3 py-2 rounded-pill shadow-sm" onclick="confirmOrderReceived()">
+                <i class="fas fa-check-circle me-1"></i> Konfirmasi Pesanan Sudah Diterima Lengkap
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Next Steps Action Card when Completed -->
+<div id="completedActionCard" class="card border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); border: 1.5px solid #86EFAC !important; {{ $order->order_status == 'completed' ? 'display: block;' : 'display: none;' }};">
+    <div class="card-body p-4 text-center">
+        <div class="text-success mb-2">
+            <i class="fas fa-check-circle fa-3x"></i>
+        </div>
+        <h4 class="fw-bold text-success mb-1">Pesanan Anda Telah Lengkap Diterima!</h4>
+        <p class="text-muted mb-3" style="font-size: 0.93rem;">
+            Selamat menikmati hidangan lezat Little Palembang Cafe. Jika masih ingin menambah hidangan atau dessert, Anda dapat memesan kembali ke meja ini.
+        </p>
+        
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <a href="{{ route('order.index', $order->table->uuid) }}" class="btn btn-danger fw-bold px-4 py-2 rounded-pill shadow-sm">
+                <i class="fas fa-plus-circle me-1"></i> Pesan Menu Tambahan
+            </a>
+            <button type="button" class="btn btn-outline-success fw-bold px-4 py-2 rounded-pill" onclick="finishDining()">
+                <i class="fas fa-smile-beam me-1"></i> Selesai Bersantap
+            </button>
         </div>
     </div>
 </div>
@@ -450,8 +475,13 @@
             <div class="thermal-divider"></div>
 
             @foreach($order->items as $item)
-            <div style="margin-bottom: 4px;">
+            <div style="margin-bottom: 5px;">
                 <div style="font-weight: bold;">{{ strtoupper($item->menu->name ?? 'Menu') }}</div>
+                @if(!empty($item->notes))
+                    <div style="font-size: 10px; color: #444; font-style: italic; padding-left: 6px;">
+                        * Catatan: {{ $item->notes }}
+                    </div>
+                @endif
                 <div class="thermal-row" style="padding-left: 8px;">
                     <span>{{ $item->quantity }} x {{ number_format($item->price, 0, ',', '.') }}</span>
                     <span>{{ number_format($item->price * $item->quantity, 0, ',', '.') }}</span>
@@ -592,11 +622,14 @@
                     <div class="mb-4 text-center">
                         <label class="fw-bold d-block mb-1 text-dark">1. Bagaimana Rasa Makanan & Minuman? 🍜</label>
                         <div class="star-rating-box" id="foodStars">
-                            <input type="radio" id="food-5" name="food_rating" value="5" checked><label for="food-5" title="5 Bintang - Sangat Enak">★</label>
+                            <input type="radio" id="food-5" name="food_rating" value="5"><label for="food-5" title="5 Bintang - Sangat Enak">★</label>
                             <input type="radio" id="food-4" name="food_rating" value="4"><label for="food-4" title="4 Bintang - Enak">★</label>
                             <input type="radio" id="food-3" name="food_rating" value="3"><label for="food-3" title="3 Bintang - Cukup">★</label>
                             <input type="radio" id="food-2" name="food_rating" value="2"><label for="food-2" title="2 Bintang - Kurang">★</label>
                             <input type="radio" id="food-1" name="food_rating" value="1"><label for="food-1" title="1 Bintang - Sangat Kurang">★</label>
+                        </div>
+                        <div id="foodRatingLabel" class="small text-muted mt-1 fw-semibold">
+                            <i class="far fa-star me-1"></i> Belum diberi nilai (klik bintang 1 - 5)
                         </div>
                     </div>
 
@@ -604,15 +637,18 @@
                     <div class="mb-4 text-center p-3 rounded-3 bg-white shadow-sm border">
                         <label class="fw-bold d-block mb-1 text-dark">2. Kenyamanan Meja {{ $order->table->table_number }} ({{ $order->floor ?? 'Lantai 1' }}) 🪑</label>
                         <div class="star-rating-box" id="tableStars">
-                            <input type="radio" id="table-5" name="table_rating" value="5" checked><label for="table-5" title="5 Bintang - Sangat Nyaman">★</label>
+                            <input type="radio" id="table-5" name="table_rating" value="5"><label for="table-5" title="5 Bintang - Sangat Nyaman">★</label>
                             <input type="radio" id="table-4" name="table_rating" value="4"><label for="table-4" title="4 Bintang - Nyaman">★</label>
                             <input type="radio" id="table-3" name="table_rating" value="3"><label for="table-3" title="3 Bintang - Cukup">★</label>
                             <input type="radio" id="table-2" name="table_rating" value="2"><label for="table-2" title="2 Bintang - Kurang">★</label>
                             <input type="radio" id="table-1" name="table_rating" value="1"><label for="table-1" title="1 Bintang - Tidak Nyaman">★</label>
                         </div>
+                        <div id="tableRatingLabel" class="small text-muted mt-1 fw-semibold">
+                            <i class="far fa-star me-1"></i> Belum diberi nilai (klik bintang 1 - 5)
+                        </div>
                         
                         <div class="form-check form-switch d-inline-block mt-2">
-                            <input class="form-check-input" type="checkbox" name="is_favorite_table" value="1" id="isFavoriteCheck" checked style="cursor: pointer;">
+                            <input class="form-check-input" type="checkbox" name="is_favorite_table" value="1" id="isFavoriteCheck" style="cursor: pointer;">
                             <label class="form-check-label fw-bold text-danger" for="isFavoriteCheck" style="cursor: pointer;">
                                 ❤️ Jadikan Meja {{ $order->table->table_number }} Sebagai Meja Favorit Saya
                             </label>
@@ -625,11 +661,14 @@
                             3. Pelayanan Waiters (<span id="ratingWaiterLabel">{{ $order->waiter_name ?? 'Pelayan' }}</span>) 🤵
                         </label>
                         <div class="star-rating-box" id="waiterStars">
-                            <input type="radio" id="waiter-5" name="waiter_rating" value="5" checked><label for="waiter-5" title="5 Bintang - Sangat Ramah & Cepat">★</label>
+                            <input type="radio" id="waiter-5" name="waiter_rating" value="5"><label for="waiter-5" title="5 Bintang - Sangat Ramah & Cepat">★</label>
                             <input type="radio" id="waiter-4" name="waiter_rating" value="4"><label for="waiter-4" title="4 Bintang - Ramah">★</label>
                             <input type="radio" id="waiter-3" name="waiter_rating" value="3"><label for="waiter-3" title="3 Bintang - Cukup">★</label>
                             <input type="radio" id="waiter-2" name="waiter_rating" value="2"><label for="waiter-2" title="2 Bintang - Kurang">★</label>
                             <input type="radio" id="waiter-1" name="waiter_rating" value="1"><label for="waiter-1" title="1 Bintang - Tidak Ramah">★</label>
+                        </div>
+                        <div id="waiterRatingLabel" class="small text-muted mt-1 fw-semibold">
+                            <i class="far fa-star me-1"></i> Belum diberi nilai (opsional, klik bintang 1 - 5)
                         </div>
                         <input type="text" name="waiter_review" class="form-control form-control-sm mt-2" placeholder="Tulis pujian atau catatan untuk Waiter ini (opsional)...">
                     </div>
@@ -667,6 +706,36 @@ function printThermalReceipt() {
         return;
     }
 
+    const receiptHtml = receiptEl.innerHTML;
+    
+    // 1. Try opening dedicated print window
+    const printWin = window.open('', '_blank', 'width=450,height=700,top=50,left=50');
+    if (printWin) {
+        printWin.document.open();
+        printWin.document.write('<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">' +
+            '<title>Struk Belanja - Little Palembang</title>' +
+            '<style>' +
+            '@page { size: 80mm auto; margin: 0mm; }' +
+            '* { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }' +
+            'html, body { background: #ffffff !important; color: #000000 !important; font-family: \'Courier New\', Courier, monospace !important; font-size: 12px !important; line-height: 1.3 !important; width: 100% !important; max-width: 76mm !important; margin: 0 auto !important; padding: 6px 8px !important; }' +
+            '.thermal-header { text-align: center; margin-bottom: 6px; }' +
+            '.thermal-title { font-size: 14px; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 2px; }' +
+            '.thermal-divider { border-top: 1px dashed #000000; margin: 5px 0; }' +
+            '.thermal-double-divider { border-top: 2px double #000000; margin: 5px 0; }' +
+            '.thermal-row { display: flex; justify-content: space-between; margin-bottom: 2px; font-size: 11px; }' +
+            '.thermal-barcode { text-align: center; margin-top: 8px; letter-spacing: 3px; font-size: 13px; font-weight: bold; }' +
+            '</style>' +
+            '</head><body>' +
+            '<div>' + receiptHtml + '</div>' +
+            '<script>' +
+            'window.onload = function() { window.focus(); window.print(); setTimeout(function() { window.close(); }, 500); };' +
+            '<\/script>' +
+            '</body></html>');
+        printWin.document.close();
+        return;
+    }
+
+    // 2. Fallback using iframe if popup is blocked
     let iframe = document.getElementById('receiptPrintIframe');
     if (!iframe) {
         iframe = document.createElement('iframe');
@@ -674,83 +743,31 @@ function printThermalReceipt() {
         iframe.style.position = 'fixed';
         iframe.style.right = '0';
         iframe.style.bottom = '0';
-        iframe.style.width = '0';
-        iframe.style.height = '0';
+        iframe.style.width = '1px';
+        iframe.style.height = '1px';
         iframe.style.border = '0';
-        iframe.style.visibility = 'hidden';
+        iframe.style.opacity = '0.01';
         document.body.appendChild(iframe);
     }
 
-    const receiptHtml = receiptEl.innerHTML;
     const doc = iframe.contentWindow.document;
     doc.open();
-    doc.write(`
-        <!DOCTYPE html>
-        <html lang="id">
-        <head>
-            <meta charset="utf-8">
-            <title>Struk Belanja - Little Palembang</title>
-            <style>
-                @page {
-                    size: 80mm auto;
-                    margin: 0mm;
-                }
-                * {
-                    box-sizing: border-box;
-                    margin: 0;
-                    padding: 0;
-                    -webkit-print-color-adjust: exact !important;
-                    print-color-adjust: exact !important;
-                }
-                html, body {
-                    background: #ffffff !important;
-                    color: #000000 !important;
-                    font-family: 'Courier New', Courier, monospace !important;
-                    font-size: 11.5px !important;
-                    line-height: 1.28 !important;
-                    width: 100% !important;
-                    max-width: 76mm !important;
-                    margin: 0 auto !important;
-                    padding: 4px 6px !important;
-                }
-                .thermal-header {
-                    text-align: center;
-                    margin-bottom: 6px;
-                }
-                .thermal-title {
-                    font-size: 14px;
-                    font-weight: 900;
-                    letter-spacing: 0.5px;
-                    margin-bottom: 2px;
-                }
-                .thermal-divider {
-                    border-top: 1px dashed #000000;
-                    margin: 5px 0;
-                }
-                .thermal-double-divider {
-                    border-top: 2px double #000000;
-                    margin: 5px 0;
-                }
-                .thermal-row {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 2px;
-                    font-size: 11px;
-                }
-                .thermal-barcode {
-                    text-align: center;
-                    margin-top: 8px;
-                    letter-spacing: 3px;
-                    font-size: 13px;
-                    font-weight: bold;
-                }
-            </style>
-        </head>
-        <body>
-            <div>\${receiptHtml}</div>
-        </body>
-        </html>
-    `);
+    doc.write('<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">' +
+        '<title>Struk Belanja - Little Palembang</title>' +
+        '<style>' +
+        '@page { size: 80mm auto; margin: 0mm; }' +
+        '* { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }' +
+        'html, body { background: #ffffff !important; color: #000000 !important; font-family: \'Courier New\', Courier, monospace !important; font-size: 12px !important; line-height: 1.3 !important; width: 100% !important; max-width: 76mm !important; margin: 0 auto !important; padding: 6px 8px !important; }' +
+        '.thermal-header { text-align: center; margin-bottom: 6px; }' +
+        '.thermal-title { font-size: 14px; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 2px; }' +
+        '.thermal-divider { border-top: 1px dashed #000000; margin: 5px 0; }' +
+        '.thermal-double-divider { border-top: 2px double #000000; margin: 5px 0; }' +
+        '.thermal-row { display: flex; justify-content: space-between; margin-bottom: 2px; font-size: 11px; }' +
+        '.thermal-barcode { text-align: center; margin-top: 8px; letter-spacing: 3px; font-size: 13px; font-weight: bold; }' +
+        '</style>' +
+        '</head><body>' +
+        '<div>' + receiptHtml + '</div>' +
+        '</body></html>');
     doc.close();
 
     setTimeout(() => {
@@ -873,9 +890,143 @@ function checkLiveStatus() {
             const s4 = document.getElementById('step-icon-4');
             if (s3) s3.className = 'timeline-icon completed';
             if (s4) s4.className = 'timeline-icon active';
+
+            const banner = document.getElementById('deliveryAlertBanner');
+            if (banner) banner.style.display = 'none';
+
+            const compCard = document.getElementById('completedActionCard');
+            if (compCard) compCard.style.display = 'block';
         }
     })
     .catch(err => console.log('Polling check error:', err));
+}
+
+function confirmOrderReceived() {
+    if (!confirm('Apakah seluruh hidangan telah Anda terima dengan lengkap di meja?')) return;
+
+    fetch("{{ route('order.confirmReceived', ['uuid' => $order->table->uuid, 'order' => $order->id]) }}", {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            _token: "{{ csrf_token() }}"
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            currentOrderStatus = 'completed';
+
+            const banner = document.getElementById('deliveryAlertBanner');
+            if (banner) banner.style.display = 'none';
+
+            const compCard = document.getElementById('completedActionCard');
+            if (compCard) compCard.style.display = 'block';
+
+            const text = document.getElementById('mainStatusText');
+            if (text) {
+                text.textContent = '✅ Pesanan Selesai';
+                text.style.color = '#059669';
+            }
+
+            const icon = document.getElementById('mainStatusIcon');
+            if (icon) {
+                icon.innerHTML = '<i class="fas fa-check-circle fa-4x text-success status-icon completed"></i>';
+            }
+
+            const s3 = document.getElementById('step-icon-3');
+            const s4 = document.getElementById('step-icon-4');
+            if (s3) s3.className = 'timeline-icon completed';
+            if (s4) s4.className = 'timeline-icon active';
+
+            playChime();
+            alert('Pesanan telah berhasil dikonfirmasi diterima. Selamat menikmati hidangan!');
+
+            const ratingForm = document.getElementById('ratingForm');
+            if (ratingForm) {
+                ratingForm.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    })
+    .catch(err => console.error('Confirm error:', err));
+}
+
+function finishDining() {
+    alert('Terima kasih banyak telah berkunjung dan bersantap di Little Palembang Cafe! Meja Anda siap dibersihkan oleh tim kami. Semoga hari Anda menyenangkan!');
+}
+
+// Star Rating Dynamic Text & Validation Handler
+const foodDescriptions = {
+    '5': '⭐ 5 Bintang - Sangat Enak (Luar Biasa!)',
+    '4': '⭐ 4 Bintang - Enak & Nikmat',
+    '3': '⭐ 3 Bintang - Cukup / Standar',
+    '2': '⭐ 2 Bintang - Kurang Enak',
+    '1': '⭐ 1 Bintang - Sangat Kurang'
+};
+
+const tableDescriptions = {
+    '5': '⭐ 5 Bintang - Sangat Nyaman & Bersih',
+    '4': '⭐ 4 Bintang - Nyaman',
+    '3': '⭐ 3 Bintang - Cukup Nyaman',
+    '2': '⭐ 2 Bintang - Kurang Nyaman',
+    '1': '⭐ 1 Bintang - Tidak Nyaman'
+};
+
+const waiterDescriptions = {
+    '5': '⭐ 5 Bintang - Sangat Ramah & Cepat',
+    '4': '⭐ 4 Bintang - Ramah & Membantu',
+    '3': '⭐ 3 Bintang - Pelayanan Cukup',
+    '2': '⭐ 2 Bintang - Kurang Ramah',
+    '1': '⭐ 1 Bintang - Tidak Ramah'
+};
+
+document.querySelectorAll('input[name="food_rating"]').forEach(el => {
+    el.addEventListener('change', function() {
+        const label = document.getElementById('foodRatingLabel');
+        if (label && foodDescriptions[this.value]) {
+            label.innerHTML = `<span class="text-success fw-bold">${foodDescriptions[this.value]}</span>`;
+        }
+    });
+});
+
+document.querySelectorAll('input[name="table_rating"]').forEach(el => {
+    el.addEventListener('change', function() {
+        const label = document.getElementById('tableRatingLabel');
+        if (label && tableDescriptions[this.value]) {
+            label.innerHTML = `<span class="text-success fw-bold">${tableDescriptions[this.value]}</span>`;
+        }
+    });
+});
+
+document.querySelectorAll('input[name="waiter_rating"]').forEach(el => {
+    el.addEventListener('change', function() {
+        const label = document.getElementById('waiterRatingLabel');
+        if (label && waiterDescriptions[this.value]) {
+            label.innerHTML = `<span class="text-success fw-bold">${waiterDescriptions[this.value]}</span>`;
+        }
+    });
+});
+
+const rForm = document.getElementById('ratingForm');
+if (rForm) {
+    rForm.addEventListener('submit', function(e) {
+        const foodChecked = document.querySelector('input[name="food_rating"]:checked');
+        const tableChecked = document.querySelector('input[name="table_rating"]:checked');
+
+        if (!foodChecked || !tableChecked) {
+            e.preventDefault();
+            alert('Silakan berikan penilaian bintang untuk Makanan dan Kenyamanan Meja terlebih dahulu (klik bintang 1 - 5). Terima kasih!');
+            if (!foodChecked) {
+                document.getElementById('foodStars').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else if (!tableChecked) {
+                document.getElementById('tableStars').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return false;
+        }
+    });
 }
 
 // Poll every 3.5 seconds

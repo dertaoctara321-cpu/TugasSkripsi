@@ -33,45 +33,44 @@ Pelanggan menggunakan sistem secara mandiri tanpa perlu membuat akun (*guest ses
 1. **Memindai QR Code Meja (*Scan Barcode*)**:
    - Pelanggan duduk di meja dan memindai QR Code di meja menggunakan kamera smartphone atau aplikasi pemindai QR.
    - Browser smartphone membuka halaman katalog menu sesuai meja pelanggan (contoh: URL `/order/{uuid}`).
-2. **Melihat Informasi Meja & Katalog Menu**:
+2. **Melihat Informasi Meja, Katalog Menu, & Pencarian Cepat**:
    - Pelanggan melihat nomor meja, statistik rating meja, dan badge meja favorit.
-   - Pelanggan dapat memfilter menu berdasarkan kategori (*Makanan, Minuman, Cemilan, dll.*) serta mencari nama menu.
-   - Menu yang berstatus **Stok Habis / Tidak Tersedia** akan menampilkan badge non-aktif dan tombol tambah akan terkunci otomatis.
-3. **Memilih Menu & Mengelola Keranjang Belanja (*Cart*)**:
-   - Pelanggan menekan tombol **Tambah (+)** pada menu yang diinginkan.
-   - Pelanggan dapat mengatur jumlah kuantitas (*quantity*) secara live.
+   - **Filter & Pencarian Cepat**: Pelanggan dapat memfilter berdasarkan kategori (*Makanan, Minuman, Cemilan*) atau mengetikkan kata kunci nama/komposisi pada bilah pencarian instan (*Filter Search*).
+   - **Informasi Stok Real-Time**: Setiap kartu menu menyajikan indikator sisa stok fisik (*Stok: 20*, *Sisa 4*, atau *Stok Habis*). Menu yang stoknya habis tidak dapat ditambahkan ke keranjang.
+3. **Memilih Menu & Kustomisasi Condiment / Catatan**:
+   - Pelanggan dapat mengklik tombol **Detail / Kustom** atau tombol **+** untuk membuka *Modal Kustomisasi*.
+   - Pelanggan dapat membaca komposisi bahan lengkap, memilih **Level Pedas** (*Tidak Pedas, Sedang, Pedas 🔥*), opsi suhu/gula untuk minuman, kuah/cuko, serta mengisi catatan alergi/preferensi.
+   - Kuantitas pesanan terkunci maksimal sesuai sisa stok fisik.
    - Sistem menampilkan *floating cart badge* yang berisi rekap jumlah item dan total harga sementara.
-4. **Halaman Checkout**:
+4. **Halaman Checkout & Panduan Pembayaran Interaktif**:
    - Pelanggan menekan tombol keranjang / checkout untuk masuk ke `/order/{uuid}/checkout`.
-   - Pelanggan mengisi formulir pemesanan:
-     - **Nama Pemesan** (*Customer Name*)
-     - **Pilihan Posisi Lantai** (*Lantai 1* atau *Lantai 2*)
-     - **Metode Pembayaran** (*Cash / Tunai, QRIS, atau Transfer Bank*)
+   - Memeriksa rincian pesanan beserta catatan condiment yang dipilih.
+   - Mengisi Nama Pemesan (*Customer Name*) dan Posisi Lantai.
+   - Memilih Metode Pembayaran dengan panduan visual terintegrasi:
+     - **Cash / Tunai**: Instruksi pembayaran di kasir atau kepada pelayan dengan uang pas.
+     - **QRIS**: Tampilan QR Code standar ASPI/BI resmi lengkap dengan nominal tagihan dan panduan scan e-wallet/m-banking.
+     - **Transfer Bank BCA**: Informasi rekening `8410928371` a.n. Little Palembang Cafe disertai tombol **"Salin Rekening"** otomatis.
 5. **Membuat Pesanan (*Place Order*)**:
    - Pelanggan menekan tombol **"Pesan Sekarang"**.
-   - Sistem memvalidasi ketersediaan menu dan membuat nomor order baru:
+   - Sistem memvalidasi ketersediaan stok, mengurangi stok menu secara otomatis (*auto-decrement*), dan membuat pesanan baru:
      - Status pesanan awal tercatat: `order_status: pending`, `payment_status: pending`.
+     - Catatan kustomisasi tersimpan di tabel pesanan untuk dibaca oleh koki dapur dan kasir.
      - Status meja otomatis berubah menjadi **Occupied (Terisi)**.
-     - *Catatan:* Jika di meja tersebut sudah ada pesanan sebelumnya yang masih aktif, sistem otomatis menggabungkan item baru ke dalam pesanan meja tersebut (*Add to existing order*).
 6. **Live Tracking Status Pesanan (`/order/{uuid}/status/{order}`)**:
-   - Pelanggan diarahkan ke halaman status pemesanan interaktif dengan polling real-time tanpa perlu me-refresh browser.
-   - Pelanggan dapat memantau 4 tahapan status:
+   - Pelanggan memantau 4 tahapan status secara real-time:
      1. **Pesanan Diterima (*Pending*)**: Menunggu antrean dapur.
      2. **Sedang Dimasak (*Cooking*)**: Dapur sedang menyiapkan makanan/minuman.
-     3. **Disajikan (*Served*)**: Makanan sedang diantar oleh Pelayan (nama pelayan akan muncul di layar).
-     4. **Selesai (*Completed*)**: Pesanan telah selesai disajikan.
+     3. **Disajikan (*Served*)**: Makanan diantar oleh pelayan (nama pelayan tampil di layar).
+     4. **Selesai (*Completed*)**: Pesanan telah diterima lengkap.
+   - **Konfirmasi Pesanan Diterima di Pelanggan**: Saat status pesanan berada di tahap disajikan (*Served*), muncul banner notifikasi dan tombol **"Konfirmasi Pesanan Sudah Diterima Lengkap"**. Pelanggan dapat mengklik tombol ini untuk menyelesaikan pesanan (*Served ➔ Completed*).
+   - **Alur Tindak Lanjut (*Next Action*)**: Setelah pesanan berstatus *Completed*, muncul kartu opsi:
+     - **Pesan Menu Tambahan**: Kembali ke daftar menu untuk menambah pesanan di meja yang sama.
+     - **Selesai Bersantap**: Membuka form ulasan dan rating kafe.
    - Pelanggan dapat menekan tombol **"Cetak Struk"** untuk melihat/mencetak nota rincian pesanan.
-7. **Proses Pembayaran**:
-   - Jika memilih **Cash**: Pelanggan menuju kasir untuk membayar tunai.
-   - Jika memilih **QRIS / Transfer Bank**: Pelanggan melihat detail rekening / scan barcode QRIS kafe yang tersedia di halaman pembayaran.
-8. **Memberikan Rating & Ulasan (*Review*)**:
-   - Pada halaman status, pelanggan dapat mengisi formulir ulasan:
-     - Memberikan rating bintang (1-5) untuk **Makanan**.
-     - Memberikan rating bintang (1-5) untuk kenyamanan **Meja**.
-     - Memberikan rating bintang (1-5) untuk pelayanan **Pelayan (*Waiter*)**.
-     - Menandai centang meja sebagai **Meja Favorit**.
-     - Menuliskan kritik/saran komentar teks untuk makanan dan pelayan.
-   - Menekan tombol **"Kirim Ulasan"** untuk menyimpan ulasan.
+7. **Memberikan Rating & Ulasan (*Review*)**:
+   - Pelanggan memberikan rating bintang (1-5) untuk Makanan, Meja, dan Pelayan (*Waiter*).
+   - Menandai centang meja favorit serta mengisi catatan ulasan pengalaman bersantap.
+   - Seluruh ulasan pelanggan langsung tersinkronisasi ke **Laporan Hasil Evaluasi Pelanggan** di panel admin.
 
 ---
 

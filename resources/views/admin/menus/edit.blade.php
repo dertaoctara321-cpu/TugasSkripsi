@@ -80,16 +80,22 @@
             @csrf
             @method('PUT')
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label class="form-label"><i class="fas fa-utensils"></i> Nama Menu</label>
                         <input type="text" name="name" value="{{ $menu->name }}" class="form-control" placeholder="Nama menu" required>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label"><i class="fas fa-money-bill-wave"></i> Harga</label>
-                        <input type="number" name="price" value="{{ $menu->price }}" class="form-control" placeholder="Harga" required>
+                        <label class="form-label"><i class="fas fa-money-bill-wave"></i> Harga (Rp)</label>
+                        <input type="number" name="price" value="{{ $menu->price }}" class="form-control" placeholder="Harga" min="0" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-boxes"></i> Jumlah Stok (Porsi)</label>
+                        <input type="number" name="stock" value="{{ $menu->stock ?? 20 }}" class="form-control" placeholder="Stok porsi" min="0" required>
                     </div>
                 </div>
             </div>

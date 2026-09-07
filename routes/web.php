@@ -74,6 +74,7 @@ Route::post('/order/{uuid}/place', [App\Http\Controllers\CustomerController::cla
 Route::get('/order/{uuid}/status/{order}', [App\Http\Controllers\CustomerController::class, 'status'])->name('order.status');
 Route::get('/order/{uuid}/status/{order}/check', [App\Http\Controllers\CustomerController::class, 'checkStatus'])->name('order.checkStatus');
 Route::post('/order/{uuid}/rate/{order}', [App\Http\Controllers\CustomerController::class, 'rateOrder'])->name('order.rate');
+Route::post('/order/{uuid}/status/{order}/confirm-received', [App\Http\Controllers\CustomerController::class, 'confirmReceived'])->name('order.confirmReceived');
 Route::get('/order/{uuid}/payment-info', [App\Http\Controllers\CustomerController::class, 'paymentInfo'])->name('order.paymentInfo');
 
 // Live Cart Routes

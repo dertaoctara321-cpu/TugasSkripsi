@@ -88,47 +88,42 @@
     </mxCell>
 
 
-    <!-- ==================== ADDITIONAL VALIDATION TEST CASES ==================== -->
-    <mxCell id="s2_title" value="PENGUJIAN VALIDASI &amp; EDGE CASES" style="text;html=1;strokeColor=none;fillColor=#334155;fontColor=#FFFFFF;align=left;verticalAlign=middle;rounded=1;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+    <!-- ==================== FITUR REVISI UJIAN SEMHAS ==================== -->
+    <mxCell id="s2_title" value="PENGUJIAN FITUR REVISI SEMHAS (PENGUJI I, II, &amp; III)" style="text;html=1;strokeColor=none;fillColor=#334155;fontColor=#FFFFFF;align=left;verticalAlign=middle;rounded=1;fontSize=13;fontStyle=1;" vertex="1" parent="1">
       <mxGeometry x="40" y="700" width="1720" height="30" as="geometry" />
     </mxCell>
 
     <!-- TC-11 -->
-    <mxCell id="tc11" value="11 | TC-11 | Validasi Kuantitas Maksimal Keranjang | AJAX POST /order/{uuid}/cart dengan qty &gt; 100 | Server menolak permintaan dengan error 'Jumlah maksimal untuk item ini adalah 100' | Request ditolak dengan kode 422 dan pesan validasi yang sesuai | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#FFFFFF;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+    <mxCell id="tc11" value="11 | TC-11 | Pengujian Fitur Pencarian Menu (Search) | 1. Buka katalog menu /order/{uuid}&#xa;2. Ketik kata kunci di bar pencarian instan (nama/komposisi) | Menu tersaring secara realtime tanpa reload halaman sesuai kata kunci | Filter pencarian menu menyaring kartu hidangan secara responsif, cepat, dan presisi | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#FFFFFF;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
       <mxGeometry x="40" y="735" width="1720" height="45" as="geometry" />
     </mxCell>
 
     <!-- TC-12 -->
-    <mxCell id="tc12" value="12 | TC-12 | Tambah Menu Baru Tanpa Nama / Harga Negatif | Form menu: name: kosong, price: -5000 | Validasi form gagal: field name wajib diisi dan price minimal 0 | Form menampilkan highlight error validasi merah | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#F8FAFC;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
-      <mxGeometry x="40" y="785" width="1720" height="45" as="geometry" />
+    <mxCell id="tc12" value="12 | TC-12 | Pengujian Pilihan Condiment &amp; Input Notes Pesanan | 1. Buka modal detail kustomisasi menu&#xa;2. Pilih level pedas &amp; ketik catatan kustom&#xa;3. Tambah ke keranjang &amp; checkout | Pilihan condiment &amp; catatan tersimpan di keranjang, DB order_items.notes, antrean dapur, &amp; struk POS | Seluruh pilihan condiment dan preferensi pelanggan terekam dan tersampaikan ke dapur/kasir | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#F8FAFC;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="40" y="785" width="1720" height="50" as="geometry" />
     </mxCell>
 
     <!-- TC-13 -->
-    <mxCell id="tc13" value="13 | TC-13 | Proteksi Penghapusan Meja Occupied | Klik Delete pada meja dengan status occupied | Server menolak penghapusan dengan peringatan 'Meja sedang terisi. Kosongkan meja terlebih dahulu' | Meja tidak terhapus dan pesan peringatan muncul | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#FFFFFF;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
-      <mxGeometry x="40" y="835" width="1720" height="45" as="geometry" />
+    <mxCell id="tc13" value="13 | TC-13 | Pengujian Tampilan Kode QRIS Dinamis/Statis saat Checkout | 1. Masuk halaman checkout&#xa;2. Pilih opsi pembayaran QRIS&#xa;3. Periksa box panduan pembayaran QRIS | Box QRIS menampilkan gambar kode QR standar ASPI/BI resmi, NMID, total tagihan, dan panduan scan | Tampilan kode QRIS beserta nominal tagihan dan panduan pembayaran tampil presisi dan informatif | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#FFFFFF;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="40" y="840" width="1720" height="50" as="geometry" />
     </mxCell>
 
     <!-- TC-14 -->
-    <mxCell id="tc14" value="14 | TC-14 | Proteksi Admin Menghapus Akun Sendiri | Admin login mencoba menghapus user ID miliknya sendiri di /admin/users | Server menolak dengan error 'Anda tidak dapat menghapus akun Anda sendiri' | Akun tetap aman dan pesan proteksi ditampilkan | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#F8FAFC;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
-      <mxGeometry x="40" y="885" width="1720" height="45" as="geometry" />
-    </mxCell>
-
-    <!-- TC-15 -->
-    <mxCell id="tc15" value="15 | TC-15 | Akses URL Status Pesanan dari Meja Lain | Akses /order/{meja-A}/status/{order-meja-B} | HTTP 403 Forbidden ('Unauthorized access to this order') | Akses dicegat dengan kode respon 403 Forbidden | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#FFFFFF;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
-      <mxGeometry x="40" y="935" width="1720" height="45" as="geometry" />
+    <mxCell id="tc14" value="14 | TC-14 | Pengujian Modul Laporan Stok Menu di Admin | 1. Login Admin ➔ Buka /admin/reports&#xa;2. Klik tab 'Laporan Stok Menu'&#xa;3. Uji filter pencarian stok &amp; tombol cetak | Rekap status stok (Aman, Menipis, Habis), tabel stok sisa &amp; terjual, filter pencarian, dan cetak laporan | Modul laporan stok menampilkan data stok realtime akurat dan fungsi cetak bekerja optimal | ✅ PASS" style="text;html=1;align=left;strokeColor=#CBD5E1;fillColor=#F8FAFC;whiteSpace=wrap;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+      <mxGeometry x="40" y="895" width="1720" height="50" as="geometry" />
     </mxCell>
 
 
     <!-- ==================== REKAPITULASI ==================== -->
     <mxCell id="recap_box" value="REKAPITULASI HASIL BLACK-BOX TESTING SISTEM" style="swimlane;startSize=30;fillColor=#0F172A;strokeColor=#0F172A;fontColor=#FFFFFF;fontStyle=1;fontSize=13;rounded=1;" vertex="1" parent="1">
-      <mxGeometry x="40" y="1000" width="1720" height="150" as="geometry" />
+      <mxGeometry x="40" y="970" width="1720" height="150" as="geometry" />
     </mxCell>
     
-    <mxCell id="r_pass" value="✅ TOTAL TEST CASE LULUS (PASS)&#xa;15 / 15 Skenario (100%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=13;fontStyle=1;" vertex="1" parent="recap_box">
+    <mxCell id="r_pass" value="✅ TOTAL TEST CASE LULUS (PASS)&#xa;14 / 14 Skenario (100%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#22C55E;fontColor=#14532D;fontSize=13;fontStyle=1;" vertex="1" parent="recap_box">
       <mxGeometry x="40" y="45" width="480" height="80" as="geometry" />
     </mxCell>
 
-    <mxCell id="r_flow" value="🚀 ALUR BISNIS UTAMA (END-TO-END)&#xa;Pelanggan QR ➔ Dapur ➔ Kasir ➔ Owner ➔ Admin&#xa;Berjalan 100% Sempurna &amp; Terintegrasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=12;fontStyle=1;" vertex="1" parent="recap_box">
+    <mxCell id="r_flow" value="🚀 ALUR BISNIS UTAMA &amp; REVISI SEMHAS&#xa;Pencarian ➔ Condiment/Pedas ➔ QRIS ➔ Dapur ➔ Kasir ➔ Laporan Stok&#xa;Berjalan 100% Sempurna &amp; Terintegrasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontColor=#1E3A8A;fontSize=12;fontStyle=1;" vertex="1" parent="recap_box">
       <mxGeometry x="560" y="45" width="560" height="80" as="geometry" />
     </mxCell>
 

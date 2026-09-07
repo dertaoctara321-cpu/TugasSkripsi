@@ -11,14 +11,10 @@ class TableController extends Controller
      */
     public function index()
     {
-        $tables = \App\Models\Table::with('ratings')->get();
-        // Generate QR URL dynamically using the current request host,
-        // so it works for any environment (local IP, production domain, etc.)
-        // without needing to touch .env
-        $baseUrl = request()->getSchemeAndHttpHost();
+        // 1. Fetch all tables once for global ranking calculation
+        $allTables = \App\Models\Table::with('ratings')->get();
 
-        // Calculate rankings
-        $sorted = $tables->map(function ($t) {
+        $sorted = $allTables->map(function ($t) {
             $avg = $t->ratings->avg('table_rating') ?? 5.0;
             $favs = $t->ratings->where('is_favorite_table', true)->count();
             $count = $t->ratings->count();
@@ -30,6 +26,17 @@ class TableController extends Controller
         foreach ($sorted as $idx => $item) {
             $tableRankMap[$item['id']] = $idx + 1;
         }
+
+        // 2. Paginate 10 tables per page, ordered numerically (Meja 1-10 on page 1, 11-20 on page 2, etc.)
+        $driver = \Illuminate\Support\Facades\DB::getDriverName();
+        $castType = ($driver === 'sqlite') ? 'INTEGER' : 'UNSIGNED';
+
+        $tables = \App\Models\Table::with('ratings')
+            ->orderByRaw("CAST(table_number AS {$castType}) ASC")
+            ->paginate(10);
+
+        // Generate QR URL dynamically using the current request host
+        $baseUrl = request()->getSchemeAndHttpHost();
 
         return view('admin.tables.index', compact('tables', 'baseUrl', 'tableRankMap'));
     }

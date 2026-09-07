@@ -86,7 +86,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <small class="text-muted font-weight-bold">🍜 RATING MAKANAN</small>
-                        <h3 class="mb-0 font-weight-bold"><span class="star-gold">★</span> {{ $avgFoodRating ?? '5.0' }} <small class="text-muted" style="font-size: 0.9rem;">/ 5.0</small></h3>
+                        <h3 class="mb-0 font-weight-bold"><span class="star-gold">★</span> {{ $avgFoodRating ?? '0.0' }} <small class="text-muted" style="font-size: 0.9rem;">/ 5.0</small></h3>
                     </div>
                     <div class="bg-danger text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
                         <i class="fas fa-utensils"></i>
@@ -102,7 +102,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <small class="text-muted font-weight-bold">🪑 RATING KENYAMANAN MEJA</small>
-                        <h3 class="mb-0 font-weight-bold"><span class="star-gold">★</span> {{ $avgTableRating ?? '5.0' }} <small class="text-muted" style="font-size: 0.9rem;">/ 5.0</small></h3>
+                        <h3 class="mb-0 font-weight-bold"><span class="star-gold">★</span> {{ $avgTableRating ?? '0.0' }} <small class="text-muted" style="font-size: 0.9rem;">/ 5.0</small></h3>
                     </div>
                     <div class="bg-warning text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
                         <i class="fas fa-chair"></i>
@@ -118,7 +118,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <small class="text-muted font-weight-bold">🤵 RATING PELAYANAN WAITERS</small>
-                        <h3 class="mb-0 font-weight-bold"><span class="star-gold">★</span> {{ $avgWaiterRating ?? '5.0' }} <small class="text-muted" style="font-size: 0.9rem;">/ 5.0</small></h3>
+                        <h3 class="mb-0 font-weight-bold"><span class="star-gold">★</span> {{ $avgWaiterRating ?? '0.0' }} <small class="text-muted" style="font-size: 0.9rem;">/ 5.0</small></h3>
                     </div>
                     <div class="bg-success text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
                         <i class="fas fa-user-tie"></i>
@@ -183,7 +183,9 @@
         <div class="card h-100">
             <div class="card-header bg-warning text-dark font-weight-bold d-flex justify-content-between align-items-center">
                 <span class="card-title mb-0"><i class="fas fa-trophy text-danger mr-2"></i> 🏆 Top Meja Terfavorit Pelanggan</span>
+                @if(Auth::user()->isAdmin())
                 <a href="{{ route('tables.index') }}" class="btn btn-xs btn-outline-dark font-weight-bold">Lihat Semua Meja</a>
+                @endif
             </div>
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
@@ -262,11 +264,13 @@
         <div class="card h-100">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="card-title font-weight-bold"><i class="fas fa-receipt text-danger mr-2"></i> 10 Pesanan Terbaru</h3>
+                @if(Auth::user()->isAdmin())
                 <div class="card-tools ml-auto">
                     <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary">
                         <i class="fas fa-eye mr-1"></i> Buka Semua
                     </a>
                 </div>
+                @endif
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

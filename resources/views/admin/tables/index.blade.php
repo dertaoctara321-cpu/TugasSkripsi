@@ -53,14 +53,22 @@
                             $totalRatings = $table->total_ratings_count;
                         @endphp
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $tables->firstItem() + $loop->index }}</td>
                             <td>
                                 <strong style="font-size: 1.15rem;"><i class="fas fa-chair text-danger mr-1"></i> Meja {{ $table->table_number }}</strong>
+                                <span class="badge {{ (int)$table->table_number <= 18 ? 'badge-info' : 'badge-primary' }} ml-1" style="font-size: 0.8rem;">
+                                    <i class="fas fa-layer-group mr-1"></i> {{ $table->floor }}
+                                </span>
                             </td>
                             <td>
                                 <div>
-                                    <span class="font-weight-bold" style="font-size: 1.05rem;"><span class="star-gold">★</span> {{ $avgRating }}/5.0</span>
-                                    <small class="text-muted">({{ $totalRatings }} ulasan)</small>
+                                    @if($totalRatings > 0)
+                                        <span class="font-weight-bold" style="font-size: 1.05rem;"><span class="star-gold">★</span> {{ $avgRating }}/5.0</span>
+                                        <small class="text-muted">({{ $totalRatings }} ulasan)</small>
+                                    @else
+                                        <span class="text-muted" style="font-size: 0.95rem;"><span class="text-muted">★</span> 0.0/5.0</span>
+                                        <small class="text-muted">(Belum ada ulasan)</small>
+                                    @endif
                                 </div>
                                 <div class="mt-1">
                                     @if($rank === 1 && $totalRatings > 0)
@@ -154,6 +162,9 @@
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h5 class="card-title font-weight-bold text-danger mb-0">
                             <i class="fas fa-chair mr-1"></i> Meja {{ $table->table_number }}
+                            <span class="badge {{ (int)$table->table_number <= 18 ? 'badge-info' : 'badge-primary' }} ml-1" style="font-size: 0.75rem; vertical-align: middle;">
+                                <i class="fas fa-layer-group mr-1"></i> {{ $table->floor }}
+                            </span>
                         </h5>
                         @if($table->status == 'occupied')
                             <span class="badge badge-danger">Terisi</span>
@@ -163,10 +174,15 @@
                     </div>
 
                     <div class="mb-2">
-                        <span class="font-weight-bold"><span class="star-gold">★</span> {{ $avgRating }}/5.0</span>
-                        <small class="text-muted">({{ $totalRatings }} ulasan)</small>
-                        @if($rank === 1 && $totalRatings > 0)
-                            <span class="badge badge-warning text-dark font-weight-bold ml-1">🥇 Terfavorit #1</span>
+                        @if($totalRatings > 0)
+                            <span class="font-weight-bold"><span class="star-gold">★</span> {{ $avgRating }}/5.0</span>
+                            <small class="text-muted">({{ $totalRatings }} ulasan)</small>
+                            @if($rank === 1)
+                                <span class="badge badge-warning text-dark font-weight-bold ml-1">🥇 Terfavorit #1</span>
+                            @endif
+                        @else
+                            <span class="text-muted"><span class="text-muted">★</span> 0.0/5.0</span>
+                            <small class="text-muted">(Belum ada ulasan)</small>
                         @endif
                         @if($favCount > 0)
                             <span class="badge badge-danger ml-1">❤️ {{ $favCount }}</span>
@@ -221,7 +237,18 @@
             </div>
             @endforelse
         </div>
-    </div>
+
+        <!-- Pagination Controls -->
+        @if($tables->hasPages())
+        <div class="d-flex justify-content-between align-items-center flex-wrap mt-3 pt-3 border-top">
+            <div class="text-muted small mb-2 mb-md-0">
+                Menampilkan <strong>{{ $tables->firstItem() ?? 0 }}</strong> - <strong>{{ $tables->lastItem() ?? 0 }}</strong> dari total <strong>{{ $tables->total() }}</strong> meja
+            </div>
+            <div>
+                {{ $tables->links('pagination::bootstrap-4') }}
+            </div>
+        </div>
+        @endif
 </div>
 @endsection
 

@@ -73,16 +73,22 @@
         <form action="{{ route('menus.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label class="form-label"><i class="fas fa-utensils"></i> Nama Menu</label>
                         <input type="text" name="name" class="form-control" placeholder="Contoh: Cappuccino" required>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label"><i class="fas fa-money-bill-wave"></i> Harga</label>
-                        <input type="number" name="price" class="form-control" placeholder="Contoh: 20000" required>
+                        <label class="form-label"><i class="fas fa-money-bill-wave"></i> Harga (Rp)</label>
+                        <input type="number" name="price" class="form-control" placeholder="Contoh: 20000" min="0" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-boxes"></i> Stok Awal (Porsi)</label>
+                        <input type="number" name="stock" class="form-control" value="20" min="0" required>
                     </div>
                 </div>
             </div>

@@ -121,22 +121,40 @@
                             </div>
                         @endif
                         
-                        <span class="stock-badge badge-{{ $menu->is_available ? 'success' : 'danger' }}">
-                            {{ $menu->is_available ? 'Tersedia' : 'Habis' }}
+                        <span class="stock-badge badge-{{ ($menu->is_available && $menu->stock > 0) ? ($menu->stock <= 5 ? 'warning text-dark' : 'success') : 'danger' }}">
+                            @if(!$menu->is_available || $menu->stock <= 0)
+                                <i class="fas fa-ban mr-1"></i> Habis
+                            @elseif($menu->stock <= 5)
+                                <i class="fas fa-exclamation-triangle mr-1"></i> Sisa {{ $menu->stock }}
+                            @else
+                                <i class="fas fa-check-circle mr-1"></i> Stok: {{ $menu->stock }}
+                            @endif
                         </span>
                     </div>
                     
                     <div class="card-body">
-                        <h5 class="card-title" style="font-weight: 700; margin-bottom: 10px;">{{ $menu->name }}</h5>
+                        <h5 class="card-title" style="font-weight: 700; margin-bottom: 8px;">{{ $menu->name }}</h5>
                         
-                        <div class="mb-2 d-flex justify-content-between">
+                        <div class="mb-2 d-flex justify-content-between align-items-center">
                             <span class="menu-category">{{ $menu->category }}</span>
-                            <span class="badge badge-secondary">ID: {{ $menu->id }}</span>
+                            <span class="badge badge-light border font-weight-bold" style="color: {{ $menu->stock <= 5 ? '#DC2626' : '#166534' }};">
+                                <i class="fas fa-boxes mr-1"></i> Stok: {{ $menu->stock }}
+                            </span>
                         </div>
                         
                         <div class="menu-price mb-2">
                             Rp {{ number_format($menu->price, 0, ',', '.') }}
                         </div>
+
+                        @if($menu->description)
+                            <p class="text-muted small mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; min-height: 2.8em;" title="{{ $menu->description }}">
+                                <i class="fas fa-align-left mr-1 text-secondary"></i> {{ $menu->description }}
+                            </p>
+                        @else
+                            <p class="text-muted small mb-2 font-italic" style="min-height: 2.8em; line-height: 1.4;">
+                                <i class="fas fa-info-circle mr-1 text-muted"></i> Belum ada deskripsi
+                            </p>
+                        @endif
 
                         <!-- Quick Toggle Availability Form -->
                         <form action="{{ route('menus.toggleAvailability', $menu->id) }}" method="POST" class="mb-2">
@@ -152,6 +170,7 @@
                             <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-info btn-sm flex-fill" style="margin-right: 4px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
+                            @if(Auth::user()->isAdmin())
                             <form action="{{ route('menus.destroy', $menu->id) }}" method="POST" style="flex: 1;">
                                 @csrf
                                 @method('DELETE')
@@ -159,6 +178,7 @@
                                     <i class="fas fa-trash"></i> Hapus
                                 </button>
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>

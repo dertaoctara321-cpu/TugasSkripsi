@@ -8,7 +8,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = \App\Models\Order::with(['table', 'rating'])->orderBy('created_at', 'desc')->get();
+        $orders = \App\Models\Order::with(['table', 'rating', 'items.menu'])->orderBy('created_at', 'desc')->get();
         return view('admin.orders.index', compact('orders'));
     }
 

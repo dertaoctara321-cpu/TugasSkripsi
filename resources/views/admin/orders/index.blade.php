@@ -60,7 +60,22 @@
                                     <br><small class="text-muted">{{ $order->floor }}</small>
                                 @endif
                             </td>
-                            <td>{{ $order->customer_name ?? 'Tamu' }}</td>
+                            <td>
+                                <strong>{{ $order->customer_name ?? 'Tamu' }}</strong>
+                                <div class="small text-muted mt-1">
+                                    @foreach($order->items->take(2) as $item)
+                                        <div class="text-truncate" style="max-width: 180px;">
+                                            {{ $item->quantity }}x {{ $item->menu->name ?? 'Item' }}
+                                            @if(!empty($item->notes))
+                                                <span class="badge badge-warning text-dark px-1" title="{{ $item->notes }}"><i class="fas fa-pen-nib"></i></span>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                    @if($order->items->count() > 2)
+                                        <small class="text-muted">+ {{ $order->items->count() - 2 }} item lainnya</small>
+                                    @endif
+                                </div>
+                            </td>
                             <td>
                                 @if($order->waiter_name)
                                     <span class="badge badge-info p-1 font-weight-normal"><i class="fas fa-user-tie mr-1"></i> {{ $order->waiter_name }}</span>
@@ -161,6 +176,18 @@
                         <strong><i class="fas fa-user-tie text-muted mr-1"></i> Waitress:</strong> <span class="badge badge-info">{{ $order->waiter_name }}</span>
                     </div>
                     @endif
+                    <div class="mb-1">
+                        <strong><i class="fas fa-utensils text-muted mr-1"></i> Item Pesanan:</strong>
+                        <div class="small text-dark mt-1 pl-2">
+                            @foreach($order->items as $item)
+                                <div>• {{ $item->quantity }}x {{ $item->menu->name ?? 'Item' }}
+                                    @if(!empty($item->notes))
+                                        <span class="text-danger font-weight-bold">({{ $item->notes }})</span>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="mb-1">
                         <strong><i class="fas fa-money-bill-wave text-muted mr-1"></i> Total:</strong> 
                         <span class="font-weight-bold text-danger">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</span>

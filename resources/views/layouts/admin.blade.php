@@ -107,7 +107,8 @@
           </li>
           @endif
 
-          <!-- Pesanan (Semua Role) -->
+          @if(Auth::user()->isAdmin() || Auth::user()->isDapur() || Auth::user()->isKasir())
+          <!-- Pesanan (Admin, Dapur, Kasir only) -->
           <li class="nav-item">
             <a href="{{ route('orders.index') }}" class="nav-link {{ request()->routeIs('orders.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-receipt"></i>
@@ -122,16 +123,19 @@
               </p>
             </a>
           </li>
+          @endif
 
-          @if(Auth::user()->isAdmin())
-          <!-- Menu (Admin) -->
+          @if(Auth::user()->isAdmin() || Auth::user()->isDapur())
+          <!-- Menu (Admin & Dapur) -->
           <li class="nav-item">
             <a href="{{ route('menus.index') }}" class="nav-link {{ request()->routeIs('menus.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-utensils"></i>
               <p>Kelola Menu</p>
             </a>
           </li>
+          @endif
 
+          @if(Auth::user()->isAdmin())
           <!-- Meja & QR (Admin) -->
           <li class="nav-item">
             <a href="{{ route('tables.index') }}" class="nav-link {{ request()->routeIs('tables.*') ? 'active' : '' }}">
