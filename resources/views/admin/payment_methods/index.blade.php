@@ -55,7 +55,7 @@
                         </td>
                         <td>
                             @if($method->qr_code_image)
-                                <img src="/{{ $method->qr_code_image }}" width="80px" alt="QR Code">
+                                <img src="{{ asset($method->qr_code_image) }}" width="80px" alt="QR Code">
                             @else
                                 -
                             @endif

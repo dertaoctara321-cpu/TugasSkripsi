@@ -38,7 +38,7 @@
                     @if($method->qr_code_image)
                     <div class="text-center mt-3">
                         <p class="mb-2"><strong>Scan QR Code:</strong></p>
-                        <img src="/{{ $method->qr_code_image }}" alt="{{ $method->name }}" class="img-fluid" style="max-width: 300px;">
+                        <img src="{{ asset($method->qr_code_image) }}" alt="{{ $method->name }}" class="img-fluid" style="max-width: 300px;">
                     </div>
                     @endif
                 @else

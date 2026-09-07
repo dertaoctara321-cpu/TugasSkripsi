@@ -219,6 +219,7 @@
                                         data-account-number="{{ $pm->account_number }}"
                                         data-account-name="{{ $pm->account_name }}"
                                         data-instructions="{{ $pm->instructions }}"
+                                        data-qr-image="{{ $pm->qr_code_image ? asset($pm->qr_code_image) : '' }}"
                                         {{ $activeOrder && strtolower($activeOrder->payment_method) == strtolower($pm->name) ? 'selected' : '' }}>
                                     {{ $pm->name }} ({{ strtoupper(str_replace('_', ' ', $pm->type)) }})
                                 </option>
@@ -270,9 +271,10 @@ function renderPaymentGuide() {
     if (!selectedOption) return;
 
     const type = selectedOption.getAttribute('data-type') || 'cash';
-    const accNum = selectedOption.getAttribute('data-account-number') || '8410928371';
+    const accNum = selectedOption.getAttribute('data-account-number') || '';
     const accName = selectedOption.getAttribute('data-account-name') || 'Little Palembang Cafe';
     const instructions = selectedOption.getAttribute('data-instructions') || '';
+    const qrImage = selectedOption.getAttribute('data-qr-image') || '';
     const container = document.getElementById('paymentGuideContainer');
     
     if (!container) return;
@@ -297,57 +299,65 @@ function renderPaymentGuide() {
         </div>
         `;
     } else if (type === 'qris') {
+        const qrDisplayContent = qrImage ? `
+            <div class="my-2 p-2 bg-white rounded border d-inline-block shadow-sm">
+                <img src="${qrImage}" alt="QRIS ${accName}" class="img-fluid rounded" style="max-width: 260px; max-height: 280px; object-fit: contain; display: block; margin: 0 auto;">
+            </div>
+        ` : `
+            <!-- Standard QR Code SVG representation for Little Palembang -->
+            <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="img-fluid my-2">
+                <rect width="180" height="180" fill="white"/>
+                <!-- Finder top-left -->
+                <rect x="15" y="15" width="45" height="45" fill="#000000" rx="6"/>
+                <rect x="23" y="23" width="29" height="29" fill="#ffffff" rx="3"/>
+                <rect x="30" y="30" width="15" height="15" fill="#DC2626" rx="2"/>
+                <!-- Finder top-right -->
+                <rect x="120" y="15" width="45" height="45" fill="#000000" rx="6"/>
+                <rect x="128" y="23" width="29" height="29" fill="#ffffff" rx="3"/>
+                <rect x="135" y="30" width="15" height="15" fill="#DC2626" rx="2"/>
+                <!-- Finder bottom-left -->
+                <rect x="15" y="120" width="45" height="45" fill="#000000" rx="6"/>
+                <rect x="23" y="128" width="29" height="29" fill="#ffffff" rx="3"/>
+                <rect x="30" y="135" width="15" height="15" fill="#DC2626" rx="2"/>
+                <!-- QR Data patterns -->
+                <rect x="70" y="20" width="10" height="10" fill="#000000"/>
+                <rect x="90" y="20" width="10" height="10" fill="#000000"/>
+                <rect x="80" y="35" width="10" height="10" fill="#000000"/>
+                <rect x="100" y="35" width="10" height="10" fill="#000000"/>
+                <rect x="70" y="50" width="20" height="10" fill="#000000"/>
+                <rect x="20" y="70" width="10" height="20" fill="#000000"/>
+                <rect x="35" y="80" width="15" height="10" fill="#000000"/>
+                <rect x="55" y="70" width="10" height="10" fill="#000000"/>
+                <rect x="75" y="70" width="30" height="30" fill="#DC2626" rx="4"/>
+                <circle cx="90" cy="85" r="8" fill="#ffffff"/>
+                <rect x="115" y="75" width="20" height="10" fill="#000000"/>
+                <rect x="145" y="70" width="15" height="15" fill="#000000"/>
+                <rect x="120" y="95" width="10" height="15" fill="#000000"/>
+                <rect x="70" y="110" width="15" height="10" fill="#000000"/>
+                <rect x="95" y="110" width="20" height="15" fill="#000000"/>
+                <rect x="130" y="120" width="15" height="10" fill="#000000"/>
+                <rect x="150" y="135" width="10" height="20" fill="#000000"/>
+                <rect x="70" y="135" width="25" height="10" fill="#000000"/>
+                <rect x="105" y="145" width="20" height="10" fill="#000000"/>
+                <rect x="80" y="155" width="15" height="10" fill="#000000"/>
+            </svg>
+        `;
+
         html = `
         <div class="payment-guide-box payment-guide-qris text-center">
             <div class="d-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-qrcode fa-2x me-2 text-danger"></i>
-                <h6 class="fw-bold mb-0 text-danger">📱 Scan QRIS Resmi Little Palembang</h6>
+                <h6 class="fw-bold mb-0 text-danger">📱 Scan QRIS Resmi ${accName || 'Little Palembang'}</h6>
             </div>
-            <p class="small text-muted mb-3">Mendukung semua aplikasi e-wallet & mobile banking (GoPay, OVO, Dana, ShopeePay, BCA Mobile, Livin, BRImo, dll)</p>
+            <p class="small text-muted mb-3">${instructions || 'Mendukung semua aplikasi e-wallet & mobile banking (GoPay, OVO, Dana, ShopeePay, BCA Mobile, Livin, BRImo, dll)'}</p>
 
             <div class="qris-display-frame mb-3">
                 <div class="text-center mb-1">
                     <span class="badge bg-danger text-white fw-bold px-3 py-1" style="letter-spacing: 1px; font-size: 0.82rem;">QRIS STANDAR ASPI / BI</span>
                 </div>
-                <!-- Standard QR Code SVG representation for Little Palembang -->
-                <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="img-fluid my-2">
-                    <rect width="180" height="180" fill="white"/>
-                    <!-- Finder top-left -->
-                    <rect x="15" y="15" width="45" height="45" fill="#000000" rx="6"/>
-                    <rect x="23" y="23" width="29" height="29" fill="#ffffff" rx="3"/>
-                    <rect x="30" y="30" width="15" height="15" fill="#DC2626" rx="2"/>
-                    <!-- Finder top-right -->
-                    <rect x="120" y="15" width="45" height="45" fill="#000000" rx="6"/>
-                    <rect x="128" y="23" width="29" height="29" fill="#ffffff" rx="3"/>
-                    <rect x="135" y="30" width="15" height="15" fill="#DC2626" rx="2"/>
-                    <!-- Finder bottom-left -->
-                    <rect x="15" y="120" width="45" height="45" fill="#000000" rx="6"/>
-                    <rect x="23" y="128" width="29" height="29" fill="#ffffff" rx="3"/>
-                    <rect x="30" y="135" width="15" height="15" fill="#DC2626" rx="2"/>
-                    <!-- QR Data patterns -->
-                    <rect x="70" y="20" width="10" height="10" fill="#000000"/>
-                    <rect x="90" y="20" width="10" height="10" fill="#000000"/>
-                    <rect x="80" y="35" width="10" height="10" fill="#000000"/>
-                    <rect x="100" y="35" width="10" height="10" fill="#000000"/>
-                    <rect x="70" y="50" width="20" height="10" fill="#000000"/>
-                    <rect x="20" y="70" width="10" height="20" fill="#000000"/>
-                    <rect x="35" y="80" width="15" height="10" fill="#000000"/>
-                    <rect x="55" y="70" width="10" height="10" fill="#000000"/>
-                    <rect x="75" y="70" width="30" height="30" fill="#DC2626" rx="4"/>
-                    <circle cx="90" cy="85" r="8" fill="#ffffff"/>
-                    <rect x="115" y="75" width="20" height="10" fill="#000000"/>
-                    <rect x="145" y="70" width="15" height="15" fill="#000000"/>
-                    <rect x="120" y="95" width="10" height="15" fill="#000000"/>
-                    <rect x="70" y="110" width="15" height="10" fill="#000000"/>
-                    <rect x="95" y="110" width="20" height="15" fill="#000000"/>
-                    <rect x="130" y="120" width="15" height="10" fill="#000000"/>
-                    <rect x="150" y="135" width="10" height="20" fill="#000000"/>
-                    <rect x="70" y="135" width="25" height="10" fill="#000000"/>
-                    <rect x="105" y="145" width="20" height="10" fill="#000000"/>
-                    <rect x="80" y="155" width="15" height="10" fill="#000000"/>
-                </svg>
-                <div class="fw-bold text-dark" style="font-size: 0.95rem;">LITTLE PALEMBANG CAFE</div>
-                <div class="text-muted small">NMID: ID102008419203</div>
+                ${qrDisplayContent}
+                <div class="fw-bold text-dark" style="font-size: 0.95rem;">${accName ? accName.toUpperCase() : 'LITTLE PALEMBANG CAFE'}</div>
+                ${accNum ? `<div class="text-muted small">NMID / ID: ${accNum}</div>` : ''}
                 <div class="fw-bold text-danger mt-1">Total Tagihan: Rp ${Number(currentGrandTotal).toLocaleString('id-ID')}</div>
             </div>
 
@@ -356,28 +366,29 @@ function renderPaymentGuide() {
                 <ol class="mb-0 ps-3 mt-1">
                     <li>Buka aplikasi perbankan atau e-wallet di ponsel Anda.</li>
                     <li>Pindai (Scan) QR Code di atas.</li>
-                    <li>Pastikan nama merchant: <strong>Little Palembang Cafe</strong> dan nominal sesuai total belanja.</li>
+                    <li>Pastikan nama merchant: <strong>${accName || 'Little Palembang Cafe'}</strong> dan nominal sesuai total belanja: <strong>Rp ${Number(currentGrandTotal).toLocaleString('id-ID')}</strong>.</li>
                     <li>Simpan bukti bayar untuk ditunjukkan saat verifikasi.</li>
                 </ol>
             </div>
         </div>
         `;
     } else {
-        // Bank transfer
+        // Bank transfer / lainnya
+        const bankTitle = selectedOption.text.split('(')[0].trim();
         html = `
         <div class="payment-guide-box payment-guide-transfer">
             <div class="d-flex align-items-center mb-3">
                 <i class="fas fa-university fa-2x me-3 text-primary"></i>
                 <div>
-                    <h6 class="fw-bold mb-0 text-primary">💳 Panduan Transfer Bank BCA</h6>
-                    <small class="text-muted">Transfer resmi rekening Little Palembang</small>
+                    <h6 class="fw-bold mb-0 text-primary">💳 Panduan Transfer ${bankTitle}</h6>
+                    <small class="text-muted">${instructions || 'Transfer resmi rekening Little Palembang'}</small>
                 </div>
             </div>
 
             <div class="p-3 bg-white rounded-3 border mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                    <span class="text-muted small">Bank Tujuan:</span>
-                    <strong class="text-dark">BANK CENTRAL ASIA (BCA)</strong>
+                    <span class="text-muted small">Metode / Bank:</span>
+                    <strong class="text-dark">${bankTitle}</strong>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
                     <span class="text-muted small">Nomor Rekening:</span>

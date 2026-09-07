@@ -34,7 +34,11 @@ class PaymentMethodController extends Controller
         if ($request->hasFile('qr_code_image')) {
             $image = $request->file('qr_code_image');
             $imageName = \Illuminate\Support\Str::random(20) . '.' . $image->extension();
-            $image->move(public_path('images/payment'), $imageName);
+            $targetDir = public_path('images/payment');
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0755, true);
+            }
+            $image->move($targetDir, $imageName);
             $data['qr_code_image'] = 'images/payment/' . $imageName;
         }
 
@@ -70,7 +74,11 @@ class PaymentMethodController extends Controller
 
             $image = $request->file('qr_code_image');
             $imageName = \Illuminate\Support\Str::random(20) . '.' . $image->extension();
-            $image->move(public_path('images/payment'), $imageName);
+            $targetDir = public_path('images/payment');
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0755, true);
+            }
+            $image->move($targetDir, $imageName);
             $data['qr_code_image'] = 'images/payment/' . $imageName;
         }
 

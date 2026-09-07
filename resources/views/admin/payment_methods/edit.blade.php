@@ -51,7 +51,7 @@
                 <label>Upload QR Code Baru (Opsional)</label>
                 @if($paymentMethod->qr_code_image)
                     <div class="mb-2">
-                        <img src="/{{ $paymentMethod->qr_code_image }}" width="150px" alt="Current QR">
+                        <img src="{{ asset($paymentMethod->qr_code_image) }}" width="150px" alt="Current QR">
                         <p class="text-muted">QR Code saat ini</p>
                     </div>
                 @endif
