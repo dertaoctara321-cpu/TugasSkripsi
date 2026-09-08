@@ -163,14 +163,16 @@
         background: #FFFFFF;
         color: #000000;
         font-family: 'Courier New', Courier, monospace;
-        padding: 16px 18px;
+        padding: 16px 14px;
         border: 1px dashed #CBD5E1;
         border-radius: 4px;
+        width: 100%;
         max-width: 360px;
         margin: 0 auto;
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         line-height: 1.3;
         font-size: 12.5px;
+        box-sizing: border-box;
     }
 
     .thermal-header {
@@ -241,6 +243,20 @@
         color: #FFB800 !important;
         text-shadow: 0 0 12px rgba(255, 184, 0, 0.7);
         transform: scale(1.18);
+    }
+
+    @media (max-width: 576px) {
+        .star-rating-box {
+            font-size: 1.95rem;
+            gap: 6px;
+        }
+        .thermal-receipt-wrapper {
+            padding: 12px 10px;
+            font-size: 11.5px;
+        }
+        .status-title {
+            font-size: 1.35rem;
+        }
     }
 
     /* Print Styles (Strict 1-Page Thermal Layout) */

@@ -105,6 +105,35 @@
     .copy-acc-btn:hover {
         transform: scale(1.05);
     }
+
+    /* Mobile responsiveness */
+    @media (max-width: 576px) {
+        .checkout-card {
+            border-radius: 14px;
+        }
+        .checkout-card .card-body {
+            padding: 14px !important;
+        }
+        .checkout-table th, .checkout-table td {
+            padding: 8px 6px !important;
+            font-size: 0.85rem;
+        }
+        .total-amount {
+            font-size: 1.15rem;
+        }
+        .qris-display-frame {
+            padding: 10px;
+            max-width: 100%;
+        }
+        .qris-display-frame img, .qris-display-frame svg {
+            max-width: 220px !important;
+            max-height: 220px !important;
+        }
+        .btn-submit {
+            padding: 12px;
+            font-size: 1rem;
+        }
+    }
 </style>
 
 <div class="card checkout-card">

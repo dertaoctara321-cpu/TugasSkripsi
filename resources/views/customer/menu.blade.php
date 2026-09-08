@@ -88,16 +88,27 @@
     }
 
     /* Category filter pills (Merah Putih) */
+    #categoryFilter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 8px;
+    }
+
     #categoryFilter .btn {
         border: 2px solid #DC2626;
         color: #DC2626;
         border-radius: 9999px !important;
         font-weight: 700;
-        padding: 6px 18px;
-        margin: 2px 4px;
+        padding: 6px 16px;
+        margin: 0;
         transition: all 0.25s ease;
         background: #ffffff;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+        flex: 0 0 auto;
     }
 
     #categoryFilter .btn:hover,
@@ -381,11 +392,11 @@
     /* Mobile responsive optimizations */
     @media (max-width: 576px) {
         .page-header h1 {
-            font-size: 1.45rem;
+            font-size: 1.4rem;
         }
-        .col-6 {
-            padding-left: 6px;
-            padding-right: 6px;
+        #categoryFilter .btn {
+            padding: 5px 12px !important;
+            font-size: 0.82rem !important;
         }
         .card-body.p-3 {
             padding: 10px !important;
@@ -402,13 +413,17 @@
             font-size: 15px;
         }
         .quantity-input {
-            width: 42px;
-            font-size: 0.88rem;
+            width: 40px;
+            font-size: 0.85rem;
             padding: 2px;
         }
         .btn-detail-condiment {
             font-size: 0.72rem;
             padding: 4px 6px;
+        }
+        .badge-table-rating {
+            font-size: 0.78rem;
+            padding: 4px 10px;
         }
     }
 </style>
@@ -507,7 +522,7 @@
 <!-- Category & Subcategory Filter -->
 <div class="row mb-4">
     <div class="col-12 text-center mb-2">
-        <div class="btn-group" role="group" id="categoryFilter">
+        <div class="d-flex flex-wrap justify-content-center gap-1 gap-sm-2" id="categoryFilter" role="group">
             <button type="button" class="btn btn-outline-primary active" onclick="filterCustomerMenu('all', this)">Semua</button>
             <button type="button" class="btn btn-outline-primary" onclick="filterCustomerMenu('Makanan', this)">Makanan</button>
             <button type="button" class="btn btn-outline-primary" onclick="filterCustomerMenu('Minuman', this)">Minuman</button>
@@ -530,7 +545,7 @@
 </div>
 
 <!-- Menus Grid -->
-<div class="row menu-list" id="customerMenuGrid">
+<div class="row gx-2 gx-sm-3 menu-list" id="customerMenuGrid">
     @foreach($menus as $menu)
     @php
         $isItemAvailable = $menu->is_available && $menu->stock > 0;
@@ -641,8 +656,8 @@
 @endphp
 
 <!-- Floating Bottom Checkout Bar (Mobile & Desktop friendly) -->
-<div id="floating-cart-bar" class="fixed-bottom p-3 no-print" style="{{ $cartCount > 0 ? 'display: block;' : 'display: none;' }}; z-index: 999;">
-    <div class="container" style="max-width: 650px;">
+<div id="floating-cart-bar" class="fixed-bottom p-2 p-sm-3 no-print" style="{{ $cartCount > 0 ? 'display: block;' : 'display: none;' }}; z-index: 999; max-width: 100vw; overflow-x: hidden;">
+    <div class="container px-2 px-sm-3" style="max-width: 650px;">
         <div class="card shadow-lg border-0" style="background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #B91C1C 100%); border-radius: 18px; color: white; box-shadow: 0 10px 30px rgba(220, 38, 38, 0.45) !important;">
             <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">

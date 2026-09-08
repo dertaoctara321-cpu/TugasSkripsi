@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>@yield('title', 'Little Palembang')</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,6 +30,23 @@
             --soft-white: #F8FAFC;
         }
 
+        /* Prevent horizontal overflow & page wobble on mobile */
+        html, body {
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            touch-action: pan-y pinch-zoom;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         /* Gold Star Global Styles */
         .star-gold, .text-gold, .fa-star, .text-warning.fa-star, .fa-star.text-warning {
             color: #FFB800 !important;
@@ -40,7 +57,6 @@
             font-family: 'Outfit', sans-serif;
             padding-bottom: 80px;
             transition: background-color 0.3s, color 0.3s;
-            position: relative;
         }
 
         /* Decorative background pattern (Merah-Putih subtle geometric) */
@@ -268,6 +284,51 @@
         body.dark-mode .cart-btn:hover {
             background: linear-gradient(135deg, #EF4444, #DC2626) !important;
             color: white !important;
+        }
+
+        /* Prevent container & row from exceeding screen width */
+        .container, .container-fluid {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 576px) {
+            .container { max-width: 540px; }
+        }
+        @media (min-width: 768px) {
+            .container { max-width: 720px; }
+        }
+        @media (min-width: 992px) {
+            .container { max-width: 960px; }
+        }
+        @media (min-width: 1200px) {
+            .container { max-width: 1140px; }
+        }
+
+        /* Mobile specific layout stabilization */
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+            .navbar .container-fluid {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+            .navbar-brand span {
+                font-size: 1.08rem;
+            }
+            .navbar-brand img {
+                width: 34px !important;
+                height: 34px !important;
+                margin-right: 6px !important;
+            }
+            .cart-btn {
+                padding: 6px 12px !important;
+                font-size: 0.85rem !important;
+            }
         }
 
         @media print {
